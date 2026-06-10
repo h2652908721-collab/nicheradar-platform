@@ -3,601 +3,883 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Gauntrix — AI-Powered Niche Opportunity Discovery</title>
-  <meta name="description" content="Not a trend tracker. Gauntrix's AI kills 98% of ideas — wrappers, content farms, saturated tools. What survives is specific, unbuildable by anyone else, and comes with a cold-start roadmap.">
-  <meta property="og:title" content="Gauntrix — The AI Kill Filter for Buildable Niches">
-  <meta property="og:description" content="Exploding Topics shows trends. We run 200+ ideas through a brutal kill filter. 98% don't make it. Weekly drops of what survived — for builders, not browsers.">
-
+  <title>Gauntrix — AI Kill Filter for Buildable Niches</title>
+  <meta name="description" content="200+ ideas enter the machine. 98% don't survive. What comes out the other side is narrow, buildable, and monetizable. Weekly drops for builders.">
+  <meta property="og:title" content="Gauntrix — The Machine That Kills Bad Ideas">
+  <meta property="og:description" content="Not a trend tracker. An AI kill filter. 200+ ideas in. ~4% out. Weekly drops of what survived.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
-
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <script src="https://assets.lemonsqueezy.com/lemon.js" defer></script>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --bg:          #050b15;
-      --bg-2:        #08111e;
-      --bg-3:        #0c1828;
-      --bg-4:        #101f33;
-      --bg-5:        #152640;
-
-      --ink:         #ddeaf8;
-      --ink-2:       #8ba3bf;
-      --ink-3:       #4d6880;
-
-      --cyan:        #22d3ee;
-      --cyan-dim:    rgba(34,211,238,0.18);
-      --cyan-glow:   rgba(34,211,238,0.08);
-      --cyan-border: rgba(34,211,238,0.22);
-
-      --violet:      #a78bfa;
-      --violet-dim:  rgba(167,139,250,0.15);
-
-      --green:       #34d399;
-      --amber:       #fbbf24;
-
+      --black:       #010103;
+      --black-2:     #07070f;
+      --black-3:     #0c0c18;
+      --red:         #e60000;
+      --red-2:       #ff2222;
+      --red-3:       #ff6666;
+      --red-dark:    #6b0000;
+      --red-glow:    rgba(230, 0, 0, 0.18);
+      --white:       #f0f0f4;
+      --gray:        #a0a0b0;
+      --gray-dim:    #50505f;
       --border:      rgba(255,255,255,0.06);
-      --border-2:    rgba(255,255,255,0.1);
-
-      --r:           10px;
-      --r-lg:        16px;
-      --r-xl:        20px;
-
-      --hero-size:   clamp(2.8rem, 6vw, 5.5rem);
-      --h2-size:     clamp(1.9rem, 3.5vw, 3rem);
-      --h3-size:     clamp(1.1rem, 1.6vw, 1.35rem);
+      --sans:        'Space Grotesk', -apple-system, sans-serif;
+      --body:        'Inter', -apple-system, sans-serif;
+      --mono:        'JetBrains Mono', monospace;
     }
 
-    html { scroll-behavior: smooth; scroll-padding-top: 84px; }
+    html { scroll-behavior: smooth; }
 
     body {
-      font-family: 'Inter', system-ui, sans-serif;
-      background: var(--bg);
-      color: var(--ink);
-      line-height: 1.6;
-      -webkit-font-smoothing: antialiased;
+      font-family: var(--body);
+      background: var(--black);
+      color: var(--white);
       overflow-x: hidden;
     }
 
-    /* ─────── NAV ─────── */
+    /* ─── NAV ─── */
     .nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
-      padding: 1.1rem 2rem;
-      display: flex; align-items: center; justify-content: space-between;
-      transition: background 0.35s, border-color 0.35s, backdrop-filter 0.35s;
-      border-bottom: 1px solid transparent;
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 200;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.4rem 3rem;
+      background: linear-gradient(to bottom, rgba(1,1,3,0.97) 0%, transparent 100%);
+      transition: background 0.3s;
     }
     .nav.scrolled {
-      background: rgba(5, 11, 21, 0.88);
-      backdrop-filter: blur(12px) saturate(1.2);
-      -webkit-backdrop-filter: blur(12px) saturate(1.2);
-      border-color: var(--border);
+      background: rgba(1,1,3,0.97);
+      border-bottom: 1px solid var(--border);
     }
-    .nav-brand {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 1.2rem; font-weight: 700;
-      color: var(--ink); text-decoration: none;
-      display: flex; align-items: center; gap: 0.2rem;
-      letter-spacing: -0.01em;
-    }
-    .nav-brand .dot { color: var(--cyan); }
-    .nav-right { display: flex; align-items: center; gap: 1rem; }
-    .nav-link {
-      font-size: 0.875rem; color: var(--ink-2);
-      text-decoration: none; transition: color 0.15s;
-    }
-    .nav-link:hover { color: var(--ink); }
-    .nav-cta {
-      padding: 0.5rem 1.25rem;
-      background: var(--cyan); color: #050b15;
-      border-radius: var(--r); font-weight: 700; font-size: 0.875rem;
+    .nav-logo {
+      font-family: var(--sans);
+      font-size: 1.15rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: var(--white);
       text-decoration: none;
-      transition: box-shadow 0.2s, opacity 0.15s;
     }
-    .nav-cta:hover {
-      box-shadow: 0 0 20px rgba(34,211,238,0.45);
-      opacity: 0.9;
+    .nav-logo span { color: var(--red); }
+    .nav-links { display: flex; align-items: center; gap: 2.5rem; }
+    .nav-link {
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--gray-dim);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-link:hover { color: var(--white); }
+    .btn {
+      display: inline-block;
+      font-family: var(--sans);
+      font-weight: 700;
+      text-decoration: none;
+      border-radius: 3px;
+      transition: all 0.2s;
+      cursor: pointer;
+    }
+    .btn-red {
+      background: var(--red);
+      color: var(--white);
+      padding: 0.6rem 1.4rem;
+      font-size: 0.78rem;
+      letter-spacing: 0.04em;
+    }
+    .btn-red:hover {
+      background: var(--red-2);
+      box-shadow: 0 0 24px rgba(230,0,0,0.45);
+    }
+    .btn-lg {
+      padding: 0.9rem 2.2rem;
+      font-size: 0.9rem;
+    }
+    .btn-ghost {
+      background: transparent;
+      color: var(--gray);
+      padding: 0.9rem 2.2rem;
+      font-size: 0.9rem;
+      border: 1px solid rgba(255,255,255,0.12);
+    }
+    .btn-ghost:hover {
+      color: var(--white);
+      border-color: rgba(255,255,255,0.3);
     }
 
-    /* ─────── HERO ─────── */
-    .hero-wrap {
-      position: relative; overflow: hidden;
-      padding: 10rem 2rem 7rem;
-      text-align: center;
+    /* ─── HERO ─── */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
     }
-    .hero-bg {
-      position: absolute; inset: 0; pointer-events: none;
-      background:
-        radial-gradient(ellipse 80% 60% at 50% -10%, rgba(34,211,238,0.07) 0%, transparent 65%),
-        radial-gradient(ellipse 50% 40% at 80% 80%, rgba(167,139,250,0.05) 0%, transparent 55%);
+    #particle-canvas {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0.9;
     }
-    .hero-grid-lines {
-      position: absolute; inset: 0; pointer-events: none; opacity: 0.025;
-      background-image:
-        linear-gradient(rgba(34,211,238,1) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(34,211,238,1) 1px, transparent 1px);
-      background-size: 60px 60px;
-      mask-image: radial-gradient(ellipse 80% 70% at 50% 0%, black 0%, transparent 70%);
+    .hero-bg-word {
+      position: absolute;
+      bottom: -0.12em;
+      right: -0.04em;
+      font-family: var(--sans);
+      font-size: clamp(12rem, 28vw, 26rem);
+      font-weight: 900;
+      letter-spacing: -0.05em;
+      line-height: 1;
+      color: transparent;
+      -webkit-text-stroke: 1px rgba(230,0,0,0.07);
+      pointer-events: none;
+      user-select: none;
     }
-    .hero-inner { position: relative; max-width: 820px; margin: 0 auto; }
-    .hero-badge {
-      display: inline-flex; align-items: center; gap: 0.4rem;
-      background: var(--cyan-dim); color: var(--cyan);
-      border: 1px solid var(--cyan-border);
-      padding: 0.35rem 1rem; border-radius: 99px;
-      font-size: 0.8rem; font-weight: 600; letter-spacing: 0.04em;
-      margin-bottom: 2rem; opacity: 0;
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      padding: 9rem 3rem 5rem;
+      max-width: 920px;
     }
-    .hero-badge .pulse {
-      width: 6px; height: 6px; border-radius: 50%;
-      background: var(--cyan);
-      box-shadow: 0 0 6px var(--cyan);
-      animation: pulse 2s ease-in-out infinite;
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-family: var(--mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--red-3);
+      margin-bottom: 2rem;
+      border: 1px solid rgba(230,0,0,0.28);
+      padding: 0.35rem 0.75rem;
+      border-radius: 2px;
     }
-    @keyframes pulse {
-      0%, 100% { opacity: 1; transform: scale(1); }
-      50% { opacity: 0.5; transform: scale(0.75); }
+    .hero-eyebrow::before {
+      content: '';
+      width: 5px; height: 5px;
+      border-radius: 50%;
+      background: var(--red);
+      box-shadow: 0 0 6px var(--red);
+      animation: blink 2s ease-in-out infinite;
     }
-    .hero-title {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: var(--hero-size);
-      font-weight: 800; line-height: 1.08;
-      letter-spacing: -0.03em;
-      margin-bottom: 1.75rem;
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.2; }
     }
-    .hero-title .word { display: inline-block; opacity: 0; overflow: hidden; }
-    .hero-title .hl { color: var(--cyan); }
-    .hero-title .hl2 { color: var(--violet); }
+    .hero-h1 {
+      font-family: var(--sans);
+      font-size: clamp(3.2rem, 8.5vw, 7.5rem);
+      font-weight: 900;
+      letter-spacing: -0.045em;
+      line-height: 0.93;
+      margin-bottom: 2rem;
+    }
+    .h1-line { display: block; }
+    .h1-line.outline {
+      color: transparent;
+      -webkit-text-stroke: 1.5px var(--red);
+      padding-left: 0.08em;
+    }
+    .h1-line.indent { padding-left: clamp(1.5rem, 4vw, 5rem); }
     .hero-sub {
-      font-size: clamp(1rem, 1.4vw, 1.2rem);
-      color: var(--ink-2); line-height: 1.75;
-      max-width: 600px; margin: 0 auto 2.5rem;
-      opacity: 0;
+      font-size: clamp(0.9rem, 1.5vw, 1.05rem);
+      line-height: 1.7;
+      color: var(--gray);
+      max-width: 520px;
+      margin-bottom: 3rem;
     }
-    .hero-form-wrap { opacity: 0; }
-    .hero-form {
-      display: flex; gap: 0.6rem;
-      max-width: 460px; margin: 0 auto 0.75rem;
+    .hero-counters {
+      display: flex;
+      gap: 3rem;
+      margin-bottom: 2.5rem;
+      flex-wrap: wrap;
     }
-    .hero-form input[type="email"] {
-      flex: 1; padding: 0.85rem 1.1rem;
-      background: var(--bg-3); color: var(--ink);
-      border: 1px solid var(--border-2); border-radius: var(--r);
-      font-size: 1rem; font-family: inherit; outline: none;
-      transition: border-color 0.2s, box-shadow 0.2s;
-    }
-    .hero-form input[type="email"]::placeholder { color: var(--ink-3); }
-    .hero-form input[type="email"]:focus {
-      border-color: var(--cyan);
-      box-shadow: 0 0 0 3px rgba(34,211,238,0.12);
-    }
-    .hero-form button {
-      padding: 0.85rem 1.6rem; white-space: nowrap;
-      background: var(--cyan); color: #050b15;
-      border: none; border-radius: var(--r);
-      font-size: 1rem; font-weight: 700; cursor: pointer;
-      font-family: inherit;
-      transition: box-shadow 0.2s, opacity 0.15s;
-    }
-    .hero-form button:hover {
-      box-shadow: 0 0 24px rgba(34,211,238,0.5);
-      opacity: 0.9;
-    }
-    .hero-note { font-size: 0.8rem; color: var(--ink-3); }
-
-    /* ─────── FUNNEL BAR ─────── */
-    .funnel-bar {
-      background: var(--bg-2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
-      padding: 1.5rem 2rem;
-    }
-    .funnel-inner {
-      max-width: 860px; margin: 0 auto;
-      display: flex; flex-wrap: wrap; justify-content: center;
-      align-items: center; gap: 0.75rem 2rem;
-    }
-    .funnel-step {
-      display: flex; align-items: baseline; gap: 0.4rem;
-      font-size: 0.875rem; color: var(--ink-2);
-    }
-    .funnel-step strong {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 1.4rem; font-weight: 600; color: var(--cyan);
+    .hc-num {
+      font-family: var(--sans);
+      font-size: clamp(2rem, 4vw, 2.8rem);
+      font-weight: 900;
+      color: var(--red);
+      letter-spacing: -0.04em;
       line-height: 1;
     }
-    .funnel-arrow { color: var(--ink-3); font-size: 1rem; }
-    .funnel-note {
-      width: 100%; text-align: center;
-      font-size: 0.72rem; color: var(--ink-3);
-      font-family: 'JetBrains Mono', monospace;
-      margin-top: 0.5rem;
+    .hc-label {
+      font-family: var(--mono);
+      font-size: 0.6rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gray-dim);
+      margin-top: 0.3rem;
     }
+    .hero-ctas { display: flex; gap: 1rem; flex-wrap: wrap; }
 
-    /* ─────── SECTIONS ─────── */
-    .section { padding: 6rem 2rem; }
-    .section-inner { max-width: 920px; margin: 0 auto; }
-    .section-alt { background: var(--bg-2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
-    .section-tag {
-      font-size: 0.72rem; font-weight: 600; letter-spacing: 0.12em;
-      text-transform: uppercase; color: var(--cyan);
-      font-family: 'JetBrains Mono', monospace;
+    /* ─── KILL BAR ─── */
+    .kill-bar {
+      background: var(--black-2);
+      border-top: 1px solid rgba(230,0,0,0.2);
+      border-bottom: 1px solid rgba(230,0,0,0.2);
+      padding: 1.5rem 3rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+      flex-wrap: wrap;
+      position: relative;
+      overflow: hidden;
+    }
+    .kill-bar::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 3px;
+      background: var(--red);
+      box-shadow: 0 0 12px var(--red);
+    }
+    .ks { text-align: center; }
+    .ks-n {
+      font-family: var(--sans);
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: var(--red);
+      letter-spacing: -0.03em;
+    }
+    .ks-l {
+      font-family: var(--mono);
+      font-size: 0.58rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gray-dim);
+    }
+    .kb-arrow { color: rgba(230,0,0,0.35); font-size: 1.3rem; }
+    .kb-note { font-family: var(--mono); font-size: 0.58rem; color: var(--gray-dim); letter-spacing: 0.06em; }
+
+    /* ─── SECTION PRIMITIVES ─── */
+    .sec { position: relative; }
+    .sec-tag {
+      font-family: var(--mono);
+      font-size: 0.6rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--red-3);
       margin-bottom: 0.75rem;
     }
-    .section-h2 {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: var(--h2-size); font-weight: 700;
-      line-height: 1.15; letter-spacing: -0.02em;
-      margin-bottom: 1rem;
+    .sec-h2 {
+      font-family: var(--sans);
+      font-size: clamp(1.8rem, 3.5vw, 3rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      color: var(--white);
+      line-height: 1.05;
+      margin-bottom: 0.75rem;
     }
-    .section-lead {
-      font-size: 1.05rem; color: var(--ink-2);
-      line-height: 1.75; max-width: 580px;
+    .sec-lead {
+      font-size: 0.95rem;
+      line-height: 1.72;
+      color: var(--gray);
+      max-width: 540px;
       margin-bottom: 3rem;
     }
 
-    /* ─────── HOW IT WORKS ─────── */
+    /* ─── HOW IT WORKS ─── */
+    .how-sec {
+      padding: 8rem 3rem 10rem;
+      background: var(--black-2);
+      clip-path: polygon(0 4%, 100% 0, 100% 96%, 0 100%);
+    }
+    .how-inner { max-width: 1200px; margin: 0 auto; }
     .steps-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 1.5rem;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+      margin-top: 3.5rem;
     }
     .step-card {
-      background: var(--bg-3); border: 1px solid var(--border);
-      border-radius: var(--r-lg); padding: 2rem;
-      transition: border-color 0.25s, transform 0.25s;
+      background: var(--black-3);
+      padding: 3rem 2.5rem;
+      position: relative;
+      overflow: hidden;
+      opacity: 0;
+      transform: translateY(28px);
     }
-    .step-card:hover { border-color: var(--border-2); transform: translateY(-3px); }
+    .step-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(to right, var(--red) 0%, transparent 100%);
+    }
     .step-num {
-      width: 34px; height: 34px; border-radius: 50%;
-      background: var(--cyan); color: #050b15;
-      display: flex; align-items: center; justify-content: center;
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 0.85rem; font-weight: 700;
-      margin-bottom: 1rem;
+      font-family: var(--sans);
+      font-size: 5rem;
+      font-weight: 900;
+      letter-spacing: -0.05em;
+      color: rgba(230,0,0,0.1);
+      line-height: 1;
+      margin-bottom: 1.5rem;
     }
     .step-card h3 {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 1.05rem; font-weight: 600; margin-bottom: 0.4rem;
+      font-family: var(--sans);
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 0.6rem;
     }
-    .step-card p { font-size: 0.875rem; color: var(--ink-2); line-height: 1.65; }
+    .step-card p {
+      font-size: 0.84rem;
+      line-height: 1.65;
+      color: var(--gray);
+    }
 
-    /* ─────── HONEST EXPLAINER ─────── */
+    /* ─── MACHINE / PIPELINE ─── */
+    .pipe-sec {
+      padding: 9rem 3rem;
+    }
+    .pipe-inner { max-width: 1000px; margin: 0 auto; }
+    .machine-visual {
+      perspective: 800px;
+      margin: 4rem 0;
+    }
+    .machine-track {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      transform: rotateX(8deg) rotateY(-4deg);
+      transform-style: preserve-3d;
+    }
+    .machine-stage {
+      flex: 1;
+      padding: 1.2rem 1rem;
+      background: var(--black-2);
+      border: 1px solid rgba(230,0,0,0.15);
+      text-align: center;
+      position: relative;
+      opacity: 0;
+    }
+    .machine-stage.active-stage {
+      border-color: rgba(230,0,0,0.5);
+    }
+    .machine-stage::after {
+      content: '›';
+      position: absolute;
+      right: -10px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: rgba(230,0,0,0.4);
+      font-size: 1.2rem;
+      z-index: 2;
+    }
+    .machine-stage:last-child::after { display: none; }
+    .ms-kill {
+      font-family: var(--sans);
+      font-size: 1.2rem;
+      font-weight: 900;
+      color: var(--red);
+      line-height: 1;
+    }
+    .ms-label {
+      font-family: var(--mono);
+      font-size: 0.52rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gray-dim);
+      margin-top: 0.25rem;
+    }
+    .pipe-list { margin-top: 4rem; }
+    .pipe-item {
+      display: grid;
+      grid-template-columns: 64px 1fr auto;
+      gap: 2rem;
+      align-items: start;
+      padding: 2.5rem 0;
+      border-bottom: 1px solid var(--border);
+      opacity: 0;
+      transform: translateX(-24px);
+    }
+    .pipe-item:last-child { border-bottom: none; }
+    .pi-num {
+      font-family: var(--mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.1em;
+      color: var(--red);
+      text-align: right;
+      padding-top: 0.25rem;
+    }
+    .pi-text h3 {
+      font-family: var(--sans);
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 0.4rem;
+    }
+    .pi-text p {
+      font-size: 0.84rem;
+      line-height: 1.65;
+      color: var(--gray);
+    }
+    .pi-rate {
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      color: var(--red-dark);
+      letter-spacing: 0.06em;
+      white-space: nowrap;
+      padding-top: 0.2rem;
+    }
+
+    /* ─── OPPORTUNITY CARDS ─── */
+    .opps-sec {
+      padding: 9rem 3rem;
+      background: var(--black-2);
+      clip-path: polygon(0 3%, 100% 0, 100% 97%, 0 100%);
+    }
+    .opps-inner { max-width: 1200px; margin: 0 auto; }
     .honest-box {
-      background: var(--bg-3);
-      border: 1px solid var(--border);
-      border-left: 3px solid var(--violet);
-      border-radius: var(--r-lg);
+      background: var(--black-3);
+      border-left: 3px solid var(--red);
       padding: 2rem 2.5rem;
       margin-bottom: 3rem;
     }
     .honest-box h3 {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 1.1rem; font-weight: 700;
-      margin-bottom: 0.75rem; color: var(--ink);
+      font-family: var(--sans);
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 0.6rem;
     }
-    .honest-box p { font-size: 0.9rem; color: var(--ink-2); line-height: 1.75; }
-    .honest-box p + p { margin-top: 0.6rem; }
-    .honest-box strong { color: var(--ink); }
-
-    /* ─────── GROUP HEADER ─────── */
+    .honest-box p {
+      font-size: 0.84rem;
+      line-height: 1.65;
+      color: var(--gray);
+      margin-bottom: 0.5rem;
+    }
+    .honest-box p:last-child { margin-bottom: 0; }
     .cards-group-header {
       grid-column: 1 / -1;
-      margin-top: 1rem;
-      padding: 1rem 1.5rem;
-      background: var(--bg-3); border: 1px solid var(--border);
-      border-radius: var(--r);
-      display: flex; align-items: center; gap: 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.9rem;
+      padding: 2rem 0 0.75rem;
+      border-top: 1px solid var(--border);
     }
-    .cards-group-header:first-child { margin-top: 0; }
-    .group-emoji { font-size: 1.3rem; }
-    .group-title {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 1.1rem; font-weight: 700;
-    }
-    .group-subtitle {
-      font-size: 0.8rem; color: var(--ink-3);
-      margin-left: auto; font-style: italic;
-    }
-
-    /* ─────── OPPORTUNITY CARDS ─────── */
+    .cards-group-header:first-child { border-top: none; padding-top: 0; }
+    .grp-emoji { font-size: 1.1rem; }
+    .grp-title { font-family: var(--sans); font-weight: 700; font-size: 0.95rem; color: var(--white); }
+    .grp-sub { font-size: 0.78rem; color: var(--gray-dim); }
     .cards-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-      gap: 1.25rem;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2px;
     }
     .opp-card {
-      background: var(--bg-2);
-      border: 1px solid var(--border);
-      border-radius: var(--r-xl);
-      padding: 1.75rem;
-      display: flex; flex-direction: column; gap: 1.1rem;
-      transition: border-color 0.25s, box-shadow 0.25s, transform 0.25s;
-      opacity: 1;
-      transform: translateY(0);
+      background: var(--black-3);
+      padding: 2.5rem;
+      position: relative;
+      overflow: hidden;
+      opacity: 0;
+      transform: translateY(18px);
+      transition: box-shadow 0.3s;
     }
-    .opp-card:hover {
-      border-color: var(--cyan-border);
-      box-shadow: 0 0 30px rgba(34,211,238,0.1), 0 0 60px rgba(34,211,238,0.04), inset 0 0 40px rgba(34,211,238,0.02);
-      transform: translateY(-3px);
+    .opp-card:hover { box-shadow: inset 0 0 60px rgba(230,0,0,0.04); }
+    .opp-card::before {
+      content: 'CLEARED';
+      position: absolute;
+      top: 1.5rem; right: 1.5rem;
+      font-family: var(--mono);
+      font-size: 0.5rem;
+      letter-spacing: 0.18em;
+      color: var(--red-3);
+      border: 1px solid rgba(230,0,0,0.35);
+      padding: 0.18rem 0.45rem;
     }
-    .card-header {
-      display: flex; align-items: flex-start; justify-content: space-between; gap: 0.75rem;
+    .opp-card::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 1px;
+      background: linear-gradient(to right, var(--red) 0%, transparent 60%);
     }
     .card-title {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 1.1rem; font-weight: 700; line-height: 1.2;
+      font-family: var(--sans);
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--white);
+      letter-spacing: -0.02em;
+      margin-bottom: 0.2rem;
     }
     .card-badge {
-      flex-shrink: 0;
-      background: var(--cyan-dim); color: var(--cyan);
-      border: 1px solid var(--cyan-border);
-      border-radius: 99px; font-size: 0.7rem;
-      font-weight: 600; padding: 0.18rem 0.6rem;
-      white-space: nowrap;
+      font-family: var(--mono);
+      font-size: 0.58rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--red-3);
+      margin-bottom: 1rem;
+      display: block;
     }
     .card-pain {
-      font-size: 0.875rem; color: var(--ink-2); line-height: 1.65;
-      padding-bottom: 1rem; border-bottom: 1px solid var(--border);
-    }
-    .card-rows { display: flex; flex-direction: column; gap: 0.9rem; }
-    .card-row { display: flex; gap: 0.75rem; align-items: flex-start; }
-    .card-row-icon {
-      width: 26px; height: 26px; flex-shrink: 0; border-radius: 7px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 0.75rem;
-    }
-    .icon-ocean  { background: rgba(34,211,238,0.1); }
-    .icon-money  { background: rgba(52,211,153,0.1); }
-    .icon-launch { background: rgba(251,191,36,0.1); }
-    .card-row-label {
-      font-size: 0.68rem; font-weight: 600;
-      text-transform: uppercase; letter-spacing: 0.08em;
-      font-family: 'JetBrains Mono', monospace;
-      color: var(--ink-3); margin-bottom: 2px;
-    }
-    .card-row-text { font-size: 0.8rem; color: var(--ink-2); line-height: 1.55; }
-    .card-who {
-      display: flex; align-items: center; gap: 0.5rem;
-      padding-top: 0.75rem; border-top: 1px solid var(--border);
-    }
-    .card-who-label {
-      font-size: 0.68rem; font-weight: 600;
-      text-transform: uppercase; letter-spacing: 0.08em;
-      font-family: 'JetBrains Mono', monospace;
-      color: var(--cyan); flex-shrink: 0;
-    }
-    .card-who-text { font-size: 0.78rem; color: var(--ink-2); }
-
-    /* locked card */
-    .locked-card {
-      background: repeating-linear-gradient(
-        135deg, var(--bg-2) 0px, var(--bg-2) 4px,
-        var(--bg-3) 4px, var(--bg-3) 12px
-      );
-      border: 1px dashed var(--ink-3);
-      border-radius: var(--r-xl);
-      padding: 1.75rem;
-      display: flex; flex-direction: column;
-      align-items: center; justify-content: center;
-      gap: 0.75rem; text-align: center;
-      min-height: 220px;
-    }
-    .lock-icon { font-size: 2rem; }
-    .lock-label {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 1.05rem; font-weight: 600;
-    }
-    .lock-sub { font-size: 0.82rem; color: var(--ink-2); max-width: 260px; }
-
-    /* ─────── PIPELINE ─────── */
-    .pipeline-list { display: flex; flex-direction: column; gap: 0; max-width: 660px; }
-    .pipe-item {
-      display: flex; gap: 1.25rem; align-items: flex-start;
-      padding: 1.5rem 0;
+      font-size: 0.83rem;
+      line-height: 1.65;
+      color: var(--gray);
+      padding-bottom: 1.5rem;
+      margin-bottom: 1.5rem;
       border-bottom: 1px solid var(--border);
     }
-    .pipe-item:first-child { padding-top: 0; }
-    .pipe-item:last-child { border-bottom: none; padding-bottom: 0; }
-    .pipe-num {
-      width: 38px; height: 38px; flex-shrink: 0;
-      border-radius: 50%; background: var(--bg-4);
-      border: 1px solid var(--border-2);
-      display: flex; align-items: center; justify-content: center;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.8rem; font-weight: 600;
-      color: var(--cyan); margin-top: 2px;
+    .card-rows { display: flex; flex-direction: column; gap: 1.2rem; }
+    .card-row { display: flex; gap: 0.9rem; align-items: flex-start; }
+    .cr-icon { font-size: 0.95rem; flex-shrink: 0; margin-top: 0.1rem; }
+    .cr-label {
+      font-family: var(--mono);
+      font-size: 0.56rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gray-dim);
+      margin-bottom: 0.2rem;
     }
-    .pipe-text h3 {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 0.975rem; font-weight: 600;
-      color: var(--ink); margin-bottom: 0.3rem;
+    .cr-text { font-size: 0.79rem; line-height: 1.6; color: var(--gray); }
+    .card-who {
+      margin-top: 1.5rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border);
+      font-size: 0.75rem;
+      color: var(--gray-dim);
     }
-    .pipe-text p { font-size: 0.85rem; color: var(--ink-2); line-height: 1.65; }
+    .cw-label { font-family: var(--mono); font-size: 0.56rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--red-3); margin-right: 0.4rem; }
+    .locked-card {
+      grid-column: 1 / -1;
+      background: var(--black-3);
+      border: 1px solid rgba(230,0,0,0.18);
+      padding: 5rem 3rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .locked-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at center, rgba(230,0,0,0.04) 0%, transparent 70%);
+    }
+    .lock-icon { font-size: 2rem; margin-bottom: 1rem; opacity: 0.7; }
+    .lock-label { font-family: var(--sans); font-size: 1.2rem; font-weight: 700; color: var(--white); margin-bottom: 0.6rem; }
+    .lock-sub { font-size: 0.84rem; color: var(--gray); max-width: 360px; margin: 0 auto 2rem; line-height: 1.65; }
 
-    /* ─────── ABOUT ─────── */
+    /* ─── ABOUT ─── */
+    .about-sec { padding: 9rem 3rem; }
+    .about-inner { max-width: 680px; margin: 0 auto; }
     .about-card {
-      background: var(--bg-3);
-      border: 1px solid var(--border);
-      border-left: 3px solid var(--green);
-      border-radius: var(--r-xl);
-      padding: 3rem;
-      max-width: 660px;
+      background: var(--black-2);
+      padding: 4rem;
+      position: relative;
     }
-    .about-card p { color: var(--ink-2); font-size: 0.95rem; line-height: 1.8; margin-top: 1rem; }
-    .about-tag {
-      font-size: 0.72rem; font-weight: 600; letter-spacing: 0.12em;
-      text-transform: uppercase; color: #8ba3bf;
-      font-family: 'JetBrains Mono', monospace;
+    .about-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; bottom: 0;
+      width: 3px;
+      background: linear-gradient(to bottom, var(--red) 0%, transparent 100%);
+    }
+    .about-card p { font-size: 0.92rem; line-height: 1.78; color: var(--gray); margin-bottom: 1.2rem; }
+    .build-pub {
+      font-family: var(--mono);
+      font-size: 0.6rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--red-3);
+      margin-top: 2rem;
+      margin-bottom: 0;
+    }
+
+    /* ─── PRICING ─── */
+    .price-sec {
+      padding: 9rem 3rem;
+      background: var(--black-2);
+      clip-path: polygon(0 4%, 100% 0, 100% 100%, 0 100%);
+    }
+    .price-inner { max-width: 880px; margin: 0 auto; }
+    .price-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.15fr;
+      gap: 2px;
+      margin-top: 3rem;
+    }
+    .pc {
+      background: var(--black-3);
+      padding: 3rem;
+    }
+    .pc.featured { position: relative; }
+    .pc.featured::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: var(--red);
+      box-shadow: 0 0 14px rgba(230,0,0,0.7);
+    }
+    .founding-tag {
+      font-family: var(--mono);
+      font-size: 0.56rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--red-3);
+      border: 1px solid rgba(230,0,0,0.28);
+      padding: 0.18rem 0.45rem;
+      display: inline-block;
+      margin-bottom: 1.2rem;
+    }
+    .pc-tier {
+      font-family: var(--sans);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gray-dim);
       margin-bottom: 0.75rem;
     }
-    .build-in-public {
-      margin-top: 1.25rem;
-      font-size: 0.8rem; font-weight: 600;
-      color: #c2d9ff; letter-spacing: 0.04em;
+    .pc-price {
+      font-family: var(--sans);
+      font-size: 4rem;
+      font-weight: 900;
+      color: var(--white);
+      letter-spacing: -0.05em;
+      line-height: 1;
+      margin-bottom: 0.2rem;
     }
-
-    /* ─────── PRICING ─────── */
-    .pricing-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 1.25rem; max-width: 600px;
+    .pc-price sup { font-size: 1.4rem; vertical-align: super; }
+    .pc-price .per { font-size: 1.1rem; color: var(--gray-dim); }
+    .pc-period {
+      font-family: var(--mono);
+      font-size: 0.6rem;
+      letter-spacing: 0.1em;
+      color: var(--gray-dim);
+      margin-bottom: 2rem;
     }
-    .price-card {
-      background: var(--bg-3); border: 1px solid var(--border);
-      border-radius: var(--r-xl); padding: 2rem;
+    .pc-div { border: none; border-top: 1px solid var(--border); margin-bottom: 2rem; }
+    .pc-features { list-style: none; margin-bottom: 2.5rem; }
+    .pc-features li {
+      font-size: 0.83rem;
+      color: var(--gray);
+      padding: 0.48rem 0 0.48rem 1.2rem;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+      position: relative;
     }
-    .price-card.featured {
-      border-color: var(--cyan-border);
-      box-shadow: 0 0 40px rgba(34,211,238,0.08);
-    }
-    .price-tier {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.72rem; font-weight: 600;
-      text-transform: uppercase; letter-spacing: 0.1em;
-      color: var(--ink-3); margin-bottom: 0.75rem;
-    }
-    .price-card.featured .price-tier { color: var(--cyan); }
-    .price-amount {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 2.8rem; font-weight: 600;
-      color: var(--ink); line-height: 1;
-    }
-    .price-amount sup { font-size: 1.1rem; vertical-align: top; margin-top: 0.3rem; }
-    .price-amount .mo { font-size: 1rem; font-weight: 400; }
-    .price-period { font-size: 0.8rem; color: var(--ink-3); margin-top: 0.3rem; }
-    .price-note {
-      display: inline-block; margin-top: 0.75rem;
-      font-size: 0.72rem; font-weight: 600; color: var(--amber);
-      background: rgba(251,191,36,0.1); border: 1px solid rgba(251,191,36,0.25);
-      border-radius: 99px; padding: 0.2rem 0.7rem;
-    }
-    .price-div { border: none; border-top: 1px solid var(--border); margin: 1.5rem 0; }
-    .price-features { list-style: none; display: flex; flex-direction: column; gap: 0.75rem; }
-    .price-features li {
-      font-size: 0.875rem; color: var(--ink-2);
-      display: flex; gap: 0.75rem; align-items: flex-start;
-    }
-    .price-features li::before {
-      content: "✓"; color: var(--green);
-      font-weight: 700; flex-shrink: 0; margin-top: 1px;
-    }
-    .price-cta {
-      display: block; margin-top: 1.5rem;
-      padding: 0.75rem; text-align: center;
-      background: var(--cyan); color: #050b15;
-      border-radius: var(--r); font-weight: 700;
+    .pc-features li::before { content: '›'; position: absolute; left: 0; color: var(--red); }
+    .pc-cta {
+      display: block;
+      text-align: center;
+      padding: 0.85rem;
+      font-family: var(--sans);
+      font-size: 0.83rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
       text-decoration: none;
-      transition: box-shadow 0.2s, opacity 0.15s;
+      border-radius: 3px;
+      transition: all 0.2s;
     }
-    .price-cta:hover { box-shadow: 0 0 20px rgba(34,211,238,0.4); opacity: 0.9; }
-    .price-cta.ghost {
-      background: transparent; color: var(--ink-2);
-      border: 1px solid var(--border-2);
-    }
-    .price-cta.ghost:hover { border-color: var(--cyan); color: var(--cyan); box-shadow: none; opacity: 1; }
+    .pc-cta.red { background: var(--red); color: var(--white); }
+    .pc-cta.red:hover { background: var(--red-2); box-shadow: 0 0 24px rgba(230,0,0,0.4); }
+    .pc-cta.ghost { background: transparent; color: var(--gray); border: 1px solid rgba(255,255,255,0.1); }
+    .pc-cta.ghost:hover { color: var(--white); border-color: rgba(255,255,255,0.28); }
 
-    /* ─────── FINAL CTA ─────── */
-    .final-cta {
-      text-align: center; padding: 7rem 2rem;
-      background:
-        radial-gradient(ellipse 70% 80% at 50% 110%, rgba(34,211,238,0.06) 0%, transparent 65%),
-        var(--bg-2);
-      border-top: 1px solid var(--border);
+    /* ─── FINAL CTA ─── */
+    .cta-sec {
+      padding: 10rem 3rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
     }
-    .final-cta .section-h2 { max-width: 580px; margin: 0 auto 0.75rem; }
-    .final-cta p { color: var(--ink-2); margin-bottom: 2rem; font-size: 0.975rem; }
-    .final-cta .hero-form { margin: 0 auto 0.75rem; }
-    .final-cta input[type="email"] { background: var(--bg-3); }
+    .cta-sec::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 80% 60% at 50% 50%, rgba(230,0,0,0.06) 0%, transparent 70%);
+    }
+    .cta-h2 {
+      font-family: var(--sans);
+      font-size: clamp(1.8rem, 3.5vw, 3rem);
+      font-weight: 900;
+      letter-spacing: -0.04em;
+      color: var(--white);
+      max-width: 640px;
+      margin: 0 auto 1rem;
+    }
+    .cta-sub { font-size: 0.9rem; color: var(--gray); margin-bottom: 3rem; }
+    .cta-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-bottom: 4rem; }
+    #free-signup { scroll-margin-top: 100px; }
+    .signup-label {
+      font-family: var(--mono);
+      font-size: 0.58rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gray-dim);
+      margin-bottom: 0.75rem;
+    }
+    .signup-form {
+      display: flex;
+      gap: 0.5rem;
+      max-width: 460px;
+      margin: 0 auto;
+    }
+    .signup-form input[type="email"] {
+      flex: 1;
+      background: var(--black-2);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 3px;
+      padding: 0.78rem 1rem;
+      font-family: var(--body);
+      font-size: 0.875rem;
+      color: var(--white);
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .signup-form input[type="email"]:focus { border-color: rgba(230,0,0,0.45); }
+    .signup-form input[type="email"]::placeholder { color: var(--gray-dim); }
+    .signup-form button {
+      background: transparent;
+      border: 1px solid rgba(230,0,0,0.4);
+      border-radius: 3px;
+      padding: 0.78rem 1.4rem;
+      font-family: var(--sans);
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--red-3);
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.2s;
+    }
+    .signup-form button:hover {
+      background: rgba(230,0,0,0.1);
+      border-color: var(--red);
+      color: var(--red-2);
+    }
+    .signup-note { font-family: var(--mono); font-size: 0.58rem; color: var(--gray-dim); margin-top: 0.7rem; letter-spacing: 0.06em; }
 
-    /* ─────── FOOTER ─────── */
+    /* ─── FOOTER ─── */
     footer {
-      text-align: center; padding: 2rem;
       border-top: 1px solid var(--border);
-      font-size: 0.8rem; color: var(--ink-3);
+      padding: 2rem 3rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
     }
-    footer a { color: var(--ink-2); text-decoration: underline; }
-    footer a:hover { color: var(--ink); }
+    footer p { font-size: 0.73rem; color: var(--gray-dim); }
+    footer a { color: var(--gray-dim); text-decoration: none; transition: color 0.2s; }
+    footer a:hover { color: var(--red-3); }
 
-    /* ─────── RESPONSIVE ─────── */
-    @media (max-width: 768px) {
-      .nav { padding: 1rem; }
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 900px) {
+      .nav { padding: 1.2rem 1.5rem; }
       .nav-link { display: none; }
-      .hero-wrap { padding: 8rem 1.25rem 5rem; }
-      .hero-form { flex-direction: column; }
-      .hero-form input, .hero-form button { width: 100%; }
-      .section { padding: 4rem 1.25rem; }
-      .about-card { padding: 2rem; }
-      .honest-box { padding: 1.5rem; }
+      .hero-content { padding: 7rem 1.5rem 3rem; }
+      .hero-counters { gap: 2rem; }
+      .h1-line.indent { padding-left: 0; }
+      .kill-bar { padding: 1.2rem 1.5rem; }
+      .how-sec, .pipe-sec, .opps-sec, .about-sec, .price-sec, .cta-sec { padding: 6rem 1.5rem; }
+      .steps-grid { grid-template-columns: 1fr; }
       .cards-grid { grid-template-columns: 1fr; }
+      .price-grid { grid-template-columns: 1fr; }
+      .pipe-item { grid-template-columns: 48px 1fr; gap: 1.2rem; }
+      .pi-rate { display: none; }
+      .machine-track { flex-direction: column; transform: none; }
+      .machine-stage::after { display: none; }
+      footer { flex-direction: column; text-align: center; }
+      .signup-form { flex-direction: column; }
     }
   </style>
-  <script src="https://assets.lemonsqueezy.com/lemon.js" defer></script>
 </head>
 <body>
 
+<!-- CUSTOM CURSOR (desktop) -->
+<div id="cursor" style="
+  position:fixed;width:10px;height:10px;background:#e60000;border-radius:50%;
+  pointer-events:none;z-index:9999;transform:translate(-50%,-50%);
+  transition:transform 0.08s;mix-blend-mode:difference;display:none;
+"></div>
+<div id="cursor-ring" style="
+  position:fixed;width:36px;height:36px;border:1px solid rgba(230,0,0,0.5);
+  border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);
+  transition:all 0.18s ease;display:none;
+"></div>
+
 <!-- NAV -->
 <nav class="nav" id="nav">
-  <a href="#" class="nav-brand">Gaunt<span class="dot">rix</span></a>
-  <div class="nav-right">
+  <a href="#" class="nav-logo">Gaunt<span>rix</span></a>
+  <div class="nav-links">
     <a href="#how" class="nav-link">How It Works</a>
+    <a href="#pipeline" class="nav-link">Pipeline</a>
     <a href="#opportunities" class="nav-link">Opportunities</a>
     <a href="#pricing" class="nav-link">Pricing</a>
-    <a href="#join" class="nav-cta">Get Early Access</a>
+    <a href="LEMON_SQUEEZY_CHECKOUT_URL" class="btn btn-red lemonsqueezy-button">Get Access — $29/mo</a>
   </div>
 </nav>
 
 <!-- HERO -->
-<div class="hero-wrap">
-  <div class="hero-bg"></div>
-  <div class="hero-grid-lines"></div>
-  <div class="hero-inner">
-    <div class="hero-badge">
-      <span class="pulse"></span>
-      AI kill filter · 2% survive · weekly drop
-    </div>
-    <h1 class="hero-title">
-      <span class="word">Not&nbsp;</span><span class="word"><span class="hl">trends.</span>&nbsp;</span><span class="word">Gaps&nbsp;</span><span class="word">that&nbsp;</span><span class="word"><span class="hl2">survived</span>&nbsp;</span><span class="word">our kill filter.</span>
+<div class="hero">
+  <canvas id="particle-canvas"></canvas>
+  <div class="hero-bg-word">GAUNTRIX</div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">AI kill filter &nbsp;·&nbsp; 2% survive &nbsp;·&nbsp; weekly drop</div>
+    <h1 class="hero-h1" id="hero-h1">
+      <span class="h1-line">Most ideas</span>
+      <span class="h1-line outline">die here.</span>
+      <span class="h1-line indent">We built</span>
+      <span class="h1-line indent">the machine.</span>
     </h1>
     <p class="hero-sub">
-      Exploding Topics shows rising keywords. Trends.vc writes industry reports.
-      We run 200+ ideas through a brutal 5-filter AI screen — AI wrappers,
-      "another writing tool", and content farms get cut in seconds.
-      What's left is narrow, has no dominant competitor, and comes with a cold-start roadmap.
-      Weekly drops for builders, not browsers.
+      Exploding Topics shows trends. We run 200+ ideas through a brutal 5-filter AI screen.
+      AI wrappers, oversaturated tools, and "maybe ads" monetization get cut in seconds.
+      What comes out the other side is narrow, buildable, and has no dominant competitor.
+      Weekly drops for builders — not browsers.
     </p>
-    <div class="hero-form-wrap">
-      <div style="display:flex;gap:0.75rem;justify-content:center;flex-wrap:wrap;margin-bottom:0.75rem;">
-        <a href="LEMON_SQUEEZY_CHECKOUT_URL" class="nav-cta lemonsqueezy-button" style="padding:0.85rem 1.6rem;font-size:1rem;border-radius:10px;">Get Full Access — $29/mo</a>
-        <a href="#free-signup" class="nav-cta" style="padding:0.85rem 1.4rem;font-size:1rem;border-radius:10px;background:transparent;color:var(--cyan);border:1px solid var(--cyan-border);">Start free →</a>
+    <div class="hero-counters">
+      <div>
+        <div class="hc-num" id="cnt-runs">62</div>
+        <div class="hc-label">pipeline runs</div>
       </div>
-      <p class="hero-note">$29/mo full access · Free tier available · Cancel anytime</p>
+      <div>
+        <div class="hc-num" id="cnt-ideas">200+</div>
+        <div class="hc-label">ideas evaluated</div>
+      </div>
+      <div>
+        <div class="hc-num" id="cnt-killed" style="color:var(--red-dark);">178+</div>
+        <div class="hc-label">killed</div>
+      </div>
+      <div>
+        <div class="hc-num">22</div>
+        <div class="hc-label">survived</div>
+      </div>
+    </div>
+    <div class="hero-ctas">
+      <a href="LEMON_SQUEEZY_CHECKOUT_URL" class="btn btn-red btn-lg lemonsqueezy-button">Get Full Access — $29/mo</a>
+      <a href="#free-signup" class="btn btn-ghost btn-lg">Start free →</a>
     </div>
   </div>
 </div>
 
-<!-- FUNNEL BAR -->
-<div class="funnel-bar">
-  <div class="funnel-inner">
-    <div class="funnel-step"><strong>62</strong>&nbsp;pipeline runs</div>
-    <div class="funnel-arrow">→</div>
-    <div class="funnel-step"><strong>200+</strong>&nbsp;ideas evaluated</div>
-    <div class="funnel-arrow">→</div>
-    <div class="funnel-step"><strong>~80%</strong>&nbsp;rejected immediately</div>
-    <div class="funnel-arrow">→</div>
-    <div class="funnel-step"><strong>22</strong>&nbsp;cleared our full filter</div>
-    <p class="funnel-note">Real numbers. Updated as the pipeline runs.</p>
-  </div>
+<!-- KILL BAR -->
+<div class="kill-bar">
+  <div class="ks"><div class="ks-n">62</div><div class="ks-l">pipeline runs</div></div>
+  <div class="kb-arrow">›</div>
+  <div class="ks"><div class="ks-n">200+</div><div class="ks-l">ideas evaluated</div></div>
+  <div class="kb-arrow">›</div>
+  <div class="ks"><div class="ks-n" style="color:var(--red-dark);">~80%</div><div class="ks-l">killed immediately</div></div>
+  <div class="kb-arrow">›</div>
+  <div class="ks"><div class="ks-n">22</div><div class="ks-l">cleared full filter</div></div>
+  <div class="kb-note">real numbers · updated as the pipeline runs</div>
 </div>
 
 <!-- HOW IT WORKS -->
-<section class="section section-alt" id="how">
-  <div class="section-inner">
-    <p class="section-tag">How It Works</p>
-    <h2 class="section-h2">AI finds the gap. You build the business.</h2>
-    <p class="section-lead">
-      We run a multi-stage pipeline every week: scan, score, filter, validate.
-      Only the clearest opportunities make it through.
-    </p>
+<section class="sec how-sec" id="how">
+  <div class="how-inner">
+    <p class="sec-tag">How It Works</p>
+    <h2 class="sec-h2">AI finds the gap.<br>You build the business.</h2>
+    <p class="sec-lead">A multi-stage pipeline runs every week: scan, score, filter, validate. Only the clearest opportunities make it through.</p>
     <div class="steps-grid">
       <div class="step-card">
         <div class="step-num">1</div>
@@ -607,466 +889,369 @@
       <div class="step-card">
         <div class="step-num">2</div>
         <h3>5-filter screen</h3>
-        <p>Each candidate is scored on SEO gap, competition density, monetization clarity, build feasibility, and audience reachability.</p>
+        <p>Each candidate scored on SEO gap, competition density, monetization clarity, build feasibility, and audience reachability.</p>
       </div>
       <div class="step-card">
         <div class="step-num">3</div>
-        <h3>Vetted opportunity drop</h3>
-        <p>What passes gets written up with a full brief: pain point, why blue ocean, monetization path, and where to find your first users.</p>
+        <h3>Vetted drop</h3>
+        <p>What passes gets a full brief: pain point, why blue ocean, monetization path, and where to find your first 100 users.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PIPELINE -->
+<section class="sec pipe-sec" id="pipeline">
+  <div class="pipe-inner">
+    <p class="sec-tag">The Machine</p>
+    <h2 class="sec-h2">5 filters.<br>Most niches don't make it.</h2>
+    <p class="sec-lead">Any niche that fails a single filter is dead. No partial credit. No second chances.</p>
+
+    <!-- 3D machine visual -->
+    <div class="machine-visual">
+      <div class="machine-track">
+        <div class="machine-stage" id="ms0">
+          <div class="ms-kill">~40%</div>
+          <div class="ms-label">pain check</div>
+        </div>
+        <div class="machine-stage" id="ms1">
+          <div class="ms-kill">~25%</div>
+          <div class="ms-label">SEO gap</div>
+        </div>
+        <div class="machine-stage" id="ms2">
+          <div class="ms-kill">~20%</div>
+          <div class="ms-label">monetization</div>
+        </div>
+        <div class="machine-stage" id="ms3">
+          <div class="ms-kill">~10%</div>
+          <div class="ms-label">build scope</div>
+        </div>
+        <div class="machine-stage active-stage" id="ms4">
+          <div class="ms-kill" style="color:var(--red-2);">~5%</div>
+          <div class="ms-label">survives</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="pipe-list">
+      <div class="pipe-item">
+        <div class="pi-num">01</div>
+        <div class="pi-text">
+          <h3>Pain validation</h3>
+          <p>Does this problem recur in forums, app reviews, and search? Genuine frustration, not mild inconvenience.</p>
+        </div>
+        <div class="pi-rate">kills ~40%</div>
+      </div>
+      <div class="pipe-item">
+        <div class="pi-num">02</div>
+        <div class="pi-text">
+          <h3>SEO gap analysis</h3>
+          <p>Is the SERP actually empty? Rankable long-tail variations no one has claimed. One dominant player kills the opportunity.</p>
+        </div>
+        <div class="pi-rate">kills ~25%</div>
+      </div>
+      <div class="pipe-item">
+        <div class="pi-num">03</div>
+        <div class="pi-text">
+          <h3>Monetization clarity</h3>
+          <p>Clear path to revenue — affiliate, subscription, lead-gen, or SaaS. "Maybe ads" doesn't count.</p>
+        </div>
+        <div class="pi-rate">kills ~20%</div>
+      </div>
+      <div class="pipe-item">
+        <div class="pi-num">04</div>
+        <div class="pi-text">
+          <h3>Build feasibility</h3>
+          <p>Can one person build a useful v1 in a weekend? Proprietary data requirements that no indie hacker can access = dead.</p>
+        </div>
+        <div class="pi-rate">kills ~10%</div>
+      </div>
+      <div class="pipe-item">
+        <div class="pi-num">05</div>
+        <div class="pi-text">
+          <h3>Reachable audience</h3>
+          <p>Is there a community, subreddit, or niche platform where the first 100 users already gather?</p>
+        </div>
+        <div class="pi-rate">kills remaining</div>
       </div>
     </div>
   </div>
 </section>
 
 <!-- OPPORTUNITY CARDS -->
-<section class="section" id="opportunities">
-  <div class="section-inner">
-    <p class="section-tag">Validated by Our Pipeline</p>
-    <h2 class="section-h2">Real gaps. Validated by AI.</h2>
-    <p class="section-lead">
-      These are opportunities our pipeline surfaced, scored, and vetted. Each one passed the full 5-filter screen.
-      Subscriber drops include deeper briefs, validation data, and unpublished opportunities every week.
-    </p>
+<section class="sec opps-sec" id="opportunities">
+  <div class="opps-inner">
+    <p class="sec-tag">Validated by the pipeline</p>
+    <h2 class="sec-h2">What came out<br>the other side.</h2>
+    <p class="sec-lead">These are opportunities our pipeline surfaced, scored, and vetted. Each one passed all 5 filters. Full drops include deeper briefs, validation data, and unpublished opportunities every week.</p>
 
     <div class="honest-box">
-      <h3>Why do these look specific — and complex?</h3>
-      <p>
-        Because the obvious ideas are already gone. "Build an AI writing tool." "Make another todo app." "Launch a resume generator." Our filter rejects these in seconds — they're oversaturated, margin-less, and built by a thousand people already.
-      </p>
-      <p>
-        What survives is narrow, vertical, and requires some domain knowledge. That's not a bug — that's the moat. <strong>If it were obvious and easy, someone would have done it.</strong> "Quick Build" means the scope is contained enough to validate in weeks, not that anyone can build it with zero context.
-      </p>
+      <h3>Why do these look complex and specific?</h3>
+      <p>Because the obvious ideas are already gone. "Build an AI writing tool." "Make another todo app." Our filter rejects these in seconds — oversaturated, margin-less, already built by a thousand people.</p>
+      <p>What survives is narrow, vertical, and requires domain knowledge. That's not a bug — that's the moat. <strong>If it were obvious and easy, someone would have done it.</strong></p>
     </div>
 
     <div class="cards-grid">
 
-      <!-- GROUP: QUICK BUILD -->
       <div class="cards-group-header">
-        <span class="group-emoji">⚡</span>
-        <span class="group-title">Quick Build</span>
-        <span class="group-subtitle">Launch in a week. Lower moat, real gaps.</span>
+        <span class="grp-emoji">⚡</span>
+        <span class="grp-title">Quick Build</span>
+        <span class="grp-sub">Launch in a week. Lower moat, real gaps.</span>
       </div>
 
       <!-- DentalAuth AI -->
       <div class="opp-card">
-        <div class="card-header">
-          <div class="card-title">DentalAuth AI</div>
-          <div class="card-badge">SaaS</div>
-        </div>
-        <p class="card-pain">
-          Dental offices spend 30+ minutes writing a single Prior Authorization letter — manually, every claim.
-          Formatting errors cause denials. No purpose-built AI tool exists that understands CDT codes and insurer-specific narrative structure.
-        </p>
+        <div class="card-title">DentalAuth AI</div>
+        <span class="card-badge">SaaS</span>
+        <p class="card-pain">Dental offices spend 30+ minutes writing a single Prior Authorization letter — manually, every claim. Formatting errors cause denials. No purpose-built AI tool understands CDT codes and insurer-specific narrative structure.</p>
         <div class="card-rows">
           <div class="card-row">
-            <div class="card-row-icon icon-ocean">🌊</div>
-            <div>
-              <div class="card-row-label">Why blue ocean</div>
-              <div class="card-row-text">Generic AI tools don't know CDT codes, PA narrative structure, or per-insurer requirements. SERP for "dental prior auth letter generator" is empty. High-intent B2B pain with zero dedicated tool.</div>
-            </div>
+            <div class="cr-icon">🌊</div>
+            <div><div class="cr-label">Why blue ocean</div><div class="cr-text">Generic AI tools don't know CDT codes or PA narrative structure. SERP for "dental prior auth letter generator" is empty. High-intent B2B pain with zero dedicated tool.</div></div>
           </div>
           <div class="card-row">
-            <div class="card-row-icon icon-money">💰</div>
-            <div>
-              <div class="card-row-label">Monetization</div>
-              <div class="card-row-text">Per-seat subscription $29–79/mo for dental offices. Per-credit model for smaller practices. Clear ROI: one approval pays for months of the tool.</div>
-            </div>
+            <div class="cr-icon">💰</div>
+            <div><div class="cr-label">Monetization</div><div class="cr-text">Per-seat subscription $29–79/mo for dental offices. Clear ROI: one approval pays for months of the tool.</div></div>
           </div>
           <div class="card-row">
-            <div class="card-row-icon icon-launch">🚀</div>
-            <div>
-              <div class="card-row-label">Cold start</div>
-              <div class="card-row-text">DentalTown forums and dental billing Facebook groups are warm audiences. "Dental prior auth letter template [insurer]" — one page per insurer, zero competition.</div>
-            </div>
+            <div class="cr-icon">🚀</div>
+            <div><div class="cr-label">Cold start</div><div class="cr-text">DentalTown forums and dental billing Facebook groups. "Dental prior auth letter template [insurer]" — one page per insurer, zero competition.</div></div>
           </div>
         </div>
-        <div class="card-who">
-          <span class="card-who-label">For:</span>
-          <span class="card-who-text">Dental office managers, billing staff</span>
-        </div>
+        <div class="card-who"><span class="cw-label">For:</span>Dental office managers, billing staff</div>
       </div>
 
       <!-- ClaimSnap -->
       <div class="opp-card">
-        <div class="card-header">
-          <div class="card-title">ClaimSnap</div>
-          <div class="card-badge">SaaS</div>
-        </div>
-        <p class="card-pain">
-          Independent CAT adjusters convert field notes into carrier-ready structured loss reports by hand —
-          each carrier has different formatting requirements. During CAT season this bottleneck kills throughput.
-        </p>
+        <div class="card-title">ClaimSnap</div>
+        <span class="card-badge">SaaS</span>
+        <p class="card-pain">Independent CAT adjusters convert field notes into carrier-ready structured loss reports by hand — each carrier has different formatting requirements. During CAT season this bottleneck kills throughput.</p>
         <div class="card-rows">
           <div class="card-row">
-            <div class="card-row-icon icon-ocean">🌊</div>
-            <div>
-              <div class="card-row-label">Why blue ocean</div>
-              <div class="card-row-text">Enterprise tools (Xactimate) start at $200+/mo and target staff adjusters, not independents. No lightweight AI report generator exists for CAT independents — a segment carriers actively want.</div>
-            </div>
+            <div class="cr-icon">🌊</div>
+            <div><div class="cr-label">Why blue ocean</div><div class="cr-text">Enterprise tools (Xactimate) start at $200+/mo targeting staff adjusters, not independents. No lightweight AI report generator exists for CAT independents.</div></div>
           </div>
           <div class="card-row">
-            <div class="card-row-icon icon-money">💰</div>
-            <div>
-              <div class="card-row-label">Monetization</div>
-              <div class="card-row-text">Per-report credits during active CAT season. Annual subscription for year-round adjusters. Carrier white-label for high-volume distribution.</div>
-            </div>
+            <div class="cr-icon">💰</div>
+            <div><div class="cr-label">Monetization</div><div class="cr-text">Per-report credits during CAT season. Annual subscription for year-round adjusters. Carrier white-label for high-volume distribution.</div></div>
           </div>
           <div class="card-row">
-            <div class="card-row-icon icon-launch">🚀</div>
-            <div>
-              <div class="card-row-label">Cold start</div>
-              <div class="card-row-text">NAPIA community and CAT adjuster Facebook groups. Storm season timing makes organic distribution natural — share one free report generation and watch it spread.</div>
-            </div>
+            <div class="cr-icon">🚀</div>
+            <div><div class="cr-label">Cold start</div><div class="cr-text">NAPIA community and CAT adjuster Facebook groups. Storm season timing makes organic distribution natural.</div></div>
           </div>
         </div>
-        <div class="card-who">
-          <span class="card-who-label">For:</span>
-          <span class="card-who-text">Independent CAT adjusters</span>
-        </div>
+        <div class="card-who"><span class="cw-label">For:</span>Independent CAT adjusters</div>
       </div>
 
-      <!-- GROUP: DEEP BUILD -->
       <div class="cards-group-header">
-        <span class="group-emoji">🏗️</span>
-        <span class="group-title">Deep Build</span>
-        <span class="group-subtitle">3–6 months. Defensible data advantage.</span>
+        <span class="grp-emoji">🏗️</span>
+        <span class="grp-title">Deep Build</span>
+        <span class="grp-sub">3–6 months. Defensible data advantage.</span>
       </div>
 
       <!-- DroneCompli -->
       <div class="opp-card">
-        <div class="card-header">
-          <div class="card-title">DroneCompli</div>
-          <div class="card-badge">Subscription</div>
-        </div>
-        <p class="card-pain">
-          Commercial UAV operators working across borders face different airspace rules, BVLOS authorizations,
-          and operator licensing requirements in every country. Official sources are scattered, poorly translated, and rarely updated.
-        </p>
+        <div class="card-title">DroneCompli</div>
+        <span class="card-badge">Subscription</span>
+        <p class="card-pain">Commercial UAV operators working across borders face different airspace rules, BVLOS authorizations, and operator licensing requirements in every country. Official sources are scattered, poorly translated, and rarely updated.</p>
         <div class="card-rows">
           <div class="card-row">
-            <div class="card-row-icon icon-ocean">🌊</div>
-            <div>
-              <div class="card-row-label">Why blue ocean</div>
-              <div class="card-row-text">No neutral database covers global commercial UAV compliance in one place. The fragmentation is the moat — once the data is aggregated, no one can replicate it quickly. Aviation lawyers currently charge $300+/hr for what this tool automates.</div>
-            </div>
+            <div class="cr-icon">🌊</div>
+            <div><div class="cr-label">Why blue ocean</div><div class="cr-text">No neutral database covers global commercial UAV compliance in one place. The fragmentation is the moat — once aggregated, no one can replicate it quickly. Aviation lawyers charge $300+/hr for what this automates.</div></div>
           </div>
           <div class="card-row">
-            <div class="card-row-icon icon-money">💰</div>
-            <div>
-              <div class="card-row-label">Monetization</div>
-              <div class="card-row-text">Subscription for commercial operators + per-seat for fleet teams. Aviation compliance consultancies and law firms pay for API access. Insurance carrier white-label upside.</div>
-            </div>
+            <div class="cr-icon">💰</div>
+            <div><div class="cr-label">Monetization</div><div class="cr-text">Subscription for commercial operators + per-seat for fleet teams. Compliance consultancies pay for API access.</div></div>
           </div>
           <div class="card-row">
-            <div class="card-row-icon icon-launch">🚀</div>
-            <div>
-              <div class="card-row-label">Cold start</div>
-              <div class="card-row-text">r/drones and DJI commercial operator communities. "[Country] commercial drone BVLOS rules" — programmatic page per country, each query uncontested.</div>
-            </div>
+            <div class="cr-icon">🚀</div>
+            <div><div class="cr-label">Cold start</div><div class="cr-text">r/drones and DJI commercial operator communities. "[Country] commercial drone BVLOS rules" — programmatic page per country, each uncontested.</div></div>
           </div>
         </div>
-        <div class="card-who">
-          <span class="card-who-label">For:</span>
-          <span class="card-who-text">Commercial drone operators, aviation lawyers</span>
-        </div>
+        <div class="card-who"><span class="cw-label">For:</span>Commercial drone operators, aviation lawyers</div>
       </div>
 
       <!-- FontLegal -->
       <div class="opp-card">
-        <div class="card-header">
-          <div class="card-title">FontLegal</div>
-          <div class="card-badge">Freemium</div>
-        </div>
-        <p class="card-pain">
-          Designers and AI trainers don't know if their fonts allow commercial embedding, broadcast use, or AI training rights.
-          Font license PDFs are dense legal documents. The risk of a licensing violation surfaces only after shipping.
-        </p>
+        <div class="card-title">FontLegal</div>
+        <span class="card-badge">Freemium</span>
+        <p class="card-pain">Designers and AI trainers don't know if their fonts allow commercial embedding, broadcast use, or AI training rights. Font license PDFs are dense legal documents. The risk of a violation surfaces only after shipping.</p>
         <div class="card-rows">
           <div class="card-row">
-            <div class="card-row-icon icon-ocean">🌊</div>
-            <div>
-              <div class="card-row-label">Why blue ocean</div>
-              <div class="card-row-text">No searchable matrix covers embedding/broadcast/AI training rights across major font libraries. AI training restrictions emerged in 2023 — newly urgent, unserved query that legal teams are now scrambling to answer.</div>
-            </div>
+            <div class="cr-icon">🌊</div>
+            <div><div class="cr-label">Why blue ocean</div><div class="cr-text">No searchable matrix covers embedding/broadcast/AI training rights across major font libraries. AI training restrictions emerged in 2023 — newly urgent, unserved, legal teams now scrambling.</div></div>
           </div>
           <div class="card-row">
-            <div class="card-row-icon icon-money">💰</div>
-            <div>
-              <div class="card-row-label">Monetization</div>
-              <div class="card-row-text">Freemium with bulk-check premium; design agency team plans. AI company compliance licenses at enterprise pricing — one dataset team alone justifies the whole product.</div>
-            </div>
+            <div class="cr-icon">💰</div>
+            <div><div class="cr-label">Monetization</div><div class="cr-text">Freemium with bulk-check premium; design agency team plans. AI company compliance licenses at enterprise pricing.</div></div>
           </div>
           <div class="card-row">
-            <div class="card-row-icon icon-launch">🚀</div>
-            <div>
-              <div class="card-row-label">Cold start</div>
-              <div class="card-row-text">r/graphic_design, Typewolf community, HuggingFace dataset builders. "[Font name] commercial license AI training" — every major font family is an uncontested long-tail page.</div>
-            </div>
+            <div class="cr-icon">🚀</div>
+            <div><div class="cr-label">Cold start</div><div class="cr-text">r/graphic_design, Typewolf community, HuggingFace dataset builders. "[Font name] commercial license AI training" — every major font is an uncontested long-tail page.</div></div>
           </div>
         </div>
-        <div class="card-who">
-          <span class="card-who-label">For:</span>
-          <span class="card-who-text">Design studios, app developers, AI engineers</span>
-        </div>
+        <div class="card-who"><span class="cw-label">For:</span>Design studios, app developers, AI engineers</div>
       </div>
 
       <!-- PAClear -->
       <div class="opp-card">
-        <div class="card-header">
-          <div class="card-title">PAClear</div>
-          <div class="card-badge">Subscription</div>
-        </div>
-        <p class="card-pain">
-          Medical billing managers submit Prior Authorization requests without knowing historical approval rates per CPT code and insurer —
-          wasting hours on submissions with a 90% denial probability. CMS publishes aggregate data, not the granular view that matters.
-        </p>
+        <div class="card-title">PAClear</div>
+        <span class="card-badge">Subscription</span>
+        <p class="card-pain">Medical billing managers submit Prior Authorization requests without knowing historical approval rates per CPT code and insurer — wasting hours on submissions with a 90% denial probability.</p>
         <div class="card-rows">
           <div class="card-row">
-            <div class="card-row-icon icon-ocean">🌊</div>
-            <div>
-              <div class="card-row-label">Why blue ocean</div>
-              <div class="card-row-text">No tool translates CPT × insurer denial rates into pre-submission intelligence. RCM software shows historical outcomes for your practice — not market-wide approval odds before you even submit.</div>
-            </div>
+            <div class="cr-icon">🌊</div>
+            <div><div class="cr-label">Why blue ocean</div><div class="cr-text">No tool translates CPT × insurer denial rates into pre-submission intelligence. RCM software shows your historical outcomes — not market-wide approval odds before you submit.</div></div>
           </div>
           <div class="card-row">
-            <div class="card-row-icon icon-money">💰</div>
-            <div>
-              <div class="card-row-label">Monetization</div>
-              <div class="card-row-text">Subscription per billing department; RCM consulting firms pay for white-label. Clear ROI: reducing denial rate by 10% saves large practices $50K+/yr in resubmission labor.</div>
-            </div>
+            <div class="cr-icon">💰</div>
+            <div><div class="cr-label">Monetization</div><div class="cr-text">Subscription per billing department; RCM consulting firms pay for white-label. Reducing denial rate by 10% saves large practices $50K+/yr.</div></div>
           </div>
           <div class="card-row">
-            <div class="card-row-icon icon-launch">🚀</div>
-            <div>
-              <div class="card-row-label">Cold start</div>
-              <div class="card-row-text">Medical Billing &amp; Coding Facebook groups, AAPC forums, r/medicalbilling. "[CPT code] prior auth denial rate [insurer]" — one uncontested page per CPT × insurer combination.</div>
-            </div>
+            <div class="cr-icon">🚀</div>
+            <div><div class="cr-label">Cold start</div><div class="cr-text">Medical Billing &amp; Coding Facebook groups, AAPC forums, r/medicalbilling. "[CPT code] prior auth denial rate [insurer]" — one uncontested page per CPT × insurer combination.</div></div>
           </div>
         </div>
-        <div class="card-who">
-          <span class="card-who-label">For:</span>
-          <span class="card-who-text">Medical billing managers, physicians</span>
-        </div>
+        <div class="card-who"><span class="cw-label">For:</span>Medical billing managers, physicians</div>
       </div>
 
       <!-- AuditScore -->
       <div class="opp-card">
-        <div class="card-header">
-          <div class="card-title">AuditScore</div>
-          <div class="card-badge">Subscription</div>
-        </div>
-        <p class="card-pain">
-          DeFi protocols pay $50K–$500K for security audits — then get exploited anyway.
-          Which auditors actually catch critical bugs? The data is public but scattered across postmortems and Discord threads.
-        </p>
+        <div class="card-title">AuditScore</div>
+        <span class="card-badge">Subscription</span>
+        <p class="card-pain">DeFi protocols pay $50K–$500K for security audits — then get exploited anyway. Which auditors actually catch critical bugs? The data is public but scattered across postmortems and Discord threads.</p>
         <div class="card-rows">
           <div class="card-row">
-            <div class="card-row-icon icon-ocean">🌊</div>
-            <div>
-              <div class="card-row-label">Why blue ocean</div>
-              <div class="card-row-text">DefiLlama tracks hacks but not auditor accountability. No database maps audit firm → missed exploits → dollar losses. Protocol teams make six-figure decisions based on Twitter reputation, not track record.</div>
-            </div>
+            <div class="cr-icon">🌊</div>
+            <div><div class="cr-label">Why blue ocean</div><div class="cr-text">DefiLlama tracks hacks but not auditor accountability. No database maps audit firm → missed exploits → dollar losses. Protocol teams make six-figure decisions based on Twitter rep, not track record.</div></div>
           </div>
           <div class="card-row">
-            <div class="card-row-icon icon-money">💰</div>
-            <div>
-              <div class="card-row-label">Monetization</div>
-              <div class="card-row-text">Subscription for protocol teams evaluating auditors; institutional risk managers and DAO treasuries pay premium API rates. The stakes ($50K+ audit spend) make $99/mo subscription a trivial due-diligence expense.</div>
-            </div>
+            <div class="cr-icon">💰</div>
+            <div><div class="cr-label">Monetization</div><div class="cr-text">Subscription for protocol teams; institutional risk managers and DAO treasuries pay premium API rates. The stakes make $99/mo a trivial due-diligence expense.</div></div>
           </div>
           <div class="card-row">
-            <div class="card-row-icon icon-launch">🚀</div>
-            <div>
-              <div class="card-row-label">Cold start</div>
-              <div class="card-row-text">DeFi security Twitter/X community, r/ethdev, Immunefi bug bounty ecosystem. Post an audit firm comparison thread — distribution is immediate in a community starved for this data.</div>
-            </div>
+            <div class="cr-icon">🚀</div>
+            <div><div class="cr-label">Cold start</div><div class="cr-text">DeFi security Twitter/X, r/ethdev, Immunefi bug bounty ecosystem. Post an audit firm comparison thread — distribution is immediate in a community starved for this data.</div></div>
           </div>
         </div>
-        <div class="card-who">
-          <span class="card-who-label">For:</span>
-          <span class="card-who-text">DeFi protocol teams, institutional risk managers</span>
-        </div>
+        <div class="card-who"><span class="cw-label">For:</span>DeFi protocol teams, institutional risk managers</div>
       </div>
 
       <!-- CaseGuard -->
       <div class="opp-card">
-        <div class="card-header">
-          <div class="card-title">CaseGuard</div>
-          <div class="card-badge">Subscription</div>
-        </div>
-        <p class="card-pain">
-          HR and legal teams evaluating EOR platforms (Deel, Remote, Rippling) can't find enforcement actions against specific companies for contractor misclassification.
-          DOL, NLRB, and state labor board records are public — but completely unsearchable by company or platform.
-        </p>
+        <div class="card-title">CaseGuard</div>
+        <span class="card-badge">Subscription</span>
+        <p class="card-pain">HR and legal teams evaluating EOR platforms can't find enforcement actions against specific companies for contractor misclassification. DOL, NLRB, and state labor board records are public — but completely unsearchable by company or platform.</p>
         <div class="card-rows">
           <div class="card-row">
-            <div class="card-row-icon icon-ocean">🌊</div>
-            <div>
-              <div class="card-row-label">Why blue ocean</div>
-              <div class="card-row-text">No aggregator has indexed enforcement actions by company + EOR platform. G2 and Capterra don't cover compliance failures. SERP for "[Platform] misclassification enforcement" returns zero structured results — only buried PDF filings.</div>
-            </div>
+            <div class="cr-icon">🌊</div>
+            <div><div class="cr-label">Why blue ocean</div><div class="cr-text">No aggregator has indexed enforcement actions by company + EOR platform. G2 and Capterra don't cover compliance failures. SERP returns zero structured results — only buried PDFs.</div></div>
           </div>
           <div class="card-row">
-            <div class="card-row-icon icon-money">💰</div>
-            <div>
-              <div class="card-row-label">Monetization</div>
-              <div class="card-row-text">B2B subscription $99–299/mo for HR/legal teams. Compliance law firms pay for ad placement targeting procurement queries. High-ticket B2B segment with clear procurement budget.</div>
-            </div>
+            <div class="cr-icon">💰</div>
+            <div><div class="cr-label">Monetization</div><div class="cr-text">B2B subscription $99–299/mo for HR/legal teams. Compliance law firms pay for ad placement targeting procurement queries.</div></div>
           </div>
           <div class="card-row">
-            <div class="card-row-icon icon-launch">🚀</div>
-            <div>
-              <div class="card-row-label">Cold start</div>
-              <div class="card-row-text">EOR procurement Slack communities, LinkedIn HR/legal groups. "[Platform] contractor misclassification [country] 2024" — one page per platform × country, each with zero competition.</div>
-            </div>
+            <div class="cr-icon">🚀</div>
+            <div><div class="cr-label">Cold start</div><div class="cr-text">EOR procurement Slack communities, LinkedIn HR/legal groups. "[Platform] contractor misclassification [country] 2024" — one page per platform × country, each uncontested.</div></div>
           </div>
         </div>
-        <div class="card-who">
-          <span class="card-who-label">For:</span>
-          <span class="card-who-text">HR/legal teams, EOR procurement</span>
-        </div>
+        <div class="card-who"><span class="cw-label">For:</span>HR/legal teams, EOR procurement</div>
       </div>
 
       <!-- LOCKED -->
       <div class="locked-card">
         <div class="lock-icon">🔒</div>
-        <div class="lock-label">More opportunities inside</div>
-        <div class="lock-sub" style="margin-bottom:1rem;">Get full access to weekly drops with deeper validation data, monetization playbooks, and unpublished niches.</div>
-        <a href="LEMON_SQUEEZY_CHECKOUT_URL" class="nav-cta lemonsqueezy-button" style="display:inline-block;padding:0.65rem 1.4rem;font-size:0.875rem;border-radius:8px;text-decoration:none;">Unlock — $29/mo</a>
+        <div class="lock-label">More inside every weekly drop</div>
+        <div class="lock-sub">Full access includes all 5–8 validated opportunities per drop, deeper monetization playbooks, and unpublished niches not shown here.</div>
+        <a href="LEMON_SQUEEZY_CHECKOUT_URL" class="btn btn-red lemonsqueezy-button" style="display:inline-block;padding:0.7rem 1.8rem;font-size:0.84rem;">Unlock — $29/mo</a>
       </div>
 
-    </div>
-  </div>
-</section>
-
-<!-- PIPELINE -->
-<section class="section section-alt">
-  <div class="section-inner">
-    <p class="section-tag">The Pipeline</p>
-    <h2 class="section-h2">5 filters. Most niches don't survive.</h2>
-    <p class="section-lead">Any niche that passes all five is added to the weekly drop. Most don't.</p>
-    <div class="pipeline-list">
-      <div class="pipe-item">
-        <div class="pipe-num">01</div>
-        <div class="pipe-text">
-          <h3>Pain validation</h3>
-          <p>Does this problem recur in forums, app reviews, and search? Is there genuine frustration, not just mild inconvenience?</p>
-        </div>
-      </div>
-      <div class="pipe-item">
-        <div class="pipe-num">02</div>
-        <div class="pipe-text">
-          <h3>SEO gap analysis</h3>
-          <p>Is the SERP actually empty? Are there rankable long-tail variations no one has claimed? One dominant player kills the opportunity.</p>
-        </div>
-      </div>
-      <div class="pipe-item">
-        <div class="pipe-num">03</div>
-        <div class="pipe-text">
-          <h3>Monetization clarity</h3>
-          <p>Is there a clear path to revenue — affiliate, subscription, lead-gen, or SaaS? "Maybe ads" doesn't count.</p>
-        </div>
-      </div>
-      <div class="pipe-item">
-        <div class="pipe-num">04</div>
-        <div class="pipe-text">
-          <h3>Build feasibility</h3>
-          <p>Can one person build a useful v1 in a weekend? Does it require proprietary data no indie hacker can access?</p>
-        </div>
-      </div>
-      <div class="pipe-item">
-        <div class="pipe-num">05</div>
-        <div class="pipe-text">
-          <h3>Reachable audience</h3>
-          <p>Is there a community, subreddit, forum, or niche platform where the first 100 users already gather?</p>
-        </div>
-      </div>
     </div>
   </div>
 </section>
 
 <!-- ABOUT -->
-<section class="section">
-  <div class="section-inner">
+<section class="sec about-sec">
+  <div class="about-inner">
     <div class="about-card">
-      <p class="about-tag">Who We Are</p>
-      <h2 class="section-h2">1 person + AI, building in public</h2>
-      <p>
-        Gauntrix is a solo project. I'm an indie builder who got tired of spending weeks validating ideas
-        that turned out to have obvious competition I missed, or no monetization path.
-      </p>
-      <p>
-        So I built a pipeline. It runs every week, scores hundreds of candidates, and surfaces the small number
-        that actually check every box. I'm sharing the output because the validation work is the hard part —
-        and most of it can be done once, for everyone.
-      </p>
-      <p class="build-in-public">build in public · no VC funding · ship what works</p>
+      <p class="sec-tag">Who built this</p>
+      <h2 class="sec-h2" style="margin-bottom:1.5rem;">1 person + AI,<br>building in public</h2>
+      <p>Gauntrix is a solo project. I got tired of spending weeks validating ideas that turned out to have obvious competition I missed, or no monetization path that held up.</p>
+      <p>So I built a pipeline. It runs every week, scores hundreds of candidates, and surfaces the small number that actually check every box. I'm sharing the output because the validation work is the hard part — and it can be done once, for everyone.</p>
+      <p class="build-pub">build in public · no VC funding · ship what works</p>
     </div>
   </div>
 </section>
 
 <!-- PRICING -->
-<section class="section section-alt" id="pricing">
-  <div class="section-inner">
-    <p class="section-tag">Pricing</p>
-    <h2 class="section-h2">Start free. Upgrade when it clicks.</h2>
-    <p class="section-lead">No fluff tiers. One free, one paid.</p>
-    <div class="pricing-grid">
-      <div class="price-card">
-        <div class="price-tier">Free</div>
-        <div class="price-amount"><sup>$</sup>0</div>
-        <div class="price-period">always free</div>
-        <hr class="price-div">
-        <ul class="price-features">
+<section class="sec price-sec" id="pricing">
+  <div class="price-inner">
+    <p class="sec-tag">Pricing</p>
+    <h2 class="sec-h2">Start free.<br>Upgrade when it clicks.</h2>
+    <p class="sec-lead">No fluff tiers. One free, one paid. Lock the founding price before it goes up.</p>
+    <div class="price-grid">
+      <div class="pc">
+        <div class="pc-tier">Free</div>
+        <div class="pc-price"><sup>$</sup>0</div>
+        <div class="pc-period">always free</div>
+        <hr class="pc-div">
+        <ul class="pc-features">
           <li>1 sample opportunity per week</li>
           <li>Pipeline methodology overview</li>
           <li>Early access to new features</li>
         </ul>
-        <a href="#free-signup" class="price-cta ghost">Start free →</a>
+        <a href="#free-signup" class="pc-cta ghost">Start free →</a>
       </div>
-      <div class="price-card featured">
-        <div style="font-size:0.75rem;color:#22d3ee;font-weight:600;letter-spacing:0.05em;text-transform:uppercase;margin-bottom:8px;">🔒 Founding price — going up after first 50</div>
-        <div class="price-tier">Full Access</div>
-        <div class="price-amount"><sup>$</sup>29<span class="mo">/mo</span></div>
-        <div class="price-period">founding price · lock it in forever</div>
-        <div class="price-note">Founding price — going up</div>
-        <hr class="price-div">
-        <ul class="price-features">
+      <div class="pc featured">
+        <div class="founding-tag">🔒 Founding price — going up after first 50</div>
+        <div class="pc-tier">Full Access</div>
+        <div class="pc-price"><sup>$</sup>29<span class="per">/mo</span></div>
+        <div class="pc-period">founding price · lock it in forever</div>
+        <hr class="pc-div">
+        <ul class="pc-features">
           <li>All 5–8 opportunities per weekly drop</li>
           <li>Full validation brief per niche</li>
           <li>Monetization &amp; cold-start playbook</li>
-          <li>Backlog of past validated opportunities</li>
+          <li>Backlog of all past validated opportunities</li>
         </ul>
-        <a href="LEMON_SQUEEZY_CHECKOUT_URL" class="price-cta lemonsqueezy-button" id="buy-full-access">Get Full Access — $29/mo</a>
+        <a href="LEMON_SQUEEZY_CHECKOUT_URL" class="pc-cta red lemonsqueezy-button" id="buy-full-access">Get Full Access — $29/mo</a>
       </div>
     </div>
   </div>
 </section>
 
 <!-- FINAL CTA -->
-<section class="final-cta" id="cta">
-  <h2 class="section-h2">Weekly drops of validated niches. First 50 lock the founding price.</h2>
-  <p>Full access $29/mo · Free tier available · Cancel anytime</p>
-  <div style="display:flex;gap:0.75rem;justify-content:center;flex-wrap:wrap;margin-bottom:2rem;">
-    <a href="LEMON_SQUEEZY_CHECKOUT_URL" class="nav-cta lemonsqueezy-button" style="padding:0.85rem 1.6rem;font-size:1rem;border-radius:10px;">Get Full Access — $29/mo</a>
-    <a href="#free-signup" class="nav-cta" style="padding:0.85rem 1.4rem;font-size:1rem;border-radius:10px;background:transparent;color:var(--cyan);border:1px solid var(--cyan-border);">Start free →</a>
-  </div>
-  <div id="free-signup" style="scroll-margin-top:100px;">
-    <p class="hero-note" style="margin-bottom:0.75rem;">Or join the free tier — 1 opportunity per week, no credit card</p>
-    <form class="hero-form" action="https://formsubmit.co/2734e0f49605680196bfc44f5cca0531" method="POST">
-      <input type="hidden" name="_subject" value="Gauntrix — Free Tier Signup">
-      <input type="hidden" name="_captcha" value="false">
-      <input type="hidden" name="_template" value="table">
-      <input type="email" name="email" placeholder="you@example.com" required>
-      <button type="submit">Join Free</button>
-    </form>
-    <p class="hero-note" style="margin-top:0.75rem;">Unsubscribe anytime</p>
+<section class="sec cta-sec" id="cta">
+  <div style="position:relative;z-index:1;">
+    <h2 class="cta-h2">Weekly drops of validated niches.<br>First 50 lock the founding price.</h2>
+    <p class="cta-sub">Full access $29/mo · Free tier available · Cancel anytime</p>
+    <div class="cta-btns">
+      <a href="LEMON_SQUEEZY_CHECKOUT_URL" class="btn btn-red btn-lg lemonsqueezy-button">Get Full Access — $29/mo</a>
+      <a href="#free-signup" class="btn btn-ghost btn-lg">Start free →</a>
+    </div>
+    <div id="free-signup">
+      <p class="signup-label">Or join the free tier — 1 opportunity per week, no credit card</p>
+      <form class="signup-form" action="https://formsubmit.co/2734e0f49605680196bfc44f5cca0531" method="POST">
+        <input type="hidden" name="_subject" value="Gauntrix — Free Tier Signup">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_template" value="table">
+        <input type="email" name="email" placeholder="you@example.com" required>
+        <button type="submit">Join Free</button>
+      </form>
+      <p class="signup-note">Unsubscribe anytime · No spam</p>
+    </div>
   </div>
 </section>
 
 <!-- FOOTER -->
 <footer>
-  <p>© 2026 Gauntrix · Built by 1 person + AI · <a href="mailto:gauntrix.contact@gmail.com">Contact</a> · <a href="/privacy.html">Privacy Policy</a></p>
+  <p>© 2026 Gauntrix · Built by 1 person + AI</p>
+  <p>
+    <a href="mailto:gauntrix.contact@gmail.com">Contact</a>
+    &nbsp;·&nbsp;
+    <a href="/privacy.html">Privacy Policy</a>
+  </p>
 </footer>
 
 <!-- GoatCounter -->
@@ -1074,13 +1259,13 @@
 
 <!-- Signup beacon -->
 <script>
-  document.querySelectorAll('form').forEach(function(form) {
-    form.addEventListener('submit', function() {
-      if (window.goatcounter && window.goatcounter.count) {
-        window.goatcounter.count({ path: 'gauntrix-signup', title: 'Gauntrix Email Signup', event: true });
-      }
-    });
+document.querySelectorAll('form').forEach(function(f){
+  f.addEventListener('submit', function(){
+    if(window.goatcounter && window.goatcounter.count){
+      window.goatcounter.count({path:'gauntrix-signup',title:'Gauntrix Email Signup',event:true});
+    }
   });
+});
 </script>
 
 <!-- GSAP + ScrollTrigger -->
@@ -1088,89 +1273,193 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 
 <script>
-(function() {
-  /* Fallback: if the GSAP CDN failed to load, reveal everything that starts
-     hidden so the page is never blank. */
-  if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') {
-    document.querySelectorAll('.hero-badge, .hero-title .word, .hero-sub, .hero-form-wrap, .locked-card, .opp-card, .step-card, .pipe-item')
-      .forEach(function(el){ el.style.opacity = '1'; el.style.transform = 'none'; });
-    return;
-  }
+(function(){
+/* ─── CUSTOM CURSOR ─── */
+var isDesktop = window.matchMedia('(hover:hover)').matches;
+if(isDesktop){
+  var cur=document.getElementById('cursor'), ring=document.getElementById('cursor-ring');
+  cur.style.display='block'; ring.style.display='block';
+  var mx=0,my=0,rx=0,ry=0;
+  document.addEventListener('mousemove',function(e){mx=e.clientX;my=e.clientY;cur.style.left=mx+'px';cur.style.top=my+'px';});
+  (function tick(){rx+=(mx-rx)*0.14;ry+=(my-ry)*0.14;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(tick);})();
+}
 
-  /* Register ScrollTrigger */
+/* ─── NAV SCROLL ─── */
+var nav=document.getElementById('nav');
+window.addEventListener('scroll',function(){
+  nav.classList.toggle('scrolled',window.scrollY>60);
+},{passive:true});
+
+/* ─── PARTICLE CANVAS ─── */
+var canvas=document.getElementById('particle-canvas');
+var ctx=canvas.getContext('2d');
+var W,H,particles=[],machine={x:0,y:0,w:0,h:0};
+var RED='#e60000', RED_DIM='rgba(139,0,0,0.7)', GRAY='rgba(80,80,100,0.5)';
+
+function resize(){
+  W=canvas.width=canvas.offsetWidth;
+  H=canvas.height=canvas.offsetHeight;
+  machine.x=W*0.5; machine.y=H*0.48;
+  machine.w=W*0.18; machine.h=H*0.12;
+}
+resize();
+window.addEventListener('resize',resize,{passive:true});
+
+function Particle(){
+  this.reset();
+}
+Particle.prototype.reset=function(){
+  this.x=Math.random()*W;
+  this.y=-10;
+  this.vx=(Math.random()-0.5)*0.8;
+  this.vy=Math.random()*1.2+0.4;
+  this.size=Math.random()*2+0.5;
+  this.survived=false;
+  this.killed=false;
+  this.killTimer=0;
+  this.alpha=Math.random()*0.5+0.3;
+  this.color=GRAY;
+};
+
+for(var i=0;i<120;i++){
+  var p=new Particle();
+  p.y=Math.random()*H;
+  particles.push(p);
+}
+
+function drawMachine(){
+  var mx=machine.x, my=machine.y, mw=machine.w, mh=machine.h;
+  // glow
+  var g=ctx.createRadialGradient(mx,my,0,mx,my,mw*2);
+  g.addColorStop(0,'rgba(230,0,0,0.08)');
+  g.addColorStop(1,'transparent');
+  ctx.fillStyle=g;
+  ctx.fillRect(0,0,W,H);
+  // machine body
+  ctx.save();
+  ctx.strokeStyle='rgba(230,0,0,0.35)';
+  ctx.lineWidth=1;
+  ctx.strokeRect(mx-mw,my-mh,mw*2,mh*2);
+  // label
+  ctx.fillStyle='rgba(230,0,0,0.25)';
+  ctx.font='600 10px "JetBrains Mono", monospace';
+  ctx.textAlign='center';
+  ctx.letterSpacing='0.15em';
+  ctx.fillText('GAUNTRIX',mx,my+5);
+  // diagonal kill lines
+  ctx.strokeStyle='rgba(230,0,0,0.15)';
+  ctx.lineWidth=0.5;
+  for(var lx=mx-mw;lx<mx+mw;lx+=18){
+    ctx.beginPath(); ctx.moveTo(lx,my-mh); ctx.lineTo(lx+18,my+mh); ctx.stroke();
+  }
+  ctx.restore();
+}
+
+function animate(){
+  ctx.clearRect(0,0,W,H);
+  drawMachine();
+  var now=performance.now();
+  for(var i=0;i<particles.length;i++){
+    var p=particles[i];
+    // check machine collision
+    var inMachineX=p.x>machine.x-machine.w && p.x<machine.x+machine.w;
+    var inMachineY=p.y>machine.y-machine.h && p.y<machine.y+machine.h;
+    if(inMachineX && inMachineY && !p.survived && !p.killed){
+      if(Math.random()<0.96){ // 96% killed
+        p.killed=true;
+        p.killTimer=now;
+        p.color='rgba(180,0,0,0.8)';
+      } else { // 4% survive
+        p.survived=true;
+        p.color=RED;
+        p.vx=Math.abs(p.vx)+0.5; // exit right
+        p.size*=1.5;
+      }
+    }
+    if(p.killed){
+      var elapsed=now-p.killTimer;
+      if(elapsed>400){ p.reset(); continue; }
+      // flash and fade
+      p.alpha=Math.max(0,(1-elapsed/400)*0.8);
+      ctx.save();
+      ctx.beginPath();
+      ctx.arc(p.x,p.y,p.size*2,0,Math.PI*2);
+      ctx.fillStyle='rgba(200,0,0,'+p.alpha+')';
+      ctx.fill();
+      ctx.restore();
+      continue;
+    }
+    p.x+=p.vx; p.y+=p.vy;
+    if(p.survived){ p.vx*=1.005; }
+    if(p.y>H+10 || p.x<-20 || p.x>W+20){ p.reset(); }
+    ctx.save();
+    ctx.globalAlpha=p.survived?0.9:p.alpha;
+    ctx.beginPath();
+    ctx.arc(p.x,p.y,p.size,0,Math.PI*2);
+    if(p.survived){
+      ctx.fillStyle=RED;
+      ctx.shadowBlur=8; ctx.shadowColor=RED;
+    } else {
+      ctx.fillStyle=GRAY;
+    }
+    ctx.fill();
+    ctx.restore();
+  }
+  requestAnimationFrame(animate);
+}
+animate();
+
+/* ─── GSAP ANIMATIONS ─── */
+if(typeof gsap!=='undefined' && typeof ScrollTrigger!=='undefined'){
   gsap.registerPlugin(ScrollTrigger);
 
-  /* ─── Nav scroll blur ─── */
-  var nav = document.getElementById('nav');
-  window.addEventListener('scroll', function() {
-    if (window.scrollY > 60) nav.classList.add('scrolled');
-    else nav.classList.remove('scrolled');
-  }, { passive: true });
+  // hero h1 stagger
+  gsap.from('#hero-h1 .h1-line',{
+    opacity:0, y:40, stagger:0.12, duration:0.8, ease:'power3.out', delay:0.3
+  });
+  gsap.from('.hero-eyebrow',{ opacity:0, y:20, duration:0.6, ease:'power2.out', delay:0.1 });
+  gsap.from('.hero-sub',{ opacity:0, y:20, duration:0.6, ease:'power2.out', delay:0.7 });
+  gsap.from('.hero-counters',{ opacity:0, y:20, duration:0.6, ease:'power2.out', delay:0.9 });
+  gsap.from('.hero-ctas',{ opacity:0, y:20, duration:0.6, ease:'power2.out', delay:1.1 });
 
-  /* ─── Hero stagger: set initial states FIRST, then animate ─── */
-  gsap.set('.hero-badge', { opacity: 0, y: -12 });
-  gsap.set('.hero-title .word', { opacity: 0, y: 40 });
-  gsap.set('.hero-sub', { opacity: 0, y: 24 });
-  gsap.set('.hero-form-wrap', { opacity: 0, y: 20 });
-
-  var tl = gsap.timeline({ defaults: { ease: 'power3.out' }, delay: 0.1 });
-  tl.to('.hero-badge', { opacity: 1, y: 0, duration: 0.6 });
-  tl.to('.hero-title .word', { opacity: 1, y: 0, duration: 0.6, stagger: 0.08 }, '-=0.3');
-  tl.to('.hero-sub', { opacity: 1, y: 0, duration: 0.55 }, '-=0.2');
-  tl.to('.hero-form-wrap', { opacity: 1, y: 0, duration: 0.5 }, '-=0.25');
-
-  /* ─── Card ScrollTrigger fade-in ─── */
-  gsap.utils.toArray('.opp-card, .locked-card').forEach(function(card, i) {
-    gsap.from(card, {
-      opacity: 0,
-      y: 24,
-      duration: 0.65,
-      ease: 'power2.out',
-      scrollTrigger: {
-        trigger: card,
-        start: 'top 88%',
-        toggleActions: 'play none none none'
-      },
-      delay: (i % 2) * 0.1
-    });
+  // step cards
+  gsap.to('.step-card',{
+    opacity:1, y:0, stagger:0.15, duration:0.7, ease:'power2.out',
+    scrollTrigger:{trigger:'.steps-grid',start:'top 80%'}
   });
 
-  /* ─── Step cards ─── */
-  gsap.utils.toArray('.step-card').forEach(function(el, i) {
-    gsap.from(el, {
-      opacity: 0, y: 30,
-      duration: 0.55,
-      delay: i * 0.1,
-      ease: 'power2.out',
-      scrollTrigger: {
-        trigger: el,
-        start: 'top 88%',
-        toggleActions: 'play none none none'
-      }
-    });
+  // machine stages
+  gsap.to('.machine-stage',{
+    opacity:1, stagger:0.12, duration:0.5, ease:'power2.out',
+    scrollTrigger:{trigger:'.machine-visual',start:'top 80%'}
   });
 
-  /* ─── Pipeline items ─── */
-  gsap.utils.toArray('.pipe-item').forEach(function(el, i) {
-    gsap.from(el, {
-      opacity: 0, x: -20,
-      duration: 0.5,
-      delay: i * 0.07,
-      ease: 'power2.out',
-      scrollTrigger: {
-        trigger: el,
-        start: 'top 90%',
-        toggleActions: 'play none none none'
-      }
-    });
+  // pipe items
+  gsap.to('.pipe-item',{
+    opacity:1, x:0, stagger:0.1, duration:0.6, ease:'power2.out',
+    scrollTrigger:{trigger:'.pipe-list',start:'top 80%'}
   });
 
-  /* Recompute trigger positions once fonts/layout settle so cards reveal at
-     the right scroll point (web-font reflow can shift them otherwise). */
-  window.addEventListener('load', function(){ ScrollTrigger.refresh(); });
+  // opp cards
+  gsap.to('.opp-card',{
+    opacity:1, y:0, stagger:0.08, duration:0.55, ease:'power2.out',
+    scrollTrigger:{trigger:'.cards-grid',start:'top 80%'}
+  });
+
+  // kill bar
+  gsap.from('.kill-bar',{
+    opacity:0, duration:0.6, ease:'power2.out',
+    scrollTrigger:{trigger:'.kill-bar',start:'top 90%'}
+  });
+
+} else {
+  // fallback: show all
+  document.querySelectorAll('.step-card,.machine-stage,.pipe-item,.opp-card').forEach(function(el){
+    el.style.opacity='1'; el.style.transform='none';
+  });
+}
 
 })();
 </script>
-
 </body>
 </html>
