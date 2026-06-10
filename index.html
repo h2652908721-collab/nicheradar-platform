@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>NicheRadar — AI-Powered Niche Opportunity Discovery</title><link rel="canonical" href="https://h2652908721-collab.github.io/nicheradar-platform/"><meta name="description" content="AI-Powered Niche Opportunity Discovery"><meta property="og:type" content="website"><meta property="og:title" content="NicheRadar — AI-Powered Niche Opportunity Discovery"><meta property="og:description" content="AI-Powered Niche Opportunity Discovery"><meta property="og:url" content="https://h2652908721-collab.github.io/nicheradar-platform/">
+  <title>NicheRadar — AI-Powered Niche Opportunity Discovery</title>
   <meta name="description" content="Every week, our AI scans thousands of underserved markets and surfaces the ones worth building — low competition, real demand, clear monetization path.">
   <meta property="og:title" content="NicheRadar — Find Buildable Niches Before The Market Does">
   <meta property="og:description" content="Low competition. Real demand. Clear monetization path. Weekly niche opportunities for indie hackers and solopreneurs.">
@@ -272,6 +272,49 @@
     }
     .lock-sub { font-size: var(--text-sm); color: var(--ink-muted); }
 
+    /* ── CARDS GROUP HEADER ── */
+    .cards-group-header {
+      grid-column: 1 / -1;
+      margin-top: var(--space-4);
+      margin-bottom: var(--space-2);
+      padding-bottom: var(--space-4);
+      border-bottom: 2px solid var(--border);
+      display: flex; align-items: center; gap: var(--space-3);
+    }
+    .cards-group-header:first-child { margin-top: 0; }
+    .group-emoji { font-size: 1.4rem; }
+    .group-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: var(--text-xl); font-weight: 700;
+      color: var(--ink);
+    }
+    .group-subtitle {
+      font-size: var(--text-sm); color: var(--ink-faint);
+      margin-left: auto;
+    }
+
+    /* ── CARD WHO ROW ── */
+    .card-who {
+      display: flex; align-items: center; gap: var(--space-2);
+      padding-top: var(--space-3); margin-top: var(--space-1);
+      border-top: 1px solid var(--border);
+    }
+    .card-who-label {
+      font-size: var(--text-xs); font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.06em;
+      color: var(--ink-faint); flex-shrink: 0;
+    }
+    .card-who-text { font-size: var(--text-xs); color: var(--ink-muted); }
+
+    /* ── CARD LIVE LINK ── */
+    .card-live-link {
+      display: inline-flex; align-items: center; gap: 4px;
+      font-size: var(--text-xs); font-weight: 600;
+      color: var(--accent); text-decoration: none;
+      margin-top: auto;
+    }
+    .card-live-link:hover { text-decoration: underline; }
+
     /* ── PIPELINE ── */
     .pipeline-bg { background: var(--surface-2); }
     .pipeline-steps {
@@ -488,228 +531,347 @@
 <!-- OPPORTUNITY CARDS -->
 <section>
   <div class="section-inner">
-    <p class="section-tag">Sample Opportunities</p>
-    <h2>Real opportunities from our pipeline</h2>
+    <p class="section-tag">Live Tools from Our Pipeline</p>
+    <h2>Real opportunities, already built</h2>
     <p class="section-desc">
-      These are actual niches our system surfaced and validated. Subscriber drops include more depth, more data, and unpublished opportunities.
+      These are actual tools our pipeline surfaced and validated — then shipped. Subscriber drops include full briefs, deeper data, and unpublished opportunities every week.
     </p>
 
     <div class="cards-grid">
 
-      <!-- Card 1: EOR Compliance Incident Database -->
+      <!-- ── QUICK BUILD ── -->
+      <div class="cards-group-header">
+        <span class="group-emoji">⚡</span>
+        <span class="group-title">Quick Build</span>
+        <span class="group-subtitle">Launch in a week. Lower moat, real gaps.</span>
+      </div>
+
+      <!-- Card: DentalAuth AI -->
       <div class="opp-card">
         <div class="card-header">
-          <div class="card-title">EOR Platform Compliance Incident Database</div>
+          <div class="card-title">DentalAuth AI</div>
+          <div class="card-badge">SaaS</div>
+        </div>
+        <p class="card-pain">
+          Dental offices spend 30+ minutes writing a single Prior Authorization letter — manually, every claim.
+          Formatting errors cause denials. No purpose-built AI tool exists that understands CDT codes and insurer-specific narrative structure.
+        </p>
+        <div class="card-rows">
+          <div class="card-row">
+            <div class="card-row-icon icon-ocean">🌊</div>
+            <div class="card-row-body">
+              <div class="card-row-label">Why blue ocean</div>
+              <div class="card-row-text">Generic AI tools don't know CDT codes, PA narrative structure, or per-insurer requirements. SERP for "dental prior auth letter generator" is empty. High-intent B2B pain with zero dedicated tool.</div>
+            </div>
+          </div>
+          <div class="card-row">
+            <div class="card-row-icon icon-money">💰</div>
+            <div class="card-row-body">
+              <div class="card-row-label">Monetization</div>
+              <div class="card-row-text">Per-seat subscription $29–79/mo for dental offices. Per-credit model for smaller practices. Clear ROI: one approval pays for months of the tool.</div>
+            </div>
+          </div>
+          <div class="card-row">
+            <div class="card-row-icon icon-launch">🚀</div>
+            <div class="card-row-body">
+              <div class="card-row-label">Cold start</div>
+              <div class="card-row-text">DentalTown forums and dental billing Facebook groups are warm audiences. "Dental prior auth letter template [insurer]" — one page per insurer, zero competition.</div>
+            </div>
+          </div>
+        </div>
+        <div class="card-who">
+          <span class="card-who-label">For:</span>
+          <span class="card-who-text">Dental office managers, billing staff</span>
+        </div>
+        <a href="https://h2652908721-collab.github.io/dental-auth-ai/" class="card-live-link" target="_blank" rel="noopener">View live tool →</a>
+      </div>
+
+      <!-- Card: ClaimSnap -->
+      <div class="opp-card">
+        <div class="card-header">
+          <div class="card-title">ClaimSnap</div>
+          <div class="card-badge">SaaS</div>
+        </div>
+        <p class="card-pain">
+          Independent CAT adjusters convert field notes into carrier-ready structured loss reports by hand —
+          each carrier has different formatting requirements. During CAT season this bottleneck kills throughput.
+        </p>
+        <div class="card-rows">
+          <div class="card-row">
+            <div class="card-row-icon icon-ocean">🌊</div>
+            <div class="card-row-body">
+              <div class="card-row-label">Why blue ocean</div>
+              <div class="card-row-text">Enterprise tools (Xactimate) start at $200+/mo and target staff adjusters, not independents. No lightweight AI report generator exists for CAT independents specifically — a segment carriers actively want.</div>
+            </div>
+          </div>
+          <div class="card-row">
+            <div class="card-row-icon icon-money">💰</div>
+            <div class="card-row-body">
+              <div class="card-row-label">Monetization</div>
+              <div class="card-row-text">Per-report credits during active CAT season. Annual subscription for year-round adjusters. Carrier white-label for high-volume distribution.</div>
+            </div>
+          </div>
+          <div class="card-row">
+            <div class="card-row-icon icon-launch">🚀</div>
+            <div class="card-row-body">
+              <div class="card-row-label">Cold start</div>
+              <div class="card-row-text">NAPIA community and CAT adjuster Facebook groups. Storm season timing makes organic distribution natural — share one free report generation and watch it spread.</div>
+            </div>
+          </div>
+        </div>
+        <div class="card-who">
+          <span class="card-who-label">For:</span>
+          <span class="card-who-text">Independent CAT adjusters</span>
+        </div>
+        <a href="https://h2652908721-collab.github.io/claimsnap-cat-report-ai/" class="card-live-link" target="_blank" rel="noopener">View live tool →</a>
+      </div>
+
+      <!-- ── DEEP BUILD ── -->
+      <div class="cards-group-header">
+        <span class="group-emoji">🏗️</span>
+        <span class="group-title">Deep Build</span>
+        <span class="group-subtitle">3–6 months. Defensible data advantage.</span>
+      </div>
+
+      <!-- Card: DroneCompli -->
+      <div class="opp-card">
+        <div class="card-header">
+          <div class="card-title">DroneCompli</div>
           <div class="card-badge">Subscription</div>
         </div>
         <p class="card-pain">
-          HR and legal teams evaluating Deel, Remote, or Rippling have no way to look up that platform's
-          actual compliance failures — misclassifications, market exits, tax penalties, data breaches.
-          The platforms never disclose it. The data is buried in labor board filings and court records.
+          Commercial UAV operators working across borders face different airspace rules, BVLOS authorizations,
+          and operator licensing requirements in every country. Official sources are scattered, poorly translated, and rarely updated.
         </p>
         <div class="card-rows">
           <div class="card-row">
             <div class="card-row-icon icon-ocean">🌊</div>
             <div class="card-row-body">
               <div class="card-row-label">Why blue ocean</div>
-              <div class="card-row-text">No neutral incident database exists. Review sites (G2, Capterra) don't cover compliance failures. SERP for "Deel Brazil misclassification" is empty — high-intent procurement queries with zero competition.</div>
+              <div class="card-row-text">No neutral database covers global commercial UAV compliance in one place. The fragmentation is the moat — once the data is aggregated, no one can replicate it quickly. Aviation lawyers currently charge $300+/hr for what this tool automates.</div>
             </div>
           </div>
           <div class="card-row">
             <div class="card-row-icon icon-money">💰</div>
             <div class="card-row-body">
               <div class="card-row-label">Monetization</div>
-              <div class="card-row-text">HR/legal team subscription $99–299/mo. Compliance law firms pay for ad placement targeting procurement searches. High-ticket B2B with clear budget.</div>
+              <div class="card-row-text">Subscription for commercial operators + per-seat for fleet teams. Aviation compliance consultancies and law firms pay for API access. Insurance carrier white-label upside.</div>
             </div>
           </div>
           <div class="card-row">
             <div class="card-row-icon icon-launch">🚀</div>
             <div class="card-row-body">
               <div class="card-row-label">Cold start</div>
-              <div class="card-row-text">"[Platform] [country] compliance failure 2024" — one page per platform per country, zero competition. EOR procurement communities on LinkedIn and Slack are immediate distribution.</div>
+              <div class="card-row-text">r/drones and DJI commercial operator communities. "[Country] commercial drone BVLOS rules" — programmatic page per country, each query uncontested.</div>
             </div>
           </div>
         </div>
+        <div class="card-who">
+          <span class="card-who-label">For:</span>
+          <span class="card-who-text">Commercial drone operators, aviation lawyers</span>
+        </div>
+        <a href="https://h2652908721-collab.github.io/drone-compli-global/" class="card-live-link" target="_blank" rel="noopener">View live tool →</a>
       </div>
 
-      <!-- Card 2: Solar Interconnection Rules by Utility -->
+      <!-- Card: FontLegal -->
       <div class="opp-card">
         <div class="card-header">
-          <div class="card-title">Solar Interconnection Rules by Utility</div>
+          <div class="card-title">FontLegal</div>
+          <div class="card-badge">Freemium</div>
+        </div>
+        <p class="card-pain">
+          Designers and AI trainers don't know if their fonts allow commercial embedding, broadcast use, or AI training rights.
+          Font license PDFs are dense legal documents. The risk of a licensing violation surfaces only after shipping.
+        </p>
+        <div class="card-rows">
+          <div class="card-row">
+            <div class="card-row-icon icon-ocean">🌊</div>
+            <div class="card-row-body">
+              <div class="card-row-label">Why blue ocean</div>
+              <div class="card-row-text">No searchable matrix covers embedding/broadcast/AI training rights across major font libraries. AI training restrictions emerged in 2023 — this is a newly urgent, unserved query that legal teams are now scrambling to answer.</div>
+            </div>
+          </div>
+          <div class="card-row">
+            <div class="card-row-icon icon-money">💰</div>
+            <div class="card-row-body">
+              <div class="card-row-label">Monetization</div>
+              <div class="card-row-text">Freemium with bulk-check premium; design agency team plans. AI company compliance licenses at enterprise pricing — one dataset team alone justifies the whole product.</div>
+            </div>
+          </div>
+          <div class="card-row">
+            <div class="card-row-icon icon-launch">🚀</div>
+            <div class="card-row-body">
+              <div class="card-row-label">Cold start</div>
+              <div class="card-row-text">r/graphic_design, Typewolf community, HuggingFace dataset builders. "[Font name] commercial license AI training" — every major font family is an uncontested long-tail page.</div>
+            </div>
+          </div>
+        </div>
+        <div class="card-who">
+          <span class="card-who-label">For:</span>
+          <span class="card-who-text">Design studios, app developers, AI engineers</span>
+        </div>
+        <a href="https://h2652908721-collab.github.io/fontlegal-license-matrix/" class="card-live-link" target="_blank" rel="noopener">View live tool →</a>
+      </div>
+
+      <!-- Card: PAClear -->
+      <div class="opp-card">
+        <div class="card-header">
+          <div class="card-title">PAClear</div>
           <div class="card-badge">Subscription</div>
         </div>
         <p class="card-pain">
-          Residential solar installers operate across 3,000+ US utilities, each with its own interconnection
-          process, capacity limits, net metering status, approval timeline, and paperwork requirements.
-          There's no aggregated database — installers research each utility from scratch every time.
+          Medical billing managers submit Prior Authorization requests without knowing historical approval rates per CPT code and insurer —
+          wasting hours on submissions with a 90% denial probability. CMS publishes aggregate data, not the granular view that matters.
         </p>
         <div class="card-rows">
           <div class="card-row">
             <div class="card-row-icon icon-ocean">🌊</div>
             <div class="card-row-body">
               <div class="card-row-label">Why blue ocean</div>
-              <div class="card-row-text">3,000 utilities × their individual PDFs = an impossible research task at scale. No aggregator has built this. The fragmentation is the moat — once you have the data, no one can replicate it quickly.</div>
+              <div class="card-row-text">No tool translates CPT × insurer denial rates into pre-submission intelligence. RCM software shows historical outcomes for your practice — not market-wide approval odds before you even submit.</div>
             </div>
           </div>
           <div class="card-row">
             <div class="card-row-icon icon-money">💰</div>
             <div class="card-row-body">
               <div class="card-row-label">Monetization</div>
-              <div class="card-row-text">Installer subscription + per-seat pricing for larger firms. Solar equipment financiers and lenders also need this data — B2B lead-gen upside.</div>
+              <div class="card-row-text">Subscription per billing department; RCM consulting firms pay for white-label. Clear ROI: reducing denial rate by 10% saves large practices $50K+/yr in resubmission labor.</div>
             </div>
           </div>
           <div class="card-row">
             <div class="card-row-icon icon-launch">🚀</div>
             <div class="card-row-body">
               <div class="card-row-label">Cold start</div>
-              <div class="card-row-text">"[Utility name] solar interconnection process" — one programmatic page per utility, none ranked yet. Installer Facebook groups and NABCEP forums are day-one distribution.</div>
+              <div class="card-row-text">Medical Billing &amp; Coding Facebook groups, AAPC forums, r/medicalbilling. "[CPT code] prior auth denial rate [insurer]" — one uncontested page per CPT × insurer combination.</div>
             </div>
           </div>
         </div>
+        <div class="card-who">
+          <span class="card-who-label">For:</span>
+          <span class="card-who-text">Medical billing managers, physicians</span>
+        </div>
+        <a href="https://h2652908721-collab.github.io/pa-denial-rates-cpt-insurer/" class="card-live-link" target="_blank" rel="noopener">View live tool →</a>
       </div>
 
-      <!-- Card 3: Used Baby Gear Recall Check -->
+      <!-- Card: AuditScore -->
       <div class="opp-card">
         <div class="card-header">
-          <div class="card-title">Used Baby Gear Recall &amp; Safety Check</div>
-          <div class="card-badge">Affiliate</div>
-        </div>
-        <p class="card-pain">
-          Parents buying second-hand car seats, cribs, and strollers have no quick way to verify whether
-          a specific model has been recalled, expired, or no longer meets current federal safety standards.
-          CPSC search is clunky. Resale platforms don't warn you. The consequence of getting it wrong is real.
-        </p>
-        <div class="card-rows">
-          <div class="card-row">
-            <div class="card-row-icon icon-ocean">🌊</div>
-            <div class="card-row-body">
-              <div class="card-row-label">Why blue ocean</div>
-              <div class="card-row-text">No tool gives a model-specific safety verdict in one lookup. SERP for "[model name] recall" is mostly news articles and PDFs — not a clean tool. High emotional stakes drive search volume.</div>
-            </div>
-          </div>
-          <div class="card-row">
-            <div class="card-row-icon icon-money">💰</div>
-            <div class="card-row-body">
-              <div class="card-row-label">Monetization</div>
-              <div class="card-row-text">Free check → "unsafe, here's a compliant replacement" affiliate link. Resale shops pay for batch verification subscriptions. High conversion because the unsafe verdict creates immediate purchase intent.</div>
-            </div>
-          </div>
-          <div class="card-row">
-            <div class="card-row-icon icon-launch">🚀</div>
-            <div class="card-row-body">
-              <div class="card-row-label">Cold start</div>
-              <div class="card-row-text">"[Model name] recalled" queries — one page per product model, hundreds of models, each with buying intent. Facebook parenting groups and Buy Nothing communities are zero-cost distribution.</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Card 4: Alpha-Gal Ingredient Checker -->
-      <div class="opp-card">
-        <div class="card-header">
-          <div class="card-title">Alpha-Gal Syndrome Ingredient Checker</div>
+          <div class="card-title">AuditScore</div>
           <div class="card-badge">Subscription</div>
         </div>
         <p class="card-pain">
-          Alpha-gal syndrome patients — triggered by a lone star tick bite — must avoid all mammalian
-          animal products including hidden ingredients in medications, supplements, and vaccines.
-          Gelatin, stearic acid, and lactose appear in pills with no warning. Patients research every product by hand.
+          DeFi protocols pay $50K–$500K for security audits — then get exploited anyway.
+          Which auditors actually catch critical bugs? Which ones missed exploits that cost millions? The data is public but scattered across postmortems and Discord threads.
         </p>
         <div class="card-rows">
           <div class="card-row">
             <div class="card-row-icon icon-ocean">🌊</div>
             <div class="card-row-body">
               <div class="card-row-label">Why blue ocean</div>
-              <div class="card-row-text">Diagnosed cases are growing yearly. No tool covers the medication and supplement side — only food. Facebook support groups have thousands of members asking "is this pill safe?" daily, with no tool to answer.</div>
+              <div class="card-row-text">DefiLlama tracks hacks but not auditor accountability. No database maps audit firm → missed exploits → dollar losses. Protocol teams currently make six-figure decisions based on Twitter reputation, not track record.</div>
             </div>
           </div>
           <div class="card-row">
             <div class="card-row-icon icon-money">💰</div>
             <div class="card-row-body">
               <div class="card-row-label">Monetization</div>
-              <div class="card-row-text">Ad-free subscriber tier + affiliate to alpha-gal-safe brands. Patient communities pay for peace of mind — the use case is medical-grade necessity, not casual curiosity.</div>
+              <div class="card-row-text">Subscription for protocol teams evaluating auditors; institutional risk managers and DAO treasuries pay premium API rates. The stakes ($50K+ audit spend) make $99/mo subscription a trivial due-diligence expense.</div>
             </div>
           </div>
           <div class="card-row">
             <div class="card-row-icon icon-launch">🚀</div>
             <div class="card-row-body">
               <div class="card-row-label">Cold start</div>
-              <div class="card-row-text">"Is [medication/supplement] alpha-gal safe" — programmatic long-tail SEO on every common drug + supplement. The Alpha-Gal Association and patient Facebook groups are a warm audience of tens of thousands.</div>
+              <div class="card-row-text">DeFi security Twitter/X community, r/ethdev, Immunefi bug bounty ecosystem. Post an audit firm comparison thread — distribution is immediate in a community starved for this data.</div>
             </div>
           </div>
         </div>
+        <div class="card-who">
+          <span class="card-who-label">For:</span>
+          <span class="card-who-text">DeFi protocol teams, institutional risk managers</span>
+        </div>
+        <a href="https://h2652908721-collab.github.io/defi-audit-track-record/" class="card-live-link" target="_blank" rel="noopener">View live tool →</a>
       </div>
 
-      <!-- Card 5: Homelab Hardware Checker -->
+      <!-- Card: CaseGuard -->
       <div class="opp-card">
         <div class="card-header">
-          <div class="card-title">Homelab Hardware &amp; Firmware Checker</div>
+          <div class="card-title">CaseGuard</div>
           <div class="card-badge">Subscription</div>
         </div>
         <p class="card-pain">
-          Self-hosters buy cheap enterprise hardware on eBay only to find the firmware is locked,
-          the license is iCloud-bound, security updates stopped two years ago, or the fan noise
-          makes it unsuitable for home use. Reddit threads are the only source of truth — scattered and outdated.
+          HR and legal teams evaluating EOR platforms (Deel, Remote, Rippling) can't find enforcement actions against specific companies for contractor misclassification.
+          DOL, NLRB, and state labor board records are public — but completely unsearchable by company or platform.
         </p>
         <div class="card-rows">
           <div class="card-row">
             <div class="card-row-icon icon-ocean">🌊</div>
             <div class="card-row-body">
               <div class="card-row-label">Why blue ocean</div>
-              <div class="card-row-text">No tool aggregates firmware availability, license transferability, OS compatibility (Proxmox/TrueNAS/OpenWrt), noise levels, and idle wattage per model. This data lives in fragmented forum threads.</div>
+              <div class="card-row-text">No aggregator has indexed enforcement actions by company + EOR platform. G2 and Capterra don't cover compliance failures. SERP for "[Platform] misclassification enforcement" returns zero structured results — only buried PDF filings.</div>
             </div>
           </div>
           <div class="card-row">
             <div class="card-row-icon icon-money">💰</div>
             <div class="card-row-body">
               <div class="card-row-label">Monetization</div>
-              <div class="card-row-text">Subscription for model alerts + used hardware dealer affiliate referrals. Hobbyists in this space spend serious money — average homelab setup runs $500–$3,000.</div>
+              <div class="card-row-text">B2B subscription $99–299/mo for HR/legal teams. Compliance law firms pay for ad placement targeting procurement queries. High-ticket B2B segment with clear procurement budget.</div>
             </div>
           </div>
           <div class="card-row">
             <div class="card-row-icon icon-launch">🚀</div>
             <div class="card-row-body">
               <div class="card-row-label">Cold start</div>
-              <div class="card-row-text">r/homelab and Hacker News are the immediate distribution channel. "[Model] Proxmox compatible / [model] fan noise homelab" long-tail SEO captures pre-purchase research with no competing tool.</div>
+              <div class="card-row-text">EOR procurement Slack communities, LinkedIn HR/legal groups. "[Platform] contractor misclassification [country] 2024" — one page per platform × country, each with zero competition.</div>
             </div>
           </div>
         </div>
+        <div class="card-who">
+          <span class="card-who-label">For:</span>
+          <span class="card-who-text">HR/legal teams, EOR procurement</span>
+        </div>
+        <a href="https://h2652908721-collab.github.io/contractor-misclassification-enforcement-db/" class="card-live-link" target="_blank" rel="noopener">View live tool →</a>
       </div>
 
-      <!-- Card 6: Dog Food Disease DB -->
+      <!-- Card: TariffMap -->
       <div class="opp-card">
         <div class="card-header">
-          <div class="card-title">Dog Food Nutrient Database for Medical Diets</div>
-          <div class="card-badge">Affiliate</div>
+          <div class="card-title">TariffMap</div>
+          <div class="card-badge">Freemium</div>
         </div>
         <p class="card-pain">
-          Dogs diagnosed with kidney disease, bladder stones, or copper storage disease need a low-phosphorus
-          or low-purine diet. Vets prescribe expensive prescription brands. Owners want to know:
-          does a cheaper non-prescription food actually meet the same nutritional threshold? No one publishes this data.
+          Import/export managers need to find active Section 301 tariff exclusions for their products —
+          but the USTR's own search tool is unusable for non-lawyers. HTS codes, exclusion expiry dates,
+          and product descriptions require legal interpretation most teams can't afford.
         </p>
         <div class="card-rows">
           <div class="card-row">
             <div class="card-row-icon icon-ocean">🌊</div>
             <div class="card-row-body">
               <div class="card-row-label">Why blue ocean</div>
-              <div class="card-row-text">Prescription pet food is a $2B+ market kept opaque by vets and manufacturers. No neutral tool maps brand × condition × actual nutrient levels. SERP for "kidney disease dog food phosphorus comparison" is dominated by prescription brand sites.</div>
+              <div class="card-row-text">The USTR database exists but its search UX is designed for lawyers, not operations teams. Customs lawyers charge $300+/hr for lookups any indie can automate. No clean consumer tool exists despite billions in tariff savings at stake.</div>
             </div>
           </div>
           <div class="card-row">
             <div class="card-row-icon icon-money">💰</div>
             <div class="card-row-body">
               <div class="card-row-label">Monetization</div>
-              <div class="card-row-text">Affiliate on recommended non-prescription alternatives + subscription for full database access. Pet health is one of the highest-converting affiliate verticals — owners spend without hesitation when a vet says the dog needs it.</div>
+              <div class="card-row-text">Per-search credits for occasional users; subscription for import teams running regular queries. Customs broker white-label for distribution at scale. One correct exclusion finding pays for years of the tool.</div>
             </div>
           </div>
           <div class="card-row">
             <div class="card-row-icon icon-launch">🚀</div>
             <div class="card-row-body">
               <div class="card-row-label">Cold start</div>
-              <div class="card-row-text">"[Brand] dog food phosphorus content / kidney safe" — programmatic page per SKU × condition. Dog health subreddits and Facebook breed health groups have owners actively searching for exactly this.</div>
+              <div class="card-row-text">r/importexport, National Customs Brokers &amp; Forwarders Association, LinkedIn trade compliance communities. "[Product category] Section 301 exclusion 2025" — every product category is an uncontested page.</div>
             </div>
           </div>
         </div>
+        <div class="card-who">
+          <span class="card-who-label">For:</span>
+          <span class="card-who-text">Import/export managers, trade lawyers</span>
+        </div>
+        <a href="https://h2652908721-collab.github.io/tariffmap-section-301-exclusion-search/" class="card-live-link" target="_blank" rel="noopener">View live tool →</a>
       </div>
 
       <!-- Locked card -->
