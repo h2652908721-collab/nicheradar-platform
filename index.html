@@ -126,23 +126,43 @@
       font-size: var(--text-sm); color: var(--ink-faint);
     }
 
-    /* ── STATS BAR ── */
-    .stats-bar {
+    /* ── FUNNEL BAR ── */
+    .funnel-bar {
       background: var(--ink);
-      padding: var(--space-8) var(--space-8);
+      padding: var(--space-6) var(--space-8);
     }
-    .stats-inner {
+    .funnel-inner {
       max-width: 860px; margin: 0 auto;
-      display: flex; justify-content: center;
-      flex-wrap: wrap; gap: var(--space-8) var(--space-12);
+      display: flex; justify-content: center; align-items: center;
+      flex-wrap: wrap; gap: var(--space-4) var(--space-8);
     }
-    .stat { text-align: center; }
-    .stat-num {
+    .funnel-step {
+      display: flex; align-items: center; gap: var(--space-3);
+      font-size: var(--text-sm); color: #8892a4;
+    }
+    .funnel-step strong { color: #fff; font-family: 'Space Grotesk', sans-serif; font-size: var(--text-lg); }
+    .funnel-arrow { color: #334155; font-size: var(--text-lg); }
+    .funnel-note {
+      width: 100%; text-align: center;
+      font-size: var(--text-xs); color: #475569;
+      margin-top: var(--space-2);
+    }
+
+    /* ── HONEST EXPLAINER ── */
+    .honest-box {
+      background: #fff8f0;
+      border: 1.5px solid #ffe0c0;
+      border-radius: var(--radius-lg);
+      padding: var(--space-8);
+      margin-bottom: var(--space-12);
+    }
+    .honest-box h3 {
       font-family: 'Space Grotesk', sans-serif;
-      font-size: var(--text-2xl); font-weight: 700;
-      color: #fff; display: block;
+      font-size: var(--text-xl); font-weight: 700;
+      color: var(--ink); margin-bottom: var(--space-3);
     }
-    .stat-label { font-size: var(--text-sm); color: #8892a4; }
+    .honest-box p { font-size: var(--text-base); color: var(--ink-muted); line-height: 1.75; }
+    .honest-box p + p { margin-top: var(--space-3); }
 
     /* ── SECTION HEADINGS ── */
     section { padding: var(--space-24) var(--space-8); }
@@ -470,6 +490,20 @@
 </section>
 
 
+<!-- FUNNEL BAR -->
+<div class="funnel-bar">
+  <div class="funnel-inner">
+    <div class="funnel-step"><strong>62</strong> pipeline runs</div>
+    <div class="funnel-arrow">→</div>
+    <div class="funnel-step"><strong>200+</strong> ideas evaluated</div>
+    <div class="funnel-arrow">→</div>
+    <div class="funnel-step"><strong>~80%</strong> rejected immediately</div>
+    <div class="funnel-arrow">→</div>
+    <div class="funnel-step"><strong>4</strong> cleared our full filter</div>
+    <p class="funnel-note">Real numbers. Updated as the pipeline runs.</p>
+  </div>
+</div>
+
 <!-- HOW IT WORKS -->
 <section class="how-bg">
   <div class="section-inner">
@@ -507,6 +541,16 @@
     <p class="section-desc">
       These are opportunities our pipeline surfaced, scored, and vetted. Each one passed the full 5-filter screen. Subscriber drops include deeper briefs, validation data, and unpublished opportunities every week.
     </p>
+
+    <div class="honest-box">
+      <h3>Why do these look specific — and complex?</h3>
+      <p>
+        Because the obvious ideas are already gone. "Build an AI writing tool." "Make another todo app." "Launch a resume generator." Our filter rejects these in seconds — they're oversaturated, margin-less, and built by a thousand people already.
+      </p>
+      <p>
+        What survives is narrow, vertical, and requires some domain knowledge. That's not a bug — that's the moat. <strong>If it were obvious and easy, someone would have done it.</strong> "Quick Build" means the scope is contained enough to validate in weeks, not that anyone can build it with zero context. These are for builders willing to learn one niche deeply, or who already live in it.
+      </p>
+    </div>
 
     <div class="cards-grid">
 
