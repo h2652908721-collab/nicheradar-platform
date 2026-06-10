@@ -49,7 +49,7 @@
       --h3-size:     clamp(1.1rem, 1.6vw, 1.35rem);
     }
 
-    html { scroll-behavior: smooth; }
+    html { scroll-behavior: smooth; scroll-padding-top: 84px; }
 
     body {
       font-family: 'Inter', system-ui, sans-serif;
@@ -58,7 +58,6 @@
       line-height: 1.6;
       -webkit-font-smoothing: antialiased;
       overflow-x: hidden;
-      scroll-behavior: smooth;
     }
 
     /* ─────── NAV ─────── */
@@ -70,9 +69,9 @@
       border-bottom: 1px solid transparent;
     }
     .nav.scrolled {
-      background: rgba(5, 11, 21, 0.82);
-      backdrop-filter: blur(18px) saturate(1.4);
-      -webkit-backdrop-filter: blur(18px) saturate(1.4);
+      background: rgba(5, 11, 21, 0.88);
+      backdrop-filter: blur(12px) saturate(1.2);
+      -webkit-backdrop-filter: blur(12px) saturate(1.2);
       border-color: var(--border);
     }
     .nav-brand {
@@ -382,7 +381,6 @@
       align-items: center; justify-content: center;
       gap: 0.75rem; text-align: center;
       min-height: 220px;
-      opacity: 0; transform: translateY(24px);
     }
     .lock-icon { font-size: 2rem; }
     .lock-label {
@@ -540,8 +538,8 @@
 <nav class="nav" id="nav">
   <a href="#" class="nav-brand">Niche<span class="dot">Radar</span></a>
   <div class="nav-right">
-    <a href="#opportunities" class="nav-link">Opportunities</a>
     <a href="#how" class="nav-link">How It Works</a>
+    <a href="#opportunities" class="nav-link">Opportunities</a>
     <a href="#pricing" class="nav-link">Pricing</a>
     <a href="#join" class="nav-cta">Get Early Access</a>
   </div>
@@ -1124,6 +1122,14 @@
 
 <script>
 (function() {
+  /* Fallback: if the GSAP CDN failed to load, reveal everything that starts
+     hidden so the page is never blank. */
+  if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') {
+    document.querySelectorAll('.hero-badge, .hero-title .word, .hero-sub, .hero-form-wrap, .locked-card, .opp-card, .step-card, .pipe-item')
+      .forEach(function(el){ el.style.opacity = '1'; el.style.transform = 'none'; });
+    return;
+  }
+
   /* Register ScrollTrigger */
   gsap.registerPlugin(ScrollTrigger);
 
@@ -1191,6 +1197,10 @@
       }
     });
   });
+
+  /* Recompute trigger positions once fonts/layout settle so cards reveal at
+     the right scroll point (web-font reflow can shift them otherwise). */
+  window.addEventListener('load', function(){ ScrollTrigger.refresh(); });
 
 })();
 </script>
