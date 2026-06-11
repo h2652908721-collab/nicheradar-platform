@@ -1596,7 +1596,7 @@ window.addEventListener('gx-card', (e) => {
   }
   if (!best) return;                                   // none airborne — the DOM failsafe lights the badge
   best.userData.mission = {
-    card: e.detail.el, t: 0, dur: 1.7 + Math.random() * 0.4,
+    card: e.detail.el, t: 0, dur: 1.2 + Math.random() * 0.4,
     from: best.position.clone(),
     // keep sailing the way it was already going, then bend toward the card
     ctrl: best.position.clone().add(new THREE.Vector3(4 + Math.random() * 2, 2 + Math.random(), 0))
