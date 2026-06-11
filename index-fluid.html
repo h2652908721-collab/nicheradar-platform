@@ -1706,11 +1706,11 @@ function loop() {
   // pool transform must be current BEFORE world→field conversions
   // rotation = DIRECT coupling (1:1 with scroll, zero lag — 跟手) plus an
   // INERTIA tail: momentum built while scrolling keeps it coasting afterwards
-  rotVel += dy * 0.00035;                            // momentum kick (signed)
-  rotVel -= rotVel * Math.min(1, dt * 1.1);          // friction (~2s coast)
-  rotVel = Math.max(-1.6, Math.min(1.6, rotVel));    // spin cap
+  rotVel += dy * 0.0005;                             // momentum kick (signed)
+  rotVel -= rotVel * Math.min(1, dt * 0.9);          // friction — ~1s of visible coasting
+  rotVel = Math.max(-2.0, Math.min(2.0, rotVel));    // spin cap
   rotExtra += rotVel * dt;
-  liquid.rotation.y = Math.sin(t * 0.07) * 0.18 + y * 0.0006 + rotExtra;
+  liquid.rotation.y = Math.sin(t * 0.07) * 0.18 + y * 0.0009 + rotExtra;
   liquid.updateMatrixWorld();
   if (liquidMat.userData.shader) liquidMat.userData.shader.uniforms.uTime.value = t;
   updateLiquid(poolPhase);                // resets the field + seed balls
