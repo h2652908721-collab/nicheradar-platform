@@ -280,7 +280,9 @@
     @media (max-width: 1280px) { .anno-in { display: none; } }
     @media (max-width: 900px) {
       .anno-in, .anno-out { display: none; }
-      .anno-pool { right: 1.4rem; bottom: 25%; }
+      /* phones: the pool label joins the normal flow under the hero copy —
+         absolute %-anchoring collides with content on short viewports */
+      .anno-pool { position: static; margin-top: 1.8rem; }
       .anno::after { width: 20px; }
     }
 
@@ -714,7 +716,8 @@
     @media (max-width: 900px) {
       .nav, .nav.scrolled { padding: 1rem 1.4rem; }
       .nav-link { display: none; }
-      .hero { padding: 7.5rem 1.4rem 6rem; }
+      .hero { padding: 7.5rem 1.4rem 5rem; flex-direction: column; justify-content: center; }
+      .hero-note { display: none; }   /* decorative cue — overlaps stats on short phones */
       .hero-stats .stat { padding: 0.4rem 1.4rem 0.4rem 1rem; }
       .sec { padding: 6.5rem 1.4rem; }
       .method-grid { grid-template-columns: 1fr; }
