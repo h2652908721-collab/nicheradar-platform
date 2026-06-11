@@ -803,15 +803,15 @@
     </div>
     <div class="hero-stats">
       <div class="stat"><div class="stat-n" data-count="61" data-stat="runs">0</div><div class="stat-l">weekly runs</div></div>
-      <div class="stat"><div class="stat-n" data-count="200" data-suffix="+" data-stat="evaluated">0</div><div class="stat-l">ideas tasted</div></div>
-      <div class="stat"><div class="stat-n" data-count="4" data-prefix="~" data-suffix="%">0</div><div class="stat-l">pass rate</div></div>
+      <div class="stat"><div class="stat-n" data-count="640" data-suffix="+" data-stat="evaluated">0</div><div class="stat-l">ideas tasted</div></div>
+      <div class="stat"><div class="stat-n" data-count="4" data-prefix="~" data-suffix="%" data-stat="passrate">0</div><div class="stat-l">pass rate</div></div>
       <div class="stat"><div class="stat-n tint" data-count="26" data-stat="survived">0</div><div class="stat-l">distilled niches</div></div>
     </div>
   </div>
   <!-- live diagram labels for the 3D scene -->
-  <div class="anno anno-in" aria-hidden="true">raw ideas — <b>200+</b> pour in weekly</div>
+  <div class="anno anno-in" aria-hidden="true">raw ideas — <b>640+</b> to date</div>
   <div class="anno anno-pool" aria-hidden="true">the distillation pool — <b>5 filters</b> live inside</div>
-  <div class="anno anno-out" aria-hidden="true">validated niches escape — <b>~4%</b></div>
+  <div class="anno anno-out" aria-hidden="true">validated niches escape — <b id="anno-rate">~4%</b></div>
 
   <div class="hero-note">scroll to distill</div>
 </header>
@@ -866,11 +866,11 @@
       <h2 class="display sec-h2">Five chambers. <em>Almost nothing survives the column.</em></h2>
       <div class="d-stage">
         <div>
-          <div class="d-counter" id="d-num">200</div>
+          <div class="d-counter" id="d-num">640</div>
           <div class="d-counter-label">candidates in suspension</div>
           <div class="d-note">
-            input: 200+ candidates / weekly run<br>
-            output: 26 fully distilled<br>
+            input: 640+ candidates to date<br>
+            output: <span id="d-survived">26</span> fully distilled<br>
             criteria: all five chambers, no exceptions
           </div>
         </div>
@@ -1234,11 +1234,25 @@ function initCounters(){
 fetch('/stats.json')
   .then(function(r){ return r.json(); })
   .then(function(s){
-    var m = {runs: s.runs, evaluated: s.evaluated, survived: s.survived};
+    var passRate = Math.round(s.survived / s.evaluated * 100);
+    var m = {runs: s.runs, evaluated: s.evaluated, survived: s.survived, passrate: passRate};
     document.querySelectorAll('[data-stat]').forEach(function(el){
       var k = el.getAttribute('data-stat');
       if(m[k] != null) el.setAttribute('data-count', m[k]);
     });
+    /* recompute ALIVE with real numbers so distillation column is consistent */
+    var e = s.evaluated, sv = s.survived;
+    ALIVE[0] = e;
+    ALIVE[1] = Math.round(e * 0.60);
+    ALIVE[2] = Math.round(e * 0.60 * 0.75);
+    ALIVE[3] = Math.round(e * 0.60 * 0.75 * 0.80);
+    ALIVE[4] = Math.round(e * 0.60 * 0.75 * 0.80 * 0.90);
+    ALIVE[5] = sv;
+    if(dNum) dNum.textContent = e;
+    var ds = document.getElementById('d-survived');
+    if(ds) ds.textContent = sv;
+    var ar = document.getElementById('anno-rate');
+    if(ar) ar.textContent = '~' + passRate + '%';
   })
   .catch(function(){})
   .then(initCounters);
@@ -1247,7 +1261,7 @@ fetch('/stats.json')
 var chambers = Array.prototype.slice.call(document.querySelectorAll('.chamber'));
 var dNum = document.getElementById('d-num');
 var dVerdict = document.getElementById('d-verdict');
-var ALIVE = [200, 122, 76, 41, 28, 22];
+var ALIVE = [640, 384, 288, 230, 207, 26];
 
 var lastCur = -1, lastSegCls = -1;
 function setStage(seg, local){
@@ -1265,7 +1279,7 @@ function setStage(seg, local){
     });
   }
   var v = (seg >= 4 && local > 0.85)
-    ? '22 distilled opportunities'
+    ? ALIVE[5] + ' distilled opportunities'
     : 'chamber C·' + (seg + 1) + ' condensing…';
   if(v !== dVerdict.textContent) dVerdict.textContent = v;
 }
@@ -1529,15 +1543,15 @@ let surge = 0;                       // distillation stage hits make the pool sw
 window.__gxSurge = () => { surge = 1; };
 let pointerBall = { x: 0.5, y: 0.5, tx: 0.5, ty: 0.5 };
 
-/* the pool's volume tracks "candidates remaining" (200 → 22) from the
+/* the pool's volume tracks "candidates remaining" (640 → 26) from the
    distillation section — scroll the column and you watch the liquid condense */
 let vol = 1;
 /* `p` is an accumulated phase, advanced by the render loop at a scroll-aware
    RATE. Scrolling changes how fast the liquid churns — never where it is —
    so wheel input can't pinch the shape or make it spring back. */
 function updateLiquid(p) {
-  const alive = window.__gxAlive != null ? window.__gxAlive : 200;
-  const volT = 0.45 + 0.55 * Math.max(0, Math.min(1, (alive - 22) / 178));
+  const alive = window.__gxAlive != null ? window.__gxAlive : 640;
+  const volT = 0.45 + 0.55 * Math.max(0, Math.min(1, (alive - 26) / 614));
   vol += (volT - vol) * 0.04;
 
   liquid.reset();
