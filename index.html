@@ -1403,7 +1403,10 @@ let pointerBall = { x: 0.5, y: 0.5, tx: 0.5, ty: 0.5 };
 /* the pool's volume tracks "candidates remaining" (200 → 22) from the
    distillation section — scroll the column and you watch the liquid condense */
 let vol = 1;
-function updateLiquid(t, speed) {
+/* `p` is an accumulated phase, advanced by the render loop at a scroll-aware
+   RATE. Scrolling changes how fast the liquid churns — never where it is —
+   so wheel input can't pinch the shape or make it spring back. */
+function updateLiquid(p) {
   const alive = window.__gxAlive != null ? window.__gxAlive : 200;
   const volT = 0.45 + 0.55 * Math.max(0, Math.min(1, (alive - 22) / 178));
   vol += (volT - vol) * 0.04;
@@ -1413,9 +1416,9 @@ function updateLiquid(t, speed) {
   const spread = 0.65 + 0.35 * vol;
   for (let i = 0; i < BALLS; i++) {
     const s = seeds[i];
-    const x = 0.5 + 0.22 * spread * Math.sin(s.sx * t * speed + s.px);
-    const y = 0.5 + 0.2 * spread * Math.sin(s.sy * t * speed + s.py) * Math.cos(s.sz * t * 0.7 + s.pz);
-    const z = 0.5 + 0.18 * spread * Math.cos(s.sz * t * speed + s.pz);
+    const x = 0.5 + 0.22 * spread * Math.sin(s.sx * p + s.px);
+    const y = 0.5 + 0.2 * spread * Math.sin(s.sy * p + s.py) * Math.cos(s.sz * p * 0.7 + s.pz);
+    const z = 0.5 + 0.18 * spread * Math.cos(s.sz * p + s.pz);
     liquid.addBall(x, y, z, s.str * (0.55 + 0.45 * vol) * (1 + surge * 0.5), sub);
   }
   // the visitor stirs the pool
@@ -1529,6 +1532,8 @@ let perfFrames = 0, perfSlow = 0, perfDone = false;
 
 const clock = new THREE.Clock();
 let scrollV = 0, lastY = window.scrollY;
+let poolPhase = Math.random() * 20;      // liquid churn phase (integrates forward only)
+let rotCur = lastY * 0.00012;            // eased scroll-driven rotation
 
 function loop() {
   requestAnimationFrame(loop);
@@ -1547,17 +1552,20 @@ function loop() {
     }
   }
 
-  // scroll velocity stirs the pool
+  // scroll stirs the pool: velocity raises the churn RATE (phase keeps
+  // integrating forward, so the shape flows faster instead of deforming)
   const y = window.scrollY;
-  scrollV += ((y - lastY) - scrollV) * 0.1;
+  scrollV += ((y - lastY) - scrollV) * 0.08;
   lastY = y;
-  const speed = 0.9 + Math.min(1.6, Math.abs(scrollV) * 0.004);
+  const churn = 1 + Math.min(0.7, Math.abs(scrollV) * 0.0012);
+  poolPhase += dt * 0.55 * churn;
   surge = Math.max(0, surge - dt * 1.4);
 
   // pool transform must be current BEFORE world→field conversions
-  liquid.rotation.y = Math.sin(t * 0.07) * 0.18 + y * 0.00012;
+  rotCur += (y * 0.00012 - rotCur) * dt * 3;        // eased scroll rotation
+  liquid.rotation.y = Math.sin(t * 0.07) * 0.18 + rotCur;
   liquid.updateMatrixWorld();
-  updateLiquid(t * 0.55, speed);          // resets the field + seed balls
+  updateLiquid(poolPhase);                // resets the field + seed balls
 
   // droplets fall in and PHYSICALLY merge: each one near the surface injects
   // its own metaball, so the pool bulges up, grabs it, and swallows it whole
@@ -1623,7 +1631,7 @@ function loop() {
 if (prefersReduced) {
   worldIn = 1;
   liquid.updateMatrixWorld();
-  updateLiquid(1.5, 1);
+  updateLiquid(1.5);
   liquid.update();
   for (let i = 0; i < DROPS; i++) {
     const d = D[i];
