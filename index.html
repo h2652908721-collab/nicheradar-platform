@@ -3,1573 +3,1105 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Gauntrix — AI Validation Engine for Buildable Niches</title>
-  <script>/* must run before the browser restores scroll, or the boot/intro choreography gets skipped on reload */
+  <title>Gauntrix — The AI Market Distillery</title>
+  <script>/* must run before the browser restores scroll, or the intro + bead choreography gets skipped on reload */
   if ('scrollRestoration' in history) history.scrollRestoration = 'manual';</script>
-  <meta name="description" content="200+ ideas enter the machine. ~4% make it through. What comes out the other side is narrow, buildable, and monetizable. Weekly validated niche drops for AI builders.">
-  <meta property="og:title" content="Gauntrix — The Machine That Filters Out Bad Ideas">
-  <meta property="og:description" content="Not a trend tracker. An AI validation engine. 200+ ideas in. ~4% out. Weekly drops of what passed all 5 filters.">
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23030305'/%3E%3Crect x='9' y='9' width='14' height='14' fill='%23ff1a1a' transform='rotate(45 16 16)'/%3E%3C/svg%3E">
+  <meta name="description" content="200+ ideas pour in every week. ~4% come out distilled — narrow, buildable, monetizable niches for AI builders. Weekly drops.">
+  <meta property="og:title" content="Gauntrix — The AI Market Distillery">
+  <meta property="og:description" content="Not a trend tracker. A distillation column for the indie market. 200+ ideas in, a handful out — validated, buildable, yours weekly.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%2305070b'/%3E%3Cpath d='M16 6c4 6 7 9.5 7 13a7 7 0 1 1-14 0c0-3.5 3-7 7-13z' fill='url(%23g)'/%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%236ee7ff'/%3E%3Cstop offset='.5' stop-color='%239d8cff'/%3E%3Cstop offset='1' stop-color='%23ffc46b'/%3E%3C/linearGradient%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
   <script src="https://assets.lemonsqueezy.com/lemon.js" defer></script>
 
   <style>
     /* ════════════════════════════════════════════════════════════
-       GAUNTRIX v3 — CINEMATIC KILL-FILTER
-       black / red · letterboxed · one continuous 3D machine room
+       GAUNTRIX — LIQUID EDITION
+       ink · pearl · iridescent chrome · everything moves like fluid
        ════════════════════════════════════════════════════════════ */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --void:       #030305;
-      --void-2:     #08080d;
-      --void-3:     #0d0d15;
-      --panel:      #101019;
-      --red:        #ff1a1a;
-      --red-core:   #e60000;
-      --red-hot:    #ff4444;
-      --red-dim:    #8a0e0e;
-      --red-blood:  #4d0000;
-      --white:      #f2f2f6;
-      --gray:       #9b9bab;
-      --gray-dim:   #54545f;
-      --line:       rgba(255,255,255,0.07);
-      --line-red:   rgba(255,26,26,0.22);
-      --disp:       'Space Grotesk', -apple-system, sans-serif;
-      --body:       'Inter', -apple-system, sans-serif;
-      --mono:       'JetBrains Mono', monospace;
-      --bar-h:      36px;
-      --glass:      rgba(7,7,12,0.94);
+      --ink:     #05070b;
+      --abyss:   #090d15;
+      --well:    #0e1320;
+      --pearl:   #f4f6fa;
+      --mist:    #93a0b4;
+      --faint:   #5a6478;
+      --line:    rgba(244,246,250,0.09);
+      --cyan:    #6ee7ff;
+      --violet:  #9d8cff;
+      --amber:   #ffc46b;
+      --grad:    linear-gradient(100deg, var(--cyan) 0%, var(--violet) 45%, var(--amber) 100%);
+      --serif:   'Instrument Serif', Georgia, serif;
+      --body:    'Inter', -apple-system, sans-serif;
+      --mono:    'JetBrains Mono', monospace;
+      --ease:    cubic-bezier(0.22, 1, 0.36, 1);
     }
-    @media (max-width: 900px) { :root { --bar-h: 26px; } }
 
-    html { scroll-behavior: smooth; background: var(--void); }
-    ::selection { background: var(--red-core); color: var(--white); }
+    html { scroll-behavior: smooth; background: var(--ink); }
+    ::selection { background: var(--violet); color: var(--ink); }
 
     body {
       font-family: var(--body);
-      background: var(--void);
-      color: var(--white);
+      background: var(--ink);
+      color: var(--pearl);
       overflow-x: hidden;
-      cursor: none;
+      -webkit-font-smoothing: antialiased;
     }
-    @media (hover: none), (max-width: 900px) { body { cursor: auto; } }
-    a, button { cursor: none; }
-    @media (hover: none), (max-width: 900px) { a, button { cursor: pointer; } }
 
-    /* ─── THE MACHINE ROOM — fixed 3D stage behind everything ─── */
+    /* ─── ambient glows behind everything ─── */
+    .glow { position: fixed; border-radius: 50%; filter: blur(120px); pointer-events: none; z-index: 0; }
+    .glow-a { width: 60vw; height: 60vw; top: -22vw; left: -18vw; background: rgba(110,231,255,0.07); }
+    .glow-b { width: 55vw; height: 55vw; bottom: -20vw; right: -15vw; background: rgba(157,140,255,0.07); }
+    .glow-c { width: 30vw; height: 30vw; top: 45%; right: 8vw; background: rgba(255,196,107,0.05); }
+
     #webgl {
       position: fixed; inset: 0; width: 100%; height: 100%;
-      z-index: 0; display: block; pointer-events: none;
+      z-index: 1; display: block; pointer-events: none;
     }
-    main { position: relative; z-index: 1; }
+    main { position: relative; z-index: 2; }
 
-    /* ─── CINEMA LETTERBOX + VIEWFINDER HUD ─── */
-    .cine-bar {
-      position: fixed; left: 0; right: 0; height: var(--bar-h);
-      background: #020204; z-index: 950;
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 0 1.2rem; gap: 1rem;
-      font-family: var(--mono); font-size: 0.55rem;
-      letter-spacing: 0.18em; text-transform: uppercase; color: var(--gray-dim);
-      pointer-events: none;
-      transition: transform 0.8s cubic-bezier(0.16,1,0.3,1);
-    }
-    .cine-top { top: 0; border-bottom: 1px solid var(--line); transform: translateY(-100%); }
-    .cine-bottom { bottom: 0; border-top: 1px solid var(--line); transform: translateY(100%); }
-    body.cine-in .cine-top, body.cine-in .cine-bottom { transform: translateY(0); }
-    .cine-bar b { color: var(--red-hot); font-weight: 600; }
-    .cine-rec { display: flex; align-items: center; gap: 0.5rem; color: var(--gray); }
-    .cine-rec::before {
-      content: ''; width: 7px; height: 7px; border-radius: 50%;
-      background: var(--red); box-shadow: 0 0 8px var(--red);
-      animation: blink 1.2s steps(2) infinite;
-    }
-    .cine-tc { color: var(--gray); font-variant-numeric: tabular-nums; }
-    .cine-prog {
-      flex: 1; max-width: 420px; height: 2px;
-      background: rgba(255,255,255,0.08); position: relative; overflow: hidden;
-    }
-    .cine-prog i {
-      position: absolute; left: 0; top: 0; bottom: 0; width: 0%;
-      background: var(--red); box-shadow: 0 0 8px var(--red);
-    }
-    #snd-btn {
-      pointer-events: auto;
-      background: none; border: 1px solid var(--line);
-      color: var(--gray-dim); font-family: var(--mono);
-      font-size: 0.55rem; letter-spacing: 0.18em; text-transform: uppercase;
-      padding: 0.2rem 0.6rem; transition: all 0.2s;
-    }
-    #snd-btn:hover { color: var(--white); border-color: var(--line-red); }
-    #snd-btn.on { color: var(--red-hot); border-color: var(--line-red); text-shadow: 0 0 8px rgba(255,26,26,0.6); }
-    @media (max-width: 900px) {
-      .cine-bar { padding: 0 0.7rem; font-size: 0.48rem; }
-      .cine-hide-m { display: none; }
-    }
-
-    /* ─── ATMOSPHERE ─── */
-    .fx-scanlines {
-      position: fixed; inset: 0; z-index: 900; pointer-events: none;
-      background: repeating-linear-gradient(to bottom, transparent 0 4px, rgba(0,0,0,0.06) 4px 5px);
-      mix-blend-mode: multiply;
-    }
-    .fx-noise {
-      position: fixed; inset: -50%; width: 200%; height: 200%;
-      z-index: 901; pointer-events: none; opacity: 0.022;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-      animation: grain 0.8s steps(4) infinite;
-    }
-    @keyframes grain {
-      0% { transform: translate(0,0); } 25% { transform: translate(-2%,1%); }
-      50% { transform: translate(1%,-2%); } 75% { transform: translate(-1%,2%); } 100% { transform: translate(2%,-1%); }
-    }
     .fx-vignette {
-      position: fixed; inset: 0; z-index: 899; pointer-events: none;
-      background: radial-gradient(ellipse 115% 95% at 50% 50%, transparent 52%, rgba(0,0,0,0.6) 100%);
+      position: fixed; inset: 0; z-index: 3; pointer-events: none;
+      background: radial-gradient(ellipse 120% 100% at 50% 45%, transparent 58%, rgba(2,3,6,0.5) 100%);
     }
 
-    /* ─── CUSTOM CURSOR ─── */
+    /* ─── cursor: a soft droplet ─── */
     #cursor {
-      position: fixed; width: 8px; height: 8px; z-index: 9999;
-      background: var(--red); pointer-events: none;
+      position: fixed; width: 10px; height: 10px; border-radius: 50%;
+      background: var(--pearl); z-index: 9999; pointer-events: none;
       transform: translate(-50%,-50%); display: none;
       mix-blend-mode: difference;
     }
     #cursor-ring {
-      position: fixed; width: 34px; height: 34px; z-index: 9998;
-      border: 1px solid rgba(255,26,26,0.6); pointer-events: none;
-      transform: translate(-50%,-50%) rotate(45deg); display: none;
-      transition: width 0.2s, height 0.2s, border-color 0.2s, transform 0.2s;
+      position: fixed; width: 38px; height: 38px; border-radius: 50%;
+      border: 1px solid rgba(244,246,250,0.35); z-index: 9998; pointer-events: none;
+      transform: translate(-50%,-50%); display: none;
+      transition: width 0.25s var(--ease), height 0.25s var(--ease), border-color 0.25s;
     }
-    #cursor-ring.hot {
-      width: 54px; height: 54px; border-color: var(--red);
-      transform: translate(-50%,-50%) rotate(0deg);
-    }
+    #cursor-ring.hot { width: 58px; height: 58px; border-color: var(--cyan); }
     @media (hover: none), (max-width: 900px) { #cursor, #cursor-ring { display: none !important; } }
+    body { cursor: auto; }
+    @media (hover: hover) and (min-width: 901px) { body, a, button { cursor: none; } }
 
-    /* keyboard focus — custom cursor hides the pointer, so focus must be unmistakable */
     a:focus-visible, button:focus-visible, input:focus-visible {
-      outline: 2px solid var(--red); outline-offset: 3px;
+      outline: 2px solid var(--cyan); outline-offset: 3px;
     }
 
-    /* ─── CINEMATIC BOOT / TITLE SEQUENCE ─── */
-    #boot {
+    /* ─── VEIL (entrance) ─── */
+    #veil {
       position: fixed; inset: 0; z-index: 2000;
-      background: #010102;
-      display: flex; align-items: center; justify-content: center;
-      transition: opacity 0.7s ease, visibility 0.7s;
-    }
-    #boot.off { opacity: 0; visibility: hidden; }
-    #boot.flash { animation: bootflash 0.18s steps(2) 2; }
-    @keyframes bootflash { 50% { background: #2a0000; } }
-    .boot-term {
-      position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
-      width: min(560px, 86vw);
-      font-family: var(--mono); font-size: 0.68rem; line-height: 2.1;
-      letter-spacing: 0.08em; color: var(--gray);
-      white-space: pre-wrap;
-      transition: opacity 0.3s;
-    }
-    .boot-term .ok { color: var(--red-hot); }
-    .boot-term .dim { color: var(--gray-dim); }
-    .boot-term::after {
-      content: '█'; color: var(--red); animation: blink 0.7s steps(2) infinite;
-    }
-    .boot-title {
-      position: absolute; inset: 0;
+      background: var(--ink);
       display: flex; flex-direction: column; align-items: center; justify-content: center;
-      gap: 1.4rem; opacity: 0; pointer-events: none;
+      gap: 1.6rem;
+      transition: opacity 0.9s var(--ease), visibility 0.9s;
     }
-    .boot-title.show { opacity: 1; }
-    .bt-word {
-      font-family: var(--disp);
-      font-size: clamp(3rem, 11vw, 8.5rem);
-      font-weight: 900; letter-spacing: 0.02em; line-height: 1;
-      color: var(--white); position: relative;
-      text-shadow: 0 0 48px rgba(255,26,26,0.45);
+    #veil.off { opacity: 0; visibility: hidden; }
+    .veil-word {
+      font-family: var(--serif); font-style: italic;
+      font-size: clamp(3rem, 9vw, 6.5rem); line-height: 1;
+      color: var(--pearl); letter-spacing: 0.01em;
+      opacity: 0; animation: veilword 1.2s var(--ease) 0.15s forwards;
     }
-    .boot-title.show .bt-word { animation: titleslam 0.5s cubic-bezier(0.16,1,0.3,1) both; }
-    @keyframes titleslam {
-      0% { transform: scale(1.35); opacity: 0; filter: blur(14px); }
-      60% { transform: scale(0.98); opacity: 1; filter: blur(0); }
-      100% { transform: scale(1); }
+    @keyframes veilword {
+      from { opacity: 0; transform: translateY(26px); filter: blur(6px); }
+      to   { opacity: 1; transform: translateY(0); filter: blur(0); }
     }
-    .bt-word::before, .bt-word::after {
-      content: attr(data-text); position: absolute; inset: 0;
-      color: var(--red); opacity: 0; pointer-events: none;
+    .veil-drop {
+      width: 9px; height: 9px; border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+      background: var(--grad);
+      opacity: 0; animation: veildrop 1s ease-in 0.9s forwards;
     }
-    .boot-title.show .bt-word::before { animation: gl-a 0.3s steps(3) 0.45s 3; opacity: 0.7; }
-    .boot-title.show .bt-word::after { animation: gl-b 0.3s steps(3) 0.5s 3; opacity: 0.45; color: var(--white); }
-    .bt-sub {
-      font-family: var(--mono); font-size: 0.62rem;
-      letter-spacing: 0.55em; text-transform: uppercase; color: var(--gray-dim);
-      padding-left: 0.55em;
+    @keyframes veildrop {
+      0% { opacity: 0; transform: translateY(-26px) scale(0.6); }
+      25% { opacity: 1; }
+      100% { opacity: 1; transform: translateY(34px) scale(1); }
     }
-    .boot-title.show .bt-sub { animation: subfade 0.8s ease 0.5s both; }
-    @keyframes subfade { from { opacity: 0; letter-spacing: 0.9em; } to { opacity: 1; letter-spacing: 0.55em; } }
-    .boot-skip {
-      position: absolute; bottom: 7vh; left: 50%; transform: translateX(-50%);
-      font-family: var(--mono); font-size: 0.52rem; letter-spacing: 0.24em;
-      color: var(--gray-dim); text-transform: uppercase; opacity: 0.6;
+    .veil-ripple {
+      position: absolute; bottom: calc(50% - 110px); width: 10px; height: 10px;
+      border-radius: 50%; border: 1px solid rgba(244,246,250,0.4);
+      opacity: 0; animation: veilripple 0.9s ease-out 1.85s forwards;
+    }
+    @keyframes veilripple {
+      0% { opacity: 0.8; transform: scale(1); }
+      100% { opacity: 0; transform: scale(22); }
+    }
+    .veil-sub {
+      position: absolute; bottom: 8vh;
+      font-family: var(--mono); font-size: 0.55rem; letter-spacing: 0.3em;
+      text-transform: uppercase; color: var(--faint);
     }
 
     /* ─── NAV ─── */
     .nav {
-      position: fixed; top: var(--bar-h); left: 0; right: 0; z-index: 500;
+      position: fixed; top: 0; left: 0; right: 0; z-index: 500;
       display: flex; align-items: center; justify-content: space-between;
-      padding: 1.2rem 3rem;
-      transition: background 0.3s, border-color 0.3s, padding 0.3s;
+      padding: 1.5rem 3.2rem;
+      transition: background 0.4s, padding 0.4s, border-color 0.4s;
       border-bottom: 1px solid transparent;
     }
     .nav.scrolled {
-      background: rgba(3,3,5,0.82);
-      backdrop-filter: blur(14px);
+      background: rgba(5,7,11,0.72);
+      backdrop-filter: blur(18px);
       border-bottom-color: var(--line);
-      padding: 0.85rem 3rem;
+      padding: 1rem 3.2rem;
     }
     .nav-logo {
-      font-family: var(--disp); font-size: 1.15rem; font-weight: 900;
-      letter-spacing: -0.02em; color: var(--white); text-decoration: none;
-      display: flex; align-items: center; gap: 0.6rem;
+      font-family: var(--serif); font-style: italic;
+      font-size: 1.5rem; color: var(--pearl); text-decoration: none;
+      display: flex; align-items: center; gap: 0.55rem;
     }
     .nav-logo::before {
-      content: ''; width: 9px; height: 9px;
-      background: var(--red); transform: rotate(45deg);
-      box-shadow: 0 0 12px var(--red);
+      content: ''; width: 10px; height: 10px;
+      border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+      background: var(--grad);
     }
-    .nav-links { display: flex; align-items: center; gap: 2.4rem; }
+    .nav-links { display: flex; align-items: center; gap: 2.6rem; }
     .nav-link {
-      font-family: var(--mono); font-size: 0.62rem; font-weight: 600;
-      letter-spacing: 0.16em; text-transform: uppercase;
-      color: var(--gray-dim); text-decoration: none; transition: color 0.2s;
+      font-family: var(--mono); font-size: 0.62rem; font-weight: 400;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--faint); text-decoration: none;
+      transition: color 0.25s;
     }
-    .nav-link::before { content: '/'; color: var(--red-dim); margin-right: 0.4em; }
-    .nav-link:hover { color: var(--white); }
+    .nav-link:hover { color: var(--pearl); }
 
-    /* ─── BUTTONS ─── */
-    .btn {
-      display: inline-block; position: relative;
-      font-family: var(--disp); font-weight: 700; text-decoration: none;
-      transition: background 0.2s, color 0.2s, border-color 0.2s, box-shadow 0.2s;
-      overflow: hidden; will-change: transform;
+    /* ─── BUTTONS (pills) ─── */
+    .pill {
+      display: inline-flex; align-items: center; gap: 0.6rem;
+      font-family: var(--body); font-weight: 600; font-size: 0.85rem;
+      text-decoration: none; border-radius: 999px;
+      padding: 0.8rem 1.9rem;
+      transition: transform 0.3s var(--ease), box-shadow 0.3s, background 0.3s, color 0.3s;
+      position: relative; will-change: transform;
     }
-    .btn-red {
-      background: var(--red-core); color: var(--white);
-      padding: 0.65rem 1.5rem; font-size: 0.78rem; letter-spacing: 0.04em;
-      clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px));
+    .pill-solid { background: var(--pearl); color: var(--ink); }
+    .pill-solid:hover {
+      box-shadow: 0 8px 40px rgba(157,140,255,0.35), 0 2px 12px rgba(110,231,255,0.25);
+      transform: translateY(-2px);
     }
-    .btn-red::after {
-      content: ''; position: absolute; top: 0; left: -120%;
-      width: 60%; height: 100%;
-      background: linear-gradient(105deg, transparent, rgba(255,255,255,0.25), transparent);
-      transition: left 0.45s ease;
+    .pill-ghost {
+      color: var(--pearl); border: 1px solid rgba(244,246,250,0.18);
+      background: rgba(244,246,250,0.03);
+      backdrop-filter: blur(6px);
     }
-    .btn-red:hover { background: var(--red); box-shadow: 0 0 36px rgba(255,26,26,0.55); }
-    .btn-red:hover::after { left: 160%; }
-    .btn-lg { padding: 1rem 2.4rem; font-size: 0.92rem; }
-    .btn-ghost {
-      background: rgba(3,3,5,0.4); color: var(--gray);
-      padding: 1rem 2.4rem; font-size: 0.92rem;
-      border: 1px solid rgba(255,255,255,0.14);
-      clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px));
+    .pill-ghost:hover { border-color: rgba(110,231,255,0.5); transform: translateY(-2px); }
+    .pill-grad {
+      background: var(--grad); color: var(--ink); font-weight: 600;
     }
-    .btn-ghost:hover { color: var(--white); border-color: var(--red); box-shadow: inset 0 0 24px rgba(255,26,26,0.08); }
+    .pill-grad:hover { box-shadow: 0 8px 44px rgba(255,196,107,0.35); transform: translateY(-2px); }
+    .pill-sm { padding: 0.55rem 1.3rem; font-size: 0.75rem; }
+
+    /* ─── TYPE PRIMITIVES ─── */
+    .overline {
+      font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.26em;
+      text-transform: uppercase; color: var(--mist);
+      display: flex; align-items: center; gap: 0.8rem;
+      margin-bottom: 1.6rem;
+    }
+    .overline::before { content: ''; width: 30px; height: 1px; background: var(--grad); flex-shrink: 0; }
+    .display {
+      font-family: var(--serif); font-weight: 400;
+      letter-spacing: -0.01em; line-height: 1.02;
+      color: var(--pearl);
+    }
+    .display em {
+      font-style: italic;
+      background: var(--grad);
+      -webkit-background-clip: text; background-clip: text;
+      color: transparent;
+    }
+    .lead { font-size: 0.97rem; line-height: 1.8; color: var(--mist); font-weight: 300; }
+    .lead b, .lead strong { color: var(--pearl); font-weight: 500; }
+
+    .reveal { opacity: 0; transform: translateY(40px); }
 
     /* ─── HERO ─── */
     .hero {
       position: relative; min-height: 100vh;
       display: flex; align-items: center;
-      overflow: hidden;
+      padding: 8rem 3.2rem 6rem;
     }
-    .hero-bg-word {
-      position: absolute; bottom: -0.14em; right: -0.05em;
-      font-family: var(--disp);
-      font-size: clamp(11rem, 26vw, 25rem);
-      font-weight: 900; letter-spacing: -0.05em; line-height: 1;
-      color: transparent;
-      -webkit-text-stroke: 1px rgba(255,26,26,0.08);
-      pointer-events: none; user-select: none; z-index: 1;
+    .hero-inner { max-width: 1280px; margin: 0 auto; width: 100%; }
+    .hero-h1 { font-size: clamp(3.2rem, 7.6vw, 7rem); max-width: 13em; margin-bottom: 2rem; }
+    .hero-lead { max-width: 480px; margin-bottom: 2.8rem; }
+    .hero-ctas { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 4rem; }
+    .hero-stats { display: flex; gap: 0; flex-wrap: wrap; }
+    .stat {
+      padding: 0.4rem 2.4rem 0.4rem 1.4rem;
+      border-left: 1px solid var(--line);
     }
-    .hud-corner {
-      position: absolute; width: 22px; height: 22px; z-index: 3;
-      border-color: rgba(255,26,26,0.4); border-style: solid; border-width: 0;
-      pointer-events: none;
-    }
-    .hud-tl { top: calc(var(--bar-h) + 88px); left: 24px; border-top-width: 1px; border-left-width: 1px; }
-    .hud-tr { top: calc(var(--bar-h) + 88px); right: 24px; border-top-width: 1px; border-right-width: 1px; }
-    .hud-bl { bottom: calc(var(--bar-h) + 20px); left: 24px; border-bottom-width: 1px; border-left-width: 1px; }
-    .hud-br { bottom: calc(var(--bar-h) + 20px); right: 24px; border-bottom-width: 1px; border-right-width: 1px; }
-
-    .hero-content {
-      position: relative; z-index: 2;
-      padding: calc(var(--bar-h) + 9rem) 3rem 7rem;
-      max-width: 980px;
-    }
-    .hero-eyebrow {
-      display: inline-flex; align-items: center; gap: 0.7rem;
-      font-family: var(--mono); font-size: 0.62rem;
-      letter-spacing: 0.16em; text-transform: uppercase;
-      color: var(--red-hot); margin-bottom: 2.2rem;
-      border: 1px solid var(--line-red); padding: 0.4rem 0.85rem;
-      background: rgba(255,26,26,0.04);
-      clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 8px 100%, 0 calc(100% - 8px));
-    }
-    .hero-eyebrow::before {
-      content: ''; width: 6px; height: 6px;
-      background: var(--red); box-shadow: 0 0 8px var(--red);
-      animation: blink 1.6s ease-in-out infinite;
-    }
-    @keyframes blink { 0%,100% { opacity: 1; } 50% { opacity: 0.15; } }
-
-    .hero-h1 {
-      font-family: var(--disp);
-      font-size: clamp(3.4rem, 9vw, 8rem);
-      font-weight: 900; letter-spacing: -0.05em; line-height: 0.9;
-      margin-bottom: 2.2rem; text-transform: uppercase;
-    }
-    .h1-line { display: block; position: relative; }
-    .h1-line.outline {
-      color: transparent;
-      -webkit-text-stroke: 1.5px var(--red);
-      padding-left: 0.06em;
-    }
-    .h1-line.indent { padding-left: clamp(1.5rem, 5vw, 6rem); }
-
-    .glitch { position: relative; display: inline-block; }
-    .glitch::before, .glitch::after {
-      content: attr(data-text);
-      position: absolute; inset: 0;
-      color: transparent;
-      -webkit-text-stroke: 1.5px var(--red);
-      opacity: 0; pointer-events: none;
-    }
-    .glitching::before {
-      opacity: 0.8; -webkit-text-stroke: 1.5px var(--red-hot);
-      animation: gl-a 0.22s steps(2) both;
-    }
-    .glitching::after {
-      opacity: 0.6; -webkit-text-stroke: 1.5px rgba(255,255,255,0.7);
-      animation: gl-b 0.22s steps(2) both;
-    }
-    @keyframes gl-a {
-      0% { transform: translate(0); clip-path: inset(20% 0 60% 0); }
-      40% { transform: translate(-7px, 3px); clip-path: inset(60% 0 10% 0); }
-      100% { transform: translate(5px, -2px); clip-path: inset(10% 0 75% 0); }
-    }
-    @keyframes gl-b {
-      0% { transform: translate(0); clip-path: inset(70% 0 5% 0); }
-      50% { transform: translate(8px, -4px); clip-path: inset(15% 0 65% 0); }
-      100% { transform: translate(-6px, 2px); clip-path: inset(45% 0 35% 0); }
-    }
-
-    .hero-sub {
-      font-size: clamp(0.9rem, 1.5vw, 1.05rem); line-height: 1.75;
-      color: var(--gray); max-width: 540px; margin-bottom: 3rem;
-      text-shadow: 0 2px 16px rgba(3,3,5,0.9);
-    }
-    .hero-sub b { color: var(--white); font-weight: 600; }
-
-    .hero-counters { display: flex; gap: 0; margin-bottom: 3rem; flex-wrap: wrap; }
-    .hc {
-      padding: 0.9rem 2.2rem 0.9rem 1.2rem;
-      border-left: 1px solid var(--line-red);
-      background: linear-gradient(to right, rgba(3,3,5,0.5), transparent);
-    }
-    .hc-num {
-      font-family: var(--disp);
-      font-size: clamp(2rem, 4vw, 2.9rem);
-      font-weight: 900; color: var(--red);
-      letter-spacing: -0.04em; line-height: 1;
+    .stat-n {
+      font-family: var(--serif); font-size: clamp(1.9rem, 3.4vw, 2.7rem);
+      line-height: 1.1; color: var(--pearl);
       font-variant-numeric: tabular-nums;
     }
-    .hc-num.dead { color: var(--red-dim); }
-    .hc-num.alive { color: var(--white); text-shadow: 0 0 18px rgba(255,26,26,0.5); }
-    .hc-label {
-      font-family: var(--mono); font-size: 0.58rem;
-      letter-spacing: 0.14em; text-transform: uppercase;
-      color: var(--gray-dim); margin-top: 0.4rem;
+    .stat-n.tint {
+      background: var(--grad);
+      -webkit-background-clip: text; background-clip: text; color: transparent;
     }
-    .hero-ctas { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .stat-l {
+      font-family: var(--mono); font-size: 0.56rem; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--faint); margin-top: 0.35rem;
+    }
+    /* ─── scene annotations: label what the liquid IS ─── */
+    .anno {
+      position: absolute; z-index: 3; pointer-events: none;
+      font-family: var(--mono); font-size: 0.56rem; letter-spacing: 0.16em;
+      text-transform: uppercase; color: var(--mist);
+      display: flex; align-items: center; gap: 0.65rem;
+      text-shadow: 0 1px 8px rgba(2,3,6,0.9);
+    }
+    .anno::before {
+      content: ''; width: 8px; height: 8px; flex-shrink: 0;
+      border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+      background: var(--grad);
+      box-shadow: 0 0 10px rgba(157,140,255,0.5);
+    }
+    .anno::after {
+      content: ''; width: 38px; height: 1px;
+      background: linear-gradient(to right, rgba(244,246,250,0.35), transparent);
+      order: -1;
+    }
+    .anno b { color: var(--pearl); font-weight: 600; }
+    .anno-in   { top: 21%; right: 13%; }
+    .anno-pool { bottom: 29%; right: 19%; }
+    .anno-out  { top: 44%; right: 2.2rem; }
+    @media (max-width: 1280px) { .anno-in { display: none; } }
+    @media (max-width: 900px) {
+      .anno-in, .anno-out { display: none; }
+      .anno-pool { right: 1.4rem; bottom: 25%; }
+      .anno::after { width: 20px; }
+    }
 
-    /* ─── KILL FEED (live console, hero) ─── */
-    .killfeed {
-      position: absolute; right: 3rem; bottom: calc(var(--bar-h) + 64px);
-      z-index: 3; width: 340px;
-      border-left: 2px solid var(--red-blood);
-      padding-left: 1rem;
-      font-family: var(--mono); font-size: 0.56rem; line-height: 1.9;
-      letter-spacing: 0.04em;
-      pointer-events: none;
-      mask-image: linear-gradient(to bottom, transparent, black 28%);
+    .hero-note {
+      position: absolute; bottom: 2.4rem; left: 50%; transform: translateX(-50%);
+      font-family: var(--mono); font-size: 0.55rem; letter-spacing: 0.26em;
+      text-transform: uppercase; color: var(--faint);
+      display: flex; flex-direction: column; align-items: center; gap: 0.7rem;
     }
-    .killfeed-title {
-      color: var(--red-hot); font-size: 0.52rem; letter-spacing: 0.2em;
-      text-transform: uppercase; margin-bottom: 0.3rem;
+    .hero-note::after {
+      content: ''; width: 1px; height: 34px;
+      background: linear-gradient(to bottom, var(--mist), transparent);
+      animation: drip 2.2s var(--ease) infinite;
     }
-    .killfeed-title::before { content: '▮ '; animation: blink 1s steps(2) infinite; }
-    .kf-line { color: var(--gray-dim); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-    .kf-line .x { color: var(--red-dim); }
-    .kf-line.surv { color: var(--white); text-shadow: 0 0 10px rgba(255,26,26,0.6); }
-    .kf-line.surv .x { color: var(--red-hot); }
-    @media (max-width: 1180px) { .killfeed { display: none; } }
+    @keyframes drip {
+      0% { transform: scaleY(0); transform-origin: top; opacity: 0.9; }
+      60% { transform: scaleY(1); transform-origin: top; opacity: 0.9; }
+      100% { transform: scaleY(1); opacity: 0; }
+    }
 
-    .scroll-cue {
-      position: absolute; bottom: calc(var(--bar-h) + 16px); left: 50%; transform: translateX(-50%);
-      z-index: 3; font-family: var(--mono); font-size: 0.55rem;
-      letter-spacing: 0.2em; color: var(--gray-dim); text-transform: uppercase;
-      display: flex; flex-direction: column; align-items: center; gap: 0.6rem;
-      pointer-events: none;
+    /* ─── MARQUEE (dissolve ribbon) ─── */
+    .ribbon {
+      position: relative; padding: 2.2rem 0; overflow: hidden;
+      border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);
+      background: rgba(9,13,21,0.5); backdrop-filter: blur(8px);
     }
-    .scroll-cue::after {
-      content: ''; width: 1px; height: 36px;
-      background: linear-gradient(to bottom, var(--red), transparent);
-      animation: cue 1.8s ease-in-out infinite;
-    }
-    @keyframes cue { 0%,100% { transform: scaleY(0.4); opacity: 0.4; transform-origin: top; } 50% { transform: scaleY(1); opacity: 1; } }
-
-    /* ─── KILL TICKER ─── */
-    .ticker-wrap {
-      position: relative; z-index: 4;
-      background: var(--red-core);
-      transform: skewY(-1.6deg);
-      margin: -1.5rem 0; overflow: hidden;
-      border-top: 1px solid rgba(0,0,0,0.4);
-      border-bottom: 1px solid rgba(0,0,0,0.4);
-      box-shadow: 0 0 40px rgba(230,0,0,0.25);
-    }
-    .ticker {
+    .ribbon-track {
       display: flex; width: max-content;
-      animation: tick 26s linear infinite;
-      padding: 0.65rem 0;
+      animation: flow 36s linear infinite;
     }
-    .ticker span {
-      font-family: var(--disp); font-weight: 800;
-      font-size: 0.85rem; letter-spacing: 0.1em; text-transform: uppercase;
-      color: var(--void); white-space: nowrap; padding: 0 1.6rem;
-      display: flex; align-items: center; gap: 1.6rem;
+    .ribbon span {
+      font-family: var(--serif); font-style: italic;
+      font-size: clamp(1.3rem, 2.6vw, 2rem);
+      color: var(--mist); white-space: nowrap;
+      padding: 0 1.8rem;
+      display: flex; align-items: center; gap: 3.6rem;
     }
-    .ticker span::after { content: '✕'; font-size: 0.7rem; opacity: 0.55; }
-    @keyframes tick { to { transform: translateX(-50%); } }
+    .ribbon span i {
+      font-style: normal; font-size: 0.85em;
+      background: var(--grad);
+      -webkit-background-clip: text; background-clip: text; color: transparent;
+    }
+    @keyframes flow { to { transform: translateX(-50%); } }
 
-    /* ─── KILL BAR ─── */
-    .kill-bar {
-      position: relative; z-index: 2;
-      background: var(--glass);
-      backdrop-filter: blur(4px);
-      border-bottom: 1px solid var(--line-red);
-      padding: 3.4rem 3rem 2.4rem;
-      display: flex; align-items: center; justify-content: center;
-      gap: clamp(1.5rem, 5vw, 4.5rem); flex-wrap: wrap;
+    /* ─── SECTION SHELL ─── */
+    .sec { position: relative; padding: 9rem 3.2rem; }
+    .sec-inner { max-width: 1280px; margin: 0 auto; }
+    .sec-h2 { font-size: clamp(2.4rem, 5vw, 4.2rem); margin-bottom: 1.2rem; max-width: 14em; }
+    .sec-lead { max-width: 540px; margin-bottom: 3.6rem; }
+
+    /* ─── METHOD ─── */
+    .method-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.6rem;
+      margin-top: 4rem;
+    }
+    .m-card {
+      position: relative;
+      background: linear-gradient(160deg, rgba(14,19,32,0.85), rgba(9,13,21,0.85));
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      padding: 3rem 2.6rem 2.8rem;
       overflow: hidden;
+      transition: transform 0.45s var(--ease), border-color 0.4s;
     }
-    .kill-bar::before {
-      content: ''; position: absolute; inset: 0;
-      background:
-        linear-gradient(rgba(255,26,26,0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,26,26,0.03) 1px, transparent 1px);
-      background-size: 44px 44px;
-      mask-image: radial-gradient(ellipse 70% 100% at 50% 50%, black, transparent);
+    .m-card:hover { transform: translateY(-6px); border-color: rgba(110,231,255,0.25); }
+    .m-card::before {
+      content: ''; position: absolute; inset: -1px;
+      border-radius: 28px; padding: 1px;
+      background: var(--grad);
+      -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+      -webkit-mask-composite: xor; mask-composite: exclude;
+      opacity: 0; transition: opacity 0.45s;
     }
-    .ks { text-align: center; position: relative; }
-    .ks-n {
-      font-family: var(--disp); font-size: clamp(1.6rem, 3vw, 2.2rem);
-      font-weight: 900; color: var(--red); letter-spacing: -0.03em;
-      font-variant-numeric: tabular-nums;
+    .m-card:hover::before { opacity: 0.6; }
+    .m-num {
+      font-family: var(--serif); font-style: italic;
+      font-size: 4.4rem; line-height: 1;
+      background: var(--grad);
+      -webkit-background-clip: text; background-clip: text; color: transparent;
+      opacity: 0.85; margin-bottom: 1.6rem;
     }
-    .ks-n.dead { color: var(--red-dim); }
-    .ks-n.alive { color: var(--white); text-shadow: 0 0 16px rgba(255,26,26,0.6); }
-    .ks-l {
-      font-family: var(--mono); font-size: 0.56rem;
-      letter-spacing: 0.14em; text-transform: uppercase; color: var(--gray-dim);
-      margin-top: 0.3rem;
+    .m-card h3 {
+      font-family: var(--serif); font-weight: 400; font-size: 1.65rem;
+      color: var(--pearl); margin-bottom: 0.8rem;
     }
-    .kb-arrow { color: var(--red-dim); font-family: var(--mono); font-size: 1.1rem; }
-    .kb-note {
-      flex-basis: 100%; text-align: center;
-      font-family: var(--mono); font-size: 0.56rem; color: var(--gray-dim);
-      letter-spacing: 0.1em; margin-top: 0.8rem;
-    }
+    .m-card p { font-size: 0.86rem; line-height: 1.75; color: var(--mist); font-weight: 300; }
 
-    /* ─── SECTION PRIMITIVES ─── */
-    .sec-tag {
-      font-family: var(--mono); font-size: 0.6rem;
-      letter-spacing: 0.2em; text-transform: uppercase;
-      color: var(--red-hot); margin-bottom: 1rem;
-      display: flex; align-items: center; gap: 0.7rem;
-    }
-    .sec-tag::before { content: ''; width: 26px; height: 1px; background: var(--red); flex-shrink: 0; }
-    .sec-h2 {
-      font-family: var(--disp);
-      font-size: clamp(2rem, 4.2vw, 3.6rem);
-      font-weight: 900; letter-spacing: -0.04em;
-      color: var(--white); line-height: 0.98;
-      margin-bottom: 1rem; text-transform: uppercase;
-    }
-    .sec-h2 em { font-style: normal; color: transparent; -webkit-text-stroke: 1px var(--red); }
-    .sec-lead { font-size: 0.95rem; line-height: 1.75; color: var(--gray); max-width: 560px; margin-bottom: 3rem; }
-
-    .reveal { opacity: 0; transform: translateY(34px); }
-
-    /* ─── HOW IT WORKS ─── */
-    .how-sec {
-      position: relative; padding: 10rem 3rem 11rem;
-      background: var(--glass);
-      clip-path: polygon(0 3.5%, 100% 0, 100% 96.5%, 0 100%);
-    }
-    .how-inner { max-width: 1240px; margin: 0 auto; }
-    .steps-grid {
-      display: grid; grid-template-columns: repeat(3, 1fr);
-      gap: 1px; background: var(--line); border: 1px solid var(--line);
-      margin-top: 3.5rem;
-      perspective: 1200px;
-    }
-    .step-card {
-      background: var(--void-3); padding: 3.2rem 2.6rem 2.8rem;
-      position: relative; overflow: hidden;
-      transition: background 0.3s;
-    }
-    .step-card:hover { background: var(--panel); }
-    .step-card::before {
-      content: ''; position: absolute; top: 0; left: 0; right: 100%;
-      height: 2px; background: var(--red); box-shadow: 0 0 10px var(--red);
-      transition: right 0.45s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-    .step-card:hover::before { right: 0; }
-    .step-num {
-      font-family: var(--disp); font-size: 5.5rem; font-weight: 900;
-      letter-spacing: -0.05em; line-height: 1;
-      color: transparent; -webkit-text-stroke: 1px rgba(255,26,26,0.35);
-      margin-bottom: 1.6rem; transition: color 0.3s;
-    }
-    .step-card:hover .step-num { color: rgba(255,26,26,0.12); }
-    .step-card h3 {
-      font-family: var(--disp); font-size: 1.15rem; font-weight: 700;
-      color: var(--white); margin-bottom: 0.7rem; text-transform: uppercase;
-    }
-    .step-card p { font-size: 0.85rem; line-height: 1.68; color: var(--gray); }
-    .step-tag {
-      position: absolute; top: 1.4rem; right: 1.4rem;
-      font-family: var(--mono); font-size: 0.5rem; letter-spacing: 0.16em;
-      color: var(--gray-dim); text-transform: uppercase;
-    }
-
-    /* ─── THE GAUNTLET ─── */
-    .gauntlet { position: relative; }
-    .g-pin {
+    /* ─── DISTILLATION (pinned) ─── */
+    .distill { position: relative; }
+    .d-pin {
       position: relative; min-height: 100vh;
       display: flex; flex-direction: column; justify-content: center;
-      padding: calc(var(--bar-h) + 6rem) 3rem 4rem;
-      overflow: hidden;
+      padding: 7rem 3.2rem 4rem;
     }
-    .g-bgword {
-      position: absolute; top: 50%; left: 50%;
-      transform: translate(-50%,-50%);
-      font-family: var(--disp); font-weight: 900;
-      font-size: clamp(8rem, 22vw, 22rem); letter-spacing: -0.04em;
-      color: transparent; -webkit-text-stroke: 1px rgba(255,26,26,0.06);
-      pointer-events: none; user-select: none; white-space: nowrap;
+    .d-inner { max-width: 1280px; margin: 0 auto; width: 100%; }
+    .d-stage {
+      display: grid; grid-template-columns: minmax(300px, 1fr) 1.35fr;
+      gap: clamp(2rem, 6vw, 6rem); align-items: start;
+      margin-top: 3rem;
     }
-    .g-flash {
-      position: absolute; inset: 0; pointer-events: none;
-      background: radial-gradient(ellipse 60% 50% at 50% 50%, rgba(255,26,26,0.2), transparent 70%);
-      opacity: 0;
-    }
-    .g-inner { position: relative; max-width: 1240px; margin: 0 auto; width: 100%; }
-    .g-head { margin-bottom: 3rem; }
-    .g-stage {
-      display: grid; grid-template-columns: minmax(280px, 1fr) 1.4fr;
-      gap: clamp(2rem, 5vw, 5rem); align-items: start;
-    }
-    .g-counter {
-      font-family: var(--disp); font-weight: 900;
-      font-size: clamp(6rem, 13vw, 12rem);
-      letter-spacing: -0.06em; line-height: 0.9;
-      color: var(--red);
-      text-shadow: 0 0 60px rgba(255,26,26,0.35);
+    .d-counter {
+      font-family: var(--serif);
+      font-size: clamp(6rem, 13vw, 12rem); line-height: 0.95;
+      color: var(--pearl);
       font-variant-numeric: tabular-nums;
     }
-    .g-counter-label {
-      font-family: var(--mono); font-size: 0.62rem;
-      letter-spacing: 0.2em; text-transform: uppercase;
-      color: var(--gray-dim); margin-top: 0.8rem;
+    .d-counter-label {
+      font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.24em;
+      text-transform: uppercase; color: var(--faint); margin-top: 1rem;
     }
-    .g-counter-label b { color: var(--red-hot); font-weight: 600; }
-    .g-input-note {
-      font-family: var(--mono); font-size: 0.58rem; letter-spacing: 0.12em;
-      color: var(--gray-dim); margin-top: 2rem; text-transform: uppercase;
-      border-left: 2px solid var(--red-blood); padding-left: 0.9rem; line-height: 2;
-      background: linear-gradient(to right, rgba(3,3,5,0.55), transparent);
+    .d-note {
+      font-family: var(--mono); font-size: 0.58rem; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--faint);
+      border-left: 2px solid; border-image: var(--grad) 1;
+      padding-left: 1rem; line-height: 2.1; margin-top: 2.2rem;
     }
-    .g-gates { display: flex; flex-direction: column; gap: 0.5rem; }
-    .gate {
+    .chambers { display: flex; flex-direction: column; gap: 0.7rem; }
+    .chamber {
       position: relative;
       border: 1px solid var(--line);
-      background: rgba(10,10,16,0.82);
-      padding: 1.15rem 1.5rem;
-      display: grid;
-      grid-template-columns: 2.4rem 1fr auto auto;
+      border-radius: 18px;
+      background: rgba(8,11,19,0.93);
+      padding: 1.2rem 1.7rem;
+      display: grid; grid-template-columns: 2.6rem 1fr auto;
       gap: 1.2rem; align-items: center;
-      transition: border-color 0.3s, background 0.3s, opacity 0.3s;
       overflow: hidden;
+      transition: border-color 0.4s, background 0.4s, opacity 0.4s, transform 0.4s var(--ease);
     }
-    .gate-idx { font-family: var(--mono); font-size: 0.62rem; color: var(--gray-dim); letter-spacing: 0.1em; }
-    .gate-name {
-      font-family: var(--disp); font-size: 1rem; font-weight: 700;
-      color: var(--gray); text-transform: uppercase;
-      transition: color 0.3s;
+    .ch-idx { font-family: var(--mono); font-size: 0.6rem; color: var(--faint); letter-spacing: 0.1em; }
+    .ch-name {
+      font-family: var(--serif); font-size: 1.25rem; color: var(--mist);
+      transition: color 0.35s;
     }
-    .gate-kill {
-      font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.08em;
-      color: var(--red-dim); white-space: nowrap;
-    }
-    .gate-status {
-      font-family: var(--mono); font-size: 0.52rem; letter-spacing: 0.16em;
-      text-transform: uppercase; color: var(--gray-dim);
-      border: 1px solid var(--line); padding: 0.22rem 0.55rem;
-      min-width: 84px; text-align: center;
-    }
-    .gate-desc {
-      grid-column: 1 / -1;
-      font-size: 0.82rem; line-height: 1.65; color: var(--gray);
+    .ch-cut { font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.08em; color: var(--faint); white-space: nowrap; }
+    .ch-desc {
+      grid-column: 2 / -1;
+      font-size: 0.84rem; line-height: 1.7; color: var(--mist); font-weight: 300;
       max-height: 0; opacity: 0; overflow: hidden;
-      transition: max-height 0.45s cubic-bezier(0.16,1,0.3,1), opacity 0.35s, margin 0.35s;
+      transition: max-height 0.5s var(--ease), opacity 0.4s, margin 0.4s;
     }
-    .gate::after {
-      content: ''; position: absolute; top: 0; bottom: 0; left: -30%;
-      width: 22%;
-      background: linear-gradient(90deg, transparent, rgba(255,26,26,0.12), transparent);
-      opacity: 0;
+    .chamber .ch-fill {
+      position: absolute; left: 0; bottom: 0; top: auto; right: 0;
+      height: 0%; pointer-events: none;
+      background: linear-gradient(100deg, rgba(110,231,255,0.08), rgba(157,140,255,0.08), rgba(255,196,107,0.08));
+      transition: height 0.6s var(--ease);
     }
-    .gate.active {
-      border-color: var(--red);
-      background: rgba(26,4,4,0.85);
-      box-shadow: 0 0 40px rgba(255,26,26,0.12), inset 0 0 30px rgba(255,26,26,0.05);
+    .chamber.active {
+      border-color: transparent;
+      background: rgba(13,18,30,0.97);
+      transform: scale(1.012);
     }
-    .gate.active .gate-name { color: var(--white); }
-    .gate.active .gate-status { color: var(--red-hot); border-color: var(--line-red); }
-    .gate.active .gate-desc { max-height: 120px; opacity: 1; margin-top: 0.6rem; }
-    .gate.active::after { opacity: 1; animation: scanbeam 1.1s linear infinite; }
-    @keyframes scanbeam { to { left: 110%; } }
-    .gate.done { opacity: 0.45; }
-    .gate.done .gate-name { color: var(--gray-dim); text-decoration: line-through; text-decoration-color: var(--red-dim); }
-    .gate.done .gate-status { color: var(--red-dim); border-color: rgba(255,26,26,0.15); }
-    .gate.final.active { border-color: var(--white); background: rgba(255,26,26,0.08); }
-    .gate.final.active .gate-status { color: var(--white); border-color: rgba(255,255,255,0.4); }
-    .g-foot {
+    .chamber.active::before {
+      content: ''; position: absolute; inset: -1px;
+      border-radius: 18px; padding: 1px;
+      background: var(--grad);
+      -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+      -webkit-mask-composite: xor; mask-composite: exclude;
+    }
+    .chamber.active .ch-name { color: var(--pearl); }
+    .chamber.active .ch-desc { max-height: 130px; opacity: 1; margin-top: 0.6rem; }
+    .chamber.active .ch-fill { height: 100%; }
+    .chamber.done { opacity: 0.38; }
+    .chamber.done .ch-name { text-decoration: line-through; text-decoration-color: rgba(157,140,255,0.6); text-decoration-thickness: 1px; }
+    .d-foot {
       margin-top: 2.6rem;
-      font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.14em;
-      text-transform: uppercase; color: var(--gray-dim);
+      font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.16em;
+      text-transform: uppercase; color: var(--faint);
     }
-    .g-foot b { color: var(--red-hot); font-weight: 600; }
+    .d-foot b {
+      font-weight: 600;
+      background: var(--grad);
+      -webkit-background-clip: text; background-clip: text; color: transparent;
+    }
 
-    /* ─── SURVIVORS ─── */
-    .opps-sec {
+    /* ─── OPPORTUNITIES ─── */
+    .opps { background: linear-gradient(to bottom, transparent, rgba(9,13,21,0.7) 12%, rgba(9,13,21,0.7) 88%, transparent); }
+    .honest {
       position: relative;
-      padding: 10rem 3rem 11rem;
-      background: var(--glass);
-      clip-path: polygon(0 2.5%, 100% 0, 100% 97.5%, 0 100%);
+      border: 1px solid var(--line); border-radius: 24px;
+      background: rgba(14,19,32,0.6);
+      padding: 2.4rem 2.8rem;
+      margin-bottom: 3.6rem;
+      backdrop-filter: blur(8px);
     }
-    .opps-inner { max-width: 1240px; margin: 0 auto; }
-    .honest-box {
-      position: relative;
-      background: var(--void-3);
-      border: 1px solid var(--line);
-      border-left: 3px solid var(--red);
-      padding: 2.2rem 2.6rem;
-      margin-bottom: 3.5rem;
-      clip-path: polygon(0 0, calc(100% - 16px) 0, 100% 16px, 100% 100%, 0 100%);
+    .honest::before {
+      content: ''; position: absolute; left: 0; top: 22px; bottom: 22px; width: 2px;
+      background: var(--grad); border-radius: 2px;
     }
-    .honest-box h3 {
-      font-family: var(--disp); font-size: 1rem; font-weight: 700;
-      color: var(--white); margin-bottom: 0.7rem; text-transform: uppercase;
-    }
-    .honest-box p { font-size: 0.85rem; line-height: 1.7; color: var(--gray); margin-bottom: 0.6rem; }
-    .honest-box p:last-child { margin-bottom: 0; }
-    .honest-box strong { color: var(--red-hot); }
+    .honest h3 { font-family: var(--serif); font-weight: 400; font-size: 1.5rem; color: var(--pearl); margin-bottom: 0.8rem; }
+    .honest p { font-size: 0.88rem; line-height: 1.78; color: var(--mist); font-weight: 300; margin-bottom: 0.6rem; }
+    .honest p:last-child { margin-bottom: 0; }
+    .honest strong { color: var(--pearl); font-weight: 500; }
 
-    .cards-group-header {
-      display: flex; align-items: baseline; gap: 1rem;
-      padding: 2.6rem 0 1rem;
-      border-top: 1px solid var(--line);
-      flex-wrap: wrap;
+    .grp {
+      display: flex; align-items: baseline; gap: 1.1rem;
+      padding: 2.8rem 0 1.2rem;
+      border-top: 1px solid var(--line); flex-wrap: wrap;
     }
-    .cards-group-header:first-of-type { border-top: none; padding-top: 0; }
-    .grp-glyph { font-family: var(--mono); color: var(--red); font-size: 0.85rem; }
-    .grp-title {
-      font-family: var(--disp); font-weight: 800; font-size: 1.05rem;
-      color: var(--white); text-transform: uppercase; letter-spacing: 0.04em;
-    }
-    .grp-sub { font-family: var(--mono); font-size: 0.62rem; color: var(--gray-dim); letter-spacing: 0.06em; }
+    .grp:first-of-type { border-top: none; padding-top: 0; }
+    .grp-t { font-family: var(--serif); font-size: 1.5rem; color: var(--pearl); }
+    .grp-s { font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.1em; color: var(--faint); text-transform: uppercase; }
 
-    .cards-grid {
-      display: grid; grid-template-columns: repeat(2, 1fr);
-      gap: 1.4rem; margin-bottom: 1rem;
-      perspective: 1400px;
-    }
-    .opp-card {
+    .cards { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.6rem; margin-bottom: 1rem; }
+    .opp {
       position: relative;
-      background: var(--void-3);
-      border: 1px solid var(--line);
-      padding: 2.5rem;
+      background: linear-gradient(165deg, rgba(14,19,32,0.9), rgba(9,13,21,0.9));
+      border: 1px solid var(--line); border-radius: 26px;
+      padding: 2.6rem;
       overflow: hidden;
-      transform-style: preserve-3d;
-      transition: border-color 0.3s, box-shadow 0.3s;
+      transition: transform 0.45s var(--ease), border-color 0.4s, box-shadow 0.45s;
       will-change: transform;
     }
-    .opp-card:hover {
-      border-color: var(--line-red);
-      box-shadow: 0 24px 60px rgba(0,0,0,0.5), 0 0 40px rgba(255,26,26,0.07);
+    .opp:hover {
+      transform: translateY(-5px);
+      border-color: rgba(157,140,255,0.3);
+      box-shadow: 0 30px 70px rgba(2,3,6,0.6), 0 0 50px rgba(157,140,255,0.06);
     }
-    .opp-card::before {
-      content: 'PASSED 5/5';
-      position: absolute; top: 1.5rem; right: 1.5rem;
-      font-family: var(--mono); font-size: 0.5rem; letter-spacing: 0.2em;
-      color: var(--red-hot); border: 1px solid var(--line-red);
-      padding: 0.22rem 0.5rem;
-      background: rgba(255,26,26,0.05);
-      transform: rotate(3deg);
+    .opp::before {
+      content: 'DISTILLED 5/5';
+      position: absolute; top: 1.7rem; right: 1.7rem;
+      font-family: var(--mono); font-size: 0.5rem; letter-spacing: 0.22em;
+      padding: 0.3rem 0.65rem; border-radius: 999px;
+      border: 1px solid rgba(255,196,107,0.35); color: var(--amber);
+      background: rgba(255,196,107,0.05);
+      opacity: 0;            /* stays invisible until its gold bead lands */
     }
-    .opp-card::after {
-      content: ''; position: absolute; top: -110%; left: 0; right: 0; height: 60%;
-      background: linear-gradient(to bottom, transparent, rgba(255,26,26,0.06), transparent);
-      transition: top 0.7s cubic-bezier(0.16,1,0.3,1);
-      pointer-events: none;
+    .opp.bead-landed::before { animation: beadland 0.9s cubic-bezier(0.22,1,0.36,1) both; }
+    /* the bead's impact washes the whole card in gold, then recedes */
+    .opp.bead-landed { animation: cardgold 1.1s cubic-bezier(0.22,1,0.36,1); }
+    @keyframes cardgold {
+      0%   { border-color: var(--line); }
+      28%  { border-color: rgba(255,196,107,0.95);
+             box-shadow: 0 0 70px rgba(255,196,107,0.30), inset 0 0 90px rgba(255,196,107,0.16);
+             background: linear-gradient(165deg, rgba(48,38,22,0.95), rgba(30,24,14,0.95)); }
+      100% { border-color: var(--line); }
     }
-    .opp-card:hover::after { top: 130%; }
-    .card-title {
-      font-family: var(--disp); font-size: 1.4rem; font-weight: 800;
-      color: var(--white); letter-spacing: -0.02em; margin-bottom: 0.25rem;
+    @keyframes beadland {
+      0%   { opacity: 0; transform: scale(0.5); box-shadow: 0 0 0 rgba(255,196,107,0); }
+      40%  { opacity: 1; transform: scale(1.28); box-shadow: 0 0 30px rgba(255,196,107,0.85); border-color: var(--amber); background: rgba(255,196,107,0.18); }
+      100% { opacity: 1; transform: scale(1); box-shadow: 0 0 0 rgba(255,196,107,0); }
     }
-    .card-badge {
-      font-family: var(--mono); font-size: 0.56rem; letter-spacing: 0.14em;
-      text-transform: uppercase; color: var(--red-hot);
-      margin-bottom: 1.1rem; display: block;
+    @media (prefers-reduced-motion: reduce) { .opp::before { opacity: 1; } }
+    .opp-t { font-family: var(--serif); font-size: 1.8rem; color: var(--pearl); margin-bottom: 0.2rem; }
+    .opp-badge {
+      font-family: var(--mono); font-size: 0.56rem; letter-spacing: 0.18em;
+      text-transform: uppercase; margin-bottom: 1.2rem; display: block;
+      background: var(--grad);
+      -webkit-background-clip: text; background-clip: text; color: transparent;
     }
-    .card-badge::before { content: '▸ '; }
-    .card-pain {
-      font-size: 0.84rem; line-height: 1.68; color: var(--gray);
+    .opp-pain {
+      font-size: 0.86rem; line-height: 1.72; color: var(--mist); font-weight: 300;
       padding-bottom: 1.5rem; margin-bottom: 1.5rem;
-      border-bottom: 1px dashed rgba(255,255,255,0.1);
+      border-bottom: 1px solid var(--line);
     }
-    .card-rows { display: flex; flex-direction: column; gap: 1.25rem; }
-    .card-row { display: grid; grid-template-columns: 14px 1fr; gap: 0.9rem; align-items: start; }
-    .cr-glyph { color: var(--red); font-family: var(--mono); font-size: 0.8rem; line-height: 1.4; }
-    .cr-label {
-      font-family: var(--mono); font-size: 0.54rem; letter-spacing: 0.16em;
-      text-transform: uppercase; color: var(--gray-dim); margin-bottom: 0.25rem;
+    .opp-rows { display: flex; flex-direction: column; gap: 1.3rem; }
+    .opp-row { display: grid; grid-template-columns: 16px 1fr; gap: 0.9rem; align-items: start; }
+    .or-dot {
+      width: 8px; height: 8px; margin-top: 0.35rem;
+      border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+      background: var(--grad);
     }
-    .cr-text { font-size: 0.8rem; line-height: 1.62; color: var(--gray); }
-    .card-who {
-      margin-top: 1.6rem; padding-top: 1.4rem;
+    .or-label {
+      font-family: var(--mono); font-size: 0.54rem; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--faint); margin-bottom: 0.3rem;
+    }
+    .or-text { font-size: 0.82rem; line-height: 1.68; color: var(--mist); font-weight: 300; }
+    .opp-who {
+      margin-top: 1.7rem; padding-top: 1.4rem;
       border-top: 1px solid var(--line);
-      font-size: 0.75rem; color: var(--gray-dim);
+      font-size: 0.78rem; color: var(--faint); font-weight: 300;
     }
-    .cw-label {
-      font-family: var(--mono); font-size: 0.54rem; letter-spacing: 0.14em;
-      text-transform: uppercase; color: var(--red-hot); margin-right: 0.5rem;
+    .opp-who b {
+      font-family: var(--mono); font-size: 0.54rem; letter-spacing: 0.18em;
+      text-transform: uppercase; font-weight: 600; margin-right: 0.5rem;
+      background: var(--grad);
+      -webkit-background-clip: text; background-clip: text; color: transparent;
     }
 
-    .locked-card {
+    .locked {
       grid-column: 1 / -1;
-      position: relative;
-      background: var(--void-3);
-      border: 1px solid var(--line-red);
-      padding: 5rem 3rem;
-      text-align: center; overflow: hidden;
-      clip-path: polygon(20px 0, calc(100% - 20px) 0, 100% 20px, 100% calc(100% - 20px), calc(100% - 20px) 100%, 20px 100%, 0 calc(100% - 20px), 0 20px);
-    }
-    .locked-card::before {
-      content: ''; position: absolute; inset: 0;
-      background:
-        radial-gradient(ellipse at center, rgba(255,26,26,0.06) 0%, transparent 70%),
-        repeating-linear-gradient(-45deg, transparent 0 26px, rgba(255,26,26,0.025) 26px 52px);
-    }
-    .lock-glyph {
-      font-family: var(--mono); font-size: 1.6rem; color: var(--red);
-      margin-bottom: 1.2rem; text-shadow: 0 0 16px rgba(255,26,26,0.6);
-      position: relative;
-    }
-    .lock-label {
-      font-family: var(--disp); font-size: 1.4rem; font-weight: 800;
-      color: var(--white); margin-bottom: 0.7rem; text-transform: uppercase;
-      position: relative;
-    }
-    .lock-sub {
-      font-size: 0.85rem; color: var(--gray); max-width: 380px;
-      margin: 0 auto 2.2rem; line-height: 1.68; position: relative;
-    }
-
-    /* ─── ABOUT ─── */
-    .about-sec { padding: 10rem 3rem; position: relative; overflow: hidden; }
-    .about-deco {
-      position: absolute; top: 50%; right: -6rem; transform: translateY(-50%);
-      width: 380px; height: 380px; pointer-events: none;
-      opacity: 0.5; perspective: 900px;
-    }
-    .about-deco .spin3d {
-      position: absolute; inset: 25%;
-      transform-style: preserve-3d;
-      animation: spin3d 16s linear infinite;
-    }
-    .about-deco .face { position: absolute; inset: 0; border: 1px solid rgba(255,26,26,0.3); }
-    .about-deco .face:nth-child(1) { transform: rotateY(0deg); }
-    .about-deco .face:nth-child(2) { transform: rotateY(60deg); }
-    .about-deco .face:nth-child(3) { transform: rotateY(120deg); }
-    .about-deco .face:nth-child(4) { transform: rotateX(60deg); }
-    .about-deco .face:nth-child(5) { transform: rotateX(120deg); }
-    @keyframes spin3d { to { transform: rotateX(360deg) rotateY(720deg); } }
-    .about-inner { max-width: 720px; margin: 0 auto; position: relative; }
-    .about-card {
-      background: rgba(8,8,13,0.92);
+      position: relative; text-align: center;
+      border-radius: 30px; padding: 5rem 3rem;
+      background: rgba(14,19,32,0.55);
       border: 1px solid var(--line);
-      padding: 3.6rem 4rem;
+      backdrop-filter: blur(12px);
+      overflow: hidden;
+    }
+    .locked::before {
+      content: ''; position: absolute; inset: -1px; border-radius: 30px; padding: 1px;
+      background: var(--grad);
+      -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+      -webkit-mask-composite: xor; mask-composite: exclude;
+      opacity: 0.45;
+    }
+    .locked-drop { font-size: 1.8rem; margin-bottom: 1rem; }
+    .locked h3 { font-family: var(--serif); font-weight: 400; font-size: 2rem; color: var(--pearl); margin-bottom: 0.8rem; }
+    .locked p { font-size: 0.88rem; color: var(--mist); font-weight: 300; max-width: 400px; margin: 0 auto 2.2rem; line-height: 1.75; }
+
+    /* ─── OPERATOR ─── */
+    .operator-inner { max-width: 760px; margin: 0 auto; }
+    .op-card {
       position: relative;
-      clip-path: polygon(0 0, calc(100% - 22px) 0, 100% 22px, 100% 100%, 22px 100%, 0 calc(100% - 22px));
+      border-radius: 30px;
+      background: linear-gradient(160deg, rgba(14,19,32,0.85), rgba(9,13,21,0.85));
+      border: 1px solid var(--line);
+      padding: 4rem 4.4rem;
     }
-    .about-card::before {
-      content: ''; position: absolute; top: 0; left: 0; bottom: 0; width: 3px;
-      background: linear-gradient(to bottom, var(--red) 0%, transparent 100%);
+    .op-card .q {
+      font-family: var(--serif); font-style: italic; font-size: 3.2rem; line-height: 0.8;
+      background: var(--grad);
+      -webkit-background-clip: text; background-clip: text; color: transparent;
+      display: block; margin-bottom: 1rem;
     }
-    .about-term {
-      font-family: var(--mono); font-size: 0.56rem; color: var(--gray-dim);
-      letter-spacing: 0.12em; margin-bottom: 2rem;
-      display: flex; gap: 0.5rem; align-items: center;
+    .op-card p { font-size: 0.94rem; line-height: 1.85; color: var(--mist); font-weight: 300; margin-bottom: 1.2rem; }
+    .op-sig {
+      font-family: var(--mono); font-size: 0.58rem; letter-spacing: 0.22em;
+      text-transform: uppercase; color: var(--faint); margin-top: 2rem;
     }
-    .about-term i { width: 8px; height: 8px; border-radius: 50%; background: var(--red-blood); font-style: normal; }
-    .about-term i:first-child { background: var(--red); }
-    .about-card p { font-size: 0.92rem; line-height: 1.8; color: var(--gray); margin-bottom: 1.2rem; }
-    .build-pub {
-      font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.18em;
-      text-transform: uppercase; color: var(--red-hot);
-      margin-top: 2rem; margin-bottom: 0 !important;
+    .op-sig b {
+      font-weight: 600;
+      background: var(--grad);
+      -webkit-background-clip: text; background-clip: text; color: transparent;
     }
-    .build-pub::before { content: '> '; color: var(--gray-dim); }
 
     /* ─── PRICING ─── */
-    .price-sec {
-      padding: 10rem 3rem 11rem;
-      background: var(--glass);
-      clip-path: polygon(0 3%, 100% 0, 100% 100%, 0 100%);
-      position: relative;
-    }
-    .price-inner { max-width: 920px; margin: 0 auto; }
     .price-grid {
       display: grid; grid-template-columns: 1fr 1.18fr;
-      gap: 1.4rem; margin-top: 3.5rem; align-items: stretch;
+      gap: 1.6rem; margin-top: 3.6rem; align-items: stretch;
+      max-width: 940px;
     }
-    .pc {
-      background: var(--void-3);
+    .tier {
+      position: relative;
+      border-radius: 28px;
+      background: rgba(9,13,21,0.8);
       border: 1px solid var(--line);
       padding: 3rem;
-      position: relative;
-      transition: transform 0.3s, border-color 0.3s;
+      transition: transform 0.4s var(--ease);
     }
-    .pc:hover { transform: translateY(-4px); }
-    .pc.featured {
-      border-color: var(--line-red);
-      box-shadow: 0 0 60px rgba(255,26,26,0.08);
-      clip-path: polygon(0 0, calc(100% - 18px) 0, 100% 18px, 100% 100%, 0 100%);
+    .tier:hover { transform: translateY(-5px); }
+    .tier.featured { background: rgba(14,19,32,0.92); }
+    .tier.featured::before {
+      content: ''; position: absolute; inset: -1px; border-radius: 28px; padding: 1.2px;
+      background: var(--grad);
+      -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+      -webkit-mask-composite: xor; mask-composite: exclude;
     }
-    .pc.featured::before {
-      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
-      background: var(--red); box-shadow: 0 0 18px rgba(255,26,26,0.8);
-    }
-    .founding-tag {
-      font-family: var(--mono); font-size: 0.54rem; letter-spacing: 0.16em;
-      text-transform: uppercase; color: var(--red-hot);
-      border: 1px solid var(--line-red); padding: 0.25rem 0.55rem;
+    .tier-tag {
+      font-family: var(--mono); font-size: 0.54rem; letter-spacing: 0.2em;
+      text-transform: uppercase; padding: 0.3rem 0.7rem; border-radius: 999px;
+      border: 1px solid rgba(255,196,107,0.4); color: var(--amber);
       display: inline-block; margin-bottom: 1.4rem;
-      background: rgba(255,26,26,0.05);
-      animation: blink 2.4s ease-in-out infinite;
+      background: rgba(255,196,107,0.05);
     }
-    .pc-tier {
-      font-family: var(--mono); font-size: 0.62rem; font-weight: 600;
-      letter-spacing: 0.2em; text-transform: uppercase;
-      color: var(--gray-dim); margin-bottom: 0.9rem;
+    .tier-name {
+      font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.24em;
+      text-transform: uppercase; color: var(--faint); margin-bottom: 1rem;
     }
-    .pc-price {
-      font-family: var(--disp); font-size: 4.2rem; font-weight: 900;
-      color: var(--white); letter-spacing: -0.05em; line-height: 1;
-      margin-bottom: 0.3rem;
+    .tier-price { font-family: var(--serif); font-size: 4.4rem; line-height: 1; color: var(--pearl); margin-bottom: 0.3rem; }
+    .tier-price sup { font-size: 1.6rem; }
+    .tier-price .per { font-size: 1.2rem; color: var(--faint); }
+    .tier-period { font-family: var(--mono); font-size: 0.58rem; letter-spacing: 0.12em; color: var(--faint); margin-bottom: 2rem; }
+    .tier hr { border: none; border-top: 1px solid var(--line); margin-bottom: 2rem; }
+    .tier ul { list-style: none; margin-bottom: 2.6rem; }
+    .tier li {
+      font-size: 0.86rem; color: var(--mist); font-weight: 300;
+      padding: 0.55rem 0 0.55rem 1.5rem; position: relative;
+      border-bottom: 1px solid rgba(244,246,250,0.04);
     }
-    .pc-price sup { font-size: 1.5rem; vertical-align: super; color: var(--red); }
-    .pc-price .per { font-size: 1.1rem; color: var(--gray-dim); font-weight: 600; }
-    .pc-period {
-      font-family: var(--mono); font-size: 0.58rem; letter-spacing: 0.1em;
-      color: var(--gray-dim); margin-bottom: 2rem;
+    .tier li::before {
+      content: ''; position: absolute; left: 0; top: 1.05em;
+      width: 7px; height: 7px;
+      border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+      background: var(--grad);
     }
-    .pc-div { border: none; border-top: 1px solid var(--line); margin-bottom: 2rem; }
-    .pc-features { list-style: none; margin-bottom: 2.6rem; }
-    .pc-features li {
-      font-size: 0.84rem; color: var(--gray);
-      padding: 0.55rem 0 0.55rem 1.3rem;
-      border-bottom: 1px solid rgba(255,255,255,0.04);
-      position: relative;
-    }
-    .pc-features li::before {
-      content: '▸'; position: absolute; left: 0; color: var(--red);
-      font-family: var(--mono);
-    }
-    .pc-cta {
-      display: block; text-align: center; padding: 0.95rem;
-      font-family: var(--disp); font-size: 0.85rem; font-weight: 700;
-      letter-spacing: 0.03em; text-decoration: none;
-      transition: all 0.2s; position: relative; overflow: hidden;
-      clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px));
-    }
-    .pc-cta.red { background: var(--red-core); color: var(--white); }
-    .pc-cta.red:hover { background: var(--red); box-shadow: 0 0 28px rgba(255,26,26,0.45); }
-    .pc-cta.ghost { background: transparent; color: var(--gray); border: 1px solid rgba(255,255,255,0.12); }
-    .pc-cta.ghost:hover { color: var(--white); border-color: var(--red); }
+    .tier .pill { width: 100%; justify-content: center; }
 
     /* ─── FINAL CTA ─── */
-    .cta-sec {
-      padding: 12rem 3rem;
-      text-align: center; position: relative; overflow: hidden;
-    }
-    .cta-sec::before {
-      content: ''; position: absolute; inset: 0;
-      background: radial-gradient(ellipse 70% 55% at 50% 50%, rgba(255,26,26,0.07) 0%, transparent 70%);
-    }
-    .cta-bgword {
-      position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
-      font-family: var(--disp); font-weight: 900;
-      font-size: clamp(7rem, 20vw, 18rem); letter-spacing: -0.04em;
-      color: transparent; -webkit-text-stroke: 1px rgba(255,26,26,0.05);
-      pointer-events: none; user-select: none; white-space: nowrap;
-    }
-    .cta-h2 {
-      font-family: var(--disp);
-      font-size: clamp(1.9rem, 3.8vw, 3.2rem);
-      font-weight: 900; letter-spacing: -0.04em; line-height: 1.05;
-      color: var(--white); max-width: 700px; margin: 0 auto 1.2rem;
-      text-transform: uppercase; position: relative;
-      text-shadow: 0 2px 24px rgba(3,3,5,0.9);
-    }
-    .cta-h2 em { font-style: normal; color: transparent; -webkit-text-stroke: 1px var(--red); }
-    .cta-sub { font-size: 0.9rem; color: var(--gray); margin-bottom: 3rem; position: relative; }
-    .cta-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-bottom: 4.5rem; position: relative; }
-    #free-signup { scroll-margin-top: 110px; position: relative; }
+    .cta { text-align: center; padding: 12rem 3.2rem; position: relative; }
+    .cta-h2 { font-size: clamp(2.4rem, 5.4vw, 4.6rem); max-width: 16em; margin: 0 auto 1.4rem; }
+    .cta-sub { font-size: 0.92rem; color: var(--mist); font-weight: 300; margin-bottom: 3rem; }
+    .cta-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-bottom: 5rem; }
+    #free-signup { scroll-margin-top: 120px; }
     .signup-label {
-      font-family: var(--mono); font-size: 0.58rem; letter-spacing: 0.14em;
-      text-transform: uppercase; color: var(--gray-dim); margin-bottom: 0.9rem;
+      font-family: var(--mono); font-size: 0.58rem; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--faint); margin-bottom: 1rem;
     }
-    .signup-form { display: flex; gap: 0.5rem; max-width: 480px; margin: 0 auto; }
+    .signup-form { display: flex; gap: 0.6rem; max-width: 480px; margin: 0 auto; }
     .signup-form input[type="email"] {
-      flex: 1;
-      background: rgba(8,8,13,0.92);
-      border: 1px solid rgba(255,255,255,0.1);
-      padding: 0.85rem 1.1rem;
-      font-family: var(--mono); font-size: 0.82rem;
-      color: var(--white); outline: none;
-      transition: border-color 0.2s, box-shadow 0.2s;
-      clip-path: polygon(0 0, 100% 0, 100% 100%, 8px 100%, 0 calc(100% - 8px));
+      flex: 1; border-radius: 999px;
+      background: rgba(14,19,32,0.8);
+      border: 1px solid rgba(244,246,250,0.12);
+      padding: 0.9rem 1.4rem;
+      font-family: var(--body); font-size: 0.88rem; font-weight: 300;
+      color: var(--pearl); outline: none;
+      transition: border-color 0.3s, box-shadow 0.3s;
     }
     .signup-form input[type="email"]:focus {
-      border-color: var(--red);
-      box-shadow: 0 0 20px rgba(255,26,26,0.15);
+      border-color: var(--cyan);
+      box-shadow: 0 0 30px rgba(110,231,255,0.12);
     }
-    .signup-form input[type="email"]::placeholder { color: var(--gray-dim); }
+    .signup-form input::placeholder { color: var(--faint); }
     .signup-form button {
-      background: transparent; border: 1px solid var(--line-red);
-      padding: 0.85rem 1.5rem;
-      font-family: var(--disp); font-size: 0.78rem; font-weight: 700;
-      color: var(--red-hot); white-space: nowrap;
-      transition: all 0.2s;
-      clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 0 100%);
+      border-radius: 999px; border: none;
+      background: var(--grad); color: var(--ink);
+      font-family: var(--body); font-weight: 600; font-size: 0.82rem;
+      padding: 0.9rem 1.8rem; white-space: nowrap;
+      transition: box-shadow 0.3s, transform 0.3s var(--ease);
     }
-    .signup-form button:hover { background: rgba(255,26,26,0.1); border-color: var(--red); color: var(--red); }
-    .signup-note { font-family: var(--mono); font-size: 0.56rem; color: var(--gray-dim); margin-top: 0.8rem; letter-spacing: 0.08em; }
+    .signup-form button:hover { box-shadow: 0 8px 36px rgba(255,196,107,0.3); transform: translateY(-1px); }
+    .signup-note { font-family: var(--mono); font-size: 0.55rem; letter-spacing: 0.12em; color: var(--faint); margin-top: 0.9rem; }
 
     /* ─── FOOTER ─── */
     footer {
       border-top: 1px solid var(--line);
-      padding: 2.2rem 3rem calc(2.2rem + var(--bar-h));
+      padding: 2.4rem 3.2rem;
       display: flex; align-items: center; justify-content: space-between;
       flex-wrap: wrap; gap: 1rem;
-      background: rgba(3,3,5,0.92);
-      position: relative; z-index: 1;
+      position: relative; z-index: 2;
+      background: rgba(5,7,11,0.85);
     }
-    footer p { font-family: var(--mono); font-size: 0.62rem; color: var(--gray-dim); letter-spacing: 0.06em; }
-    footer a { color: var(--gray-dim); text-decoration: none; transition: color 0.2s; }
-    footer a:hover { color: var(--red-hot); }
+    footer p { font-family: var(--mono); font-size: 0.6rem; color: var(--faint); letter-spacing: 0.08em; }
+    footer a { color: var(--faint); text-decoration: none; transition: color 0.25s; }
+    footer a:hover { color: var(--pearl); }
 
-    /* ─── REDUCED MOTION ─── */
+    /* ─── REDUCED MOTION / RESPONSIVE ─── */
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
       .reveal { opacity: 1 !important; transform: none !important; }
       html { scroll-behavior: auto; }
     }
-
-    /* ─── RESPONSIVE ─── */
     @media (max-width: 900px) {
-      .nav, .nav.scrolled { padding: 0.9rem 1.25rem; }
+      .nav, .nav.scrolled { padding: 1rem 1.4rem; }
       .nav-link { display: none; }
-      .hero-content { padding: calc(var(--bar-h) + 6.5rem) 1.25rem 10rem; }
-      .hc { padding: 0.7rem 1.3rem 0.7rem 0.9rem; }
-      .h1-line.indent { padding-left: 0; }
-      .kill-bar { padding: 3rem 1.25rem 2rem; gap: 1.4rem; }
-      .kb-arrow { display: none; }
-      .how-sec, .opps-sec, .about-sec, .price-sec, .cta-sec { padding-left: 1.25rem; padding-right: 1.25rem; }
-      .steps-grid { grid-template-columns: 1fr; }
-      .cards-grid { grid-template-columns: 1fr; }
+      .hero { padding: 7.5rem 1.4rem 6rem; }
+      .hero-stats .stat { padding: 0.4rem 1.4rem 0.4rem 1rem; }
+      .sec { padding: 6.5rem 1.4rem; }
+      .method-grid { grid-template-columns: 1fr; }
+      .cards { grid-template-columns: 1fr; }
       .price-grid { grid-template-columns: 1fr; }
-
-      /* killfeed rides the bottom of the hero on phones */
-      .killfeed {
-        display: block; left: 1.25rem; right: 1.25rem; width: auto;
-        bottom: calc(var(--bar-h) + 10px); font-size: 0.52rem;
+      .op-card { padding: 2.6rem 1.8rem; }
+      .d-pin { min-height: auto; padding: 5rem 1.4rem 4rem; }
+      .d-stage { display: flex; flex-direction: column; gap: 1.4rem; }
+      .d-stage > div:first-child {
+        position: sticky; top: 86px; z-index: 6;
+        display: flex; align-items: baseline; gap: 1.1rem;
+        background: rgba(5,7,11,0.82); backdrop-filter: blur(12px);
+        border: 1px solid var(--line); border-radius: 16px;
+        padding: 0.6rem 1.2rem;
       }
-      .scroll-cue { display: none; }
-
-      /* gauntlet: sticky HUD counter + gates that die as you scroll past them */
-      .g-pin { min-height: auto; padding: 5rem 1.25rem 4rem; overflow: visible; }  /* overflow:hidden would kill position:sticky */
-      .g-bgword { display: none; }
-      .g-stage { display: flex; flex-direction: column; gap: 1.4rem; }
-      .g-stage > div:first-child {
-        position: sticky; top: calc(var(--bar-h) + 76px); z-index: 6;  /* clears the fixed nav (~70px tall on phones) */
-        display: flex; align-items: baseline; gap: 1rem;
-        background: rgba(3,3,5,0.88); backdrop-filter: blur(8px);
-        border: 1px solid var(--line-red);
-        padding: 0.55rem 1rem;
-        box-shadow: 0 0 30px rgba(255,26,26,0.12);
-      }
-      .g-counter { font-size: 2.6rem; text-shadow: 0 0 24px rgba(255,26,26,0.45); }
-      .g-counter-label { margin-top: 0; }
-      .g-input-note { display: none; }
-      .gate { grid-template-columns: 2rem 1fr auto; }
-      .gate-status { display: none; }
-      .gate.active .gate-desc { max-height: 140px; }
-
-      .about-card { padding: 2.4rem 1.6rem; }
-      .about-deco { display: none; }
-      footer { flex-direction: column; text-align: center; }
+      .d-counter { font-size: 2.8rem; }
+      .d-counter-label { margin-top: 0; }
+      .d-note { display: none; }
+      .chamber { grid-template-columns: 2rem 1fr auto; }
       .signup-form { flex-direction: column; }
-      .ticker span { font-size: 0.72rem; }
-      .boot-term { font-size: 0.56rem; }
+      .signup-form button { width: 100%; }
+      footer { flex-direction: column; text-align: center; }
     }
   </style>
 </head>
 <body>
 
-<!-- no-JS fallback: page must stay readable without scripts -->
 <noscript>
   <style>
-    #boot, .cine-bar, #webgl, .killfeed, .fx-noise { display: none !important; }
+    #veil, #webgl, .anno { display: none !important; }
     .reveal { opacity: 1 !important; transform: none !important; }
-    .gate-desc { max-height: none !important; opacity: 1 !important; }
+    .ch-desc { max-height: none !important; opacity: 1 !important; }
+    .opp::before { opacity: 1 !important; }
   </style>
 </noscript>
 
-<!-- THE MACHINE ROOM — persistent 3D stage -->
+<!-- ambient -->
+<div class="glow glow-a"></div>
+<div class="glow glow-b"></div>
+<div class="glow glow-c"></div>
 <canvas id="webgl"></canvas>
-
-<!-- CINEMA LETTERBOX / VIEWFINDER -->
-<div class="cine-bar cine-top" aria-hidden="true">
-  <span class="cine-hide-m">GAUNTRIX // NICHE INTELLIGENCE ENGINE</span>
-  <span class="cine-rec">LIVE</span>
-  <span class="cine-tc" id="cine-tc">TC 00:00:00:00</span>
-</div>
-<div class="cine-bar cine-bottom">
-  <span id="scene-label" aria-hidden="true">01 — SIGNAL INTAKE</span>
-  <div class="cine-prog" aria-hidden="true"><i id="cine-fill"></i></div>
-  <span style="display:flex;align-items:center;gap:0.8rem;">
-    <span class="cine-hide-m" aria-hidden="true">FILTERS <b>5/5</b> · PASS <b>4%</b></span>
-    <button id="snd-btn" type="button" aria-label="Toggle ambient sound" aria-pressed="false">SND·OFF</button>
-  </span>
-</div>
-
-<!-- ATMOSPHERE -->
 <div class="fx-vignette"></div>
-<div class="fx-scanlines"></div>
-<div class="fx-noise"></div>
 
-<!-- CUSTOM CURSOR -->
+<!-- cursor -->
 <div id="cursor"></div>
 <div id="cursor-ring"></div>
 
-<!-- CINEMATIC BOOT -->
-<div id="boot" aria-hidden="true">
-  <div class="boot-term" id="boot-term"></div>
-  <div class="boot-title" id="boot-title">
-    <div class="bt-word" data-text="GAUNTRIX">GAUNTRIX</div>
-    <div class="bt-sub">Market intelligence for AI builders</div>
-  </div>
-  <div class="boot-skip">click to skip</div>
+<!-- VEIL -->
+<div id="veil" aria-hidden="true">
+  <div class="veil-word">gauntrix</div>
+  <div class="veil-drop"></div>
+  <div class="veil-ripple"></div>
+  <div class="veil-sub">the ai market distillery</div>
 </div>
 
 <main>
 
 <!-- NAV -->
 <nav class="nav" id="nav">
-  <a href="#" class="nav-logo">Gauntrix</a>
+  <a href="#" class="nav-logo">gauntrix</a>
   <div class="nav-links">
-    <a href="#how" class="nav-link">How It Works</a>
-    <a href="#pipeline" class="nav-link">The Gauntlet</a>
+    <a href="#method" class="nav-link">Method</a>
+    <a href="#distillation" class="nav-link">Distillation</a>
     <a href="#opportunities" class="nav-link">Opportunities</a>
     <a href="#pricing" class="nav-link">Pricing</a>
-    <a href="LEMON_SQUEEZY_CHECKOUT_URL" class="btn btn-red lemonsqueezy-button">Get Access — $29/mo</a>
+    <a href="LEMON_SQUEEZY_CHECKOUT_URL" class="pill pill-solid pill-sm lemonsqueezy-button">Get access — $29/mo</a>
   </div>
 </nav>
 
 <!-- HERO -->
 <header class="hero" id="hero">
-  <div class="hero-bg-word">GAUNTRIX</div>
-  <div class="hud-corner hud-tl"></div>
-  <div class="hud-corner hud-tr"></div>
-  <div class="hud-corner hud-bl"></div>
-  <div class="hud-corner hud-br"></div>
-
-  <div class="hero-content">
-    <div class="hero-eyebrow">AI validation engine · ~4% pass · weekly drops</div>
-    <h1 class="hero-h1" id="hero-h1">
-      <span class="h1-line">Most ideas</span>
-      <span class="h1-line outline"><span class="glitch" data-text="die here.">die here.</span></span>
-      <span class="h1-line indent">We built</span>
-      <span class="h1-line indent">the machine.</span>
+  <div class="hero-inner">
+    <p class="overline">AI market distillery · weekly drop nº 61</p>
+    <h1 class="display hero-h1">
+      Two hundred ideas pour&nbsp;in.<br>
+      <em>Five come out worth building.</em>
     </h1>
-    <p class="hero-sub">
-      Exploding Topics shows trends. We run <b>200+ ideas</b> through a brutal 5-filter AI screen.
-      AI wrappers, oversaturated tools, and "maybe ads" monetization get cut in seconds.
-      What comes out the other side is <b>narrow, buildable, and has no dominant competitor</b>.
-      Weekly drops for builders — not browsers.
+    <p class="lead hero-lead">
+      Gauntrix runs the indie market through a <b>five-stage distillation</b> every week —
+      forums, app stores, search data — and hands you only the niches that are
+      <b>narrow, buildable, and actually pay</b>. No trend-chasing. No noise.
     </p>
-    <div class="hero-counters">
-      <div class="hc">
-        <div class="hc-num" data-count="62">0</div>
-        <div class="hc-label">pipeline runs</div>
-      </div>
-      <div class="hc">
-        <div class="hc-num" data-count="200" data-suffix="+">0</div>
-        <div class="hc-label">ideas evaluated</div>
-      </div>
-      <div class="hc">
-        <div class="hc-num dead" data-count="178" data-suffix="+">0</div>
-        <div class="hc-label">rejected</div>
-      </div>
-      <div class="hc">
-        <div class="hc-num alive" data-count="22">0</div>
-        <div class="hc-label">validated</div>
-      </div>
-    </div>
     <div class="hero-ctas">
-      <a href="LEMON_SQUEEZY_CHECKOUT_URL" class="btn btn-red btn-lg lemonsqueezy-button">Get Full Access — $29/mo</a>
-      <a href="#free-signup" class="btn btn-ghost btn-lg">Start free →</a>
+      <a href="LEMON_SQUEEZY_CHECKOUT_URL" class="pill pill-solid lemonsqueezy-button">Get full access — $29/mo</a>
+      <a href="#free-signup" class="pill pill-ghost">Start free →</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat"><div class="stat-n" data-count="61" data-stat="runs">0</div><div class="stat-l">weekly runs</div></div>
+      <div class="stat"><div class="stat-n" data-count="200" data-suffix="+" data-stat="evaluated">0</div><div class="stat-l">ideas tasted</div></div>
+      <div class="stat"><div class="stat-n" data-count="4" data-prefix="~" data-suffix="%">0</div><div class="stat-l">pass rate</div></div>
+      <div class="stat"><div class="stat-n tint" data-count="26" data-stat="survived">0</div><div class="stat-l">distilled niches</div></div>
     </div>
   </div>
+  <!-- live diagram labels for the 3D scene -->
+  <div class="anno anno-in" aria-hidden="true">raw ideas — <b>200+</b> pour in weekly</div>
+  <div class="anno anno-pool" aria-hidden="true">the distillation pool — <b>5 filters</b> live inside</div>
+  <div class="anno anno-out" aria-hidden="true">validated niches escape — <b>~4%</b></div>
 
-  <!-- LIVE KILL FEED -->
-  <div class="killfeed" aria-hidden="true">
-    <div class="killfeed-title">validation feed // live</div>
-    <div id="killfeed-lines"></div>
-  </div>
-
-  <div class="scroll-cue">Feed the machine</div>
+  <div class="hero-note">scroll to distill</div>
 </header>
 
-<!-- KILL TICKER -->
-<div class="ticker-wrap" aria-hidden="true">
-  <div class="ticker" id="ticker">
-    <span>AI wrapper №4,217 — rejected: saturated</span>
-    <span>"another todo app" — rejected: no moat</span>
-    <span>"maybe ads" monetization — rejected: no revenue path</span>
-    <span>crowded SERP — rejected: dominant player exists</span>
-    <span>no reachable audience — rejected: cold start unsolved</span>
-    <span>6-month build — rejected: scope too large</span>
-    <span>AI wrapper №4,217 — rejected: saturated</span>
-    <span>"another todo app" — rejected: no moat</span>
-    <span>"maybe ads" monetization — rejected: no revenue path</span>
-    <span>crowded SERP — rejected: dominant player exists</span>
-    <span>no reachable audience — rejected: cold start unsolved</span>
-    <span>6-month build — rejected: scope too large</span>
+<!-- RIBBON -->
+<div class="ribbon" aria-hidden="true">
+  <div class="ribbon-track">
+    <span>saturated ideas dissolve <i>✦</i></span>
+    <span>no-moat ideas dissolve <i>✦</i></span>
+    <span>"maybe ads" dissolves <i>✦</i></span>
+    <span>unbuildable scope dissolves <i>✦</i></span>
+    <span>what remains, ships <i>✦</i></span>
+    <span>saturated ideas dissolve <i>✦</i></span>
+    <span>no-moat ideas dissolve <i>✦</i></span>
+    <span>"maybe ads" dissolves <i>✦</i></span>
+    <span>unbuildable scope dissolves <i>✦</i></span>
+    <span>what remains, ships <i>✦</i></span>
   </div>
 </div>
 
-<!-- KILL BAR -->
-<div class="kill-bar">
-  <div class="ks"><div class="ks-n" data-count="62">0</div><div class="ks-l">pipeline runs</div></div>
-  <div class="kb-arrow">»</div>
-  <div class="ks"><div class="ks-n" data-count="200" data-suffix="+">0</div><div class="ks-l">ideas evaluated</div></div>
-  <div class="kb-arrow">»</div>
-  <div class="ks"><div class="ks-n dead" data-count="80" data-prefix="~" data-suffix="%">0</div><div class="ks-l">rejected on first pass</div></div>
-  <div class="kb-arrow">»</div>
-  <div class="ks"><div class="ks-n alive" data-count="22">0</div><div class="ks-l">cleared full filter</div></div>
-  <div class="kb-note">real numbers · updated as the pipeline runs</div>
-</div>
-
-<!-- HOW IT WORKS -->
-<section class="how-sec" id="how">
-  <div class="how-inner">
-    <p class="sec-tag reveal" data-scramble>How It Works</p>
-    <h2 class="sec-h2 reveal" data-scramble>AI finds the gap.<br><em>You build the business.</em></h2>
-    <p class="sec-lead reveal">A multi-stage pipeline runs every week: scan, score, filter, validate. Only the clearest opportunities make it through.</p>
-    <div class="steps-grid">
-      <div class="step-card reveal">
-        <span class="step-tag">phase_01</span>
-        <div class="step-num">01</div>
-        <h3>Wide scan</h3>
-        <p>AI crawls forums, subreddits, app stores, and search data to surface recurring pain points with no good solution yet.</p>
+<!-- METHOD -->
+<section class="sec" id="method">
+  <div class="sec-inner">
+    <p class="overline reveal">How it works</p>
+    <h2 class="display sec-h2 reveal">Pour. Filter. <em>Bottle.</em></h2>
+    <p class="lead sec-lead reveal">A multi-stage pipeline runs every week: scan wide, score hard, keep almost nothing. Only the clearest opportunities reach your inbox.</p>
+    <div class="method-grid">
+      <div class="m-card reveal">
+        <div class="m-num">01</div>
+        <h3>Wide intake</h3>
+        <p>AI crawls forums, subreddits, app stores, and search data to surface recurring pain points with no good solution yet — hundreds of candidates, every single week.</p>
       </div>
-      <div class="step-card reveal">
-        <span class="step-tag">phase_02</span>
-        <div class="step-num">02</div>
-        <h3>5-filter screen</h3>
-        <p>Each candidate scored on SEO gap, competition density, monetization clarity, build feasibility, and audience reachability.</p>
+      <div class="m-card reveal">
+        <div class="m-num">02</div>
+        <h3>Five-stage distillation</h3>
+        <p>Each candidate is scored on SEO gap, competition density, monetization clarity, build feasibility, and audience reachability. Fail one stage and it dissolves.</p>
       </div>
-      <div class="step-card reveal">
-        <span class="step-tag">phase_03</span>
-        <div class="step-num">03</div>
-        <h3>Vetted drop</h3>
-        <p>What passes gets a full brief: pain point, why blue ocean, monetization path, and where to find your first 100 users.</p>
+      <div class="m-card reveal">
+        <div class="m-num">03</div>
+        <h3>The weekly pour</h3>
+        <p>What passes arrives as a full brief: the pain point, why it's blue ocean, the monetization path, and exactly where your first 100 users already gather.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- THE GAUNTLET -->
-<section class="gauntlet" id="pipeline">
-  <div class="g-pin" id="g-pin">
-    <div class="g-bgword">GAUNTLET</div>
-    <div class="g-flash" id="g-flash"></div>
-    <div class="g-inner">
-      <div class="g-head">
-        <p class="sec-tag" data-scramble>The Machine</p>
-        <h2 class="sec-h2" data-scramble>5 filters.<br><em>Most niches don't make it.</em></h2>
-        <p class="sec-lead" style="margin-bottom:0;">Any niche that fails a single filter is dead. No partial credit. No second chances. Scroll to run the gauntlet.</p>
-      </div>
-      <div class="g-stage">
+<!-- DISTILLATION -->
+<section class="distill" id="distillation">
+  <div class="d-pin" id="d-pin">
+    <div class="d-inner">
+      <p class="overline">The column</p>
+      <h2 class="display sec-h2">Five chambers. <em>Almost nothing survives the column.</em></h2>
+      <div class="d-stage">
         <div>
-          <div class="g-counter" id="g-num">200</div>
-          <div class="g-counter-label">candidates <b>remaining</b></div>
-          <div class="g-input-note">
-            INPUT: 200+ candidates / weekly run<br>
-            OUTPUT: 22 cleared full filter<br>
-            CRITERIA: all 5 required
+          <div class="d-counter" id="d-num">200</div>
+          <div class="d-counter-label">candidates in suspension</div>
+          <div class="d-note">
+            input: 200+ candidates / weekly run<br>
+            output: 26 fully distilled<br>
+            criteria: all five chambers, no exceptions
           </div>
         </div>
         <div>
-          <div class="g-gates" id="g-gates">
-            <div class="gate">
-              <span class="gate-idx">F-01</span>
-              <span class="gate-name">Pain validation</span>
-              <span class="gate-kill">cuts ~40%</span>
-              <span class="gate-status">pending</span>
-              <p class="gate-desc">Does this problem recur in forums, app reviews, and search? Genuine frustration, not mild inconvenience.</p>
+          <div class="chambers" id="chambers">
+            <div class="chamber">
+              <span class="ch-idx">C·1</span>
+              <span class="ch-name">Pain validation</span>
+              <span class="ch-cut">dissolves ~40%</span>
+              <p class="ch-desc">Does this problem recur in forums, app reviews, and search? Genuine frustration, not mild inconvenience.</p>
+              <i class="ch-fill"></i>
             </div>
-            <div class="gate">
-              <span class="gate-idx">F-02</span>
-              <span class="gate-name">SEO gap analysis</span>
-              <span class="gate-kill">cuts ~25%</span>
-              <span class="gate-status">pending</span>
-              <p class="gate-desc">Is the SERP actually empty? Rankable long-tail variations no one has claimed. One dominant player kills the opportunity.</p>
+            <div class="chamber">
+              <span class="ch-idx">C·2</span>
+              <span class="ch-name">SEO gap analysis</span>
+              <span class="ch-cut">dissolves ~25%</span>
+              <p class="ch-desc">Is the SERP actually empty? Rankable long-tail variations no one has claimed. One dominant player ends the opportunity.</p>
+              <i class="ch-fill"></i>
             </div>
-            <div class="gate">
-              <span class="gate-idx">F-03</span>
-              <span class="gate-name">Monetization clarity</span>
-              <span class="gate-kill">cuts ~20%</span>
-              <span class="gate-status">pending</span>
-              <p class="gate-desc">Clear path to revenue — affiliate, subscription, lead-gen, or SaaS. "Maybe ads" doesn't count.</p>
+            <div class="chamber">
+              <span class="ch-idx">C·3</span>
+              <span class="ch-name">Monetization clarity</span>
+              <span class="ch-cut">dissolves ~20%</span>
+              <p class="ch-desc">Clear path to revenue — affiliate, subscription, lead-gen, or SaaS. "Maybe ads" doesn't count.</p>
+              <i class="ch-fill"></i>
             </div>
-            <div class="gate">
-              <span class="gate-idx">F-04</span>
-              <span class="gate-name">Build feasibility</span>
-              <span class="gate-kill">cuts ~10%</span>
-              <span class="gate-status">pending</span>
-              <p class="gate-desc">Can one person build a useful v1 in a weekend? Proprietary data requirements that no indie hacker can access = dead.</p>
+            <div class="chamber">
+              <span class="ch-idx">C·4</span>
+              <span class="ch-name">Build feasibility</span>
+              <span class="ch-cut">dissolves ~10%</span>
+              <p class="ch-desc">Can one person build a useful v1 in a weekend? Proprietary data requirements no indie hacker can access = dissolved.</p>
+              <i class="ch-fill"></i>
             </div>
-            <div class="gate final">
-              <span class="gate-idx">F-05</span>
-              <span class="gate-name">Reachable audience</span>
-              <span class="gate-kill">cuts the rest</span>
-              <span class="gate-status">pending</span>
-              <p class="gate-desc">Is there a community, subreddit, or niche platform where the first 100 users already gather?</p>
+            <div class="chamber">
+              <span class="ch-idx">C·5</span>
+              <span class="ch-name">Reachable audience</span>
+              <span class="ch-cut">final condensation</span>
+              <p class="ch-desc">Is there a community, subreddit, or niche platform where the first 100 users already gather?</p>
+              <i class="ch-fill"></i>
             </div>
           </div>
-          <p class="g-foot">pass rate: <b>~4%</b> · all five filters required · <b id="g-verdict">awaiting input…</b></p>
+          <p class="d-foot">pass rate <b>~4%</b> · all five chambers required · <b id="d-verdict">awaiting pour…</b></p>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- SURVIVORS -->
-<section class="opps-sec" id="opportunities">
-  <div class="opps-inner">
-    <p class="sec-tag reveal" data-scramble>Validated by the pipeline</p>
-    <h2 class="sec-h2 reveal" data-scramble>What came out<br><em>the other side.</em></h2>
-    <p class="sec-lead reveal">These are opportunities our pipeline surfaced, scored, and vetted. Each one passed all 5 filters. Full drops include deeper briefs, validation data, and unpublished opportunities every week.</p>
+<!-- OPPORTUNITIES -->
+<section class="sec opps" id="opportunities">
+  <div class="sec-inner">
+    <p class="overline reveal">Validated by the column</p>
+    <h2 class="display sec-h2 reveal">This week's <em>distillate.</em></h2>
+    <p class="lead sec-lead reveal">Opportunities our pipeline surfaced, scored, and vetted — each one passed all five chambers. Full drops include deeper briefs, validation data, and unpublished niches every week.</p>
 
-    <div class="honest-box reveal">
-      <h3>Why do these look complex and specific?</h3>
-      <p>Because the obvious ideas are already gone. "Build an AI writing tool." "Make another todo app." Our filter rejects these in seconds — oversaturated, margin-less, already built by a thousand people.</p>
+    <div class="honest reveal">
+      <h3>Why so complex and specific?</h3>
+      <p>Because the obvious ideas are already gone. "Build an AI writing tool." "Make another todo app." The column dissolves these in seconds — oversaturated, margin-less, already built by a thousand people.</p>
       <p>What survives is narrow, vertical, and requires domain knowledge. That's not a bug — that's the moat. <strong>If it were obvious and easy, someone would have done it.</strong></p>
     </div>
 
-    <div class="cards-group-header reveal">
-      <span class="grp-glyph">[⚡]</span>
-      <span class="grp-title">Quick Build</span>
-      <span class="grp-sub">launch in a week · lower moat, real gaps</span>
+    <div class="grp reveal">
+      <span class="grp-t">Quick build</span>
+      <span class="grp-s">launch in a week · lower moat, real gaps</span>
     </div>
 
-    <div class="cards-grid">
-      <!-- DentalAuth AI -->
-      <div class="opp-card reveal" data-tilt>
-        <div class="card-title">DentalAuth AI</div>
-        <span class="card-badge">SaaS</span>
-        <p class="card-pain">Dental offices spend 30+ minutes writing a single Prior Authorization letter — manually, every claim. Formatting errors cause denials. No purpose-built AI tool understands CDT codes and insurer-specific narrative structure.</p>
-        <div class="card-rows">
-          <div class="card-row">
-            <span class="cr-glyph">◢</span>
-            <div><div class="cr-label">Why blue ocean</div><div class="cr-text">Generic AI tools don't know CDT codes or PA narrative structure. SERP for "dental prior auth letter generator" is empty. High-intent B2B pain with zero dedicated tool.</div></div>
-          </div>
-          <div class="card-row">
-            <span class="cr-glyph">$</span>
-            <div><div class="cr-label">Monetization</div><div class="cr-text">Per-seat subscription $29–79/mo for dental offices. Clear ROI: one approval pays for months of the tool.</div></div>
-          </div>
-          <div class="card-row">
-            <span class="cr-glyph">▲</span>
-            <div><div class="cr-label">Cold start</div><div class="cr-text">DentalTown forums and dental billing Facebook groups. "Dental prior auth letter template [insurer]" — one page per insurer, zero competition.</div></div>
-          </div>
+    <div class="cards">
+      <div class="opp reveal">
+        <div class="opp-t">DentalAuth AI</div>
+        <span class="opp-badge">SaaS</span>
+        <p class="opp-pain">Dental offices spend 30+ minutes writing a single Prior Authorization letter — manually, every claim. Formatting errors cause denials. No purpose-built AI tool understands CDT codes and insurer-specific narrative structure.</p>
+        <div class="opp-rows">
+          <div class="opp-row"><i class="or-dot"></i><div><div class="or-label">Why blue ocean</div><div class="or-text">Generic AI tools don't know CDT codes or PA narrative structure. SERP for "dental prior auth letter generator" is empty. High-intent B2B pain with zero dedicated tool.</div></div></div>
+          <div class="opp-row"><i class="or-dot"></i><div><div class="or-label">Monetization</div><div class="or-text">Per-seat subscription $29–79/mo for dental offices. Clear ROI: one approval pays for months of the tool.</div></div></div>
+          <div class="opp-row"><i class="or-dot"></i><div><div class="or-label">Cold start</div><div class="or-text">DentalTown forums and dental billing Facebook groups. "Dental prior auth letter template [insurer]" — one page per insurer, zero competition.</div></div></div>
         </div>
-        <div class="card-who"><span class="cw-label">For:</span>Dental office managers, billing staff</div>
+        <div class="opp-who"><b>For</b>Dental office managers, billing staff</div>
       </div>
 
-      <!-- ClaimSnap -->
-      <div class="opp-card reveal" data-tilt>
-        <div class="card-title">ClaimSnap</div>
-        <span class="card-badge">SaaS</span>
-        <p class="card-pain">Independent CAT adjusters convert field notes into carrier-ready structured loss reports by hand — each carrier has different formatting requirements. During CAT season this bottleneck kills throughput.</p>
-        <div class="card-rows">
-          <div class="card-row">
-            <span class="cr-glyph">◢</span>
-            <div><div class="cr-label">Why blue ocean</div><div class="cr-text">Enterprise tools (Xactimate) start at $200+/mo targeting staff adjusters, not independents. No lightweight AI report generator exists for CAT independents.</div></div>
-          </div>
-          <div class="card-row">
-            <span class="cr-glyph">$</span>
-            <div><div class="cr-label">Monetization</div><div class="cr-text">Per-report credits during CAT season. Annual subscription for year-round adjusters. Carrier white-label for high-volume distribution.</div></div>
-          </div>
-          <div class="card-row">
-            <span class="cr-glyph">▲</span>
-            <div><div class="cr-label">Cold start</div><div class="cr-text">NAPIA community and CAT adjuster Facebook groups. Storm season timing makes organic distribution natural.</div></div>
-          </div>
+      <div class="opp reveal">
+        <div class="opp-t">ClaimSnap</div>
+        <span class="opp-badge">SaaS</span>
+        <p class="opp-pain">Independent CAT adjusters convert field notes into carrier-ready structured loss reports by hand — each carrier has different formatting requirements. During CAT season this bottleneck kills throughput.</p>
+        <div class="opp-rows">
+          <div class="opp-row"><i class="or-dot"></i><div><div class="or-label">Why blue ocean</div><div class="or-text">Enterprise tools (Xactimate) start at $200+/mo targeting staff adjusters, not independents. No lightweight AI report generator exists for CAT independents.</div></div></div>
+          <div class="opp-row"><i class="or-dot"></i><div><div class="or-label">Monetization</div><div class="or-text">Per-report credits during CAT season. Annual subscription for year-round adjusters. Carrier white-label for high-volume distribution.</div></div></div>
+          <div class="opp-row"><i class="or-dot"></i><div><div class="or-label">Cold start</div><div class="or-text">NAPIA community and CAT adjuster Facebook groups. Storm season timing makes organic distribution natural.</div></div></div>
         </div>
-        <div class="card-who"><span class="cw-label">For:</span>Independent CAT adjusters</div>
+        <div class="opp-who"><b>For</b>Independent CAT adjusters</div>
       </div>
     </div>
 
-    <div class="cards-group-header reveal">
-      <span class="grp-glyph">[▦]</span>
-      <span class="grp-title">Deep Build</span>
-      <span class="grp-sub">3–6 months · defensible data advantage</span>
+    <div class="grp reveal">
+      <span class="grp-t">Deep build</span>
+      <span class="grp-s">3–6 months · defensible data advantage</span>
     </div>
 
-    <div class="cards-grid">
-      <!-- DroneCompli -->
-      <div class="opp-card reveal" data-tilt>
-        <div class="card-title">DroneCompli</div>
-        <span class="card-badge">Subscription</span>
-        <p class="card-pain">Commercial UAV operators working across borders face different airspace rules, BVLOS authorizations, and operator licensing requirements in every country. Official sources are scattered, poorly translated, and rarely updated.</p>
-        <div class="card-rows">
-          <div class="card-row">
-            <span class="cr-glyph">◢</span>
-            <div><div class="cr-label">Why blue ocean</div><div class="cr-text">No neutral database covers global commercial UAV compliance in one place. The fragmentation is the moat — once aggregated, no one can replicate it quickly. Aviation lawyers charge $300+/hr for what this automates.</div></div>
-          </div>
-          <div class="card-row">
-            <span class="cr-glyph">$</span>
-            <div><div class="cr-label">Monetization</div><div class="cr-text">Subscription for commercial operators + per-seat for fleet teams. Compliance consultancies pay for API access.</div></div>
-          </div>
-          <div class="card-row">
-            <span class="cr-glyph">▲</span>
-            <div><div class="cr-label">Cold start</div><div class="cr-text">r/drones and DJI commercial operator communities. "[Country] commercial drone BVLOS rules" — programmatic page per country, each uncontested.</div></div>
-          </div>
+    <div class="cards">
+      <div class="opp reveal">
+        <div class="opp-t">DroneCompli</div>
+        <span class="opp-badge">Subscription</span>
+        <p class="opp-pain">Commercial UAV operators working across borders face different airspace rules, BVLOS authorizations, and operator licensing requirements in every country. Official sources are scattered, poorly translated, and rarely updated.</p>
+        <div class="opp-rows">
+          <div class="opp-row"><i class="or-dot"></i><div><div class="or-label">Why blue ocean</div><div class="or-text">No neutral database covers global commercial UAV compliance in one place. The fragmentation is the moat — once aggregated, no one can replicate it quickly. Aviation lawyers charge $300+/hr for what this automates.</div></div></div>
+          <div class="opp-row"><i class="or-dot"></i><div><div class="or-label">Monetization</div><div class="or-text">Subscription for commercial operators + per-seat for fleet teams. Compliance consultancies pay for API access.</div></div></div>
+          <div class="opp-row"><i class="or-dot"></i><div><div class="or-label">Cold start</div><div class="or-text">r/drones and DJI commercial operator communities. "[Country] commercial drone BVLOS rules" — programmatic page per country, each uncontested.</div></div></div>
         </div>
-        <div class="card-who"><span class="cw-label">For:</span>Commercial drone operators, aviation lawyers</div>
+        <div class="opp-who"><b>For</b>Commercial drone operators, aviation lawyers</div>
       </div>
 
-      <!-- FontLegal -->
-      <div class="opp-card reveal" data-tilt>
-        <div class="card-title">FontLegal</div>
-        <span class="card-badge">Freemium</span>
-        <p class="card-pain">Designers and AI trainers don't know if their fonts allow commercial embedding, broadcast use, or AI training rights. Font license PDFs are dense legal documents. The risk of a violation surfaces only after shipping.</p>
-        <div class="card-rows">
-          <div class="card-row">
-            <span class="cr-glyph">◢</span>
-            <div><div class="cr-label">Why blue ocean</div><div class="cr-text">No searchable matrix covers embedding/broadcast/AI training rights across major font libraries. AI training restrictions emerged in 2023 — newly urgent, unserved, legal teams now scrambling.</div></div>
-          </div>
-          <div class="card-row">
-            <span class="cr-glyph">$</span>
-            <div><div class="cr-label">Monetization</div><div class="cr-text">Freemium with bulk-check premium; design agency team plans. AI company compliance licenses at enterprise pricing.</div></div>
-          </div>
-          <div class="card-row">
-            <span class="cr-glyph">▲</span>
-            <div><div class="cr-label">Cold start</div><div class="cr-text">r/graphic_design, Typewolf community, HuggingFace dataset builders. "[Font name] commercial license AI training" — every major font is an uncontested long-tail page.</div></div>
-          </div>
+      <div class="opp reveal">
+        <div class="opp-t">FontLegal</div>
+        <span class="opp-badge">Freemium</span>
+        <p class="opp-pain">Designers and AI trainers don't know if their fonts allow commercial embedding, broadcast use, or AI training rights. Font license PDFs are dense legal documents. The risk of a violation surfaces only after shipping.</p>
+        <div class="opp-rows">
+          <div class="opp-row"><i class="or-dot"></i><div><div class="or-label">Why blue ocean</div><div class="or-text">No searchable matrix covers embedding/broadcast/AI training rights across major font libraries. AI training restrictions emerged in 2023 — newly urgent, unserved, legal teams now scrambling.</div></div></div>
+          <div class="opp-row"><i class="or-dot"></i><div><div class="or-label">Monetization</div><div class="or-text">Freemium with bulk-check premium; design agency team plans. AI company compliance licenses at enterprise pricing.</div></div></div>
+          <div class="opp-row"><i class="or-dot"></i><div><div class="or-label">Cold start</div><div class="or-text">r/graphic_design, Typewolf community, HuggingFace dataset builders. "[Font name] commercial license AI training" — every major font is an uncontested long-tail page.</div></div></div>
         </div>
-        <div class="card-who"><span class="cw-label">For:</span>Design studios, app developers, AI engineers</div>
+        <div class="opp-who"><b>For</b>Design studios, app developers, AI engineers</div>
       </div>
 
-      <!-- PAClear -->
-      <div class="opp-card reveal" data-tilt>
-        <div class="card-title">PAClear</div>
-        <span class="card-badge">Subscription</span>
-        <p class="card-pain">Medical billing managers submit Prior Authorization requests without knowing historical approval rates per CPT code and insurer — wasting hours on submissions with a 90% denial probability.</p>
-        <div class="card-rows">
-          <div class="card-row">
-            <span class="cr-glyph">◢</span>
-            <div><div class="cr-label">Why blue ocean</div><div class="cr-text">No tool translates CPT × insurer denial rates into pre-submission intelligence. RCM software shows your historical outcomes — not market-wide approval odds before you submit.</div></div>
-          </div>
-          <div class="card-row">
-            <span class="cr-glyph">$</span>
-            <div><div class="cr-label">Monetization</div><div class="cr-text">Subscription per billing department; RCM consulting firms pay for white-label. Reducing denial rate by 10% saves large practices $50K+/yr.</div></div>
-          </div>
-          <div class="card-row">
-            <span class="cr-glyph">▲</span>
-            <div><div class="cr-label">Cold start</div><div class="cr-text">Medical Billing &amp; Coding Facebook groups, AAPC forums, r/medicalbilling. "[CPT code] prior auth denial rate [insurer]" — one uncontested page per CPT × insurer combination.</div></div>
-          </div>
+      <div class="opp reveal">
+        <div class="opp-t">PAClear</div>
+        <span class="opp-badge">Subscription</span>
+        <p class="opp-pain">Medical billing managers submit Prior Authorization requests without knowing historical approval rates per CPT code and insurer — wasting hours on submissions with a 90% denial probability.</p>
+        <div class="opp-rows">
+          <div class="opp-row"><i class="or-dot"></i><div><div class="or-label">Why blue ocean</div><div class="or-text">No tool translates CPT × insurer denial rates into pre-submission intelligence. RCM software shows your historical outcomes — not market-wide approval odds before you submit.</div></div></div>
+          <div class="opp-row"><i class="or-dot"></i><div><div class="or-label">Monetization</div><div class="or-text">Subscription per billing department; RCM consulting firms pay for white-label. Reducing denial rate by 10% saves large practices $50K+/yr.</div></div></div>
+          <div class="opp-row"><i class="or-dot"></i><div><div class="or-label">Cold start</div><div class="or-text">Medical Billing &amp; Coding Facebook groups, AAPC forums, r/medicalbilling. "[CPT code] prior auth denial rate [insurer]" — one uncontested page per CPT × insurer combination.</div></div></div>
         </div>
-        <div class="card-who"><span class="cw-label">For:</span>Medical billing managers, physicians</div>
+        <div class="opp-who"><b>For</b>Medical billing managers, physicians</div>
       </div>
 
-      <!-- AuditScore -->
-      <div class="opp-card reveal" data-tilt>
-        <div class="card-title">AuditScore</div>
-        <span class="card-badge">Subscription</span>
-        <p class="card-pain">DeFi protocols pay $50K–$500K for security audits — then get exploited anyway. Which auditors actually catch critical bugs? The data is public but scattered across postmortems and Discord threads.</p>
-        <div class="card-rows">
-          <div class="card-row">
-            <span class="cr-glyph">◢</span>
-            <div><div class="cr-label">Why blue ocean</div><div class="cr-text">DefiLlama tracks hacks but not auditor accountability. No database maps audit firm → missed exploits → dollar losses. Protocol teams make six-figure decisions based on Twitter rep, not track record.</div></div>
-          </div>
-          <div class="card-row">
-            <span class="cr-glyph">$</span>
-            <div><div class="cr-label">Monetization</div><div class="cr-text">Subscription for protocol teams; institutional risk managers and DAO treasuries pay premium API rates. The stakes make $99/mo a trivial due-diligence expense.</div></div>
-          </div>
-          <div class="card-row">
-            <span class="cr-glyph">▲</span>
-            <div><div class="cr-label">Cold start</div><div class="cr-text">DeFi security Twitter/X, r/ethdev, Immunefi bug bounty ecosystem. Post an audit firm comparison thread — distribution is immediate in a community starved for this data.</div></div>
-          </div>
+      <div class="opp reveal">
+        <div class="opp-t">AuditScore</div>
+        <span class="opp-badge">Subscription</span>
+        <p class="opp-pain">DeFi protocols pay $50K–$500K for security audits — then get exploited anyway. Which auditors actually catch critical bugs? The data is public but scattered across postmortems and Discord threads.</p>
+        <div class="opp-rows">
+          <div class="opp-row"><i class="or-dot"></i><div><div class="or-label">Why blue ocean</div><div class="or-text">DefiLlama tracks hacks but not auditor accountability. No database maps audit firm → missed exploits → dollar losses. Protocol teams make six-figure decisions based on Twitter rep, not track record.</div></div></div>
+          <div class="opp-row"><i class="or-dot"></i><div><div class="or-label">Monetization</div><div class="or-text">Subscription for protocol teams; institutional risk managers and DAO treasuries pay premium API rates. The stakes make $99/mo a trivial due-diligence expense.</div></div></div>
+          <div class="opp-row"><i class="or-dot"></i><div><div class="or-label">Cold start</div><div class="or-text">DeFi security Twitter/X, r/ethdev, Immunefi bug bounty ecosystem. Post an audit firm comparison thread — distribution is immediate in a community starved for this data.</div></div></div>
         </div>
-        <div class="card-who"><span class="cw-label">For:</span>DeFi protocol teams, institutional risk managers</div>
+        <div class="opp-who"><b>For</b>DeFi protocol teams, institutional risk managers</div>
       </div>
 
-      <!-- CaseGuard -->
-      <div class="opp-card reveal" data-tilt>
-        <div class="card-title">CaseGuard</div>
-        <span class="card-badge">Subscription</span>
-        <p class="card-pain">HR and legal teams evaluating EOR platforms can't find enforcement actions against specific companies for contractor misclassification. DOL, NLRB, and state labor board records are public — but completely unsearchable by company or platform.</p>
-        <div class="card-rows">
-          <div class="card-row">
-            <span class="cr-glyph">◢</span>
-            <div><div class="cr-label">Why blue ocean</div><div class="cr-text">No aggregator has indexed enforcement actions by company + EOR platform. G2 and Capterra don't cover compliance failures. SERP returns zero structured results — only buried PDFs.</div></div>
-          </div>
-          <div class="card-row">
-            <span class="cr-glyph">$</span>
-            <div><div class="cr-label">Monetization</div><div class="cr-text">B2B subscription $99–299/mo for HR/legal teams. Compliance law firms pay for ad placement targeting procurement queries.</div></div>
-          </div>
-          <div class="card-row">
-            <span class="cr-glyph">▲</span>
-            <div><div class="cr-label">Cold start</div><div class="cr-text">EOR procurement Slack communities, LinkedIn HR/legal groups. "[Platform] contractor misclassification [country] 2024" — one page per platform × country, each uncontested.</div></div>
-          </div>
+      <div class="opp reveal">
+        <div class="opp-t">CaseGuard</div>
+        <span class="opp-badge">Subscription</span>
+        <p class="opp-pain">HR and legal teams evaluating EOR platforms can't find enforcement actions against specific companies for contractor misclassification. DOL, NLRB, and state labor board records are public — but completely unsearchable by company or platform.</p>
+        <div class="opp-rows">
+          <div class="opp-row"><i class="or-dot"></i><div><div class="or-label">Why blue ocean</div><div class="or-text">No aggregator has indexed enforcement actions by company + EOR platform. G2 and Capterra don't cover compliance failures. SERP returns zero structured results — only buried PDFs.</div></div></div>
+          <div class="opp-row"><i class="or-dot"></i><div><div class="or-label">Monetization</div><div class="or-text">B2B subscription $99–299/mo for HR/legal teams. Compliance law firms pay for ad placement targeting procurement queries.</div></div></div>
+          <div class="opp-row"><i class="or-dot"></i><div><div class="or-label">Cold start</div><div class="or-text">EOR procurement Slack communities, LinkedIn HR/legal groups. "[Platform] contractor misclassification [country] 2024" — one page per platform × country, each uncontested.</div></div></div>
         </div>
-        <div class="card-who"><span class="cw-label">For:</span>HR/legal teams, EOR procurement</div>
+        <div class="opp-who"><b>For</b>HR/legal teams, EOR procurement</div>
       </div>
 
-      <!-- LOCKED -->
-      <div class="locked-card reveal">
-        <div class="lock-glyph">[ ◼ LOCKED ]</div>
-        <div class="lock-label">More inside every weekly drop</div>
-        <div class="lock-sub">Full access includes all 5–8 validated opportunities per drop, deeper monetization playbooks, and unpublished niches not shown here.</div>
-        <a href="LEMON_SQUEEZY_CHECKOUT_URL" class="btn btn-red lemonsqueezy-button" style="padding:0.8rem 2rem;font-size:0.85rem;">Unlock — $29/mo</a>
+      <div class="locked reveal">
+        <div class="locked-drop">💧</div>
+        <h3>More in every weekly pour</h3>
+        <p>Full access includes all 5–8 validated opportunities per drop, deeper monetization playbooks, and unpublished niches not shown here.</p>
+        <a href="LEMON_SQUEEZY_CHECKOUT_URL" class="pill pill-grad lemonsqueezy-button">Unlock — $29/mo</a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ABOUT -->
-<section class="about-sec" id="about">
-  <div class="about-deco" aria-hidden="true">
-    <div class="spin3d">
-      <div class="face"></div><div class="face"></div><div class="face"></div>
-      <div class="face"></div><div class="face"></div>
-    </div>
-  </div>
-  <div class="about-inner">
-    <div class="about-card reveal">
-      <div class="about-term"><i></i><i></i><i></i>&nbsp; ~/gauntrix — operator.log</div>
-      <p class="sec-tag" data-scramble>Who built this</p>
-      <h2 class="sec-h2" style="margin-bottom:1.5rem;" data-scramble>1 person + AI,<br><em>building in public</em></h2>
+<!-- OPERATOR -->
+<section class="sec" id="about">
+  <div class="operator-inner">
+    <div class="op-card reveal">
+      <span class="q" aria-hidden="true">"</span>
+      <p class="overline">Who built this</p>
+      <h2 class="display" style="font-size:clamp(2rem,4vw,3.2rem); margin-bottom:1.6rem;">One operator. One still. <em>Weekly output.</em></h2>
       <p>Gauntrix is a solo project. I got tired of spending weeks validating ideas that turned out to have obvious competition I missed, or no monetization path that held up.</p>
       <p>So I built a pipeline. It runs every week, scores hundreds of candidates, and surfaces the small number that actually check every box. I'm sharing the output because the validation work is the hard part — and it can be done once, for everyone.</p>
-      <p class="build-pub">build in public · no VC funding · ship what works</p>
+      <p class="op-sig">build in public · no VC funding · <b>ship what works</b></p>
     </div>
   </div>
 </section>
 
 <!-- PRICING -->
-<section class="price-sec" id="pricing">
-  <div class="price-inner">
-    <p class="sec-tag reveal" data-scramble>Pricing</p>
-    <h2 class="sec-h2 reveal" data-scramble>Start free.<br><em>Upgrade when it clicks.</em></h2>
-    <p class="sec-lead reveal">No fluff tiers. One free, one paid. Lock the founding price before it goes up.</p>
+<section class="sec" id="pricing">
+  <div class="sec-inner">
+    <p class="overline reveal">Pricing</p>
+    <h2 class="display sec-h2 reveal">Taste free. <em>Subscribe when it pours.</em></h2>
+    <p class="lead sec-lead reveal">No fluff tiers. One free, one paid. Lock the founding price before it goes up.</p>
     <div class="price-grid">
-      <div class="pc reveal">
-        <div class="pc-tier">Free</div>
-        <div class="pc-price"><sup>$</sup>0</div>
-        <div class="pc-period">always free</div>
-        <hr class="pc-div">
-        <ul class="pc-features">
+      <div class="tier reveal">
+        <div class="tier-name">Free</div>
+        <div class="tier-price"><sup>$</sup>0</div>
+        <div class="tier-period">always free</div>
+        <hr>
+        <ul>
           <li>1 sample opportunity per week</li>
           <li>Pipeline methodology overview</li>
           <li>Early access to new features</li>
         </ul>
-        <a href="#free-signup" class="pc-cta ghost">Start free →</a>
+        <a href="#free-signup" class="pill pill-ghost">Start free →</a>
       </div>
-      <div class="pc featured reveal">
-        <div class="founding-tag">◼ Founding price — going up after first 50</div>
-        <div class="pc-tier">Full Access</div>
-        <div class="pc-price"><sup>$</sup>29<span class="per">/mo</span></div>
-        <div class="pc-period">founding price · lock it in forever</div>
-        <hr class="pc-div">
-        <ul class="pc-features">
+      <div class="tier featured reveal">
+        <div class="tier-tag">Founding price — going up after first 50</div>
+        <div class="tier-name">Full access</div>
+        <div class="tier-price"><sup>$</sup>29<span class="per">/mo</span></div>
+        <div class="tier-period">founding price · lock it in forever</div>
+        <hr>
+        <ul>
           <li>All 5–8 opportunities per weekly drop</li>
           <li>Full validation brief per niche</li>
           <li>Monetization &amp; cold-start playbook</li>
           <li>Backlog of all past validated opportunities</li>
         </ul>
-        <a href="LEMON_SQUEEZY_CHECKOUT_URL" class="pc-cta red lemonsqueezy-button" id="buy-full-access">Get Full Access — $29/mo</a>
+        <a href="LEMON_SQUEEZY_CHECKOUT_URL" class="pill pill-grad lemonsqueezy-button" id="buy-full-access">Get full access — $29/mo</a>
       </div>
     </div>
   </div>
 </section>
 
 <!-- FINAL CTA -->
-<section class="cta-sec" id="cta">
-  <div class="cta-bgword">BUILD</div>
-  <div style="position:relative;z-index:1;">
-    <h2 class="cta-h2 reveal" data-scramble>Weekly drops of validated niches.<br><em>First 50 lock the founding price.</em></h2>
-    <p class="cta-sub reveal">Full access $29/mo · Free tier available · Cancel anytime</p>
-    <div class="cta-btns reveal">
-      <a href="LEMON_SQUEEZY_CHECKOUT_URL" class="btn btn-red btn-lg lemonsqueezy-button">Get Full Access — $29/mo</a>
-      <a href="#free-signup" class="btn btn-ghost btn-lg">Start free →</a>
-    </div>
-    <div id="free-signup" class="reveal">
-      <p class="signup-label">Or join the free tier — 1 opportunity per week, no credit card</p>
-      <form class="signup-form" action="https://formsubmit.co/2734e0f49605680196bfc44f5cca0531" method="POST">
-        <input type="hidden" name="_subject" value="Gauntrix — Free Tier Signup">
-        <input type="hidden" name="_captcha" value="false">
-        <input type="hidden" name="_template" value="table">
-        <input type="email" name="email" placeholder="you@example.com" aria-label="Email address" required>
-        <button type="submit">Join Free</button>
-      </form>
-      <p class="signup-note">Unsubscribe anytime · No spam</p>
-    </div>
+<section class="cta" id="cta">
+  <h2 class="display cta-h2 reveal">The next drop is <em>already condensing.</em></h2>
+  <p class="cta-sub reveal">Full access $29/mo · Free tier available · Cancel anytime · First 50 lock the founding price</p>
+  <div class="cta-btns reveal">
+    <a href="LEMON_SQUEEZY_CHECKOUT_URL" class="pill pill-solid lemonsqueezy-button">Get full access — $29/mo</a>
+    <a href="#free-signup" class="pill pill-ghost">Start free →</a>
+  </div>
+  <div id="free-signup" class="reveal">
+    <p class="signup-label">Or join the free tier — one opportunity per week, no credit card</p>
+    <form class="signup-form" action="https://formsubmit.co/2734e0f49605680196bfc44f5cca0531" method="POST">
+      <input type="hidden" name="_subject" value="Gauntrix — Free Tier Signup">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="_template" value="table">
+      <input type="email" name="email" placeholder="you@example.com" aria-label="Email address" required>
+      <button type="submit">Join free</button>
+    </form>
+    <p class="signup-note">Unsubscribe anytime · No spam</p>
   </div>
 </section>
 
-<!-- FOOTER -->
 <footer>
   <p>© 2026 Gauntrix · Built by 1 person + AI</p>
   <p>
@@ -1583,8 +1115,6 @@
 
 <!-- GoatCounter -->
 <script data-goatcounter="https://friday-lab.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
-
-<!-- Signup beacon -->
 <script>
 document.querySelectorAll('form').forEach(function(f){
   f.addEventListener('submit', function(){
@@ -1595,91 +1125,49 @@ document.querySelectorAll('form').forEach(function(f){
 });
 </script>
 
-<!-- GSAP + ScrollTrigger -->
+<!-- GSAP -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 
-<!-- ════════════ CORE UI / CINEMA SCRIPT ════════════ -->
 <script>
 (function(){
 'use strict';
 var prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 var isDesktop = window.matchMedia('(hover:hover) and (min-width: 901px)').matches;
 
-/* every visit starts from the top — browser scroll-restoration would otherwise
-   resume mid-page and skip the boot/intro choreography. Deep links respected. */
+/* every visit starts from the top: browser scroll-restoration would otherwise
+   resume mid-page, where the "already passed" logic stamps all the badges and
+   no bead ever flies. Deep links (#pricing etc.) are respected. */
 if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
 if (!location.hash) window.scrollTo(0, 0);
 
-/* ─── CINEMATIC BOOT / TITLE SEQUENCE ─── */
-var bootDone = false;
-function finishBoot(){
-  if(bootDone) return;
-  bootDone = true;
-  window.__gxBootDone = true;
+/* ─── VEIL ─── */
+var veilDone = false;
+function endVeil(){
+  if(veilDone) return;
+  veilDone = true;
+  window.__gxVeilDone = true;
   document.documentElement.style.overflow = '';   // unlock scrolling
   document.body.style.overflow = '';
-  if (!location.hash) window.scrollTo(0, 0);      // the film starts at frame one
-  document.getElementById('boot').classList.add('off');
-  document.body.classList.add('cine-in');
-  window.dispatchEvent(new CustomEvent('gx-boot-done'));
+  if (!location.hash) window.scrollTo(0, 0);      // the story starts at the top
+  document.getElementById('veil').classList.add('off');
+  window.dispatchEvent(new CustomEvent('gx-veil-done'));
 }
-(function boot(){
-  var el = document.getElementById('boot');
-  var term = document.getElementById('boot-term');
-  var title = document.getElementById('boot-title');
-  if(prefersReduced){ finishBoot(); return; }
-
-  var LINES = [
-    ['> GAUNTRIX RESEARCH ENGINE v2.6', ' …… OK'],
-    ['> CONNECTING MARKET DATA SOURCES', ' …… OK'],
-    ['> LOADING 5-FILTER VALIDATION MODEL', ' ████ DONE'],
-    ['> PASS-RATE THRESHOLD', ' :: 4.0%'],
-    ['> THIS WEEK\'S SCAN', ' :: 200+ CANDIDATES'],
-    ['> BEGIN ANALYSIS_', '']
-  ];
-  var li = 0, ci = 0, out = '';
-  var typeTimer = null;
-
-  function typeLine(){
-    if(bootDone) return;
-    if(li >= LINES.length){
-      setTimeout(showTitle, 220);
-      return;
-    }
-    var full = LINES[li][0];
-    if(ci <= full.length){
-      term.innerHTML = out + '<span>' + full.slice(0, ci) + '</span>';
-      ci += 2;
-      typeTimer = setTimeout(typeLine, 14);
-    } else {
-      out += '<span>' + full + '</span><span class="ok">' + LINES[li][1] + '</span>\n';
-      term.innerHTML = out;
-      li++; ci = 0;
-      typeTimer = setTimeout(typeLine, 90);
-    }
-  }
-  function showTitle(){
-    if(bootDone) return;
-    term.style.opacity = '0';
-    title.classList.add('show');
-    el.classList.add('flash');
-    setTimeout(finishBoot, 1600);
-  }
-  // scroll is LOCKED while the boot plays — and any scroll attempt skips it,
+if(prefersReduced){ endVeil(); }
+else {
+  // scroll is LOCKED while the veil plays — and any scroll attempt skips it,
   // so the page can never sneak past the intro underneath the overlay
   document.documentElement.style.overflow = 'hidden';
   document.body.style.overflow = 'hidden';
-  window.addEventListener('wheel', finishBoot, { passive: true });
-  window.addEventListener('touchmove', finishBoot, { passive: true });
-  window.addEventListener('keydown', finishBoot);
-  setTimeout(typeLine, 350);
-  el.addEventListener('click', finishBoot);
-  // hard fallback — never trap the user behind the loader
-  setTimeout(finishBoot, 6000);
-})();
+  document.getElementById('veil').addEventListener('click', endVeil);
+  window.addEventListener('wheel', endVeil, { passive: true });
+  window.addEventListener('touchmove', endVeil, { passive: true });
+  window.addEventListener('keydown', endVeil);
+  setTimeout(endVeil, 2900);
+  setTimeout(endVeil, 6000); // hard failsafe
+}
 
-/* ─── CUSTOM CURSOR ─── */
+/* ─── CURSOR ─── */
 if(isDesktop && !prefersReduced){
   var cur = document.getElementById('cursor'), ring = document.getElementById('cursor-ring');
   cur.style.display = 'block'; ring.style.display = 'block';
@@ -1689,122 +1177,29 @@ if(isDesktop && !prefersReduced){
     cur.style.left = mx + 'px'; cur.style.top = my + 'px';
   });
   (function tick(){
-    rx += (mx - rx) * 0.16; ry += (my - ry) * 0.16;
+    rx += (mx - rx) * 0.14; ry += (my - ry) * 0.14;
     ring.style.left = rx + 'px'; ring.style.top = ry + 'px';
     requestAnimationFrame(tick);
   })();
-  document.querySelectorAll('a, button, input, .opp-card').forEach(function(el){
+  document.querySelectorAll('a, button, input, .opp').forEach(function(el){
     el.addEventListener('mouseenter', function(){ ring.classList.add('hot'); });
     el.addEventListener('mouseleave', function(){ ring.classList.remove('hot'); });
   });
 }
 
-/* ─── VIEWFINDER HUD: timecode ─── */
-(function(){
-  var tc = document.getElementById('cine-tc');
-  var t0 = performance.now();
-  function pad(n){ return n < 10 ? '0' + n : '' + n; }
-  function frame(t){
-    var el = (t - t0) / 1000;
-    var h = Math.floor(el / 3600), m = Math.floor(el / 60) % 60,
-        s = Math.floor(el) % 60, f = Math.floor((el % 1) * 24);
-    tc.textContent = 'TC ' + pad(h) + ':' + pad(m) + ':' + pad(s) + ':' + pad(f);
-    requestAnimationFrame(frame);
-  }
-  if(!prefersReduced) requestAnimationFrame(frame);
-})();
-
-/* ─── NAV SCROLL ─── */
+/* ─── NAV ─── */
 var nav = document.getElementById('nav');
 window.addEventListener('scroll', function(){
   nav.classList.toggle('scrolled', window.scrollY > 60);
 }, {passive:true});
 
-/* ─── GLITCH PULSE on hero headline ─── */
-var glitchEl = document.querySelector('.hero-h1 .glitch');
-if(glitchEl && !prefersReduced){
-  setInterval(function(){
-    glitchEl.classList.add('glitching');
-    setTimeout(function(){ glitchEl.classList.remove('glitching'); }, 240);
-  }, 2600 + Math.random()*1500);
-}
-
-/* ─── LIVE KILL FEED ─── */
-(function(){
-  var host = document.getElementById('killfeed-lines');
-  if(!host || prefersReduced) return;
-  var IDEAS = ['AI resume builder','todo app #48,221','habit tracker','chatgpt wrapper №9,114',
-    'crypto sentiment bot','AI logo maker','note-taking app','pdf chat tool','meal plan generator',
-    'mood journal','AI tweet writer','stock picker GPT','recipe scraper','budget tracker',
-    'link-in-bio clone','AI study buddy','generic CRM','quote image maker','password manager #312'];
-  var REASONS = ['saturated market','no moat','no monetization path','SERP occupied','audience unreachable',
-    'scope too large','duplicate of 1,000 others','margins ≈ 0'];
-  var n = 412;
-  function add(){
-    var line = document.createElement('div');
-    var surv = Math.random() < 0.06;
-    n += 1 + (Math.random() * 3 | 0);
-    var id = 'idea_' + ('0000' + n).slice(-4);
-    if(surv){
-      line.className = 'kf-line surv';
-      line.innerHTML = '<span class="x">✓</span> ' + id + ' :: passed 5/5 → weekly drop';
-    } else {
-      line.className = 'kf-line';
-      line.innerHTML = '<span class="x">✕</span> ' + id + ' :: "' +
-        IDEAS[Math.random() * IDEAS.length | 0] + '" — ' +
-        REASONS[Math.random() * REASONS.length | 0];
-    }
-    host.appendChild(line);
-    while(host.children.length > 7) host.removeChild(host.firstChild);
-    setTimeout(add, 380 + Math.random() * 900);
-  }
-  window.addEventListener('gx-boot-done', function(){ setTimeout(add, 1200); }, {once:true});
-  if(window.__gxBootDone) setTimeout(add, 1200);
-})();
-
-/* ─── TEXT DECODER (scramble) ─── */
-function scrambleEl(el){
-  var CH = '█▓▒░<>/[]#01■◼';
-  var walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT, null);
-  var nodes = [], n;
-  while((n = walker.nextNode())){ if(n.textContent.trim()) nodes.push({node:n, orig:n.textContent}); }
-  if(!nodes.length) return;
-  var dur = 650, t0 = performance.now();
-  function frame(t){
-    var p = Math.min(1, (t - t0) / dur);
-    nodes.forEach(function(o){
-      var L = o.orig.length, solved = Math.floor(p * L), s = o.orig.slice(0, solved);
-      for(var i = solved; i < L; i++){
-        s += o.orig[i] === ' ' ? ' ' : CH[Math.random() * CH.length | 0];
-      }
-      o.node.textContent = s;
-    });
-    if(p < 1) requestAnimationFrame(frame);
-    else nodes.forEach(function(o){ o.node.textContent = o.orig; });
-  }
-  requestAnimationFrame(frame);
-}
-if(!prefersReduced){
-  var scrambled = new WeakSet();
-  var sObs = new IntersectionObserver(function(entries){
-    entries.forEach(function(en){
-      if(en.isIntersecting && !scrambled.has(en.target)){
-        scrambled.add(en.target);
-        scrambleEl(en.target);
-        sObs.unobserve(en.target);
-      }
-    });
-  }, {threshold: 0.5});
-  document.querySelectorAll('[data-scramble]').forEach(function(el){ sObs.observe(el); });
-}
-
-/* ─── COUNT-UP NUMBERS ─── */
+/* ─── COUNT-UP ─── */
 function countUp(el){
   var target = parseInt(el.getAttribute('data-count'), 10);
   var prefix = el.getAttribute('data-prefix') || '';
   var suffix = el.getAttribute('data-suffix') || '';
   if(prefersReduced){ el.textContent = prefix + target + suffix; return; }
-  var t0 = null, dur = 1400;
+  var t0 = null, dur = 1500;
   function frame(t){
     if(!t0) t0 = t;
     var p = Math.min(1, (t - t0) / dur);
@@ -1814,281 +1209,173 @@ function countUp(el){
   }
   requestAnimationFrame(frame);
 }
-var counted = new WeakSet();
-var cObs = new IntersectionObserver(function(entries){
-  entries.forEach(function(en){
-    if(en.isIntersecting && !counted.has(en.target)){
-      counted.add(en.target);
-      countUp(en.target);
-      cObs.unobserve(en.target);
-    }
-  });
-}, {threshold: 0.4});
-document.querySelectorAll('[data-count]').forEach(function(el){ cObs.observe(el); });
-
-/* ─── CARD 3D TILT ─── */
-if(isDesktop && !prefersReduced){
-  document.querySelectorAll('[data-tilt]').forEach(function(card){
-    var raf = null;
-    card.addEventListener('pointermove', function(e){
-      if(raf) return;
-      raf = requestAnimationFrame(function(){
-        raf = null;
-        var r = card.getBoundingClientRect();
-        var px = (e.clientX - r.left) / r.width - 0.5;
-        var py = (e.clientY - r.top) / r.height - 0.5;
-        card.style.transform = 'rotateY(' + (px * 7) + 'deg) rotateX(' + (-py * 7) + 'deg) translateZ(6px)';
-      });
+function initCounters(){
+  var counted = new WeakSet();
+  var cObs = new IntersectionObserver(function(entries){
+    entries.forEach(function(en){
+      if(en.isIntersecting && !counted.has(en.target)){
+        counted.add(en.target);
+        countUp(en.target);
+        cObs.unobserve(en.target);
+      }
     });
-    card.addEventListener('pointerleave', function(){
-      card.style.transform = 'rotateY(0deg) rotateX(0deg) translateZ(0)';
-    });
-  });
-
-  /* magnetic buttons */
-  document.querySelectorAll('.btn').forEach(function(btn){
-    btn.addEventListener('pointermove', function(e){
-      var r = btn.getBoundingClientRect();
-      var dx = (e.clientX - (r.left + r.width/2)) * 0.18;
-      var dy = (e.clientY - (r.top + r.height/2)) * 0.3;
-      btn.style.transform = 'translate(' + dx + 'px,' + dy + 'px)';
-    });
-    btn.addEventListener('pointerleave', function(){ btn.style.transform = ''; });
-  });
+  }, {threshold: 0.4});
+  document.querySelectorAll('[data-count]').forEach(function(el){ cObs.observe(el); });
 }
-
-/* ─── SOUND ENGINE (WebAudio, opt-in) ─── */
-var Snd = (function(){
-  var ctx = null, master = null, on = false, tickTimer = null;
-  function init(){
-    ctx = new (window.AudioContext || window.webkitAudioContext)();
-    master = ctx.createGain(); master.gain.value = 0; master.connect(ctx.destination);
-    var lp = ctx.createBiquadFilter(); lp.type = 'lowpass'; lp.frequency.value = 110; lp.connect(master);
-    [55, 55.7, 110.4].forEach(function(f){
-      var o = ctx.createOscillator(); o.type = 'sawtooth'; o.frequency.value = f;
-      var g = ctx.createGain(); g.gain.value = 0.1;
-      o.connect(g); g.connect(lp); o.start();
+fetch('/stats.json')
+  .then(function(r){ return r.json(); })
+  .then(function(s){
+    var m = {runs: s.runs, evaluated: s.evaluated, survived: s.survived};
+    document.querySelectorAll('[data-stat]').forEach(function(el){
+      var k = el.getAttribute('data-stat');
+      if(m[k] != null) el.setAttribute('data-count', m[k]);
     });
-    var lfo = ctx.createOscillator(); lfo.frequency.value = 0.13;
-    var lg = ctx.createGain(); lg.gain.value = 38;
-    lfo.connect(lg); lg.connect(lp.frequency); lfo.start();
-  }
-  function tick(){
-    if(!on) return;
-    var len = ctx.sampleRate * 0.04 | 0;
-    var buf = ctx.createBuffer(1, len, ctx.sampleRate), d = buf.getChannelData(0);
-    for(var i = 0; i < len; i++) d[i] = (Math.random()*2-1) * Math.pow(1 - i/len, 2);
-    var s = ctx.createBufferSource(); s.buffer = buf;
-    var hp = ctx.createBiquadFilter(); hp.type = 'highpass'; hp.frequency.value = 2600;
-    var g = ctx.createGain(); g.gain.value = 0.4;
-    s.connect(hp); hp.connect(g); g.connect(master); s.start();
-    tickTimer = setTimeout(tick, 200 + Math.random()*900);
-  }
-  function whoosh(){
-    if(!on || !ctx) return;
-    var len = ctx.sampleRate * 0.5 | 0;
-    var buf = ctx.createBuffer(1, len, ctx.sampleRate), d = buf.getChannelData(0);
-    for(var i = 0; i < len; i++) d[i] = (Math.random()*2-1) * Math.pow(1 - i/len, 1.4);
-    var s = ctx.createBufferSource(); s.buffer = buf;
-    var bp = ctx.createBiquadFilter(); bp.type = 'bandpass'; bp.Q.value = 1.4;
-    bp.frequency.setValueAtTime(280, ctx.currentTime);
-    bp.frequency.exponentialRampToValueAtTime(1500, ctx.currentTime + 0.35);
-    var g = ctx.createGain(); g.gain.value = 0.7;
-    s.connect(bp); bp.connect(g); g.connect(master); s.start();
-  }
-  return {
-    toggle: function(){
-      if(!ctx) init();
-      if(ctx.state === 'suspended') ctx.resume();
-      on = !on;
-      master.gain.cancelScheduledValues(ctx.currentTime);
-      master.gain.linearRampToValueAtTime(on ? 0.15 : 0, ctx.currentTime + 0.4);
-      if(on) tick(); else clearTimeout(tickTimer);
-      return on;
-    },
-    whoosh: whoosh
-  };
-})();
-var sndBtn = document.getElementById('snd-btn');
-sndBtn.addEventListener('click', function(){
-  var on = Snd.toggle();
-  sndBtn.textContent = on ? 'SND·ON' : 'SND·OFF';
-  sndBtn.classList.toggle('on', on);
-  sndBtn.setAttribute('aria-pressed', on ? 'true' : 'false');
-});
-window.addEventListener('gx-stage', function(){ Snd.whoosh(); });
+  })
+  .catch(function(){})
+  .then(initCounters);
 
-/* ─── GSAP: cinematography ─── */
-var gates = Array.prototype.slice.call(document.querySelectorAll('.gate'));
-var gNum = document.getElementById('g-num');
-var gVerdict = document.getElementById('g-verdict');
-var gFlash = document.getElementById('g-flash');
+/* ─── DISTILLATION state machine ─── */
+var chambers = Array.prototype.slice.call(document.querySelectorAll('.chamber'));
+var dNum = document.getElementById('d-num');
+var dVerdict = document.getElementById('d-verdict');
 var ALIVE = [200, 122, 76, 41, 28, 22];
-var STATUS = ['analyzing', 'analyzing', 'analyzing', 'analyzing', 'final pass'];
 
-function setGauntletStage(seg, local){
+var lastCur = -1, lastSegCls = -1;
+function setStage(seg, local){
   var cur = Math.round(ALIVE[seg] + (ALIVE[seg+1] - ALIVE[seg]) * local);
-  gNum.textContent = cur;
-  gates.forEach(function(g, i){
-    g.classList.toggle('done', i < seg);
-    g.classList.toggle('active', i === seg);
-    var st = g.querySelector('.gate-status');
-    if(i < seg){ st.textContent = 'failed'; }
-    else if(i === seg){ st.textContent = STATUS[i]; }
-    else { st.textContent = 'pending'; }
-  });
-  if(seg >= 4 && local > 0.85){
-    gVerdict.textContent = '22 VALIDATED OPPORTUNITIES';
-    gNum.style.color = '#f2f2f6';
-    gNum.style.textShadow = '0 0 60px rgba(255,26,26,0.8)';
-  } else {
-    gVerdict.textContent = 'analyzing filter F-0' + (seg + 1) + '…';
-    gNum.style.color = '';
-    gNum.style.textShadow = '';
+  if(cur !== lastCur){               // write DOM only when something changed —
+    lastCur = cur;                   // scrub fires every frame, layout is not free
+    dNum.textContent = cur;
+    window.__gxAlive = cur;          // the 3D pool reads this: its volume IS this number
   }
+  if(seg !== lastSegCls){
+    lastSegCls = seg;
+    chambers.forEach(function(c, i){
+      c.classList.toggle('done', i < seg);
+      c.classList.toggle('active', i === seg);
+    });
+  }
+  var v = (seg >= 4 && local > 0.85)
+    ? '22 distilled opportunities'
+    : 'chamber C·' + (seg + 1) + ' condensing…';
+  if(v !== dVerdict.textContent) dVerdict.textContent = v;
 }
 
-function startHeroIntro(){
+function heroIntro(){
   if(typeof gsap === 'undefined' || prefersReduced) return;
-  gsap.from('#hero-h1 .h1-line', { opacity:0, y:70, skewY:4, filter:'blur(5px)', stagger:0.11, duration:0.9, ease:'power3.out', delay:0.15 });
-  gsap.from('.hero-eyebrow',  { opacity:0, y:20, duration:0.6, ease:'power2.out' });
-  gsap.from('.hero-sub',      { opacity:0, y:24, duration:0.7, ease:'power2.out', delay:0.65 });
-  gsap.from('.hero-counters .hc', { opacity:0, x:-20, stagger:0.08, duration:0.6, ease:'power2.out', delay:0.85 });
-  gsap.from('.hero-ctas',     { opacity:0, y:20, duration:0.6, ease:'power2.out', delay:1.05 });
-  gsap.from('.hud-corner, .killfeed, .scroll-cue', { opacity:0, duration:1.2, ease:'power2.out', delay:1.2 });
+  gsap.from('.hero-h1', { opacity:0, y:54, duration:1.1, ease:'power3.out', delay:0.1 });
+  gsap.from('.hero .overline', { opacity:0, y:18, duration:0.7, ease:'power2.out' });
+  gsap.from('.hero-lead', { opacity:0, y:26, duration:0.8, ease:'power2.out', delay:0.5 });
+  gsap.from('.hero-ctas', { opacity:0, y:22, duration:0.7, ease:'power2.out', delay:0.75 });
+  gsap.from('.hero-stats .stat', { opacity:0, x:-18, stagger:0.09, duration:0.6, ease:'power2.out', delay:0.95 });
+  gsap.from('.hero-note', { opacity:0, duration:1, delay:1.3 });
+  gsap.from('.anno', { opacity:0, x:14, stagger:0.18, duration:0.8, ease:'power2.out', delay:1.5 });
 }
 
 if(typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined' && !prefersReduced){
   gsap.registerPlugin(ScrollTrigger);
 
-  if(window.__gxBootDone) startHeroIntro();
-  else window.addEventListener('gx-boot-done', startHeroIntro, {once:true});
+  if(window.__gxVeilDone) heroIntro();
+  else window.addEventListener('gx-veil-done', heroIntro, {once:true});
 
-  /* viewfinder progress + scene labels */
-  var fill = document.getElementById('cine-fill');
-  ScrollTrigger.create({
-    start: 0, end: 'max',
-    onUpdate: function(self){ fill.style.width = (self.progress * 100) + '%'; }
-  });
-  var SCENES = [
-    ['#hero', '01 — SIGNAL INTAKE'],
-    ['#how', '02 — METHODOLOGY'],
-    ['#pipeline', '03 — VALIDATION'],
-    ['#opportunities', '04 — OPPORTUNITIES'],
-    ['#about', '05 — OPERATOR'],
-    ['#pricing', '06 — ACCESS'],
-    ['#cta', '07 — GET STARTED']
-  ];
-  var sceneLabel = document.getElementById('scene-label');
-  SCENES.forEach(function(sc){
-    ScrollTrigger.create({
-      trigger: sc[0], start: 'top 55%', end: 'bottom 55%',
-      onEnter: function(){ sceneLabel.textContent = sc[1]; },
-      onEnterBack: function(){ sceneLabel.textContent = sc[1]; }
-    });
-  });
-
-  /* parallax on giant outline words */
-  gsap.utils.toArray('.hero-bg-word, .cta-bgword').forEach(function(el){
-    gsap.to(el, {
-      yPercent: -16, ease: 'none',
-      scrollTrigger: { trigger: el.parentElement, start: 'top bottom', end: 'bottom top', scrub: true }
-    });
-  });
-
-  /* generic reveals */
   gsap.utils.toArray('.reveal').forEach(function(el){
     gsap.to(el, {
-      opacity:1, y:0, duration:0.85, ease:'power3.out',
-      scrollTrigger:{ trigger: el, start: 'top 86%' }
+      opacity:1, y:0, duration:1, ease:'power3.out',
+      scrollTrigger:{ trigger: el, start: 'top 87%' }
     });
   });
 
-  /* survivor cards: cinematic flip-in */
-  gsap.utils.toArray('.opp-card').forEach(function(card, i){
-    gsap.from(card, {
-      rotateX: 14, z: -80, transformOrigin: '50% 0%',
-      duration: 0.9, ease: 'power3.out', delay: (i % 2) * 0.08,
-      scrollTrigger: { trigger: card, start: 'top 88%' }
-    });
+  /* gold bead ↔ opportunity card link: when a card sits center-screen, the
+     3D layer launches a bead from the pool that lands ON it as its badge.
+     Measured LIVE per frame — pinned-section spacers can't skew the timing. */
+  var oppCards = gsap.utils.toArray('.opp');
+  oppCards.forEach(function(card, i){
+    if(isDesktop){
+      card.addEventListener('mouseenter', function(){
+        window.dispatchEvent(new CustomEvent('gx-card-hover', { detail: { i: i } }));
+      });
+    }
   });
+  var oppPending = false;
+  function oppCheck(){
+    oppPending = false;
+    var vh = window.innerHeight;
+    oppCards.forEach(function(card){
+      if(card.__beadDone) return;
+      var r = card.getBoundingClientRect();
+      if(r.top < vh * 0.75 && r.bottom > vh * 0.25){       // card mostly in view → launch
+        card.__beadDone = true;
+        window.dispatchEvent(new CustomEvent('gx-card', { detail: { el: card } }));
+        setTimeout(function(){ card.classList.add('bead-landed'); }, 3400);
+      } else if(r.bottom <= vh * 0.25){                    // jumped past it → just light the badge
+        card.__beadDone = true;
+        card.classList.add('bead-landed');
+      }
+    });
+  }
+  window.addEventListener('scroll', function(){
+    if(!oppPending){ oppPending = true; requestAnimationFrame(oppCheck); }
+  }, {passive:true});
+  oppCheck();
 
-  /* gauntlet — pinned scrub on desktop, static on mobile */
   ScrollTrigger.matchMedia({
     '(min-width: 901px)': function(){
       var lastSeg = -1;
       ScrollTrigger.create({
-        trigger: '#pipeline',
+        trigger: '#distillation',
         start: 'top top',
-        end: '+=2800',
-        pin: '#g-pin',
+        end: '+=2600',
+        pin: '#d-pin',
         scrub: 0.4,
         onUpdate: function(self){
           var p = Math.min(0.9999, self.progress);
           var seg = Math.min(4, Math.floor(p * 5));
           var local = p * 5 - seg;
-          setGauntletStage(seg, local);
+          setStage(seg, local);
           if(seg !== lastSeg){
             lastSeg = seg;
-            gsap.fromTo(gFlash, {opacity:0.95}, {opacity:0, duration:0.5, ease:'power2.out'});
-            gsap.fromTo(gNum, {scale:1.07}, {scale:1, duration:0.3, ease:'power2.out'});
-            gsap.fromTo('#g-pin .g-inner', {x:-7}, {x:0, duration:0.45, ease:'elastic.out(1,0.3)'});
-            window.dispatchEvent(new CustomEvent('gx-stage'));
-            if(window.__gxKillBurst) window.__gxKillBurst();
+            gsap.fromTo(dNum, {scale:1.05}, {scale:1, duration:0.35, ease:'power2.out'});
+            if(window.__gxSurge) window.__gxSurge();
           }
-          if(self.progress >= 1) setGauntletStage(4, 1);
+          if(self.progress >= 1) setStage(4, 1);
         }
       });
-      setGauntletStage(0, 0);
+      setStage(0, 0);
     },
     '(max-width: 900px)': function(){
-      /* phones: gates die one by one as they cross the center of the screen */
       var lastSeg = -1;
+      var listEl = document.getElementById('chambers');
       function activate(i){
-        setGauntletStage(i, 0.5);
+        setStage(i, 0.5);
         if(i !== lastSeg){
           lastSeg = i;
-          gsap.fromTo(gFlash, {opacity:0.85}, {opacity:0, duration:0.5, ease:'power2.out'});
-          gsap.fromTo(gNum, {scale:1.08}, {scale:1, duration:0.3, ease:'power2.out'});
-          window.dispatchEvent(new CustomEvent('gx-stage'));
-          if(window.__gxKillBurst) window.__gxKillBurst();
+          gsap.fromTo(dNum, {scale:1.07}, {scale:1, duration:0.3, ease:'power2.out'});
+          if(window.__gxSurge) window.__gxSurge();
         }
       }
-      /* deterministic: whichever gate sits closest to the 55% line is "scanning";
-         plain rAF-throttled scroll handler — measured live, immune to stale trigger math */
-      var gatesEl = document.getElementById('g-gates');
-      var gPending = false;
-      function gUpdate(){
-        gPending = false;
+      var pending = false;
+      function update(){
+        pending = false;
         if(window.innerWidth > 900) return;
         var vh = window.innerHeight;
-        var rc = gatesEl.getBoundingClientRect();
-        if(rc.top > vh * 0.85){ lastSeg = -1; setGauntletStage(0, 0); return; }
+        var rc = listEl.getBoundingClientRect();
+        if(rc.top > vh * 0.85){ lastSeg = -1; setStage(0, 0); return; }
         if(rc.bottom < vh * 0.3){
-          if(lastSeg !== 5){ lastSeg = 5; setGauntletStage(4, 1); }
+          if(lastSeg !== 5){ lastSeg = 5; setStage(4, 1); }
           return;
         }
         var line = vh * 0.55, best = 0, bd = Infinity;
-        gates.forEach(function(g, i){
-          var r = g.getBoundingClientRect();
+        chambers.forEach(function(c, i){
+          var r = c.getBoundingClientRect();
           var d = Math.abs((r.top + r.bottom) / 2 - line);
           if(d < bd){ bd = d; best = i; }
         });
         activate(best);
       }
       window.addEventListener('scroll', function(){
-        if(!gPending){ gPending = true; requestAnimationFrame(gUpdate); }
+        if(!pending){ pending = true; requestAnimationFrame(update); }
       }, {passive:true});
-      gUpdate();
-    }
-  });
-
-  /* ticker reacts to scroll velocity */
-  var ticker = document.getElementById('ticker');
-  ScrollTrigger.create({
-    onUpdate: function(self){
-      var v = Math.min(2.4, 1 + Math.abs(self.getVelocity()) / 2200);
-      ticker.style.animationDuration = (26 / v) + 's';
+      update();
     }
   });
 
@@ -2096,17 +1383,15 @@ if(typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined' && !prefe
   document.querySelectorAll('.reveal').forEach(function(el){
     el.style.opacity = '1'; el.style.transform = 'none';
   });
-  gNum.textContent = '22';
-  gVerdict.textContent = '22 VALIDATED OPPORTUNITIES';
-  gates.forEach(function(g){
-    g.classList.add('active');
-    g.querySelector('.gate-status').textContent = 'passed';
-  });
+  dNum.textContent = '22';
+  dVerdict.textContent = '22 distilled opportunities';
+  chambers.forEach(function(c){ c.classList.add('active'); });
+  document.querySelectorAll('.opp').forEach(function(c){ c.classList.add('bead-landed'); });
 }
 })();
 </script>
 
-<!-- ════════════ THREE.JS — THE MACHINE ROOM ════════════ -->
+<!-- ════════════ THREE.JS — THE LIQUID ════════════ -->
 <script type="importmap">
 {
   "imports": {
@@ -2117,10 +1402,8 @@ if(typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined' && !prefe
 </script>
 <script type="module">
 import * as THREE from 'three';
-import { EffectComposer } from 'three/addons/postprocessing/EffectComposer.js';
-import { RenderPass } from 'three/addons/postprocessing/RenderPass.js';
-import { UnrealBloomPass } from 'three/addons/postprocessing/UnrealBloomPass.js';
-import { OutputPass } from 'three/addons/postprocessing/OutputPass.js';
+import { MarchingCubes } from 'three/addons/objects/MarchingCubes.js';
+import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
 
 const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 const isMobile = window.matchMedia('(max-width: 900px)').matches;
@@ -2128,366 +1411,417 @@ const canvas = document.getElementById('webgl');
 
 let renderer;
 try {
-  renderer = new THREE.WebGLRenderer({ canvas, antialias: !isMobile, alpha: false });
-} catch(e) {
+  renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
+} catch (e) {
   canvas.style.display = 'none';
   throw e;
 }
 renderer.setPixelRatio(Math.min(window.devicePixelRatio, isMobile ? 1.75 : 2));
-renderer.setClearColor(0x030305, 1);
+renderer.toneMapping = THREE.ACESFilmicToneMapping;
+renderer.toneMappingExposure = 1.1;
 
 const scene = new THREE.Scene();
-scene.fog = new THREE.FogExp2(0x030305, 0.012);
+const camera = new THREE.PerspectiveCamera(42, 1, 0.1, 200);
+camera.position.set(0, 0.4, 26);
 
-const camera = new THREE.PerspectiveCamera(50, 1, 0.1, 400);
-camera.position.set(0, 8, 70);
+/* reflections: studio room environment, no external HDR needed */
+const pmrem = new THREE.PMREMGenerator(renderer);
+scene.environment = pmrem.fromScene(new RoomEnvironment(), 0.04).texture;
 
-/* ── post: cinematic bloom (phones too — adaptive guard below downgrades if slow) ── */
-let useComposer = true;
-const composer = new EffectComposer(renderer);
-composer.addPass(new RenderPass(scene, camera));
-const bloom = new UnrealBloomPass(new THREE.Vector2(1, 1), isMobile ? 0.75 : 0.85, 0.55, isMobile ? 0.4 : 0.32);
-composer.addPass(bloom);
-composer.addPass(new OutputPass());
+/* lights shape the liquid's highlights */
+const key = new THREE.DirectionalLight(0xffffff, 1.1);
+key.position.set(6, 10, 8);
+scene.add(key);
+const rimC = new THREE.PointLight(0x6ee7ff, 18, 60);
+rimC.position.set(-12, 4, -6);
+scene.add(rimC);
+const rimA = new THREE.PointLight(0xffc46b, 14, 60);
+rimA.position.set(12, -6, 4);
+scene.add(rimA);
 
-/* ── grid floor + dust ── */
-const grid = new THREE.GridHelper(260, 80, 0x3a0808, 0x0e0e16);
-grid.position.y = -11;
-grid.material.transparent = true;
-scene.add(grid);
-
-const DUST = isMobile ? 400 : 750;
-const dustGeo = new THREE.BufferGeometry();
-{
-  const pos = new Float32Array(DUST * 3);
-  for (let i = 0; i < DUST; i++) {
-    const r = 30 + Math.random() * 80;
-    const a = Math.random() * Math.PI * 2;
-    const y = (Math.random() - 0.5) * 70;
-    pos[i*3] = Math.cos(a) * r;
-    pos[i*3+1] = y;
-    pos[i*3+2] = Math.sin(a) * r;
-  }
-  dustGeo.setAttribute('position', new THREE.BufferAttribute(pos, 3));
-}
-const dust = new THREE.Points(dustGeo, new THREE.PointsMaterial({
-  color: 0x7a1515, size: 0.5, transparent: true, opacity: 0.55,
-  blending: THREE.AdditiveBlending, depthWrite: false
-}));
-scene.add(dust);
-
-/* ── THE MACHINE ── */
-const machine = new THREE.Group();
-machine.position.set(0, 2, 0);
-
-const ringMat = (op) => new THREE.MeshBasicMaterial({ color: 0xff1a1a, transparent: true, opacity: op });
-const mkRing = (radius, tube, op) => new THREE.Mesh(new THREE.TorusGeometry(radius, tube, 6, 100), ringMat(op));
-const ring1 = mkRing(7.2, 0.05, 0.6);
-const ring2 = mkRing(6.0, 0.04, 0.45);  ring2.rotation.x = Math.PI / 2.4;
-const ring3 = mkRing(8.4, 0.03, 0.3);   ring3.rotation.y = Math.PI / 3;
-machine.add(ring1, ring2, ring3);
-
-/* molten shader core — fresnel rim + breathing displacement */
-const coreUniforms = { uTime: { value: 0 }, uPulse: { value: 0 } };
-const core = new THREE.Mesh(
-  new THREE.IcosahedronGeometry(3.0, 5),
-  new THREE.ShaderMaterial({
-    uniforms: coreUniforms,
-    vertexShader: `
-      uniform float uTime;
-      varying vec3 vN; varying vec3 vP;
-      void main(){
-        vec3 p = position;
-        float d = sin(p.x*2.1 + uTime*1.6) * sin(p.y*2.7 + uTime*1.1) * sin(p.z*3.3 + uTime*0.8);
-        p += normal * d * 0.42;
-        vN = normalize(normalMatrix * normal);
-        vec4 mv = modelViewMatrix * vec4(p, 1.0);
-        vP = mv.xyz;
-        gl_Position = projectionMatrix * mv;
-      }`,
-    fragmentShader: `
-      uniform float uTime; uniform float uPulse;
-      varying vec3 vN; varying vec3 vP;
-      void main(){
-        vec3 V = normalize(-vP);
-        float fr = pow(1.0 - abs(dot(V, normalize(vN))), 2.1);
-        float pulse = 0.55 + 0.45 * sin(uTime * 3.0);
-        vec3 deep = vec3(0.16, 0.0, 0.0);
-        vec3 hot  = vec3(1.7, 0.14, 0.10);
-        vec3 col = mix(deep, hot, clamp(fr * pulse + uPulse, 0.0, 1.4));
-        gl_FragColor = vec4(col, 1.0);
-      }`
-  })
-);
-machine.add(core);
-
-const shell = new THREE.Mesh(
-  new THREE.IcosahedronGeometry(3.6, 1),
-  new THREE.MeshBasicMaterial({ color: 0xff1a1a, wireframe: true, transparent: true, opacity: 0.22 })
-);
-machine.add(shell);
-
-const coreInner = new THREE.Mesh(
-  new THREE.OctahedronGeometry(1.4, 0),
-  new THREE.MeshBasicMaterial({ color: 0xff5555, wireframe: true, transparent: true, opacity: 0.9 })
-);
-machine.add(coreInner);
-scene.add(machine);
-
-/* exit beam */
-const beam = new THREE.Line(
-  new THREE.BufferGeometry().setFromPoints([new THREE.Vector3(2, 2, 0), new THREE.Vector3(110, 2, 0)]),
-  new THREE.LineBasicMaterial({ color: 0xff1a1a, transparent: true, opacity: 0.16 })
-);
-scene.add(beam);
-
-/* ── idea particles ── */
-const COUNT = isMobile ? 240 : 380;
-const KILL_RADIUS = 3.7;
-const SURVIVE_RATE = 0.04;
-const DEAD_MS = 0.55;
-
-const cloud = new THREE.InstancedMesh(
-  new THREE.BoxGeometry(0.26, 0.26, 0.26),
-  new THREE.MeshBasicMaterial({ color: 0xffffff }),
-  COUNT
-);
-cloud.instanceMatrix.setUsage(THREE.DynamicDrawUsage);
-scene.add(cloud);
-
-const COL_VOID  = new THREE.Color(0x030305);
-const COL_GRAY  = new THREE.Color(0x4a4a5a);
-const COL_RED   = new THREE.Color(0xff1a1a);
-const dummy = new THREE.Object3D();
-const tmpColor = new THREE.Color();
-const P = [];
-
-function spawn(p, randomX) {
-  const side = Math.random() < 0.5 ? -1 : 1;
-  p.x = randomX ? -70 + Math.random() * 55 : -70 - Math.random() * 20;
-  p.y = 2 + (Math.random() - 0.5) * 16;
-  p.z = side * (2 + Math.random() * 14);
-  p.vx = 6 + Math.random() * 5;
-  p.state = 0;            // 0 inbound · 1 dead-flash · 2 survivor
-  p.t = 0;
-  p.spin = Math.random() * Math.PI * 2;
-  p.spinV = (Math.random() - 0.5) * 2.5;
-  p.scale = 0.7 + Math.random() * 0.9;
-  p.color = COL_GRAY.clone().multiplyScalar(0.5 + Math.random() * 0.35);
-}
-for (let i = 0; i < COUNT; i++) { const p = {}; spawn(p, true); P.push(p); }
-
-const machinePos = new THREE.Vector3(0, 2, 0);
-
-/* gauntlet stage hook: burst of core energy on each filter pass */
-window.__gxKillBurst = function(){
-  coreUniforms.uPulse.value = 0.9;
+/* ── THE LIQUID — marching-cubes metaball pool, iridescent chrome ── */
+const liquidMat = new THREE.MeshPhysicalMaterial({
+  color: 0xffffff,                 // real color comes from the dye gradient below
+  metalness: 0.1,
+  roughness: 0.13,
+  clearcoat: 1.0,
+  clearcoatRoughness: 0.06,
+  iridescence: 0.7,
+  iridescenceIOR: 1.5,
+  iridescenceThicknessRange: [140, 560],
+  envMapIntensity: 1.5
+});
+/* dye the liquid in the site's own palette: deep ocean blue at the base,
+   light violet above, a drifting band of cyan — the gradient lives in WORLD
+   space, so the surface visibly flows through the colors as it churns */
+liquidMat.onBeforeCompile = (shader) => {
+  shader.uniforms.uTime = { value: 0 };
+  shader.uniforms.uCx = { value: isMobile ? 0 : 5.2 };
+  shader.uniforms.uCy = { value: isMobile ? -2.9 : 0.4 };
+  shader.uniforms.uDim = { value: isMobile ? 0.40 : 0.60 };   // phones: darker dye so copy stays readable
+  shader.vertexShader = shader.vertexShader
+    .replace('#include <common>', '#include <common>\nvarying vec3 vGW;')
+    .replace('#include <begin_vertex>', '#include <begin_vertex>\nvGW = (modelMatrix * vec4(position, 1.0)).xyz;');
+  shader.fragmentShader = shader.fragmentShader
+    .replace('#include <common>', '#include <common>\nvarying vec3 vGW;\nuniform float uTime;\nuniform float uCx;\nuniform float uCy;\nuniform float uDim;')
+    .replace('#include <color_fragment>', `#include <color_fragment>
+      {
+        vec3 gDeep   = vec3(0.030, 0.070, 0.260);   // deep ocean blue
+        vec3 gViolet = vec3(0.500, 0.400, 0.960);   // light violet
+        vec3 gCyan   = vec3(0.300, 0.800, 1.000);   // cyan accent
+        float lx = vGW.x - uCx;
+        float ly = vGW.y - uCy;
+        float fy = smoothstep(-5.5, 5.5, ly + sin(lx * 0.30 + uTime * 0.45) * 2.2);
+        vec3 dye = mix(gDeep, gViolet, fy);
+        float fx = smoothstep(-5.0, 5.0, lx * 0.7 + sin(uTime * 0.30 + ly * 0.5) * 2.5);
+        dye = mix(dye, gCyan, fx * 0.30);
+        diffuseColor.rgb = dye * uDim;
+      }`);
+  liquidMat.userData.shader = shader;
 };
+const RES = isMobile ? 44 : 64;
+const liquid = new MarchingCubes(RES, liquidMat, true, false, 170000);
+liquid.position.set(isMobile ? 0 : 5.2, isMobile ? -2.9 : 0.4, 0);
+liquid.scale.setScalar(isMobile ? 5.8 : 7.4);
+liquid.isolation = 70;
+scene.add(liquid);
 
-function updateParticles(dt, t) {
-  for (let i = 0; i < COUNT; i++) {
-    const p = P[i];
+/* metaball choreography */
+const BALLS = isMobile ? 7 : 10;
+const seeds = [];
+for (let i = 0; i < BALLS; i++) {
+  seeds.push({
+    sx: 0.18 + Math.random() * 0.55,
+    sy: 0.22 + Math.random() * 0.4,
+    sz: 0.3 + Math.random() * 0.5,
+    px: Math.random() * Math.PI * 2,
+    py: Math.random() * Math.PI * 2,
+    pz: Math.random() * Math.PI * 2,
+    str: 0.32 + Math.random() * 0.3
+  });
+}
+let surge = 0;                       // distillation stage hits make the pool swell
+window.__gxSurge = () => { surge = 1; };
+let pointerBall = { x: 0.5, y: 0.5, tx: 0.5, ty: 0.5 };
 
-    if (p.state === 1) {                       // dead: HDR flash → fade
-      p.t += dt;
-      const k = p.t / DEAD_MS;
-      if (k >= 1) { spawn(p, false); }
-      else {
-        const s = p.scale * (1 + k * 2.4) * (1 - k);
-        dummy.position.set(p.x, p.y, p.z);
-        dummy.rotation.set(p.spin, p.spin * 1.3, 0);
-        dummy.scale.setScalar(Math.max(0.001, s));
-        dummy.updateMatrix();
-        cloud.setMatrixAt(i, dummy.matrix);
-        tmpColor.setRGB(2.6 * (1-k) + 0.1, 0.12 * (1-k), 0.1 * (1-k));
-        cloud.setColorAt(i, tmpColor);
-        continue;
-      }
-    }
+/* the pool's volume tracks "candidates remaining" (200 → 22) from the
+   distillation section — scroll the column and you watch the liquid condense */
+let vol = 1;
+/* `p` is an accumulated phase, advanced by the render loop at a scroll-aware
+   RATE. Scrolling changes how fast the liquid churns — never where it is —
+   so wheel input can't pinch the shape or make it spring back. */
+function updateLiquid(p) {
+  const alive = window.__gxAlive != null ? window.__gxAlive : 200;
+  const volT = 0.45 + 0.55 * Math.max(0, Math.min(1, (alive - 22) / 178));
+  vol += (volT - vol) * 0.04;
 
-    if (p.state === 2) {                       // survivor: streak out on the beam
-      p.vx += dt * 28;
-      p.x += p.vx * dt;
-      p.y += (2 - p.y) * dt * 3.5;
-      p.z += (0 - p.z) * dt * 3.5;
-      if (p.x > 110) spawn(p, false);
-      dummy.position.set(p.x, p.y, p.z);
-      dummy.rotation.set(0, 0, 0);
-      dummy.scale.set(p.scale * (2.2 + p.vx * 0.04), p.scale * 0.5, p.scale * 0.5);  // motion-stretched
-      dummy.updateMatrix();
-      cloud.setMatrixAt(i, dummy.matrix);
-      tmpColor.setRGB(2.0, 0.2 + Math.sin(t * 9 + i) * 0.1, 0.16);
-      cloud.setColorAt(i, tmpColor);
-      continue;
-    }
-
-    // inbound drift toward the machine
-    p.x += p.vx * dt;
-    p.y += (machinePos.y - p.y) * dt * 0.55;
-    p.z += (machinePos.z - p.z) * dt * 0.55;
-    p.y += Math.sin(t * 1.4 + i) * dt * 0.7;
-
-    const dx = p.x - machinePos.x, dy = p.y - machinePos.y, dz = p.z - machinePos.z;
-    if (dx*dx + dy*dy + dz*dz < KILL_RADIUS * KILL_RADIUS) {
-      if (Math.random() < SURVIVE_RATE) {
-        p.state = 2; p.vx = 14; p.scale *= 1.4;
-      } else {
-        p.state = 1; p.t = 0;
-      }
-      continue;
-    }
-    if (p.x > 110) spawn(p, false);
-
-    p.spin += p.spinV * dt;
-    dummy.position.set(p.x, p.y, p.z);
-    dummy.rotation.set(p.spin, p.spin * 0.7, p.spin * 0.4);
-    dummy.scale.setScalar(p.scale);
-    dummy.updateMatrix();
-    cloud.setMatrixAt(i, dummy.matrix);
-    cloud.setColorAt(i, p.color);
+  liquid.reset();
+  const sub = 12;
+  const spread = 0.65 + 0.35 * vol;
+  for (let i = 0; i < BALLS; i++) {
+    const s = seeds[i];
+    const x = 0.5 + 0.22 * spread * Math.sin(s.sx * p + s.px);
+    const y = 0.5 + 0.2 * spread * Math.sin(s.sy * p + s.py) * Math.cos(s.sz * p * 0.7 + s.pz);
+    const z = 0.5 + 0.18 * spread * Math.cos(s.sz * p + s.pz);
+    liquid.addBall(x, y, z, s.str * (0.55 + 0.45 * vol) * (1 + surge * 0.22), sub);
   }
-  cloud.instanceMatrix.needsUpdate = true;
-  if (cloud.instanceColor) cloud.instanceColor.needsUpdate = true;
+  // the visitor stirs the pool
+  pointerBall.x += (pointerBall.tx - pointerBall.x) * 0.06;
+  pointerBall.y += (pointerBall.ty - pointerBall.y) * 0.06;
+  liquid.addBall(pointerBall.x, pointerBall.y, 0.5, 0.5 * (0.6 + 0.4 * vol), sub);
+  // NOTE: liquid.update() happens in the render loop, AFTER droplets and gold
+  // have injected their own metaballs — that's what makes them truly merge.
 }
 
-/* ── sizing ── */
+/* world → marching-cubes field space [0..1], honoring the pool's rotation/scale */
+const FVEC = new THREE.Vector3();
+function fieldPos(x, y, z) {
+  FVEC.set(x, y, z);
+  liquid.worldToLocal(FVEC);
+  FVEC.set((FVEC.x + 1) / 2, (FVEC.y + 1) / 2, (FVEC.z + 1) / 2);
+  return FVEC;
+}
+
+/* ── droplets raining into the pool ── */
+const DROPS = isMobile ? 14 : 26;
+const dropMat = new THREE.MeshStandardMaterial({
+  color: 0xaebdd2, metalness: 0.9, roughness: 0.18, envMapIntensity: 1.3
+});
+const drops = new THREE.InstancedMesh(new THREE.SphereGeometry(0.16, 12, 12), dropMat, DROPS);
+scene.add(drops);
+const dummy = new THREE.Object3D();
+const D = [];
+/* pool anchor in world space — droplets rain INTO it, gold rises OUT of it */
+const PX = isMobile ? 0 : 5.2;
+const PY = isMobile ? -2.9 : 0.4;
+function dropSpawn(d) {
+  d.x = PX + (Math.random() - 0.5) * 9;
+  d.y = PY + 11 + Math.random() * 8;
+  d.z = (Math.random() - 0.5) * 5;
+  d.vy = 2.6 + Math.random() * 2.4;
+  d.s = 0.5 + Math.random() * 0.8;
+}
+for (let i = 0; i < DROPS; i++) { const d = {}; dropSpawn(d); d.y = PY + Math.random() * 18; D.push(d); }
+
+/* ── distilled drops: golden spheres drifting out of the pool ── */
+const GOLD = 5;
+const goldMat = new THREE.MeshStandardMaterial({
+  color: 0xffc46b, emissive: 0xCC8830, emissiveIntensity: 0.9,
+  metalness: 0.6, roughness: 0.25, envMapIntensity: 1.2
+});
+const golds = [];
+for (let i = 0; i < GOLD; i++) {
+  const g = new THREE.Mesh(new THREE.SphereGeometry(0.22, 16, 16), goldMat.clone());
+  g.userData = { t: i * 2.1, speed: 0.32 + Math.random() * 0.12, pulse: 0 };
+  scene.add(g);
+  golds.push(g);
+}
+/* hovering an opportunity card makes "its" bead answer back with a pulse */
+window.addEventListener('gx-card-hover', (e) => {
+  golds[e.detail.i % golds.length].userData.pulse = 1;
+});
+
+/* ── bead delivery: an EXISTING escaping bead gets diverted to the card ──
+   No new bead is spawned — the one you've been watching drift right suddenly
+   banks, dives onto the card's badge, and the pool births its replacement. */
+const CV = new THREE.Vector3();
+const CTGT = new THREE.Vector3();
+function badgeWorld(card, out) {
+  // project the badge's live screen position onto a plane 17 units out
+  const r = card.getBoundingClientRect();
+  const sx = r.right - 70, sy = r.top + 34;
+  CV.set((sx / window.innerWidth) * 2 - 1, -(sy / window.innerHeight) * 2 + 1, 0.5).unproject(camera);
+  CV.sub(camera.position).normalize();
+  out.copy(camera.position).addScaledVector(CV, 17);
+  return out;
+}
+window.addEventListener('gx-card', (e) => {
+  // recruit the most visible free bead currently in flight
+  let best = null, bestVis = 0.05;
+  for (const g of golds) {
+    if (g.userData.mission) continue;
+    const k = (g.userData.t % 6) / 6;
+    const vis = Math.min(1, k * 5) * Math.sin(Math.min(1, k * 1.15) * Math.PI);
+    if (vis > bestVis) { bestVis = vis; best = g; }
+  }
+  if (!best) return;                                   // none airborne — the DOM failsafe lights the badge
+  best.userData.mission = {
+    card: e.detail.el, t: 0, dur: 1.2 + Math.random() * 0.4,
+    from: best.position.clone(),
+    // keep sailing the way it was already going, then bend toward the card
+    ctrl: best.position.clone().add(new THREE.Vector3(4 + Math.random() * 2, 2 + Math.random(), 0))
+  };
+});
+
+/* ── sizing / input ── */
 function resize() {
   const w = window.innerWidth, h = window.innerHeight;
   renderer.setSize(w, h, false);
-  if (composer) composer.setSize(w, h);
   camera.aspect = w / h;
   camera.updateProjectionMatrix();
 }
 resize();
 window.addEventListener('resize', resize, { passive: true });
 
-/* ── input: mouse / gyro / touch parallax + scroll cinematography ── */
 let tx = 0, ty = 0;
 if (!isMobile) {
   window.addEventListener('mousemove', (e) => {
     tx = (e.clientX / window.innerWidth - 0.5) * 2;
     ty = (e.clientY / window.innerHeight - 0.5) * 2;
+    pointerBall.tx = 0.2 + (e.clientX / window.innerWidth) * 0.6;
+    pointerBall.ty = 0.8 - (e.clientY / window.innerHeight) * 0.6;
   }, { passive: true });
 } else {
-  // tilt the phone = move the camera
   const clamp1 = (v) => Math.max(-1, Math.min(1, v));
   window.addEventListener('deviceorientation', (e) => {
     if (e.gamma == null || e.beta == null) return;
     tx = clamp1(e.gamma / 28);
     ty = clamp1((e.beta - 45) / 32);
+    pointerBall.tx = 0.5 + tx * 0.25;
+    pointerBall.ty = 0.5 - ty * 0.2;
   }, { passive: true });
-  // iOS needs a user-gesture permission grant; ask once on first touch
   if (typeof DeviceOrientationEvent !== 'undefined' &&
       typeof DeviceOrientationEvent.requestPermission === 'function') {
     window.addEventListener('touchend', function ask(){
       DeviceOrientationEvent.requestPermission().catch(() => {});
     }, { once: true, passive: true });
   }
-  // touch-drag parallax fallback
   window.addEventListener('touchmove', (e) => {
     const t0 = e.touches[0];
     if (!t0) return;
-    tx = (t0.clientX / window.innerWidth - 0.5) * 1.6;
-    ty = (t0.clientY / window.innerHeight - 0.5) * 1.2;
+    pointerBall.tx = 0.2 + (t0.clientX / window.innerWidth) * 0.6;
+    pointerBall.ty = 0.8 - (t0.clientY / window.innerHeight) * 0.6;
   }, { passive: true });
 }
 
-/* opening dolly: far establishing shot → working distance after the title card */
-const intro = { t: prefersReduced ? 1 : 0 };
-function startDolly(){
-  const t0 = performance.now(), dur = 2600;
+/* veil-synced fade-in for the whole 3D world */
+let worldIn = prefersReduced ? 1 : 0;
+function startWorld(){
+  const t0 = performance.now(), dur = 1800;
   (function step(t){
     const p = Math.min(1, (t - t0) / dur);
-    intro.t = 1 - Math.pow(1 - p, 3);
+    worldIn = 1 - Math.pow(1 - p, 3);
     if (p < 1) requestAnimationFrame(step);
   })(t0);
 }
-if (window.__gxBootDone) startDolly();
-else window.addEventListener('gx-boot-done', startDolly, { once: true });
+if (window.__gxVeilDone) startWorld();
+else window.addEventListener('gx-veil-done', startWorld, { once: true });
 
-/* the scroll IS the camera track: orbit + dolly through the machine room */
-function shotFor(sp) {
-  const orbit = sp * Math.PI * 1.85;
-  const dist = 36 - Math.sin(sp * Math.PI) * 13 + sp * 6;
-  const height = 3.5 + Math.sin(sp * Math.PI * 2) * 3 + sp * 3;
-  return { orbit, dist, height };
-}
-
-const cam = { orbit: 0, dist: 36, height: 3.5 };
-
-/* ── render loop ── */
-const clock = new THREE.Clock();
-let docH = 1;
-function measure(){ docH = Math.max(1, document.documentElement.scrollHeight - window.innerHeight); }
-measure();
-window.addEventListener('resize', measure, { passive: true });
-setInterval(measure, 2500);
-
-/* adaptive quality: if the device can't hold ~22fps with bloom, shed load once */
+/* adaptive quality */
 let perfFrames = 0, perfSlow = 0, perfDone = false;
-function perfCheck(dt, t) {
-  if (perfDone) return;
-  if (t > 2 && t < 7) {
-    perfFrames++;
-    if (dt > 0.045) perfSlow++;
-  } else if (t >= 7) {
-    perfDone = true;
-    if (perfFrames > 0 && perfSlow / perfFrames > 0.4) {
-      useComposer = false;
-      cloud.count = Math.floor(COUNT * 0.6);
-      dust.visible = false;
-    }
-  }
-}
+
+const clock = new THREE.Clock();
+let scrollV = 0, lastY = window.scrollY;
+let poolPhase = Math.random() * 20;      // liquid churn phase (integrates forward only)
+let rotExtra = 0;                        // coasting angle accumulated by inertia
+let rotVel = 0;                          // angular velocity — carries scroll momentum
 
 function loop() {
   requestAnimationFrame(loop);
   const dt = Math.min(0.05, clock.getDelta());
   const t = clock.elapsedTime;
-  perfCheck(dt, t);
 
-  // world fades up from black during the opening dolly — only the red machine
-  // is lit from frame one, so the establishing shot never reads as a gray wash
-  const fade = intro.t;
-  grid.material.opacity = fade;
-  dust.material.opacity = 0.55 * fade;
-  beam.material.opacity = 0.16 * fade;
-  cloud.material.color.setScalar(fade);
+  if (!perfDone) {
+    if (t > 2 && t < 7) { perfFrames++; if (dt > 0.05) perfSlow++; }
+    else if (t >= 7) {
+      perfDone = true;
+      if (perfFrames > 0 && perfSlow / perfFrames > 0.45) {
+        // shed load once on weak GPUs: fewer droplets, lower-res field
+        drops.count = Math.floor(DROPS * 0.5);
+        liquid.init(Math.floor(RES * 0.72));
+      }
+    }
+  }
 
-  ring1.rotation.x += dt * 0.5;  ring1.rotation.y += dt * 0.22;
-  ring2.rotation.y -= dt * 0.65; ring2.rotation.z += dt * 0.3;
-  ring3.rotation.x -= dt * 0.35; ring3.rotation.z -= dt * 0.5;
-  core.rotation.y += dt * 0.3;
-  shell.rotation.y -= dt * 0.18; shell.rotation.x += dt * 0.07;
-  coreInner.rotation.y -= dt * 1.4;
-  coreInner.scale.setScalar(1 + Math.sin(t * 3.2) * 0.12);
-  dust.rotation.y += dt * 0.012;
+  // scroll stirs the pool: velocity raises the churn RATE (phase keeps
+  // integrating forward, so the shape flows faster instead of deforming)
+  const y = window.scrollY;
+  const dy = y - lastY;
+  lastY = y;
+  scrollV += ((dy / Math.max(dt, 1e-4)) - scrollV) * Math.min(1, dt * 5);  // px/s, smoothed
+  const churn = 1 + Math.min(2.9, Math.abs(scrollV) * 0.00008);
+  poolPhase += dt * 0.55 * churn;
+  surge = Math.max(0, surge - dt * 1.4);
 
-  coreUniforms.uTime.value = t;
-  coreUniforms.uPulse.value = Math.max(0, coreUniforms.uPulse.value - dt * 1.6);
+  // rotation like spinning a globe by hand: while your scroll is faster than
+  // the pool it GRIPS and follows; release it and it keeps its full speed,
+  // then gradually loses it. One continuous velocity — stopping never jolts.
+  const targetVel = scrollV * 0.0009;                 // rad/s the hand is asking for
+  if (targetVel * rotVel < 0 || Math.abs(targetVel) > Math.abs(rotVel)) {
+    rotVel += (targetVel - rotVel) * Math.min(1, dt * 6);   // gripped — snappy follow
+  } else {
+    rotVel -= rotVel * Math.min(1, dt * 0.85);              // free spin — slow graceful fade
+  }
+  rotVel = Math.max(-2.5, Math.min(2.5, rotVel));
+  rotExtra += rotVel * dt;
 
-  updateParticles(dt, t);
+  // pool transform must be current BEFORE world→field conversions
+  liquid.rotation.y = Math.sin(t * 0.07) * 0.18 + rotExtra;
+  liquid.updateMatrixWorld();
+  if (liquidMat.userData.shader) liquidMat.userData.shader.uniforms.uTime.value = t;
+  updateLiquid(poolPhase);                // resets the field + seed balls
 
-  // camera: scroll-driven orbit, intro dolly, mouse parallax
-  const sp = Math.min(1, Math.max(0, window.scrollY / docH));
-  const target = shotFor(sp);
-  cam.orbit += (target.orbit - cam.orbit) * dt * 2.0;
-  cam.dist  += (target.dist  - cam.dist)  * dt * 2.0;
-  cam.height+= (target.height- cam.height)* dt * 2.0;
+  // droplets fall in and PHYSICALLY merge: each one near the surface injects
+  // its own metaball, so the pool bulges up, grabs it, and swallows it whole
+  for (let i = 0; i < DROPS; i++) {
+    const d = D[i];
+    d.y -= d.vy * dt;
+    d.x += (PX - d.x) * dt * 0.3;
+    d.z += (0 - d.z) * dt * 0.15;
 
-  const introDist = cam.dist + (1 - intro.t) * 38;
-  const introH = cam.height + (1 - intro.t) * 9;
-  camera.position.x = Math.sin(cam.orbit) * introDist + tx * 3.0;
-  camera.position.z = Math.cos(cam.orbit) * introDist;
-  camera.position.y = introH - ty * 2.2;
-  camera.lookAt(0, 1.6, 0);
+    const f = fieldPos(d.x, d.y, d.z);
+    let depth = 0;
+    const inField = f.x > 0.05 && f.x < 0.95 && f.y > 0.05 && f.y < 0.95 && f.z > 0.05 && f.z < 0.95;
+    if (inField) {
+      depth = Math.max(0, Math.min(1, (0.8 - f.y) / 0.26));
+      if (depth > 0) liquid.addBall(f.x, f.y, f.z, 0.55 * depth, 12);
+      if (f.y < 0.5) {                     // fully swallowed → ripple + respawn
+        surge = Math.min(1, surge + 0.06);
+        dropSpawn(d);
+      }
+    }
+    const near = Math.max(0, Math.min(1, (d.y - PY) / 3));
+    dummy.position.set(d.x, d.y, d.z);
+    // the solid sphere hands over to the metaball as it sinks in
+    const sc = d.s * (0.35 + near * 0.65) * (1 - depth) * worldIn;
+    dummy.scale.setScalar(Math.max(0.001, sc));
+    dummy.updateMatrix();
+    drops.setMatrixAt(i, dummy.matrix);
+  }
+  drops.instanceMatrix.needsUpdate = true;
 
-  if (useComposer) composer.render();
-  else renderer.render(scene, camera);
+  // distilled gold PRECIPITATES: while it emerges, the pool stretches a liquid
+  // neck toward it (a co-located metaball that pinches off as it departs)
+  golds.forEach((g, i) => {
+    const M = g.userData.mission;
+    if (M) {
+      // diverted mid-flight: bank away from the escape path, dive onto the card
+      M.t += dt / M.dur;
+      if (M.t >= 1) {
+        if (M.card) M.card.classList.add('bead-landed');
+        g.userData.mission = null;
+        g.userData.t = 0;                  // respawn: the pool births its replacement
+        g.scale.setScalar(0.001);
+        return;
+      }
+      badgeWorld(M.card, CTGT);            // live target — tracks scroll
+      const p = 0.5 - 0.5 * Math.cos(Math.PI * M.t);
+      const c2x = CTGT.x + 2.4, c2y = CTGT.y + 2.8, c2z = CTGT.z + 0.6;
+      const u = 1 - p, uu = u * u, pp = p * p;
+      const b0 = uu * u, b1 = 3 * uu * p, b2 = 3 * u * pp, b3 = pp * p;
+      g.position.set(
+        b0 * M.from.x + b1 * M.ctrl.x + b2 * c2x + b3 * CTGT.x,
+        b0 * M.from.y + b1 * M.ctrl.y + b2 * c2y + b3 * CTGT.y,
+        b0 * M.from.z + b1 * M.ctrl.z + b2 * c2z + b3 * CTGT.z
+      );
+      g.material.emissiveIntensity = 1.5;  // burns brighter while on mission
+      g.scale.setScalar(0.9 * worldIn);
+      return;
+    }
+    g.userData.t += dt * g.userData.speed;
+    const k = (g.userData.t % 6) / 6;
+    g.position.set(
+      PX + 0.8 + k * 12,
+      PY + 0.8 + Math.sin(k * Math.PI) * 3.6 + Math.sin(t * 1.3 + i) * 0.2,
+      1.2 + Math.sin(i * 1.7) * 1.6
+    );
+    if (k < 0.24) {
+      const neck = 1 - k / 0.24;
+      const f = fieldPos(g.position.x, g.position.y, g.position.z);
+      if (f.x > 0.05 && f.x < 0.95 && f.y > 0.05 && f.y < 0.95 && f.z > 0.05 && f.z < 0.95) {
+        liquid.addBall(f.x, f.y, f.z, 0.5 * neck * neck, 12);
+      }
+    }
+    const fade = Math.min(1, k * 5) * Math.sin(Math.min(1, k * 1.15) * Math.PI);
+    g.userData.pulse = Math.max(0, g.userData.pulse - dt * 1.8);     // hover echo decays
+    g.material.emissiveIntensity = 0.9 + g.userData.pulse * 1.7;
+    g.scale.setScalar(Math.max(0.001, fade * worldIn * (1 + g.userData.pulse * 0.55)));
+  });
+
+  liquid.update();                         // surface solves once, with everyone in it
+
+  // camera: gentle parallax + slow drift
+  camera.position.x += ((tx * 2.2) - camera.position.x) * dt * 2;
+  camera.position.y += ((0.4 - ty * 1.6) - camera.position.y) * dt * 2;
+  camera.lookAt(isMobile ? 0 : 2.6, 0.2, 0);
+
+  liquidMat.opacity = 1;
+  renderer.render(scene, camera);
 }
 
 if (prefersReduced) {
-  updateParticles(0.016, 0);
+  worldIn = 1;
+  liquid.updateMatrixWorld();
+  updateLiquid(1.5);
+  liquid.update();
+  for (let i = 0; i < DROPS; i++) {
+    const d = D[i];
+    dummy.position.set(d.x, d.y, d.z);
+    dummy.scale.setScalar(d.s * 0.6);
+    dummy.updateMatrix();
+    drops.setMatrixAt(i, dummy.matrix);
+  }
+  drops.instanceMatrix.needsUpdate = true;
   renderer.render(scene, camera);
 } else {
   loop();
