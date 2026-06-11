@@ -1147,12 +1147,22 @@ function endVeil(){
   if(veilDone) return;
   veilDone = true;
   window.__gxVeilDone = true;
+  document.documentElement.style.overflow = '';   // unlock scrolling
+  document.body.style.overflow = '';
+  if (!location.hash) window.scrollTo(0, 0);      // the story starts at the top
   document.getElementById('veil').classList.add('off');
   window.dispatchEvent(new CustomEvent('gx-veil-done'));
 }
 if(prefersReduced){ endVeil(); }
 else {
+  // scroll is LOCKED while the veil plays — and any scroll attempt skips it,
+  // so the page can never sneak past the intro underneath the overlay
+  document.documentElement.style.overflow = 'hidden';
+  document.body.style.overflow = 'hidden';
   document.getElementById('veil').addEventListener('click', endVeil);
+  window.addEventListener('wheel', endVeil, { passive: true });
+  window.addEventListener('touchmove', endVeil, { passive: true });
+  window.addEventListener('keydown', endVeil);
   setTimeout(endVeil, 2900);
   setTimeout(endVeil, 6000); // hard failsafe
 }

@@ -1617,6 +1617,9 @@ function finishBoot(){
   if(bootDone) return;
   bootDone = true;
   window.__gxBootDone = true;
+  document.documentElement.style.overflow = '';   // unlock scrolling
+  document.body.style.overflow = '';
+  if (!location.hash) window.scrollTo(0, 0);      // the film starts at frame one
   document.getElementById('boot').classList.add('off');
   document.body.classList.add('cine-in');
   window.dispatchEvent(new CustomEvent('gx-boot-done'));
@@ -1663,6 +1666,13 @@ function finishBoot(){
     el.classList.add('flash');
     setTimeout(finishBoot, 1600);
   }
+  // scroll is LOCKED while the boot plays — and any scroll attempt skips it,
+  // so the page can never sneak past the intro underneath the overlay
+  document.documentElement.style.overflow = 'hidden';
+  document.body.style.overflow = 'hidden';
+  window.addEventListener('wheel', finishBoot, { passive: true });
+  window.addEventListener('touchmove', finishBoot, { passive: true });
+  window.addEventListener('keydown', finishBoot);
   setTimeout(typeLine, 350);
   el.addEventListener('click', finishBoot);
   // hard fallback — never trap the user behind the loader
