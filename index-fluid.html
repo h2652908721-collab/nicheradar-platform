@@ -1,0 +1,1813 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gauntrix — The AI Market Distillery</title>
+  <meta name="description" content="200+ ideas pour in every week. ~4% come out distilled — narrow, buildable, monetizable niches for AI builders. Weekly drops.">
+  <meta property="og:title" content="Gauntrix — The AI Market Distillery">
+  <meta property="og:description" content="Not a trend tracker. A distillation column for the indie market. 200+ ideas in, a handful out — validated, buildable, yours weekly.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%2305070b'/%3E%3Cpath d='M16 6c4 6 7 9.5 7 13a7 7 0 1 1-14 0c0-3.5 3-7 7-13z' fill='url(%23g)'/%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%236ee7ff'/%3E%3Cstop offset='.5' stop-color='%239d8cff'/%3E%3Cstop offset='1' stop-color='%23ffc46b'/%3E%3C/linearGradient%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <script src="https://assets.lemonsqueezy.com/lemon.js" defer></script>
+
+  <style>
+    /* ════════════════════════════════════════════════════════════
+       GAUNTRIX — LIQUID EDITION
+       ink · pearl · iridescent chrome · everything moves like fluid
+       ════════════════════════════════════════════════════════════ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --ink:     #05070b;
+      --abyss:   #090d15;
+      --well:    #0e1320;
+      --pearl:   #f4f6fa;
+      --mist:    #93a0b4;
+      --faint:   #5a6478;
+      --line:    rgba(244,246,250,0.09);
+      --cyan:    #6ee7ff;
+      --violet:  #9d8cff;
+      --amber:   #ffc46b;
+      --grad:    linear-gradient(100deg, var(--cyan) 0%, var(--violet) 45%, var(--amber) 100%);
+      --serif:   'Instrument Serif', Georgia, serif;
+      --body:    'Inter', -apple-system, sans-serif;
+      --mono:    'JetBrains Mono', monospace;
+      --ease:    cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    html { scroll-behavior: smooth; background: var(--ink); }
+    ::selection { background: var(--violet); color: var(--ink); }
+
+    body {
+      font-family: var(--body);
+      background: var(--ink);
+      color: var(--pearl);
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ─── ambient glows behind everything ─── */
+    .glow { position: fixed; border-radius: 50%; filter: blur(120px); pointer-events: none; z-index: 0; }
+    .glow-a { width: 60vw; height: 60vw; top: -22vw; left: -18vw; background: rgba(110,231,255,0.07); }
+    .glow-b { width: 55vw; height: 55vw; bottom: -20vw; right: -15vw; background: rgba(157,140,255,0.07); }
+    .glow-c { width: 30vw; height: 30vw; top: 45%; right: 8vw; background: rgba(255,196,107,0.05); }
+
+    #webgl {
+      position: fixed; inset: 0; width: 100%; height: 100%;
+      z-index: 1; display: block; pointer-events: none;
+    }
+    main { position: relative; z-index: 2; }
+
+    .fx-vignette {
+      position: fixed; inset: 0; z-index: 3; pointer-events: none;
+      background: radial-gradient(ellipse 120% 100% at 50% 45%, transparent 58%, rgba(2,3,6,0.5) 100%);
+    }
+
+    /* ─── cursor: a soft droplet ─── */
+    #cursor {
+      position: fixed; width: 10px; height: 10px; border-radius: 50%;
+      background: var(--pearl); z-index: 9999; pointer-events: none;
+      transform: translate(-50%,-50%); display: none;
+      mix-blend-mode: difference;
+    }
+    #cursor-ring {
+      position: fixed; width: 38px; height: 38px; border-radius: 50%;
+      border: 1px solid rgba(244,246,250,0.35); z-index: 9998; pointer-events: none;
+      transform: translate(-50%,-50%); display: none;
+      transition: width 0.25s var(--ease), height 0.25s var(--ease), border-color 0.25s;
+    }
+    #cursor-ring.hot { width: 58px; height: 58px; border-color: var(--cyan); }
+    @media (hover: none), (max-width: 900px) { #cursor, #cursor-ring { display: none !important; } }
+    body { cursor: auto; }
+    @media (hover: hover) and (min-width: 901px) { body, a, button { cursor: none; } }
+
+    a:focus-visible, button:focus-visible, input:focus-visible {
+      outline: 2px solid var(--cyan); outline-offset: 3px;
+    }
+
+    /* ─── VEIL (entrance) ─── */
+    #veil {
+      position: fixed; inset: 0; z-index: 2000;
+      background: var(--ink);
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      gap: 1.6rem;
+      transition: opacity 0.9s var(--ease), visibility 0.9s;
+    }
+    #veil.off { opacity: 0; visibility: hidden; }
+    .veil-word {
+      font-family: var(--serif); font-style: italic;
+      font-size: clamp(3rem, 9vw, 6.5rem); line-height: 1;
+      color: var(--pearl); letter-spacing: 0.01em;
+      opacity: 0; animation: veilword 1.2s var(--ease) 0.15s forwards;
+    }
+    @keyframes veilword {
+      from { opacity: 0; transform: translateY(26px); filter: blur(6px); }
+      to   { opacity: 1; transform: translateY(0); filter: blur(0); }
+    }
+    .veil-drop {
+      width: 9px; height: 9px; border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+      background: var(--grad);
+      opacity: 0; animation: veildrop 1s ease-in 0.9s forwards;
+    }
+    @keyframes veildrop {
+      0% { opacity: 0; transform: translateY(-26px) scale(0.6); }
+      25% { opacity: 1; }
+      100% { opacity: 1; transform: translateY(34px) scale(1); }
+    }
+    .veil-ripple {
+      position: absolute; bottom: calc(50% - 110px); width: 10px; height: 10px;
+      border-radius: 50%; border: 1px solid rgba(244,246,250,0.4);
+      opacity: 0; animation: veilripple 0.9s ease-out 1.85s forwards;
+    }
+    @keyframes veilripple {
+      0% { opacity: 0.8; transform: scale(1); }
+      100% { opacity: 0; transform: scale(22); }
+    }
+    .veil-sub {
+      position: absolute; bottom: 8vh;
+      font-family: var(--mono); font-size: 0.55rem; letter-spacing: 0.3em;
+      text-transform: uppercase; color: var(--faint);
+    }
+
+    /* ─── NAV ─── */
+    .nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 500;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.5rem 3.2rem;
+      transition: background 0.4s, padding 0.4s, border-color 0.4s;
+      border-bottom: 1px solid transparent;
+    }
+    .nav.scrolled {
+      background: rgba(5,7,11,0.72);
+      backdrop-filter: blur(18px);
+      border-bottom-color: var(--line);
+      padding: 1rem 3.2rem;
+    }
+    .nav-logo {
+      font-family: var(--serif); font-style: italic;
+      font-size: 1.5rem; color: var(--pearl); text-decoration: none;
+      display: flex; align-items: center; gap: 0.55rem;
+    }
+    .nav-logo::before {
+      content: ''; width: 10px; height: 10px;
+      border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+      background: var(--grad);
+    }
+    .nav-links { display: flex; align-items: center; gap: 2.6rem; }
+    .nav-link {
+      font-family: var(--mono); font-size: 0.62rem; font-weight: 400;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--faint); text-decoration: none;
+      transition: color 0.25s;
+    }
+    .nav-link:hover { color: var(--pearl); }
+
+    /* ─── BUTTONS (pills) ─── */
+    .pill {
+      display: inline-flex; align-items: center; gap: 0.6rem;
+      font-family: var(--body); font-weight: 600; font-size: 0.85rem;
+      text-decoration: none; border-radius: 999px;
+      padding: 0.8rem 1.9rem;
+      transition: transform 0.3s var(--ease), box-shadow 0.3s, background 0.3s, color 0.3s;
+      position: relative; will-change: transform;
+    }
+    .pill-solid { background: var(--pearl); color: var(--ink); }
+    .pill-solid:hover {
+      box-shadow: 0 8px 40px rgba(157,140,255,0.35), 0 2px 12px rgba(110,231,255,0.25);
+      transform: translateY(-2px);
+    }
+    .pill-ghost {
+      color: var(--pearl); border: 1px solid rgba(244,246,250,0.18);
+      background: rgba(244,246,250,0.03);
+      backdrop-filter: blur(6px);
+    }
+    .pill-ghost:hover { border-color: rgba(110,231,255,0.5); transform: translateY(-2px); }
+    .pill-grad {
+      background: var(--grad); color: var(--ink); font-weight: 600;
+    }
+    .pill-grad:hover { box-shadow: 0 8px 44px rgba(255,196,107,0.35); transform: translateY(-2px); }
+    .pill-sm { padding: 0.55rem 1.3rem; font-size: 0.75rem; }
+
+    /* ─── TYPE PRIMITIVES ─── */
+    .overline {
+      font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.26em;
+      text-transform: uppercase; color: var(--mist);
+      display: flex; align-items: center; gap: 0.8rem;
+      margin-bottom: 1.6rem;
+    }
+    .overline::before { content: ''; width: 30px; height: 1px; background: var(--grad); flex-shrink: 0; }
+    .display {
+      font-family: var(--serif); font-weight: 400;
+      letter-spacing: -0.01em; line-height: 1.02;
+      color: var(--pearl);
+    }
+    .display em {
+      font-style: italic;
+      background: var(--grad);
+      -webkit-background-clip: text; background-clip: text;
+      color: transparent;
+    }
+    .lead { font-size: 0.97rem; line-height: 1.8; color: var(--mist); font-weight: 300; }
+    .lead b, .lead strong { color: var(--pearl); font-weight: 500; }
+
+    .reveal { opacity: 0; transform: translateY(40px); }
+
+    /* ─── HERO ─── */
+    .hero {
+      position: relative; min-height: 100vh;
+      display: flex; align-items: center;
+      padding: 8rem 3.2rem 6rem;
+    }
+    .hero-inner { max-width: 1280px; margin: 0 auto; width: 100%; }
+    .hero-h1 { font-size: clamp(3.2rem, 7.6vw, 7rem); max-width: 13em; margin-bottom: 2rem; }
+    .hero-lead { max-width: 480px; margin-bottom: 2.8rem; }
+    .hero-ctas { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 4rem; }
+    .hero-stats { display: flex; gap: 0; flex-wrap: wrap; }
+    .stat {
+      padding: 0.4rem 2.4rem 0.4rem 1.4rem;
+      border-left: 1px solid var(--line);
+    }
+    .stat-n {
+      font-family: var(--serif); font-size: clamp(1.9rem, 3.4vw, 2.7rem);
+      line-height: 1.1; color: var(--pearl);
+      font-variant-numeric: tabular-nums;
+    }
+    .stat-n.tint {
+      background: var(--grad);
+      -webkit-background-clip: text; background-clip: text; color: transparent;
+    }
+    .stat-l {
+      font-family: var(--mono); font-size: 0.56rem; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--faint); margin-top: 0.35rem;
+    }
+    /* ─── scene annotations: label what the liquid IS ─── */
+    .anno {
+      position: absolute; z-index: 3; pointer-events: none;
+      font-family: var(--mono); font-size: 0.56rem; letter-spacing: 0.16em;
+      text-transform: uppercase; color: var(--mist);
+      display: flex; align-items: center; gap: 0.65rem;
+      text-shadow: 0 1px 8px rgba(2,3,6,0.9);
+    }
+    .anno::before {
+      content: ''; width: 8px; height: 8px; flex-shrink: 0;
+      border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+      background: var(--grad);
+      box-shadow: 0 0 10px rgba(157,140,255,0.5);
+    }
+    .anno::after {
+      content: ''; width: 38px; height: 1px;
+      background: linear-gradient(to right, rgba(244,246,250,0.35), transparent);
+      order: -1;
+    }
+    .anno b { color: var(--pearl); font-weight: 600; }
+    .anno-in   { top: 21%; right: 13%; }
+    .anno-pool { bottom: 29%; right: 19%; }
+    .anno-out  { top: 44%; right: 2.2rem; }
+    @media (max-width: 1280px) { .anno-in { display: none; } }
+    @media (max-width: 900px) {
+      .anno-in, .anno-out { display: none; }
+      .anno-pool { right: 1.4rem; bottom: 25%; }
+      .anno::after { width: 20px; }
+    }
+
+    .hero-note {
+      position: absolute; bottom: 2.4rem; left: 50%; transform: translateX(-50%);
+      font-family: var(--mono); font-size: 0.55rem; letter-spacing: 0.26em;
+      text-transform: uppercase; color: var(--faint);
+      display: flex; flex-direction: column; align-items: center; gap: 0.7rem;
+    }
+    .hero-note::after {
+      content: ''; width: 1px; height: 34px;
+      background: linear-gradient(to bottom, var(--mist), transparent);
+      animation: drip 2.2s var(--ease) infinite;
+    }
+    @keyframes drip {
+      0% { transform: scaleY(0); transform-origin: top; opacity: 0.9; }
+      60% { transform: scaleY(1); transform-origin: top; opacity: 0.9; }
+      100% { transform: scaleY(1); opacity: 0; }
+    }
+
+    /* ─── MARQUEE (dissolve ribbon) ─── */
+    .ribbon {
+      position: relative; padding: 2.2rem 0; overflow: hidden;
+      border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);
+      background: rgba(9,13,21,0.5); backdrop-filter: blur(8px);
+    }
+    .ribbon-track {
+      display: flex; width: max-content;
+      animation: flow 36s linear infinite;
+    }
+    .ribbon span {
+      font-family: var(--serif); font-style: italic;
+      font-size: clamp(1.3rem, 2.6vw, 2rem);
+      color: var(--mist); white-space: nowrap;
+      padding: 0 1.8rem;
+      display: flex; align-items: center; gap: 3.6rem;
+    }
+    .ribbon span i {
+      font-style: normal; font-size: 0.85em;
+      background: var(--grad);
+      -webkit-background-clip: text; background-clip: text; color: transparent;
+    }
+    @keyframes flow { to { transform: translateX(-50%); } }
+
+    /* ─── SECTION SHELL ─── */
+    .sec { position: relative; padding: 9rem 3.2rem; }
+    .sec-inner { max-width: 1280px; margin: 0 auto; }
+    .sec-h2 { font-size: clamp(2.4rem, 5vw, 4.2rem); margin-bottom: 1.2rem; max-width: 14em; }
+    .sec-lead { max-width: 540px; margin-bottom: 3.6rem; }
+
+    /* ─── METHOD ─── */
+    .method-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.6rem;
+      margin-top: 4rem;
+    }
+    .m-card {
+      position: relative;
+      background: linear-gradient(160deg, rgba(14,19,32,0.85), rgba(9,13,21,0.85));
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      padding: 3rem 2.6rem 2.8rem;
+      overflow: hidden;
+      transition: transform 0.45s var(--ease), border-color 0.4s;
+    }
+    .m-card:hover { transform: translateY(-6px); border-color: rgba(110,231,255,0.25); }
+    .m-card::before {
+      content: ''; position: absolute; inset: -1px;
+      border-radius: 28px; padding: 1px;
+      background: var(--grad);
+      -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+      -webkit-mask-composite: xor; mask-composite: exclude;
+      opacity: 0; transition: opacity 0.45s;
+    }
+    .m-card:hover::before { opacity: 0.6; }
+    .m-num {
+      font-family: var(--serif); font-style: italic;
+      font-size: 4.4rem; line-height: 1;
+      background: var(--grad);
+      -webkit-background-clip: text; background-clip: text; color: transparent;
+      opacity: 0.85; margin-bottom: 1.6rem;
+    }
+    .m-card h3 {
+      font-family: var(--serif); font-weight: 400; font-size: 1.65rem;
+      color: var(--pearl); margin-bottom: 0.8rem;
+    }
+    .m-card p { font-size: 0.86rem; line-height: 1.75; color: var(--mist); font-weight: 300; }
+
+    /* ─── DISTILLATION (pinned) ─── */
+    .distill { position: relative; }
+    .d-pin {
+      position: relative; min-height: 100vh;
+      display: flex; flex-direction: column; justify-content: center;
+      padding: 7rem 3.2rem 4rem;
+    }
+    .d-inner { max-width: 1280px; margin: 0 auto; width: 100%; }
+    .d-stage {
+      display: grid; grid-template-columns: minmax(300px, 1fr) 1.35fr;
+      gap: clamp(2rem, 6vw, 6rem); align-items: start;
+      margin-top: 3rem;
+    }
+    .d-counter {
+      font-family: var(--serif);
+      font-size: clamp(6rem, 13vw, 12rem); line-height: 0.95;
+      color: var(--pearl);
+      font-variant-numeric: tabular-nums;
+    }
+    .d-counter-label {
+      font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.24em;
+      text-transform: uppercase; color: var(--faint); margin-top: 1rem;
+    }
+    .d-note {
+      font-family: var(--mono); font-size: 0.58rem; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--faint);
+      border-left: 2px solid; border-image: var(--grad) 1;
+      padding-left: 1rem; line-height: 2.1; margin-top: 2.2rem;
+    }
+    .chambers { display: flex; flex-direction: column; gap: 0.7rem; }
+    .chamber {
+      position: relative;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: rgba(8,11,19,0.93);
+      padding: 1.2rem 1.7rem;
+      display: grid; grid-template-columns: 2.6rem 1fr auto;
+      gap: 1.2rem; align-items: center;
+      overflow: hidden;
+      transition: border-color 0.4s, background 0.4s, opacity 0.4s, transform 0.4s var(--ease);
+    }
+    .ch-idx { font-family: var(--mono); font-size: 0.6rem; color: var(--faint); letter-spacing: 0.1em; }
+    .ch-name {
+      font-family: var(--serif); font-size: 1.25rem; color: var(--mist);
+      transition: color 0.35s;
+    }
+    .ch-cut { font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.08em; color: var(--faint); white-space: nowrap; }
+    .ch-desc {
+      grid-column: 2 / -1;
+      font-size: 0.84rem; line-height: 1.7; color: var(--mist); font-weight: 300;
+      max-height: 0; opacity: 0; overflow: hidden;
+      transition: max-height 0.5s var(--ease), opacity 0.4s, margin 0.4s;
+    }
+    .chamber .ch-fill {
+      position: absolute; left: 0; bottom: 0; top: auto; right: 0;
+      height: 0%; pointer-events: none;
+      background: linear-gradient(100deg, rgba(110,231,255,0.08), rgba(157,140,255,0.08), rgba(255,196,107,0.08));
+      transition: height 0.6s var(--ease);
+    }
+    .chamber.active {
+      border-color: transparent;
+      background: rgba(13,18,30,0.97);
+      transform: scale(1.012);
+    }
+    .chamber.active::before {
+      content: ''; position: absolute; inset: -1px;
+      border-radius: 18px; padding: 1px;
+      background: var(--grad);
+      -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+      -webkit-mask-composite: xor; mask-composite: exclude;
+    }
+    .chamber.active .ch-name { color: var(--pearl); }
+    .chamber.active .ch-desc { max-height: 130px; opacity: 1; margin-top: 0.6rem; }
+    .chamber.active .ch-fill { height: 100%; }
+    .chamber.done { opacity: 0.38; }
+    .chamber.done .ch-name { text-decoration: line-through; text-decoration-color: rgba(157,140,255,0.6); text-decoration-thickness: 1px; }
+    .d-foot {
+      margin-top: 2.6rem;
+      font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.16em;
+      text-transform: uppercase; color: var(--faint);
+    }
+    .d-foot b {
+      font-weight: 600;
+      background: var(--grad);
+      -webkit-background-clip: text; background-clip: text; color: transparent;
+    }
+
+    /* ─── OPPORTUNITIES ─── */
+    .opps { background: linear-gradient(to bottom, transparent, rgba(9,13,21,0.7) 12%, rgba(9,13,21,0.7) 88%, transparent); }
+    .honest {
+      position: relative;
+      border: 1px solid var(--line); border-radius: 24px;
+      background: rgba(14,19,32,0.6);
+      padding: 2.4rem 2.8rem;
+      margin-bottom: 3.6rem;
+      backdrop-filter: blur(8px);
+    }
+    .honest::before {
+      content: ''; position: absolute; left: 0; top: 22px; bottom: 22px; width: 2px;
+      background: var(--grad); border-radius: 2px;
+    }
+    .honest h3 { font-family: var(--serif); font-weight: 400; font-size: 1.5rem; color: var(--pearl); margin-bottom: 0.8rem; }
+    .honest p { font-size: 0.88rem; line-height: 1.78; color: var(--mist); font-weight: 300; margin-bottom: 0.6rem; }
+    .honest p:last-child { margin-bottom: 0; }
+    .honest strong { color: var(--pearl); font-weight: 500; }
+
+    .grp {
+      display: flex; align-items: baseline; gap: 1.1rem;
+      padding: 2.8rem 0 1.2rem;
+      border-top: 1px solid var(--line); flex-wrap: wrap;
+    }
+    .grp:first-of-type { border-top: none; padding-top: 0; }
+    .grp-t { font-family: var(--serif); font-size: 1.5rem; color: var(--pearl); }
+    .grp-s { font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.1em; color: var(--faint); text-transform: uppercase; }
+
+    .cards { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.6rem; margin-bottom: 1rem; }
+    .opp {
+      position: relative;
+      background: linear-gradient(165deg, rgba(14,19,32,0.9), rgba(9,13,21,0.9));
+      border: 1px solid var(--line); border-radius: 26px;
+      padding: 2.6rem;
+      overflow: hidden;
+      transition: transform 0.45s var(--ease), border-color 0.4s, box-shadow 0.45s;
+      will-change: transform;
+    }
+    .opp:hover {
+      transform: translateY(-5px);
+      border-color: rgba(157,140,255,0.3);
+      box-shadow: 0 30px 70px rgba(2,3,6,0.6), 0 0 50px rgba(157,140,255,0.06);
+    }
+    .opp::before {
+      content: 'DISTILLED 5/5';
+      position: absolute; top: 1.7rem; right: 1.7rem;
+      font-family: var(--mono); font-size: 0.5rem; letter-spacing: 0.22em;
+      padding: 0.3rem 0.65rem; border-radius: 999px;
+      border: 1px solid rgba(255,196,107,0.35); color: var(--amber);
+      background: rgba(255,196,107,0.05);
+      opacity: 0;            /* stays invisible until its gold bead lands */
+    }
+    .opp.bead-landed::before { animation: beadland 0.9s cubic-bezier(0.22,1,0.36,1) both; }
+    /* the bead's impact washes the whole card in gold, then recedes */
+    .opp.bead-landed { animation: cardgold 1.1s cubic-bezier(0.22,1,0.36,1); }
+    @keyframes cardgold {
+      0%   { border-color: var(--line); }
+      28%  { border-color: rgba(255,196,107,0.95);
+             box-shadow: 0 0 70px rgba(255,196,107,0.30), inset 0 0 90px rgba(255,196,107,0.16);
+             background: linear-gradient(165deg, rgba(48,38,22,0.95), rgba(30,24,14,0.95)); }
+      100% { border-color: var(--line); }
+    }
+    @keyframes beadland {
+      0%   { opacity: 0; transform: scale(0.5); box-shadow: 0 0 0 rgba(255,196,107,0); }
+      40%  { opacity: 1; transform: scale(1.28); box-shadow: 0 0 30px rgba(255,196,107,0.85); border-color: var(--amber); background: rgba(255,196,107,0.18); }
+      100% { opacity: 1; transform: scale(1); box-shadow: 0 0 0 rgba(255,196,107,0); }
+    }
+    @media (prefers-reduced-motion: reduce) { .opp::before { opacity: 1; } }
+    .opp-t { font-family: var(--serif); font-size: 1.8rem; color: var(--pearl); margin-bottom: 0.2rem; }
+    .opp-badge {
+      font-family: var(--mono); font-size: 0.56rem; letter-spacing: 0.18em;
+      text-transform: uppercase; margin-bottom: 1.2rem; display: block;
+      background: var(--grad);
+      -webkit-background-clip: text; background-clip: text; color: transparent;
+    }
+    .opp-pain {
+      font-size: 0.86rem; line-height: 1.72; color: var(--mist); font-weight: 300;
+      padding-bottom: 1.5rem; margin-bottom: 1.5rem;
+      border-bottom: 1px solid var(--line);
+    }
+    .opp-rows { display: flex; flex-direction: column; gap: 1.3rem; }
+    .opp-row { display: grid; grid-template-columns: 16px 1fr; gap: 0.9rem; align-items: start; }
+    .or-dot {
+      width: 8px; height: 8px; margin-top: 0.35rem;
+      border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+      background: var(--grad);
+    }
+    .or-label {
+      font-family: var(--mono); font-size: 0.54rem; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--faint); margin-bottom: 0.3rem;
+    }
+    .or-text { font-size: 0.82rem; line-height: 1.68; color: var(--mist); font-weight: 300; }
+    .opp-who {
+      margin-top: 1.7rem; padding-top: 1.4rem;
+      border-top: 1px solid var(--line);
+      font-size: 0.78rem; color: var(--faint); font-weight: 300;
+    }
+    .opp-who b {
+      font-family: var(--mono); font-size: 0.54rem; letter-spacing: 0.18em;
+      text-transform: uppercase; font-weight: 600; margin-right: 0.5rem;
+      background: var(--grad);
+      -webkit-background-clip: text; background-clip: text; color: transparent;
+    }
+
+    .locked {
+      grid-column: 1 / -1;
+      position: relative; text-align: center;
+      border-radius: 30px; padding: 5rem 3rem;
+      background: rgba(14,19,32,0.55);
+      border: 1px solid var(--line);
+      backdrop-filter: blur(12px);
+      overflow: hidden;
+    }
+    .locked::before {
+      content: ''; position: absolute; inset: -1px; border-radius: 30px; padding: 1px;
+      background: var(--grad);
+      -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+      -webkit-mask-composite: xor; mask-composite: exclude;
+      opacity: 0.45;
+    }
+    .locked-drop { font-size: 1.8rem; margin-bottom: 1rem; }
+    .locked h3 { font-family: var(--serif); font-weight: 400; font-size: 2rem; color: var(--pearl); margin-bottom: 0.8rem; }
+    .locked p { font-size: 0.88rem; color: var(--mist); font-weight: 300; max-width: 400px; margin: 0 auto 2.2rem; line-height: 1.75; }
+
+    /* ─── OPERATOR ─── */
+    .operator-inner { max-width: 760px; margin: 0 auto; }
+    .op-card {
+      position: relative;
+      border-radius: 30px;
+      background: linear-gradient(160deg, rgba(14,19,32,0.85), rgba(9,13,21,0.85));
+      border: 1px solid var(--line);
+      padding: 4rem 4.4rem;
+    }
+    .op-card .q {
+      font-family: var(--serif); font-style: italic; font-size: 3.2rem; line-height: 0.8;
+      background: var(--grad);
+      -webkit-background-clip: text; background-clip: text; color: transparent;
+      display: block; margin-bottom: 1rem;
+    }
+    .op-card p { font-size: 0.94rem; line-height: 1.85; color: var(--mist); font-weight: 300; margin-bottom: 1.2rem; }
+    .op-sig {
+      font-family: var(--mono); font-size: 0.58rem; letter-spacing: 0.22em;
+      text-transform: uppercase; color: var(--faint); margin-top: 2rem;
+    }
+    .op-sig b {
+      font-weight: 600;
+      background: var(--grad);
+      -webkit-background-clip: text; background-clip: text; color: transparent;
+    }
+
+    /* ─── PRICING ─── */
+    .price-grid {
+      display: grid; grid-template-columns: 1fr 1.18fr;
+      gap: 1.6rem; margin-top: 3.6rem; align-items: stretch;
+      max-width: 940px;
+    }
+    .tier {
+      position: relative;
+      border-radius: 28px;
+      background: rgba(9,13,21,0.8);
+      border: 1px solid var(--line);
+      padding: 3rem;
+      transition: transform 0.4s var(--ease);
+    }
+    .tier:hover { transform: translateY(-5px); }
+    .tier.featured { background: rgba(14,19,32,0.92); }
+    .tier.featured::before {
+      content: ''; position: absolute; inset: -1px; border-radius: 28px; padding: 1.2px;
+      background: var(--grad);
+      -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+      -webkit-mask-composite: xor; mask-composite: exclude;
+    }
+    .tier-tag {
+      font-family: var(--mono); font-size: 0.54rem; letter-spacing: 0.2em;
+      text-transform: uppercase; padding: 0.3rem 0.7rem; border-radius: 999px;
+      border: 1px solid rgba(255,196,107,0.4); color: var(--amber);
+      display: inline-block; margin-bottom: 1.4rem;
+      background: rgba(255,196,107,0.05);
+    }
+    .tier-name {
+      font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.24em;
+      text-transform: uppercase; color: var(--faint); margin-bottom: 1rem;
+    }
+    .tier-price { font-family: var(--serif); font-size: 4.4rem; line-height: 1; color: var(--pearl); margin-bottom: 0.3rem; }
+    .tier-price sup { font-size: 1.6rem; }
+    .tier-price .per { font-size: 1.2rem; color: var(--faint); }
+    .tier-period { font-family: var(--mono); font-size: 0.58rem; letter-spacing: 0.12em; color: var(--faint); margin-bottom: 2rem; }
+    .tier hr { border: none; border-top: 1px solid var(--line); margin-bottom: 2rem; }
+    .tier ul { list-style: none; margin-bottom: 2.6rem; }
+    .tier li {
+      font-size: 0.86rem; color: var(--mist); font-weight: 300;
+      padding: 0.55rem 0 0.55rem 1.5rem; position: relative;
+      border-bottom: 1px solid rgba(244,246,250,0.04);
+    }
+    .tier li::before {
+      content: ''; position: absolute; left: 0; top: 1.05em;
+      width: 7px; height: 7px;
+      border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+      background: var(--grad);
+    }
+    .tier .pill { width: 100%; justify-content: center; }
+
+    /* ─── FINAL CTA ─── */
+    .cta { text-align: center; padding: 12rem 3.2rem; position: relative; }
+    .cta-h2 { font-size: clamp(2.4rem, 5.4vw, 4.6rem); max-width: 16em; margin: 0 auto 1.4rem; }
+    .cta-sub { font-size: 0.92rem; color: var(--mist); font-weight: 300; margin-bottom: 3rem; }
+    .cta-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-bottom: 5rem; }
+    #free-signup { scroll-margin-top: 120px; }
+    .signup-label {
+      font-family: var(--mono); font-size: 0.58rem; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--faint); margin-bottom: 1rem;
+    }
+    .signup-form { display: flex; gap: 0.6rem; max-width: 480px; margin: 0 auto; }
+    .signup-form input[type="email"] {
+      flex: 1; border-radius: 999px;
+      background: rgba(14,19,32,0.8);
+      border: 1px solid rgba(244,246,250,0.12);
+      padding: 0.9rem 1.4rem;
+      font-family: var(--body); font-size: 0.88rem; font-weight: 300;
+      color: var(--pearl); outline: none;
+      transition: border-color 0.3s, box-shadow 0.3s;
+    }
+    .signup-form input[type="email"]:focus {
+      border-color: var(--cyan);
+      box-shadow: 0 0 30px rgba(110,231,255,0.12);
+    }
+    .signup-form input::placeholder { color: var(--faint); }
+    .signup-form button {
+      border-radius: 999px; border: none;
+      background: var(--grad); color: var(--ink);
+      font-family: var(--body); font-weight: 600; font-size: 0.82rem;
+      padding: 0.9rem 1.8rem; white-space: nowrap;
+      transition: box-shadow 0.3s, transform 0.3s var(--ease);
+    }
+    .signup-form button:hover { box-shadow: 0 8px 36px rgba(255,196,107,0.3); transform: translateY(-1px); }
+    .signup-note { font-family: var(--mono); font-size: 0.55rem; letter-spacing: 0.12em; color: var(--faint); margin-top: 0.9rem; }
+
+    /* ─── FOOTER ─── */
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 2.4rem 3.2rem;
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 1rem;
+      position: relative; z-index: 2;
+      background: rgba(5,7,11,0.85);
+    }
+    footer p { font-family: var(--mono); font-size: 0.6rem; color: var(--faint); letter-spacing: 0.08em; }
+    footer a { color: var(--faint); text-decoration: none; transition: color 0.25s; }
+    footer a:hover { color: var(--pearl); }
+
+    /* ─── REDUCED MOTION / RESPONSIVE ─── */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+      .reveal { opacity: 1 !important; transform: none !important; }
+      html { scroll-behavior: auto; }
+    }
+    @media (max-width: 900px) {
+      .nav, .nav.scrolled { padding: 1rem 1.4rem; }
+      .nav-link { display: none; }
+      .hero { padding: 7.5rem 1.4rem 6rem; }
+      .hero-stats .stat { padding: 0.4rem 1.4rem 0.4rem 1rem; }
+      .sec { padding: 6.5rem 1.4rem; }
+      .method-grid { grid-template-columns: 1fr; }
+      .cards { grid-template-columns: 1fr; }
+      .price-grid { grid-template-columns: 1fr; }
+      .op-card { padding: 2.6rem 1.8rem; }
+      .d-pin { min-height: auto; padding: 5rem 1.4rem 4rem; }
+      .d-stage { display: flex; flex-direction: column; gap: 1.4rem; }
+      .d-stage > div:first-child {
+        position: sticky; top: 86px; z-index: 6;
+        display: flex; align-items: baseline; gap: 1.1rem;
+        background: rgba(5,7,11,0.82); backdrop-filter: blur(12px);
+        border: 1px solid var(--line); border-radius: 16px;
+        padding: 0.6rem 1.2rem;
+      }
+      .d-counter { font-size: 2.8rem; }
+      .d-counter-label { margin-top: 0; }
+      .d-note { display: none; }
+      .chamber { grid-template-columns: 2rem 1fr auto; }
+      .signup-form { flex-direction: column; }
+      .signup-form button { width: 100%; }
+      footer { flex-direction: column; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+<noscript>
+  <style>
+    #veil, #webgl, .anno { display: none !important; }
+    .reveal { opacity: 1 !important; transform: none !important; }
+    .ch-desc { max-height: none !important; opacity: 1 !important; }
+    .opp::before { opacity: 1 !important; }
+  </style>
+</noscript>
+
+<!-- ambient -->
+<div class="glow glow-a"></div>
+<div class="glow glow-b"></div>
+<div class="glow glow-c"></div>
+<canvas id="webgl"></canvas>
+<div class="fx-vignette"></div>
+
+<!-- cursor -->
+<div id="cursor"></div>
+<div id="cursor-ring"></div>
+
+<!-- VEIL -->
+<div id="veil" aria-hidden="true">
+  <div class="veil-word">gauntrix</div>
+  <div class="veil-drop"></div>
+  <div class="veil-ripple"></div>
+  <div class="veil-sub">the ai market distillery</div>
+</div>
+
+<main>
+
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <a href="#" class="nav-logo">gauntrix</a>
+  <div class="nav-links">
+    <a href="#method" class="nav-link">Method</a>
+    <a href="#distillation" class="nav-link">Distillation</a>
+    <a href="#opportunities" class="nav-link">Opportunities</a>
+    <a href="#pricing" class="nav-link">Pricing</a>
+    <a href="LEMON_SQUEEZY_CHECKOUT_URL" class="pill pill-solid pill-sm lemonsqueezy-button">Get access — $29/mo</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero" id="hero">
+  <div class="hero-inner">
+    <p class="overline">AI market distillery · weekly drop nº 62</p>
+    <h1 class="display hero-h1">
+      Two hundred ideas pour&nbsp;in.<br>
+      <em>Five come out worth building.</em>
+    </h1>
+    <p class="lead hero-lead">
+      Gauntrix runs the indie market through a <b>five-stage distillation</b> every week —
+      forums, app stores, search data — and hands you only the niches that are
+      <b>narrow, buildable, and actually pay</b>. No trend-chasing. No noise.
+    </p>
+    <div class="hero-ctas">
+      <a href="LEMON_SQUEEZY_CHECKOUT_URL" class="pill pill-solid lemonsqueezy-button">Get full access — $29/mo</a>
+      <a href="#free-signup" class="pill pill-ghost">Start free →</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat"><div class="stat-n" data-count="61" data-stat="runs">0</div><div class="stat-l">weekly runs</div></div>
+      <div class="stat"><div class="stat-n" data-count="200" data-suffix="+" data-stat="evaluated">0</div><div class="stat-l">ideas tasted</div></div>
+      <div class="stat"><div class="stat-n" data-count="4" data-prefix="~" data-suffix="%">0</div><div class="stat-l">pass rate</div></div>
+      <div class="stat"><div class="stat-n tint" data-count="26" data-stat="survived">0</div><div class="stat-l">distilled niches</div></div>
+    </div>
+  </div>
+  <!-- live diagram labels for the 3D scene -->
+  <div class="anno anno-in" aria-hidden="true">raw ideas — <b>200+</b> pour in weekly</div>
+  <div class="anno anno-pool" aria-hidden="true">the distillation pool — <b>5 filters</b> live inside</div>
+  <div class="anno anno-out" aria-hidden="true">validated niches escape — <b>~4%</b></div>
+
+  <div class="hero-note">scroll to distill</div>
+</header>
+
+<!-- RIBBON -->
+<div class="ribbon" aria-hidden="true">
+  <div class="ribbon-track">
+    <span>saturated ideas dissolve <i>✦</i></span>
+    <span>no-moat ideas dissolve <i>✦</i></span>
+    <span>"maybe ads" dissolves <i>✦</i></span>
+    <span>unbuildable scope dissolves <i>✦</i></span>
+    <span>what remains, ships <i>✦</i></span>
+    <span>saturated ideas dissolve <i>✦</i></span>
+    <span>no-moat ideas dissolve <i>✦</i></span>
+    <span>"maybe ads" dissolves <i>✦</i></span>
+    <span>unbuildable scope dissolves <i>✦</i></span>
+    <span>what remains, ships <i>✦</i></span>
+  </div>
+</div>
+
+<!-- METHOD -->
+<section class="sec" id="method">
+  <div class="sec-inner">
+    <p class="overline reveal">How it works</p>
+    <h2 class="display sec-h2 reveal">Pour. Filter. <em>Bottle.</em></h2>
+    <p class="lead sec-lead reveal">A multi-stage pipeline runs every week: scan wide, score hard, keep almost nothing. Only the clearest opportunities reach your inbox.</p>
+    <div class="method-grid">
+      <div class="m-card reveal">
+        <div class="m-num">01</div>
+        <h3>Wide intake</h3>
+        <p>AI crawls forums, subreddits, app stores, and search data to surface recurring pain points with no good solution yet — hundreds of candidates, every single week.</p>
+      </div>
+      <div class="m-card reveal">
+        <div class="m-num">02</div>
+        <h3>Five-stage distillation</h3>
+        <p>Each candidate is scored on SEO gap, competition density, monetization clarity, build feasibility, and audience reachability. Fail one stage and it dissolves.</p>
+      </div>
+      <div class="m-card reveal">
+        <div class="m-num">03</div>
+        <h3>The weekly pour</h3>
+        <p>What passes arrives as a full brief: the pain point, why it's blue ocean, the monetization path, and exactly where your first 100 users already gather.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DISTILLATION -->
+<section class="distill" id="distillation">
+  <div class="d-pin" id="d-pin">
+    <div class="d-inner">
+      <p class="overline">The column</p>
+      <h2 class="display sec-h2">Five chambers. <em>Almost nothing survives the column.</em></h2>
+      <div class="d-stage">
+        <div>
+          <div class="d-counter" id="d-num">200</div>
+          <div class="d-counter-label">candidates in suspension</div>
+          <div class="d-note">
+            input: 200+ candidates / weekly run<br>
+            output: 22 fully distilled<br>
+            criteria: all five chambers, no exceptions
+          </div>
+        </div>
+        <div>
+          <div class="chambers" id="chambers">
+            <div class="chamber">
+              <span class="ch-idx">C·1</span>
+              <span class="ch-name">Pain validation</span>
+              <span class="ch-cut">dissolves ~40%</span>
+              <p class="ch-desc">Does this problem recur in forums, app reviews, and search? Genuine frustration, not mild inconvenience.</p>
+              <i class="ch-fill"></i>
+            </div>
+            <div class="chamber">
+              <span class="ch-idx">C·2</span>
+              <span class="ch-name">SEO gap analysis</span>
+              <span class="ch-cut">dissolves ~25%</span>
+              <p class="ch-desc">Is the SERP actually empty? Rankable long-tail variations no one has claimed. One dominant player ends the opportunity.</p>
+              <i class="ch-fill"></i>
+            </div>
+            <div class="chamber">
+              <span class="ch-idx">C·3</span>
+              <span class="ch-name">Monetization clarity</span>
+              <span class="ch-cut">dissolves ~20%</span>
+              <p class="ch-desc">Clear path to revenue — affiliate, subscription, lead-gen, or SaaS. "Maybe ads" doesn't count.</p>
+              <i class="ch-fill"></i>
+            </div>
+            <div class="chamber">
+              <span class="ch-idx">C·4</span>
+              <span class="ch-name">Build feasibility</span>
+              <span class="ch-cut">dissolves ~10%</span>
+              <p class="ch-desc">Can one person build a useful v1 in a weekend? Proprietary data requirements no indie hacker can access = dissolved.</p>
+              <i class="ch-fill"></i>
+            </div>
+            <div class="chamber">
+              <span class="ch-idx">C·5</span>
+              <span class="ch-name">Reachable audience</span>
+              <span class="ch-cut">final condensation</span>
+              <p class="ch-desc">Is there a community, subreddit, or niche platform where the first 100 users already gather?</p>
+              <i class="ch-fill"></i>
+            </div>
+          </div>
+          <p class="d-foot">pass rate <b>~4%</b> · all five chambers required · <b id="d-verdict">awaiting pour…</b></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OPPORTUNITIES -->
+<section class="sec opps" id="opportunities">
+  <div class="sec-inner">
+    <p class="overline reveal">Validated by the column</p>
+    <h2 class="display sec-h2 reveal">This week's <em>distillate.</em></h2>
+    <p class="lead sec-lead reveal">Opportunities our pipeline surfaced, scored, and vetted — each one passed all five chambers. Full drops include deeper briefs, validation data, and unpublished niches every week.</p>
+
+    <div class="honest reveal">
+      <h3>Why so complex and specific?</h3>
+      <p>Because the obvious ideas are already gone. "Build an AI writing tool." "Make another todo app." The column dissolves these in seconds — oversaturated, margin-less, already built by a thousand people.</p>
+      <p>What survives is narrow, vertical, and requires domain knowledge. That's not a bug — that's the moat. <strong>If it were obvious and easy, someone would have done it.</strong></p>
+    </div>
+
+    <div class="grp reveal">
+      <span class="grp-t">Quick build</span>
+      <span class="grp-s">launch in a week · lower moat, real gaps</span>
+    </div>
+
+    <div class="cards">
+      <div class="opp reveal">
+        <div class="opp-t">DentalAuth AI</div>
+        <span class="opp-badge">SaaS</span>
+        <p class="opp-pain">Dental offices spend 30+ minutes writing a single Prior Authorization letter — manually, every claim. Formatting errors cause denials. No purpose-built AI tool understands CDT codes and insurer-specific narrative structure.</p>
+        <div class="opp-rows">
+          <div class="opp-row"><i class="or-dot"></i><div><div class="or-label">Why blue ocean</div><div class="or-text">Generic AI tools don't know CDT codes or PA narrative structure. SERP for "dental prior auth letter generator" is empty. High-intent B2B pain with zero dedicated tool.</div></div></div>
+          <div class="opp-row"><i class="or-dot"></i><div><div class="or-label">Monetization</div><div class="or-text">Per-seat subscription $29–79/mo for dental offices. Clear ROI: one approval pays for months of the tool.</div></div></div>
+          <div class="opp-row"><i class="or-dot"></i><div><div class="or-label">Cold start</div><div class="or-text">DentalTown forums and dental billing Facebook groups. "Dental prior auth letter template [insurer]" — one page per insurer, zero competition.</div></div></div>
+        </div>
+        <div class="opp-who"><b>For</b>Dental office managers, billing staff</div>
+      </div>
+
+      <div class="opp reveal">
+        <div class="opp-t">ClaimSnap</div>
+        <span class="opp-badge">SaaS</span>
+        <p class="opp-pain">Independent CAT adjusters convert field notes into carrier-ready structured loss reports by hand — each carrier has different formatting requirements. During CAT season this bottleneck kills throughput.</p>
+        <div class="opp-rows">
+          <div class="opp-row"><i class="or-dot"></i><div><div class="or-label">Why blue ocean</div><div class="or-text">Enterprise tools (Xactimate) start at $200+/mo targeting staff adjusters, not independents. No lightweight AI report generator exists for CAT independents.</div></div></div>
+          <div class="opp-row"><i class="or-dot"></i><div><div class="or-label">Monetization</div><div class="or-text">Per-report credits during CAT season. Annual subscription for year-round adjusters. Carrier white-label for high-volume distribution.</div></div></div>
+          <div class="opp-row"><i class="or-dot"></i><div><div class="or-label">Cold start</div><div class="or-text">NAPIA community and CAT adjuster Facebook groups. Storm season timing makes organic distribution natural.</div></div></div>
+        </div>
+        <div class="opp-who"><b>For</b>Independent CAT adjusters</div>
+      </div>
+    </div>
+
+    <div class="grp reveal">
+      <span class="grp-t">Deep build</span>
+      <span class="grp-s">3–6 months · defensible data advantage</span>
+    </div>
+
+    <div class="cards">
+      <div class="opp reveal">
+        <div class="opp-t">DroneCompli</div>
+        <span class="opp-badge">Subscription</span>
+        <p class="opp-pain">Commercial UAV operators working across borders face different airspace rules, BVLOS authorizations, and operator licensing requirements in every country. Official sources are scattered, poorly translated, and rarely updated.</p>
+        <div class="opp-rows">
+          <div class="opp-row"><i class="or-dot"></i><div><div class="or-label">Why blue ocean</div><div class="or-text">No neutral database covers global commercial UAV compliance in one place. The fragmentation is the moat — once aggregated, no one can replicate it quickly. Aviation lawyers charge $300+/hr for what this automates.</div></div></div>
+          <div class="opp-row"><i class="or-dot"></i><div><div class="or-label">Monetization</div><div class="or-text">Subscription for commercial operators + per-seat for fleet teams. Compliance consultancies pay for API access.</div></div></div>
+          <div class="opp-row"><i class="or-dot"></i><div><div class="or-label">Cold start</div><div class="or-text">r/drones and DJI commercial operator communities. "[Country] commercial drone BVLOS rules" — programmatic page per country, each uncontested.</div></div></div>
+        </div>
+        <div class="opp-who"><b>For</b>Commercial drone operators, aviation lawyers</div>
+      </div>
+
+      <div class="opp reveal">
+        <div class="opp-t">FontLegal</div>
+        <span class="opp-badge">Freemium</span>
+        <p class="opp-pain">Designers and AI trainers don't know if their fonts allow commercial embedding, broadcast use, or AI training rights. Font license PDFs are dense legal documents. The risk of a violation surfaces only after shipping.</p>
+        <div class="opp-rows">
+          <div class="opp-row"><i class="or-dot"></i><div><div class="or-label">Why blue ocean</div><div class="or-text">No searchable matrix covers embedding/broadcast/AI training rights across major font libraries. AI training restrictions emerged in 2023 — newly urgent, unserved, legal teams now scrambling.</div></div></div>
+          <div class="opp-row"><i class="or-dot"></i><div><div class="or-label">Monetization</div><div class="or-text">Freemium with bulk-check premium; design agency team plans. AI company compliance licenses at enterprise pricing.</div></div></div>
+          <div class="opp-row"><i class="or-dot"></i><div><div class="or-label">Cold start</div><div class="or-text">r/graphic_design, Typewolf community, HuggingFace dataset builders. "[Font name] commercial license AI training" — every major font is an uncontested long-tail page.</div></div></div>
+        </div>
+        <div class="opp-who"><b>For</b>Design studios, app developers, AI engineers</div>
+      </div>
+
+      <div class="opp reveal">
+        <div class="opp-t">PAClear</div>
+        <span class="opp-badge">Subscription</span>
+        <p class="opp-pain">Medical billing managers submit Prior Authorization requests without knowing historical approval rates per CPT code and insurer — wasting hours on submissions with a 90% denial probability.</p>
+        <div class="opp-rows">
+          <div class="opp-row"><i class="or-dot"></i><div><div class="or-label">Why blue ocean</div><div class="or-text">No tool translates CPT × insurer denial rates into pre-submission intelligence. RCM software shows your historical outcomes — not market-wide approval odds before you submit.</div></div></div>
+          <div class="opp-row"><i class="or-dot"></i><div><div class="or-label">Monetization</div><div class="or-text">Subscription per billing department; RCM consulting firms pay for white-label. Reducing denial rate by 10% saves large practices $50K+/yr.</div></div></div>
+          <div class="opp-row"><i class="or-dot"></i><div><div class="or-label">Cold start</div><div class="or-text">Medical Billing &amp; Coding Facebook groups, AAPC forums, r/medicalbilling. "[CPT code] prior auth denial rate [insurer]" — one uncontested page per CPT × insurer combination.</div></div></div>
+        </div>
+        <div class="opp-who"><b>For</b>Medical billing managers, physicians</div>
+      </div>
+
+      <div class="opp reveal">
+        <div class="opp-t">AuditScore</div>
+        <span class="opp-badge">Subscription</span>
+        <p class="opp-pain">DeFi protocols pay $50K–$500K for security audits — then get exploited anyway. Which auditors actually catch critical bugs? The data is public but scattered across postmortems and Discord threads.</p>
+        <div class="opp-rows">
+          <div class="opp-row"><i class="or-dot"></i><div><div class="or-label">Why blue ocean</div><div class="or-text">DefiLlama tracks hacks but not auditor accountability. No database maps audit firm → missed exploits → dollar losses. Protocol teams make six-figure decisions based on Twitter rep, not track record.</div></div></div>
+          <div class="opp-row"><i class="or-dot"></i><div><div class="or-label">Monetization</div><div class="or-text">Subscription for protocol teams; institutional risk managers and DAO treasuries pay premium API rates. The stakes make $99/mo a trivial due-diligence expense.</div></div></div>
+          <div class="opp-row"><i class="or-dot"></i><div><div class="or-label">Cold start</div><div class="or-text">DeFi security Twitter/X, r/ethdev, Immunefi bug bounty ecosystem. Post an audit firm comparison thread — distribution is immediate in a community starved for this data.</div></div></div>
+        </div>
+        <div class="opp-who"><b>For</b>DeFi protocol teams, institutional risk managers</div>
+      </div>
+
+      <div class="opp reveal">
+        <div class="opp-t">CaseGuard</div>
+        <span class="opp-badge">Subscription</span>
+        <p class="opp-pain">HR and legal teams evaluating EOR platforms can't find enforcement actions against specific companies for contractor misclassification. DOL, NLRB, and state labor board records are public — but completely unsearchable by company or platform.</p>
+        <div class="opp-rows">
+          <div class="opp-row"><i class="or-dot"></i><div><div class="or-label">Why blue ocean</div><div class="or-text">No aggregator has indexed enforcement actions by company + EOR platform. G2 and Capterra don't cover compliance failures. SERP returns zero structured results — only buried PDFs.</div></div></div>
+          <div class="opp-row"><i class="or-dot"></i><div><div class="or-label">Monetization</div><div class="or-text">B2B subscription $99–299/mo for HR/legal teams. Compliance law firms pay for ad placement targeting procurement queries.</div></div></div>
+          <div class="opp-row"><i class="or-dot"></i><div><div class="or-label">Cold start</div><div class="or-text">EOR procurement Slack communities, LinkedIn HR/legal groups. "[Platform] contractor misclassification [country] 2024" — one page per platform × country, each uncontested.</div></div></div>
+        </div>
+        <div class="opp-who"><b>For</b>HR/legal teams, EOR procurement</div>
+      </div>
+
+      <div class="locked reveal">
+        <div class="locked-drop">💧</div>
+        <h3>More in every weekly pour</h3>
+        <p>Full access includes all 5–8 validated opportunities per drop, deeper monetization playbooks, and unpublished niches not shown here.</p>
+        <a href="LEMON_SQUEEZY_CHECKOUT_URL" class="pill pill-grad lemonsqueezy-button">Unlock — $29/mo</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OPERATOR -->
+<section class="sec" id="about">
+  <div class="operator-inner">
+    <div class="op-card reveal">
+      <span class="q" aria-hidden="true">"</span>
+      <p class="overline">Who built this</p>
+      <h2 class="display" style="font-size:clamp(2rem,4vw,3.2rem); margin-bottom:1.6rem;">One operator. One still. <em>Weekly output.</em></h2>
+      <p>Gauntrix is a solo project. I got tired of spending weeks validating ideas that turned out to have obvious competition I missed, or no monetization path that held up.</p>
+      <p>So I built a pipeline. It runs every week, scores hundreds of candidates, and surfaces the small number that actually check every box. I'm sharing the output because the validation work is the hard part — and it can be done once, for everyone.</p>
+      <p class="op-sig">build in public · no VC funding · <b>ship what works</b></p>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="sec" id="pricing">
+  <div class="sec-inner">
+    <p class="overline reveal">Pricing</p>
+    <h2 class="display sec-h2 reveal">Taste free. <em>Subscribe when it pours.</em></h2>
+    <p class="lead sec-lead reveal">No fluff tiers. One free, one paid. Lock the founding price before it goes up.</p>
+    <div class="price-grid">
+      <div class="tier reveal">
+        <div class="tier-name">Free</div>
+        <div class="tier-price"><sup>$</sup>0</div>
+        <div class="tier-period">always free</div>
+        <hr>
+        <ul>
+          <li>1 sample opportunity per week</li>
+          <li>Pipeline methodology overview</li>
+          <li>Early access to new features</li>
+        </ul>
+        <a href="#free-signup" class="pill pill-ghost">Start free →</a>
+      </div>
+      <div class="tier featured reveal">
+        <div class="tier-tag">Founding price — going up after first 50</div>
+        <div class="tier-name">Full access</div>
+        <div class="tier-price"><sup>$</sup>29<span class="per">/mo</span></div>
+        <div class="tier-period">founding price · lock it in forever</div>
+        <hr>
+        <ul>
+          <li>All 5–8 opportunities per weekly drop</li>
+          <li>Full validation brief per niche</li>
+          <li>Monetization &amp; cold-start playbook</li>
+          <li>Backlog of all past validated opportunities</li>
+        </ul>
+        <a href="LEMON_SQUEEZY_CHECKOUT_URL" class="pill pill-grad lemonsqueezy-button" id="buy-full-access">Get full access — $29/mo</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="cta" id="cta">
+  <h2 class="display cta-h2 reveal">The next drop is <em>already condensing.</em></h2>
+  <p class="cta-sub reveal">Full access $29/mo · Free tier available · Cancel anytime · First 50 lock the founding price</p>
+  <div class="cta-btns reveal">
+    <a href="LEMON_SQUEEZY_CHECKOUT_URL" class="pill pill-solid lemonsqueezy-button">Get full access — $29/mo</a>
+    <a href="#free-signup" class="pill pill-ghost">Start free →</a>
+  </div>
+  <div id="free-signup" class="reveal">
+    <p class="signup-label">Or join the free tier — one opportunity per week, no credit card</p>
+    <form class="signup-form" action="https://formsubmit.co/2734e0f49605680196bfc44f5cca0531" method="POST">
+      <input type="hidden" name="_subject" value="Gauntrix — Free Tier Signup">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="_template" value="table">
+      <input type="email" name="email" placeholder="you@example.com" aria-label="Email address" required>
+      <button type="submit">Join free</button>
+    </form>
+    <p class="signup-note">Unsubscribe anytime · No spam</p>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 Gauntrix · Built by 1 person + AI</p>
+  <p>
+    <a href="mailto:gauntrix.contact@gmail.com">Contact</a>
+    &nbsp;·&nbsp;
+    <a href="/privacy.html">Privacy Policy</a>
+  </p>
+</footer>
+
+</main>
+
+<!-- GoatCounter -->
+<script data-goatcounter="https://friday-lab.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
+<script>
+document.querySelectorAll('form').forEach(function(f){
+  f.addEventListener('submit', function(){
+    if(window.goatcounter && window.goatcounter.count){
+      window.goatcounter.count({path:'gauntrix-signup',title:'Gauntrix Email Signup',event:true});
+    }
+  });
+});
+</script>
+
+<!-- GSAP -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+<script>
+(function(){
+'use strict';
+var prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+var isDesktop = window.matchMedia('(hover:hover) and (min-width: 901px)').matches;
+
+/* every visit starts from the top: browser scroll-restoration would otherwise
+   resume mid-page, where the "already passed" logic stamps all the badges and
+   no bead ever flies. Deep links (#pricing etc.) are respected. */
+if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+if (!location.hash) window.scrollTo(0, 0);
+
+/* ─── VEIL ─── */
+var veilDone = false;
+function endVeil(){
+  if(veilDone) return;
+  veilDone = true;
+  window.__gxVeilDone = true;
+  document.getElementById('veil').classList.add('off');
+  window.dispatchEvent(new CustomEvent('gx-veil-done'));
+}
+if(prefersReduced){ endVeil(); }
+else {
+  document.getElementById('veil').addEventListener('click', endVeil);
+  setTimeout(endVeil, 2900);
+  setTimeout(endVeil, 6000); // hard failsafe
+}
+
+/* ─── CURSOR ─── */
+if(isDesktop && !prefersReduced){
+  var cur = document.getElementById('cursor'), ring = document.getElementById('cursor-ring');
+  cur.style.display = 'block'; ring.style.display = 'block';
+  var mx = 0, my = 0, rx = 0, ry = 0;
+  document.addEventListener('mousemove', function(e){
+    mx = e.clientX; my = e.clientY;
+    cur.style.left = mx + 'px'; cur.style.top = my + 'px';
+  });
+  (function tick(){
+    rx += (mx - rx) * 0.14; ry += (my - ry) * 0.14;
+    ring.style.left = rx + 'px'; ring.style.top = ry + 'px';
+    requestAnimationFrame(tick);
+  })();
+  document.querySelectorAll('a, button, input, .opp').forEach(function(el){
+    el.addEventListener('mouseenter', function(){ ring.classList.add('hot'); });
+    el.addEventListener('mouseleave', function(){ ring.classList.remove('hot'); });
+  });
+}
+
+/* ─── NAV ─── */
+var nav = document.getElementById('nav');
+window.addEventListener('scroll', function(){
+  nav.classList.toggle('scrolled', window.scrollY > 60);
+}, {passive:true});
+
+/* ─── COUNT-UP ─── */
+function countUp(el){
+  var target = parseInt(el.getAttribute('data-count'), 10);
+  var prefix = el.getAttribute('data-prefix') || '';
+  var suffix = el.getAttribute('data-suffix') || '';
+  if(prefersReduced){ el.textContent = prefix + target + suffix; return; }
+  var t0 = null, dur = 1500;
+  function frame(t){
+    if(!t0) t0 = t;
+    var p = Math.min(1, (t - t0) / dur);
+    var eased = 1 - Math.pow(1 - p, 3);
+    el.textContent = prefix + Math.round(target * eased) + suffix;
+    if(p < 1) requestAnimationFrame(frame);
+  }
+  requestAnimationFrame(frame);
+}
+function initCounters(){
+  var counted = new WeakSet();
+  var cObs = new IntersectionObserver(function(entries){
+    entries.forEach(function(en){
+      if(en.isIntersecting && !counted.has(en.target)){
+        counted.add(en.target);
+        countUp(en.target);
+        cObs.unobserve(en.target);
+      }
+    });
+  }, {threshold: 0.4});
+  document.querySelectorAll('[data-count]').forEach(function(el){ cObs.observe(el); });
+}
+fetch('/stats.json')
+  .then(function(r){ return r.json(); })
+  .then(function(s){
+    var m = {runs: s.runs, evaluated: s.evaluated, survived: s.survived};
+    document.querySelectorAll('[data-stat]').forEach(function(el){
+      var k = el.getAttribute('data-stat');
+      if(m[k] != null) el.setAttribute('data-count', m[k]);
+    });
+  })
+  .catch(function(){})
+  .then(initCounters);
+
+/* ─── DISTILLATION state machine ─── */
+var chambers = Array.prototype.slice.call(document.querySelectorAll('.chamber'));
+var dNum = document.getElementById('d-num');
+var dVerdict = document.getElementById('d-verdict');
+var ALIVE = [200, 122, 76, 41, 28, 22];
+
+var lastCur = -1, lastSegCls = -1;
+function setStage(seg, local){
+  var cur = Math.round(ALIVE[seg] + (ALIVE[seg+1] - ALIVE[seg]) * local);
+  if(cur !== lastCur){               // write DOM only when something changed —
+    lastCur = cur;                   // scrub fires every frame, layout is not free
+    dNum.textContent = cur;
+    window.__gxAlive = cur;          // the 3D pool reads this: its volume IS this number
+  }
+  if(seg !== lastSegCls){
+    lastSegCls = seg;
+    chambers.forEach(function(c, i){
+      c.classList.toggle('done', i < seg);
+      c.classList.toggle('active', i === seg);
+    });
+  }
+  var v = (seg >= 4 && local > 0.85)
+    ? '22 distilled opportunities'
+    : 'chamber C·' + (seg + 1) + ' condensing…';
+  if(v !== dVerdict.textContent) dVerdict.textContent = v;
+}
+
+function heroIntro(){
+  if(typeof gsap === 'undefined' || prefersReduced) return;
+  gsap.from('.hero-h1', { opacity:0, y:54, duration:1.1, ease:'power3.out', delay:0.1 });
+  gsap.from('.hero .overline', { opacity:0, y:18, duration:0.7, ease:'power2.out' });
+  gsap.from('.hero-lead', { opacity:0, y:26, duration:0.8, ease:'power2.out', delay:0.5 });
+  gsap.from('.hero-ctas', { opacity:0, y:22, duration:0.7, ease:'power2.out', delay:0.75 });
+  gsap.from('.hero-stats .stat', { opacity:0, x:-18, stagger:0.09, duration:0.6, ease:'power2.out', delay:0.95 });
+  gsap.from('.hero-note', { opacity:0, duration:1, delay:1.3 });
+  gsap.from('.anno', { opacity:0, x:14, stagger:0.18, duration:0.8, ease:'power2.out', delay:1.5 });
+}
+
+if(typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined' && !prefersReduced){
+  gsap.registerPlugin(ScrollTrigger);
+
+  if(window.__gxVeilDone) heroIntro();
+  else window.addEventListener('gx-veil-done', heroIntro, {once:true});
+
+  gsap.utils.toArray('.reveal').forEach(function(el){
+    gsap.to(el, {
+      opacity:1, y:0, duration:1, ease:'power3.out',
+      scrollTrigger:{ trigger: el, start: 'top 87%' }
+    });
+  });
+
+  /* gold bead ↔ opportunity card link: when a card sits center-screen, the
+     3D layer launches a bead from the pool that lands ON it as its badge.
+     Measured LIVE per frame — pinned-section spacers can't skew the timing. */
+  var oppCards = gsap.utils.toArray('.opp');
+  oppCards.forEach(function(card, i){
+    if(isDesktop){
+      card.addEventListener('mouseenter', function(){
+        window.dispatchEvent(new CustomEvent('gx-card-hover', { detail: { i: i } }));
+      });
+    }
+  });
+  var oppPending = false;
+  function oppCheck(){
+    oppPending = false;
+    var vh = window.innerHeight;
+    oppCards.forEach(function(card){
+      if(card.__beadDone) return;
+      var r = card.getBoundingClientRect();
+      if(r.top < vh * 0.42 && r.bottom > vh * 0.25){       // truly center-screen → launch
+        card.__beadDone = true;
+        window.dispatchEvent(new CustomEvent('gx-card', { detail: { el: card } }));
+        setTimeout(function(){ card.classList.add('bead-landed'); }, 3400);
+      } else if(r.bottom <= vh * 0.25){                    // jumped past it → just light the badge
+        card.__beadDone = true;
+        card.classList.add('bead-landed');
+      }
+    });
+  }
+  window.addEventListener('scroll', function(){
+    if(!oppPending){ oppPending = true; requestAnimationFrame(oppCheck); }
+  }, {passive:true});
+  oppCheck();
+
+  ScrollTrigger.matchMedia({
+    '(min-width: 901px)': function(){
+      var lastSeg = -1;
+      ScrollTrigger.create({
+        trigger: '#distillation',
+        start: 'top top',
+        end: '+=2600',
+        pin: '#d-pin',
+        scrub: 0.4,
+        onUpdate: function(self){
+          var p = Math.min(0.9999, self.progress);
+          var seg = Math.min(4, Math.floor(p * 5));
+          var local = p * 5 - seg;
+          setStage(seg, local);
+          if(seg !== lastSeg){
+            lastSeg = seg;
+            gsap.fromTo(dNum, {scale:1.05}, {scale:1, duration:0.35, ease:'power2.out'});
+            if(window.__gxSurge) window.__gxSurge();
+          }
+          if(self.progress >= 1) setStage(4, 1);
+        }
+      });
+      setStage(0, 0);
+    },
+    '(max-width: 900px)': function(){
+      var lastSeg = -1;
+      var listEl = document.getElementById('chambers');
+      function activate(i){
+        setStage(i, 0.5);
+        if(i !== lastSeg){
+          lastSeg = i;
+          gsap.fromTo(dNum, {scale:1.07}, {scale:1, duration:0.3, ease:'power2.out'});
+          if(window.__gxSurge) window.__gxSurge();
+        }
+      }
+      var pending = false;
+      function update(){
+        pending = false;
+        if(window.innerWidth > 900) return;
+        var vh = window.innerHeight;
+        var rc = listEl.getBoundingClientRect();
+        if(rc.top > vh * 0.85){ lastSeg = -1; setStage(0, 0); return; }
+        if(rc.bottom < vh * 0.3){
+          if(lastSeg !== 5){ lastSeg = 5; setStage(4, 1); }
+          return;
+        }
+        var line = vh * 0.55, best = 0, bd = Infinity;
+        chambers.forEach(function(c, i){
+          var r = c.getBoundingClientRect();
+          var d = Math.abs((r.top + r.bottom) / 2 - line);
+          if(d < bd){ bd = d; best = i; }
+        });
+        activate(best);
+      }
+      window.addEventListener('scroll', function(){
+        if(!pending){ pending = true; requestAnimationFrame(update); }
+      }, {passive:true});
+      update();
+    }
+  });
+
+} else {
+  document.querySelectorAll('.reveal').forEach(function(el){
+    el.style.opacity = '1'; el.style.transform = 'none';
+  });
+  dNum.textContent = '22';
+  dVerdict.textContent = '22 distilled opportunities';
+  chambers.forEach(function(c){ c.classList.add('active'); });
+  document.querySelectorAll('.opp').forEach(function(c){ c.classList.add('bead-landed'); });
+}
+})();
+</script>
+
+<!-- ════════════ THREE.JS — THE LIQUID ════════════ -->
+<script type="importmap">
+{
+  "imports": {
+    "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+    "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+  }
+}
+</script>
+<script type="module">
+import * as THREE from 'three';
+import { MarchingCubes } from 'three/addons/objects/MarchingCubes.js';
+import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
+
+const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const isMobile = window.matchMedia('(max-width: 900px)').matches;
+const canvas = document.getElementById('webgl');
+
+let renderer;
+try {
+  renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
+} catch (e) {
+  canvas.style.display = 'none';
+  throw e;
+}
+renderer.setPixelRatio(Math.min(window.devicePixelRatio, isMobile ? 1.75 : 2));
+renderer.toneMapping = THREE.ACESFilmicToneMapping;
+renderer.toneMappingExposure = 1.1;
+
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(42, 1, 0.1, 200);
+camera.position.set(0, 0.4, 26);
+
+/* reflections: studio room environment, no external HDR needed */
+const pmrem = new THREE.PMREMGenerator(renderer);
+scene.environment = pmrem.fromScene(new RoomEnvironment(), 0.04).texture;
+
+/* lights shape the liquid's highlights */
+const key = new THREE.DirectionalLight(0xffffff, 1.1);
+key.position.set(6, 10, 8);
+scene.add(key);
+const rimC = new THREE.PointLight(0x6ee7ff, 18, 60);
+rimC.position.set(-12, 4, -6);
+scene.add(rimC);
+const rimA = new THREE.PointLight(0xffc46b, 14, 60);
+rimA.position.set(12, -6, 4);
+scene.add(rimA);
+
+/* ── THE LIQUID — marching-cubes metaball pool, iridescent chrome ── */
+const liquidMat = new THREE.MeshPhysicalMaterial({
+  color: 0xffffff,                 // real color comes from the dye gradient below
+  metalness: 0.1,
+  roughness: 0.13,
+  clearcoat: 1.0,
+  clearcoatRoughness: 0.06,
+  iridescence: 0.7,
+  iridescenceIOR: 1.5,
+  iridescenceThicknessRange: [140, 560],
+  envMapIntensity: 1.5
+});
+/* dye the liquid in the site's own palette: deep ocean blue at the base,
+   light violet above, a drifting band of cyan — the gradient lives in WORLD
+   space, so the surface visibly flows through the colors as it churns */
+liquidMat.onBeforeCompile = (shader) => {
+  shader.uniforms.uTime = { value: 0 };
+  shader.uniforms.uCx = { value: isMobile ? 0 : 5.2 };
+  shader.uniforms.uCy = { value: isMobile ? -2.9 : 0.4 };
+  shader.uniforms.uDim = { value: isMobile ? 0.40 : 0.60 };   // phones: darker dye so copy stays readable
+  shader.vertexShader = shader.vertexShader
+    .replace('#include <common>', '#include <common>\nvarying vec3 vGW;')
+    .replace('#include <begin_vertex>', '#include <begin_vertex>\nvGW = (modelMatrix * vec4(position, 1.0)).xyz;');
+  shader.fragmentShader = shader.fragmentShader
+    .replace('#include <common>', '#include <common>\nvarying vec3 vGW;\nuniform float uTime;\nuniform float uCx;\nuniform float uCy;\nuniform float uDim;')
+    .replace('#include <color_fragment>', `#include <color_fragment>
+      {
+        vec3 gDeep   = vec3(0.030, 0.070, 0.260);   // deep ocean blue
+        vec3 gViolet = vec3(0.500, 0.400, 0.960);   // light violet
+        vec3 gCyan   = vec3(0.300, 0.800, 1.000);   // cyan accent
+        float lx = vGW.x - uCx;
+        float ly = vGW.y - uCy;
+        float fy = smoothstep(-5.5, 5.5, ly + sin(lx * 0.30 + uTime * 0.45) * 2.2);
+        vec3 dye = mix(gDeep, gViolet, fy);
+        float fx = smoothstep(-5.0, 5.0, lx * 0.7 + sin(uTime * 0.30 + ly * 0.5) * 2.5);
+        dye = mix(dye, gCyan, fx * 0.30);
+        diffuseColor.rgb = dye * uDim;
+      }`);
+  liquidMat.userData.shader = shader;
+};
+const RES = isMobile ? 44 : 64;
+const liquid = new MarchingCubes(RES, liquidMat, true, false, 170000);
+liquid.position.set(isMobile ? 0 : 5.2, isMobile ? -2.9 : 0.4, 0);
+liquid.scale.setScalar(isMobile ? 5.8 : 7.4);
+liquid.isolation = 70;
+scene.add(liquid);
+
+/* metaball choreography */
+const BALLS = isMobile ? 7 : 10;
+const seeds = [];
+for (let i = 0; i < BALLS; i++) {
+  seeds.push({
+    sx: 0.18 + Math.random() * 0.55,
+    sy: 0.22 + Math.random() * 0.4,
+    sz: 0.3 + Math.random() * 0.5,
+    px: Math.random() * Math.PI * 2,
+    py: Math.random() * Math.PI * 2,
+    pz: Math.random() * Math.PI * 2,
+    str: 0.32 + Math.random() * 0.3
+  });
+}
+let surge = 0;                       // distillation stage hits make the pool swell
+window.__gxSurge = () => { surge = 1; };
+let pointerBall = { x: 0.5, y: 0.5, tx: 0.5, ty: 0.5 };
+
+/* the pool's volume tracks "candidates remaining" (200 → 22) from the
+   distillation section — scroll the column and you watch the liquid condense */
+let vol = 1;
+/* `p` is an accumulated phase, advanced by the render loop at a scroll-aware
+   RATE. Scrolling changes how fast the liquid churns — never where it is —
+   so wheel input can't pinch the shape or make it spring back. */
+function updateLiquid(p) {
+  const alive = window.__gxAlive != null ? window.__gxAlive : 200;
+  const volT = 0.45 + 0.55 * Math.max(0, Math.min(1, (alive - 22) / 178));
+  vol += (volT - vol) * 0.04;
+
+  liquid.reset();
+  const sub = 12;
+  const spread = 0.65 + 0.35 * vol;
+  for (let i = 0; i < BALLS; i++) {
+    const s = seeds[i];
+    const x = 0.5 + 0.22 * spread * Math.sin(s.sx * p + s.px);
+    const y = 0.5 + 0.2 * spread * Math.sin(s.sy * p + s.py) * Math.cos(s.sz * p * 0.7 + s.pz);
+    const z = 0.5 + 0.18 * spread * Math.cos(s.sz * p + s.pz);
+    liquid.addBall(x, y, z, s.str * (0.55 + 0.45 * vol) * (1 + surge * 0.22), sub);
+  }
+  // the visitor stirs the pool
+  pointerBall.x += (pointerBall.tx - pointerBall.x) * 0.06;
+  pointerBall.y += (pointerBall.ty - pointerBall.y) * 0.06;
+  liquid.addBall(pointerBall.x, pointerBall.y, 0.5, 0.5 * (0.6 + 0.4 * vol), sub);
+  // NOTE: liquid.update() happens in the render loop, AFTER droplets and gold
+  // have injected their own metaballs — that's what makes them truly merge.
+}
+
+/* world → marching-cubes field space [0..1], honoring the pool's rotation/scale */
+const FVEC = new THREE.Vector3();
+function fieldPos(x, y, z) {
+  FVEC.set(x, y, z);
+  liquid.worldToLocal(FVEC);
+  FVEC.set((FVEC.x + 1) / 2, (FVEC.y + 1) / 2, (FVEC.z + 1) / 2);
+  return FVEC;
+}
+
+/* ── droplets raining into the pool ── */
+const DROPS = isMobile ? 14 : 26;
+const dropMat = new THREE.MeshStandardMaterial({
+  color: 0xaebdd2, metalness: 0.9, roughness: 0.18, envMapIntensity: 1.3
+});
+const drops = new THREE.InstancedMesh(new THREE.SphereGeometry(0.16, 12, 12), dropMat, DROPS);
+scene.add(drops);
+const dummy = new THREE.Object3D();
+const D = [];
+/* pool anchor in world space — droplets rain INTO it, gold rises OUT of it */
+const PX = isMobile ? 0 : 5.2;
+const PY = isMobile ? -2.9 : 0.4;
+function dropSpawn(d) {
+  d.x = PX + (Math.random() - 0.5) * 9;
+  d.y = PY + 11 + Math.random() * 8;
+  d.z = (Math.random() - 0.5) * 5;
+  d.vy = 2.6 + Math.random() * 2.4;
+  d.s = 0.5 + Math.random() * 0.8;
+}
+for (let i = 0; i < DROPS; i++) { const d = {}; dropSpawn(d); d.y = PY + Math.random() * 18; D.push(d); }
+
+/* ── distilled drops: golden spheres drifting out of the pool ── */
+const GOLD = 5;
+const goldMat = new THREE.MeshStandardMaterial({
+  color: 0xffc46b, emissive: 0xCC8830, emissiveIntensity: 0.9,
+  metalness: 0.6, roughness: 0.25, envMapIntensity: 1.2
+});
+const golds = [];
+for (let i = 0; i < GOLD; i++) {
+  const g = new THREE.Mesh(new THREE.SphereGeometry(0.22, 16, 16), goldMat.clone());
+  g.userData = { t: i * 2.1, speed: 0.32 + Math.random() * 0.12, pulse: 0 };
+  scene.add(g);
+  golds.push(g);
+}
+/* hovering an opportunity card makes "its" bead answer back with a pulse */
+window.addEventListener('gx-card-hover', (e) => {
+  golds[e.detail.i % golds.length].userData.pulse = 1;
+});
+
+/* ── bead delivery: an EXISTING escaping bead gets diverted to the card ──
+   No new bead is spawned — the one you've been watching drift right suddenly
+   banks, dives onto the card's badge, and the pool births its replacement. */
+const CV = new THREE.Vector3();
+const CTGT = new THREE.Vector3();
+function badgeWorld(card, out) {
+  // project the badge's live screen position onto a plane 17 units out
+  const r = card.getBoundingClientRect();
+  const sx = r.right - 70, sy = r.top + 34;
+  CV.set((sx / window.innerWidth) * 2 - 1, -(sy / window.innerHeight) * 2 + 1, 0.5).unproject(camera);
+  CV.sub(camera.position).normalize();
+  out.copy(camera.position).addScaledVector(CV, 17);
+  return out;
+}
+window.addEventListener('gx-card', (e) => {
+  // recruit the most visible free bead currently in flight
+  let best = null, bestVis = 0.05;
+  for (const g of golds) {
+    if (g.userData.mission) continue;
+    const k = (g.userData.t % 6) / 6;
+    const vis = Math.min(1, k * 5) * Math.sin(Math.min(1, k * 1.15) * Math.PI);
+    if (vis > bestVis) { bestVis = vis; best = g; }
+  }
+  if (!best) return;                                   // none airborne — the DOM failsafe lights the badge
+  best.userData.mission = {
+    card: e.detail.el, t: 0, dur: 1.7 + Math.random() * 0.4,
+    from: best.position.clone(),
+    // keep sailing the way it was already going, then bend toward the card
+    ctrl: best.position.clone().add(new THREE.Vector3(4 + Math.random() * 2, 2 + Math.random(), 0))
+  };
+});
+
+/* ── sizing / input ── */
+function resize() {
+  const w = window.innerWidth, h = window.innerHeight;
+  renderer.setSize(w, h, false);
+  camera.aspect = w / h;
+  camera.updateProjectionMatrix();
+}
+resize();
+window.addEventListener('resize', resize, { passive: true });
+
+let tx = 0, ty = 0;
+if (!isMobile) {
+  window.addEventListener('mousemove', (e) => {
+    tx = (e.clientX / window.innerWidth - 0.5) * 2;
+    ty = (e.clientY / window.innerHeight - 0.5) * 2;
+    pointerBall.tx = 0.2 + (e.clientX / window.innerWidth) * 0.6;
+    pointerBall.ty = 0.8 - (e.clientY / window.innerHeight) * 0.6;
+  }, { passive: true });
+} else {
+  const clamp1 = (v) => Math.max(-1, Math.min(1, v));
+  window.addEventListener('deviceorientation', (e) => {
+    if (e.gamma == null || e.beta == null) return;
+    tx = clamp1(e.gamma / 28);
+    ty = clamp1((e.beta - 45) / 32);
+    pointerBall.tx = 0.5 + tx * 0.25;
+    pointerBall.ty = 0.5 - ty * 0.2;
+  }, { passive: true });
+  if (typeof DeviceOrientationEvent !== 'undefined' &&
+      typeof DeviceOrientationEvent.requestPermission === 'function') {
+    window.addEventListener('touchend', function ask(){
+      DeviceOrientationEvent.requestPermission().catch(() => {});
+    }, { once: true, passive: true });
+  }
+  window.addEventListener('touchmove', (e) => {
+    const t0 = e.touches[0];
+    if (!t0) return;
+    pointerBall.tx = 0.2 + (t0.clientX / window.innerWidth) * 0.6;
+    pointerBall.ty = 0.8 - (t0.clientY / window.innerHeight) * 0.6;
+  }, { passive: true });
+}
+
+/* veil-synced fade-in for the whole 3D world */
+let worldIn = prefersReduced ? 1 : 0;
+function startWorld(){
+  const t0 = performance.now(), dur = 1800;
+  (function step(t){
+    const p = Math.min(1, (t - t0) / dur);
+    worldIn = 1 - Math.pow(1 - p, 3);
+    if (p < 1) requestAnimationFrame(step);
+  })(t0);
+}
+if (window.__gxVeilDone) startWorld();
+else window.addEventListener('gx-veil-done', startWorld, { once: true });
+
+/* adaptive quality */
+let perfFrames = 0, perfSlow = 0, perfDone = false;
+
+const clock = new THREE.Clock();
+let scrollV = 0, lastY = window.scrollY;
+let poolPhase = Math.random() * 20;      // liquid churn phase (integrates forward only)
+let rotExtra = 0;                        // coasting angle accumulated by inertia
+let rotVel = 0;                          // angular velocity — carries scroll momentum
+
+function loop() {
+  requestAnimationFrame(loop);
+  const dt = Math.min(0.05, clock.getDelta());
+  const t = clock.elapsedTime;
+
+  if (!perfDone) {
+    if (t > 2 && t < 7) { perfFrames++; if (dt > 0.05) perfSlow++; }
+    else if (t >= 7) {
+      perfDone = true;
+      if (perfFrames > 0 && perfSlow / perfFrames > 0.45) {
+        // shed load once on weak GPUs: fewer droplets, lower-res field
+        drops.count = Math.floor(DROPS * 0.5);
+        liquid.init(Math.floor(RES * 0.72));
+      }
+    }
+  }
+
+  // scroll stirs the pool: velocity raises the churn RATE (phase keeps
+  // integrating forward, so the shape flows faster instead of deforming)
+  const y = window.scrollY;
+  const dy = y - lastY;
+  scrollV += (dy - scrollV) * 0.08;
+  lastY = y;
+  const churn = 1 + Math.min(2.9, Math.abs(scrollV) * 0.0048);
+  poolPhase += dt * 0.55 * churn;
+  surge = Math.max(0, surge - dt * 1.4);
+
+  // pool transform must be current BEFORE world→field conversions
+  // rotation = DIRECT coupling (1:1 with scroll, zero lag — 跟手) plus an
+  // INERTIA tail: momentum built while scrolling keeps it coasting afterwards
+  rotVel += dy * 0.00035;                            // momentum kick (signed)
+  rotVel -= rotVel * Math.min(1, dt * 1.1);          // friction (~2s coast)
+  rotVel = Math.max(-1.6, Math.min(1.6, rotVel));    // spin cap
+  rotExtra += rotVel * dt;
+  liquid.rotation.y = Math.sin(t * 0.07) * 0.18 + y * 0.0006 + rotExtra;
+  liquid.updateMatrixWorld();
+  if (liquidMat.userData.shader) liquidMat.userData.shader.uniforms.uTime.value = t;
+  updateLiquid(poolPhase);                // resets the field + seed balls
+
+  // droplets fall in and PHYSICALLY merge: each one near the surface injects
+  // its own metaball, so the pool bulges up, grabs it, and swallows it whole
+  for (let i = 0; i < DROPS; i++) {
+    const d = D[i];
+    d.y -= d.vy * dt;
+    d.x += (PX - d.x) * dt * 0.3;
+    d.z += (0 - d.z) * dt * 0.15;
+
+    const f = fieldPos(d.x, d.y, d.z);
+    let depth = 0;
+    const inField = f.x > 0.05 && f.x < 0.95 && f.y > 0.05 && f.y < 0.95 && f.z > 0.05 && f.z < 0.95;
+    if (inField) {
+      depth = Math.max(0, Math.min(1, (0.8 - f.y) / 0.26));
+      if (depth > 0) liquid.addBall(f.x, f.y, f.z, 0.55 * depth, 12);
+      if (f.y < 0.5) {                     // fully swallowed → ripple + respawn
+        surge = Math.min(1, surge + 0.06);
+        dropSpawn(d);
+      }
+    }
+    const near = Math.max(0, Math.min(1, (d.y - PY) / 3));
+    dummy.position.set(d.x, d.y, d.z);
+    // the solid sphere hands over to the metaball as it sinks in
+    const sc = d.s * (0.35 + near * 0.65) * (1 - depth) * worldIn;
+    dummy.scale.setScalar(Math.max(0.001, sc));
+    dummy.updateMatrix();
+    drops.setMatrixAt(i, dummy.matrix);
+  }
+  drops.instanceMatrix.needsUpdate = true;
+
+  // distilled gold PRECIPITATES: while it emerges, the pool stretches a liquid
+  // neck toward it (a co-located metaball that pinches off as it departs)
+  golds.forEach((g, i) => {
+    const M = g.userData.mission;
+    if (M) {
+      // diverted mid-flight: bank away from the escape path, dive onto the card
+      M.t += dt / M.dur;
+      if (M.t >= 1) {
+        if (M.card) M.card.classList.add('bead-landed');
+        g.userData.mission = null;
+        g.userData.t = 0;                  // respawn: the pool births its replacement
+        g.scale.setScalar(0.001);
+        return;
+      }
+      badgeWorld(M.card, CTGT);            // live target — tracks scroll
+      const p = 0.5 - 0.5 * Math.cos(Math.PI * M.t);
+      const c2x = CTGT.x + 2.4, c2y = CTGT.y + 2.8, c2z = CTGT.z + 0.6;
+      const u = 1 - p, uu = u * u, pp = p * p;
+      const b0 = uu * u, b1 = 3 * uu * p, b2 = 3 * u * pp, b3 = pp * p;
+      g.position.set(
+        b0 * M.from.x + b1 * M.ctrl.x + b2 * c2x + b3 * CTGT.x,
+        b0 * M.from.y + b1 * M.ctrl.y + b2 * c2y + b3 * CTGT.y,
+        b0 * M.from.z + b1 * M.ctrl.z + b2 * c2z + b3 * CTGT.z
+      );
+      g.material.emissiveIntensity = 1.5;  // burns brighter while on mission
+      g.scale.setScalar(0.9 * worldIn);
+      return;
+    }
+    g.userData.t += dt * g.userData.speed;
+    const k = (g.userData.t % 6) / 6;
+    g.position.set(
+      PX + 0.8 + k * 12,
+      PY + 0.8 + Math.sin(k * Math.PI) * 3.6 + Math.sin(t * 1.3 + i) * 0.2,
+      1.2 + Math.sin(i * 1.7) * 1.6
+    );
+    if (k < 0.24) {
+      const neck = 1 - k / 0.24;
+      const f = fieldPos(g.position.x, g.position.y, g.position.z);
+      if (f.x > 0.05 && f.x < 0.95 && f.y > 0.05 && f.y < 0.95 && f.z > 0.05 && f.z < 0.95) {
+        liquid.addBall(f.x, f.y, f.z, 0.5 * neck * neck, 12);
+      }
+    }
+    const fade = Math.min(1, k * 5) * Math.sin(Math.min(1, k * 1.15) * Math.PI);
+    g.userData.pulse = Math.max(0, g.userData.pulse - dt * 1.8);     // hover echo decays
+    g.material.emissiveIntensity = 0.9 + g.userData.pulse * 1.7;
+    g.scale.setScalar(Math.max(0.001, fade * worldIn * (1 + g.userData.pulse * 0.55)));
+  });
+
+  liquid.update();                         // surface solves once, with everyone in it
+
+  // camera: gentle parallax + slow drift
+  camera.position.x += ((tx * 2.2) - camera.position.x) * dt * 2;
+  camera.position.y += ((0.4 - ty * 1.6) - camera.position.y) * dt * 2;
+  camera.lookAt(isMobile ? 0 : 2.6, 0.2, 0);
+
+  liquidMat.opacity = 1;
+  renderer.render(scene, camera);
+}
+
+if (prefersReduced) {
+  worldIn = 1;
+  liquid.updateMatrixWorld();
+  updateLiquid(1.5);
+  liquid.update();
+  for (let i = 0; i < DROPS; i++) {
+    const d = D[i];
+    dummy.position.set(d.x, d.y, d.z);
+    dummy.scale.setScalar(d.s * 0.6);
+    dummy.updateMatrix();
+    drops.setMatrixAt(i, dummy.matrix);
+  }
+  drops.instanceMatrix.needsUpdate = true;
+  renderer.render(scene, camera);
+} else {
+  loop();
+}
+</script>
+</body>
+</html>
