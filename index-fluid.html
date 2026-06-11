@@ -1697,20 +1697,26 @@ function loop() {
   // integrating forward, so the shape flows faster instead of deforming)
   const y = window.scrollY;
   const dy = y - lastY;
-  scrollV += (dy - scrollV) * 0.08;
   lastY = y;
-  const churn = 1 + Math.min(2.9, Math.abs(scrollV) * 0.0048);
+  scrollV += ((dy / Math.max(dt, 1e-4)) - scrollV) * Math.min(1, dt * 5);  // px/s, smoothed
+  const churn = 1 + Math.min(2.9, Math.abs(scrollV) * 0.00008);
   poolPhase += dt * 0.55 * churn;
   surge = Math.max(0, surge - dt * 1.4);
 
-  // pool transform must be current BEFORE world→field conversions
-  // rotation = DIRECT coupling (1:1 with scroll, zero lag — 跟手) plus an
-  // INERTIA tail: momentum built while scrolling keeps it coasting afterwards
-  rotVel += dy * 0.0005;                             // momentum kick (signed)
-  rotVel -= rotVel * Math.min(1, dt * 0.9);          // friction — ~1s of visible coasting
-  rotVel = Math.max(-2.0, Math.min(2.0, rotVel));    // spin cap
+  // rotation like spinning a globe by hand: while your scroll is faster than
+  // the pool it GRIPS and follows; release it and it keeps its full speed,
+  // then gradually loses it. One continuous velocity — stopping never jolts.
+  const targetVel = scrollV * 0.0009;                 // rad/s the hand is asking for
+  if (targetVel * rotVel < 0 || Math.abs(targetVel) > Math.abs(rotVel)) {
+    rotVel += (targetVel - rotVel) * Math.min(1, dt * 6);   // gripped — snappy follow
+  } else {
+    rotVel -= rotVel * Math.min(1, dt * 0.85);              // free spin — slow graceful fade
+  }
+  rotVel = Math.max(-2.5, Math.min(2.5, rotVel));
   rotExtra += rotVel * dt;
-  liquid.rotation.y = Math.sin(t * 0.07) * 0.18 + y * 0.0009 + rotExtra;
+
+  // pool transform must be current BEFORE world→field conversions
+  liquid.rotation.y = Math.sin(t * 0.07) * 0.18 + rotExtra;
   liquid.updateMatrixWorld();
   if (liquidMat.userData.shader) liquidMat.userData.shader.uniforms.uTime.value = t;
   updateLiquid(poolPhase);                // resets the field + seed balls
