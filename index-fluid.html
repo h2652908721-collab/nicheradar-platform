@@ -1442,14 +1442,14 @@ scene.add(rimA);
 /* ── THE LIQUID — marching-cubes metaball pool, iridescent chrome ── */
 const liquidMat = new THREE.MeshPhysicalMaterial({
   color: 0xffffff,                 // real color comes from the dye gradient below
-  metalness: 0.1,
-  roughness: 0.13,
+  metalness: 0.12,
+  roughness: 0.2,
   clearcoat: 1.0,
-  clearcoatRoughness: 0.06,
-  iridescence: 0.7,
+  clearcoatRoughness: 0.12,
+  iridescence: 0.6,
   iridescenceIOR: 1.5,
   iridescenceThicknessRange: [140, 560],
-  envMapIntensity: 1.5
+  envMapIntensity: 0.7             // dim studio reflections — dark body, bright halo
 });
 /* dye the liquid in the site's own palette: deep ocean blue at the base,
    light violet above, a drifting band of cyan — the gradient lives in WORLD
@@ -1458,7 +1458,7 @@ liquidMat.onBeforeCompile = (shader) => {
   shader.uniforms.uTime = { value: 0 };
   shader.uniforms.uCx = { value: isMobile ? 0 : 5.2 };
   shader.uniforms.uCy = { value: isMobile ? -2.9 : 0.4 };
-  shader.uniforms.uDim = { value: isMobile ? 0.40 : 0.60 };   // phones: darker dye so copy stays readable
+  shader.uniforms.uDim = { value: isMobile ? 0.24 : 0.34 };   // deep, near-ink body — the halo does the talking
   shader.vertexShader = shader.vertexShader
     .replace('#include <common>', '#include <common>\nvarying vec3 vGW;')
     .replace('#include <begin_vertex>', '#include <begin_vertex>\nvGW = (modelMatrix * vec4(position, 1.0)).xyz;');
@@ -1476,6 +1476,22 @@ liquidMat.onBeforeCompile = (shader) => {
         float fx = smoothstep(-5.0, 5.0, lx * 0.7 + sin(uTime * 0.30 + ly * 0.5) * 2.5);
         dye = mix(dye, gCyan, fx * 0.30);
         diffuseColor.rgb = dye * uDim;
+      }`)
+    .replace('#include <emissivemap_fragment>', `#include <emissivemap_fragment>
+      {
+        // drifting halo: soft bands of light travel across the dark surface,
+        // brightest along the silhouette (fresnel), hue slowly cycling
+        vec3 Vh = normalize(vViewPosition);
+        float fres = pow(1.0 - saturate(dot(normal, Vh)), 2.5);
+        float hx = vGW.x - uCx, hy = vGW.y - uCy;
+        float flow1 = 0.5 + 0.5 * sin(hx * 0.55 + hy * 0.35 - uTime * 0.7);
+        float flow2 = 0.5 + 0.5 * sin((hx - hy) * 0.4 + uTime * 0.5 + 2.1);
+        float bands = smoothstep(0.60, 0.98, flow1) * 0.7 + smoothstep(0.70, 1.0, flow2) * 0.5;
+        vec3 glow = mix(vec3(0.35, 0.75, 1.0), vec3(0.62, 0.45, 1.0),
+                        0.5 + 0.5 * sin(uTime * 0.25 + hx * 0.2));
+        glow = mix(glow, vec3(1.0, 0.72, 0.35),
+                   smoothstep(0.7, 1.0, 0.5 + 0.5 * sin(uTime * 0.18 + hy * 0.3)) * 0.25);
+        totalEmissiveRadiance += glow * bands * (0.10 + fres * 0.85);
       }`);
   liquidMat.userData.shader = shader;
 };
