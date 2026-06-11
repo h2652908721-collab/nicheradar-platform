@@ -1000,7 +1000,7 @@
     @media (max-width: 900px) {
       .nav, .nav.scrolled { padding: 0.9rem 1.25rem; }
       .nav-link { display: none; }
-      .hero-content { padding: calc(var(--bar-h) + 7rem) 1.25rem 5rem; }
+      .hero-content { padding: calc(var(--bar-h) + 6.5rem) 1.25rem 10rem; }
       .hc { padding: 0.7rem 1.3rem 0.7rem 0.9rem; }
       .h1-line.indent { padding-left: 0; }
       .kill-bar { padding: 3rem 1.25rem 2rem; gap: 1.4rem; }
@@ -1009,12 +1009,33 @@
       .steps-grid { grid-template-columns: 1fr; }
       .cards-grid { grid-template-columns: 1fr; }
       .price-grid { grid-template-columns: 1fr; }
-      .g-pin { min-height: auto; padding: 6rem 1.25rem 5rem; }
-      .g-stage { grid-template-columns: 1fr; }
-      .g-counter { font-size: clamp(4.5rem, 18vw, 7rem); }
+
+      /* killfeed rides the bottom of the hero on phones */
+      .killfeed {
+        display: block; left: 1.25rem; right: 1.25rem; width: auto;
+        bottom: calc(var(--bar-h) + 10px); font-size: 0.52rem;
+      }
+      .scroll-cue { display: none; }
+
+      /* gauntlet: sticky HUD counter + gates that die as you scroll past them */
+      .g-pin { min-height: auto; padding: 5rem 1.25rem 4rem; overflow: visible; }  /* overflow:hidden would kill position:sticky */
+      .g-bgword { display: none; }
+      .g-stage { display: flex; flex-direction: column; gap: 1.4rem; }
+      .g-stage > div:first-child {
+        position: sticky; top: calc(var(--bar-h) + 54px); z-index: 6;
+        display: flex; align-items: baseline; gap: 1rem;
+        background: rgba(3,3,5,0.88); backdrop-filter: blur(8px);
+        border: 1px solid var(--line-red);
+        padding: 0.55rem 1rem;
+        box-shadow: 0 0 30px rgba(255,26,26,0.12);
+      }
+      .g-counter { font-size: 2.6rem; text-shadow: 0 0 24px rgba(255,26,26,0.45); }
+      .g-counter-label { margin-top: 0; }
+      .g-input-note { display: none; }
       .gate { grid-template-columns: 2rem 1fr auto; }
       .gate-status { display: none; }
-      .gate .gate-desc { max-height: none; opacity: 1; margin-top: 0.6rem; }
+      .gate.active .gate-desc { max-height: 140px; }
+
       .about-card { padding: 2.4rem 1.6rem; }
       .about-deco { display: none; }
       footer { flex-direction: column; text-align: center; }
@@ -1037,7 +1058,7 @@
 </div>
 <div class="cine-bar cine-bottom" aria-hidden="true">
   <span id="scene-label">SCN 01 — INTAKE</span>
-  <div class="cine-prog cine-hide-m"><i id="cine-fill"></i></div>
+  <div class="cine-prog"><i id="cine-fill"></i></div>
   <span style="display:flex;align-items:center;gap:0.8rem;">
     <span class="cine-hide-m">FLT <b>5/5</b> · SRV <b>4%</b></span>
     <button id="snd-btn" type="button">SND·OFF</button>
@@ -1988,12 +2009,44 @@ if(typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined' && !prefe
       setGauntletStage(0, 0);
     },
     '(max-width: 900px)': function(){
-      gNum.textContent = '22';
-      gVerdict.textContent = '22 SURVIVORS CLEARED';
-      gates.forEach(function(g){
-        g.classList.add('active');
-        g.querySelector('.gate-status').textContent = 'passed';
-      });
+      /* phones: gates die one by one as they cross the center of the screen */
+      var lastSeg = -1;
+      function activate(i){
+        setGauntletStage(i, 0.5);
+        if(i !== lastSeg){
+          lastSeg = i;
+          gsap.fromTo(gFlash, {opacity:0.85}, {opacity:0, duration:0.5, ease:'power2.out'});
+          gsap.fromTo(gNum, {scale:1.08}, {scale:1, duration:0.3, ease:'power2.out'});
+          window.dispatchEvent(new CustomEvent('gx-stage'));
+          if(window.__gxKillBurst) window.__gxKillBurst();
+        }
+      }
+      /* deterministic: whichever gate sits closest to the 55% line is "scanning";
+         plain rAF-throttled scroll handler — measured live, immune to stale trigger math */
+      var gatesEl = document.getElementById('g-gates');
+      var gPending = false;
+      function gUpdate(){
+        gPending = false;
+        if(window.innerWidth > 900) return;
+        var vh = window.innerHeight;
+        var rc = gatesEl.getBoundingClientRect();
+        if(rc.top > vh * 0.85){ lastSeg = -1; setGauntletStage(0, 0); return; }
+        if(rc.bottom < vh * 0.3){
+          if(lastSeg !== 5){ lastSeg = 5; setGauntletStage(4, 1); }
+          return;
+        }
+        var line = vh * 0.55, best = 0, bd = Infinity;
+        gates.forEach(function(g, i){
+          var r = g.getBoundingClientRect();
+          var d = Math.abs((r.top + r.bottom) / 2 - line);
+          if(d < bd){ bd = d; best = i; }
+        });
+        activate(best);
+      }
+      window.addEventListener('scroll', function(){
+        if(!gPending){ gPending = true; requestAnimationFrame(gUpdate); }
+      }, {passive:true});
+      gUpdate();
     }
   });
 
@@ -2047,7 +2100,7 @@ try {
   canvas.style.display = 'none';
   throw e;
 }
-renderer.setPixelRatio(Math.min(window.devicePixelRatio, isMobile ? 1.25 : 1.6));
+renderer.setPixelRatio(Math.min(window.devicePixelRatio, isMobile ? 1.5 : 1.6));
 renderer.setClearColor(0x030305, 1);
 
 const scene = new THREE.Scene();
@@ -2056,22 +2109,20 @@ scene.fog = new THREE.FogExp2(0x030305, 0.012);
 const camera = new THREE.PerspectiveCamera(50, 1, 0.1, 400);
 camera.position.set(0, 8, 70);
 
-/* ── post: cinematic bloom ── */
-let composer = null;
-if (!isMobile) {
-  composer = new EffectComposer(renderer);
-  composer.addPass(new RenderPass(scene, camera));
-  const bloom = new UnrealBloomPass(new THREE.Vector2(1, 1), 0.85, 0.55, 0.32);
-  composer.addPass(bloom);
-  composer.addPass(new OutputPass());
-}
+/* ── post: cinematic bloom (phones too — adaptive guard below downgrades if slow) ── */
+let useComposer = true;
+const composer = new EffectComposer(renderer);
+composer.addPass(new RenderPass(scene, camera));
+const bloom = new UnrealBloomPass(new THREE.Vector2(1, 1), isMobile ? 0.75 : 0.85, 0.55, isMobile ? 0.4 : 0.32);
+composer.addPass(bloom);
+composer.addPass(new OutputPass());
 
 /* ── grid floor + dust ── */
 const grid = new THREE.GridHelper(260, 80, 0x3a0808, 0x0e0e16);
 grid.position.y = -11;
 scene.add(grid);
 
-const DUST = isMobile ? 250 : 750;
+const DUST = isMobile ? 400 : 750;
 const dustGeo = new THREE.BufferGeometry();
 {
   const pos = new Float32Array(DUST * 3);
@@ -2157,7 +2208,7 @@ const beam = new THREE.Line(
 scene.add(beam);
 
 /* ── idea particles ── */
-const COUNT = isMobile ? 160 : 380;
+const COUNT = isMobile ? 240 : 380;
 const KILL_RADIUS = 3.7;
 const SURVIVE_RATE = 0.04;
 const DEAD_MS = 0.55;
@@ -2276,12 +2327,34 @@ function resize() {
 resize();
 window.addEventListener('resize', resize, { passive: true });
 
-/* ── input: mouse parallax + scroll cinematography ── */
+/* ── input: mouse / gyro / touch parallax + scroll cinematography ── */
 let tx = 0, ty = 0;
 if (!isMobile) {
   window.addEventListener('mousemove', (e) => {
     tx = (e.clientX / window.innerWidth - 0.5) * 2;
     ty = (e.clientY / window.innerHeight - 0.5) * 2;
+  }, { passive: true });
+} else {
+  // tilt the phone = move the camera
+  const clamp1 = (v) => Math.max(-1, Math.min(1, v));
+  window.addEventListener('deviceorientation', (e) => {
+    if (e.gamma == null || e.beta == null) return;
+    tx = clamp1(e.gamma / 28);
+    ty = clamp1((e.beta - 45) / 32);
+  }, { passive: true });
+  // iOS needs a user-gesture permission grant; ask once on first touch
+  if (typeof DeviceOrientationEvent !== 'undefined' &&
+      typeof DeviceOrientationEvent.requestPermission === 'function') {
+    window.addEventListener('touchend', function ask(){
+      DeviceOrientationEvent.requestPermission().catch(() => {});
+    }, { once: true, passive: true });
+  }
+  // touch-drag parallax fallback
+  window.addEventListener('touchmove', (e) => {
+    const t0 = e.touches[0];
+    if (!t0) return;
+    tx = (t0.clientX / window.innerWidth - 0.5) * 1.6;
+    ty = (t0.clientY / window.innerHeight - 0.5) * 1.2;
   }, { passive: true });
 }
 
@@ -2316,10 +2389,28 @@ measure();
 window.addEventListener('resize', measure, { passive: true });
 setInterval(measure, 2500);
 
+/* adaptive quality: if the device can't hold ~22fps with bloom, shed load once */
+let perfFrames = 0, perfSlow = 0, perfDone = false;
+function perfCheck(dt, t) {
+  if (perfDone) return;
+  if (t > 2 && t < 7) {
+    perfFrames++;
+    if (dt > 0.045) perfSlow++;
+  } else if (t >= 7) {
+    perfDone = true;
+    if (perfFrames > 0 && perfSlow / perfFrames > 0.4) {
+      useComposer = false;
+      cloud.count = Math.floor(COUNT * 0.6);
+      dust.visible = false;
+    }
+  }
+}
+
 function loop() {
   requestAnimationFrame(loop);
   const dt = Math.min(0.05, clock.getDelta());
   const t = clock.elapsedTime;
+  perfCheck(dt, t);
 
   ring1.rotation.x += dt * 0.5;  ring1.rotation.y += dt * 0.22;
   ring2.rotation.y -= dt * 0.65; ring2.rotation.z += dt * 0.3;
@@ -2349,7 +2440,7 @@ function loop() {
   camera.position.y = introH - ty * 2.2;
   camera.lookAt(0, 1.6, 0);
 
-  if (composer) composer.render();
+  if (useComposer) composer.render();
   else renderer.render(scene, camera);
 }
 
