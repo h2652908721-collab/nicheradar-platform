@@ -223,9 +223,18 @@
       display: flex; align-items: center;
       padding: 8rem 3.2rem 6rem;
     }
-    .hero-inner { max-width: 1280px; margin: 0 auto; width: 100%; }
-    .hero-h1 { font-size: clamp(3.2rem, 7.6vw, 7rem); max-width: 13em; margin-bottom: 2rem; }
-    .hero-lead { max-width: 480px; margin-bottom: 2.8rem; }
+    .hero::before {
+      /* text-protection scrim: darkens only the copy zone, fades out before
+         the pool's center so the liquid keeps its glow */
+      content: ''; position: absolute; inset: 0; pointer-events: none;
+      background: radial-gradient(ellipse 62% 58% at 32% 44%, rgba(5,7,11,0.66), transparent 72%);
+    }
+    .hero-inner { max-width: 1280px; margin: 0 auto; width: 100%; position: relative; }
+    .hero-h1 {
+      font-size: clamp(3.2rem, 7.6vw, 7rem); max-width: 13em; margin-bottom: 2rem;
+      filter: drop-shadow(0 2px 16px rgba(5,7,11,0.85)) drop-shadow(0 0 3px rgba(5,7,11,0.55));
+    }
+    .hero-lead { max-width: 480px; margin-bottom: 2.8rem; text-shadow: 0 1px 14px rgba(5,7,11,0.95), 0 0 4px rgba(5,7,11,0.7); }
     .hero-ctas { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 4rem; }
     .hero-stats { display: flex; gap: 0; flex-wrap: wrap; }
     .stat {
@@ -1499,7 +1508,7 @@ const RES = isMobile ? 44 : 64;
 const liquid = new MarchingCubes(RES, liquidMat, true, false, 170000);
 liquid.position.set(isMobile ? 0 : 5.2, isMobile ? -2.9 : 0.4, 0);
 liquid.scale.setScalar(isMobile ? 5.8 : 7.4);
-liquid.isolation = 70;
+liquid.isolation = 58;               // lower isolation = surfaces reach further and fuse — one body, not scattered lobes
 scene.add(liquid);
 
 /* metaball choreography */
@@ -1534,11 +1543,14 @@ function updateLiquid(p) {
   liquid.reset();
   const sub = 12;
   const spread = 0.65 + 0.35 * vol;
+  // a heavy resident core anchors the mass — satellites can stretch the
+  // surface but never tear free of the body
+  liquid.addBall(0.5, 0.5, 0.5, 0.55 * (0.6 + 0.4 * vol) * (1 + surge * 0.22), sub);
   for (let i = 0; i < BALLS; i++) {
     const s = seeds[i];
-    const x = 0.5 + 0.22 * spread * Math.sin(s.sx * p + s.px);
-    const y = 0.5 + 0.2 * spread * Math.sin(s.sy * p + s.py) * Math.cos(s.sz * p * 0.7 + s.pz);
-    const z = 0.5 + 0.18 * spread * Math.cos(s.sz * p + s.pz);
+    const x = 0.5 + 0.17 * spread * Math.sin(s.sx * p + s.px);
+    const y = 0.5 + 0.155 * spread * Math.sin(s.sy * p + s.py) * Math.cos(s.sz * p * 0.7 + s.pz);
+    const z = 0.5 + 0.14 * spread * Math.cos(s.sz * p + s.pz);
     liquid.addBall(x, y, z, s.str * (0.55 + 0.45 * vol) * (1 + surge * 0.22), sub);
   }
   // the visitor stirs the pool
