@@ -4,6 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Gauntrix — The AI Market Distillery</title>
+  <script>/* must run before the browser restores scroll, or the intro + bead choreography gets skipped on reload */
+  if ('scrollRestoration' in history) history.scrollRestoration = 'manual';</script>
   <meta name="description" content="200+ ideas pour in every week. ~4% come out distilled — narrow, buildable, monetizable niches for AI builders. Weekly drops.">
   <meta property="og:title" content="Gauntrix — The AI Market Distillery">
   <meta property="og:description" content="Not a trend tracker. A distillation column for the indie market. 200+ ideas in, a handful out — validated, buildable, yours weekly.">
@@ -1291,7 +1293,7 @@ if(typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined' && !prefe
     oppCards.forEach(function(card){
       if(card.__beadDone) return;
       var r = card.getBoundingClientRect();
-      if(r.top < vh * 0.42 && r.bottom > vh * 0.25){       // truly center-screen → launch
+      if(r.top < vh * 0.75 && r.bottom > vh * 0.25){       // card mostly in view → launch
         card.__beadDone = true;
         window.dispatchEvent(new CustomEvent('gx-card', { detail: { el: card } }));
         setTimeout(function(){ card.classList.add('bead-landed'); }, 3400);

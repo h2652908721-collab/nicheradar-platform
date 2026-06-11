@@ -4,6 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Gauntrix — AI Validation Engine for Buildable Niches</title>
+  <script>/* must run before the browser restores scroll, or the boot/intro choreography gets skipped on reload */
+  if ('scrollRestoration' in history) history.scrollRestoration = 'manual';</script>
   <meta name="description" content="200+ ideas enter the machine. ~4% make it through. What comes out the other side is narrow, buildable, and monetizable. Weekly validated niche drops for AI builders.">
   <meta property="og:title" content="Gauntrix — The Machine That Filters Out Bad Ideas">
   <meta property="og:description" content="Not a trend tracker. An AI validation engine. 200+ ideas in. ~4% out. Weekly drops of what passed all 5 filters.">
@@ -1603,6 +1605,11 @@ document.querySelectorAll('form').forEach(function(f){
 'use strict';
 var prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 var isDesktop = window.matchMedia('(hover:hover) and (min-width: 901px)').matches;
+
+/* every visit starts from the top — browser scroll-restoration would otherwise
+   resume mid-page and skip the boot/intro choreography. Deep links respected. */
+if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+if (!location.hash) window.scrollTo(0, 0);
 
 /* ─── CINEMATIC BOOT / TITLE SEQUENCE ─── */
 var bootDone = false;
